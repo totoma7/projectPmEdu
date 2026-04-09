@@ -100,6 +100,7 @@
           <li><a href="#s5-8">5.8 커뮤니티 스킬 & 확장 생태계</a></li>
           <li><a href="#s5-9">5.9 PL을 위한 실전 활용 전략</a></li>
           <li><a href="#s5-10">5.10 웹 게시판 & MCP 테스트</a></li>
+          <li><a href="#s5-11">5.11 Flutter 앱 & APK 빌드</a></li>
         </ul>
       </li>
       <li class="nav-item" data-module="module6">
@@ -691,6 +692,79 @@ graph LR
               </tr>
             </tbody>
           </table>
+
+          <h4>PDCA 스킬 — 체계적 개발 사이클 관리</h4>
+          <p><strong>PDCA(Plan-Do-Check-Act)</strong> 스킬은 설계부터 검증까지 전체 개발 사이클을 한 줄 명령으로 관리하는 강력한 워크플로우 자동화 도구입니다.</p>
+          <table class="comparison-table">
+            <thead><tr><th>스킬</th><th>PDCA 단계</th><th>기능</th><th>PM/PL 활용 시나리오</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>/pdca plan {기능명}</code></td>
+                <td>Plan (계획)</td>
+                <td>기능 목록, 우선순위, 구현 전략이 담긴 계획 문서 자동 생성</td>
+                <td>새 기능 기획 시 PRD 초안을 빠르게 작성</td>
+              </tr>
+              <tr>
+                <td><code>/pdca design {기능명}</code></td>
+                <td>Plan (설계)</td>
+                <td>데이터 구조, 화면 구성, API 설계가 담긴 설계 문서 생성</td>
+                <td>개발팀에 전달할 상세 설계서 자동 작성</td>
+              </tr>
+              <tr>
+                <td><code>/pdca do {기능명}</code></td>
+                <td>Do (실행)</td>
+                <td>설계 문서를 기반으로 실제 코드 구현 시작</td>
+                <td>설계서대로 프로토타입을 자동 생성</td>
+              </tr>
+              <tr>
+                <td><code>/pdca analyze {기능명}</code></td>
+                <td>Check (검증)</td>
+                <td>설계-구현 일치율(Gap) 자동 분석, Match Rate 계산</td>
+                <td>구현 결과가 설계서대로인지 자동 검증</td>
+              </tr>
+              <tr>
+                <td><code>/pdca iterate {기능명}</code></td>
+                <td>Act (개선)</td>
+                <td>Gap이 90% 미만이면 자동 수정 → 재분석 반복 (최대 5회)</td>
+                <td>품질 미달 시 자동 수정 루프 실행</td>
+              </tr>
+              <tr>
+                <td><code>/pdca report {기능명}</code></td>
+                <td>보고</td>
+                <td>전체 PDCA 사이클 결과를 종합 보고서로 생성</td>
+                <td>프로젝트 완료 보고서 자동 작성</td>
+              </tr>
+              <tr>
+                <td><code>/pdca status</code></td>
+                <td>상태 확인</td>
+                <td>현재 PDCA 진행 상황과 Match Rate 표시</td>
+                <td>프로젝트 진행률을 한눈에 확인</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    A["/pdca plan\n계획 수립"] --> B["/pdca design\n상세 설계"]
+    B --> C["/pdca do\n구현"]
+    C --> D["/pdca analyze\nGap 분석"]
+    D --> E{"Match Rate\n≥ 90%?"}
+    E -->|"No"| F["/pdca iterate\n자동 개선"]
+    F --> D
+    E -->|"Yes"| G["/pdca report\n완료 보고서"]
+
+    style A fill:#4a9eff,color:#fff
+    style C fill:#ff9800,color:#fff
+    style D fill:#9c27b0,color:#fff
+    style F fill:#f44336,color:#fff
+    style G fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <div class="info-box">
+            <strong>PM 포인트</strong>: PDCA 스킬의 핵심 가치는 <strong>"설계와 구현의 괴리를 자동으로 잡아내는 것"</strong>입니다. PM이 기획한 내용이 실제로 다 구현되었는지, 수동으로 대조할 필요 없이 <code>/pdca analyze</code> 한 줄이면 됩니다. Match Rate가 90% 미만이면 <code>/pdca iterate</code>로 자동 수정까지 가능합니다.
+          </div>
 
           <h4>PM 업무별 활용 시나리오</h4>
           <div class="diagram-container">
@@ -2133,6 +2207,625 @@ graph TD
 
           <div class="info-box">
             <strong>핵심 요약</strong>: 이 실습은 바이브 코딩의 "만들기"에서 한 단계 나아가 <strong>"검증하기"</strong>와 <strong>"보고하기"</strong>까지 다룹니다. Sub-Agent로 병렬 개발하고, MCP로 테스트하고, Gap 분석으로 품질을 확인하고, DOCX로 공식 보고서를 만드는 이 흐름이 <strong>AI 네이티브 개발의 실전 패턴</strong>입니다. 기존 방식 대비 <strong>90% 이상의 시간 단축</strong>이 가능하며, PM/PL이 이 패턴을 이해하면 개발팀과 더 깊이 있는 협업이 가능해집니다.
+          </div>
+        </section>
+
+        <!-- 5.11 실전 프로젝트: Flutter 모바일 앱 & APK 빌드 -->
+        <section id="s5-11">
+          <h3>5.11 실전 프로젝트: Flutter 모바일 앱 만들기 & APK 빌드</h3>
+
+          <p>웹 게시판 실습에서 배운 바이브 코딩 패턴을 <strong>모바일 앱</strong>으로 확장합니다. Flutter를 사용하여 할 일 관리(Todo) 앱을 만들고, 실제 안드로이드 기기에 설치할 수 있는 <strong>APK 파일</strong>까지 빌드합니다.</p>
+
+          <div class="info-box">
+            <strong>왜 Flutter인가?</strong>
+            <ul>
+              <li><strong>하나의 코드로 Android + iOS</strong> — 플랫폼별 개발 불필요</li>
+              <li><strong>Dart 언어</strong> — JavaScript와 유사해 바이브 코딩에 적합</li>
+              <li><strong>Hot Reload</strong> — 코드 수정 즉시 반영, 반복 개선에 최적</li>
+              <li><strong>AI 친화적</strong> — Claude Code가 Flutter/Dart 코드 생성에 강력</li>
+            </ul>
+          </div>
+
+          <h4>전체 워크플로우</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    A["1단계\n환경 설정"] --> B["2단계\n앱 설계"]
+    B --> C["3단계\n바이브 코딩"]
+    C --> D["4단계\n테스트"]
+    D --> E["5단계\nAPK 빌드"]
+
+    A1["Flutter SDK\n+ Android Studio"] --> A
+    B1["Skill\n/pdca plan\n/pdca design"] --> B
+    C1["Agent\nSub-Agent\nUI + 로직 병렬"] --> C
+    D1["에뮬레이터\n+ MCP 테스트"] --> D
+    E1["flutter build apk\n배포 가능한 파일"] --> E
+
+    style A fill:#02569B,color:#fff
+    style B fill:#4a9eff,color:#fff
+    style C fill:#ff9800,color:#fff
+    style D fill:#9c27b0,color:#fff
+    style E fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <h4>Step 1: 개발 환경 설정</h4>
+          <p>Flutter 개발에 필요한 도구를 설치합니다. Claude Code에게 직접 요청할 수 있습니다.</p>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: Flutter 환경 설정 요청</div>
+            <pre><code class="language-text">Flutter 개발 환경을 설정해줘.
+
+필요한 것:
+1. Flutter SDK 설치 상태 확인
+2. Android SDK 설치 상태 확인
+3. flutter doctor로 환경 진단
+4. 문제가 있으면 해결 방법 안내</code></pre>
+          </div>
+
+          <pre><code class="language-bash"># Flutter 설치 (Windows 기준)
+# 1. Flutter SDK 다운로드: https://docs.flutter.dev/get-started/install
+
+# 2. 환경 변수 설정 후 확인
+flutter --version
+
+# 3. 환경 진단 — 부족한 것 자동 안내
+flutter doctor
+
+# 4. 새 프로젝트 생성
+flutter create todo_app
+cd todo_app
+
+# 5. Claude Code 시작
+claude</code></pre>
+
+          <table class="comparison-table">
+            <thead><tr><th>필수 도구</th><th>역할</th><th>설치 방법</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Flutter SDK</strong></td>
+                <td>Flutter 프레임워크 + Dart 언어</td>
+                <td><code>flutter.dev</code>에서 다운로드</td>
+              </tr>
+              <tr>
+                <td><strong>Android Studio</strong></td>
+                <td>Android SDK + 에뮬레이터</td>
+                <td><code>developer.android.com</code>에서 다운로드</td>
+              </tr>
+              <tr>
+                <td><strong>VS Code (선택)</strong></td>
+                <td>Flutter 확장팩 지원 에디터</td>
+                <td>Flutter Extension 설치</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="warning-box">
+            <strong>사전 준비 체크</strong>: <code>flutter doctor</code> 명령어 실행 시 모든 항목에 체크(✓)가 뜨면 준비 완료입니다. 체크가 안 된 항목이 있으면 Claude Code에게 "flutter doctor에서 이 에러가 나와. 해결해줘"라고 요청하세요.
+          </div>
+
+          <h4>Step 2: Todo 앱 설계 — 스킬 활용</h4>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: Flutter Todo 앱 설계</div>
+            <pre><code class="language-text">Flutter로 만들 Todo 앱을 설계해줘.
+
+기능 요구사항:
+- 할 일 목록 보기 (체크박스 + 제목 + 날짜)
+- 새 할 일 추가 (제목 입력, 우선순위 선택)
+- 할 일 완료 처리 (체크 토글)
+- 할 일 삭제 (스와이프 삭제)
+- 완료/미완료 필터링
+- 데이터는 로컬 저장 (SharedPreferences)
+
+디자인 요구사항:
+- Material Design 3 스타일
+- 라이트/다크 테마 지원
+- 부드러운 애니메이션
+- FloatingActionButton으로 추가
+
+화면 구성:
+- 메인 화면: 할 일 목록 + 필터 탭
+- 추가 다이얼로그: 제목 + 우선순위 입력</code></pre>
+          </div>
+
+          <h4>앱 화면 구조</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["TodoApp\nMaterialApp"] --> B["HomeScreen\n메인 화면"]
+    B --> C["AppBar\n제목 + 테마 토글"]
+    B --> D["FilterTabs\n전체 / 미완료 / 완료"]
+    B --> E["TodoList\n할 일 목록"]
+    B --> F["FAB (+)\n추가 버튼"]
+
+    E --> G["TodoItem\n체크박스 + 제목 + 날짜"]
+    E --> H["Dismissible\n스와이프 삭제"]
+
+    F --> I["AddTodoDialog\n제목 입력 + 우선순위"]
+
+    style A fill:#02569B,color:#fff
+    style B fill:#4a9eff,color:#fff
+    style F fill:#ff9800,color:#fff
+    style I fill:#9c27b0,color:#fff
+            </div>
+          </div>
+
+          <h4>Step 3: 바이브 코딩으로 구현 — Sub-Agent 활용</h4>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: Flutter Todo 앱 구현 요청</div>
+            <pre><code class="language-text">위 설계대로 Flutter Todo 앱을 구현해줘.
+
+구현 지침:
+1. lib/main.dart — 앱 진입점, 테마 설정
+2. lib/models/todo.dart — Todo 데이터 모델
+3. lib/screens/home_screen.dart — 메인 화면
+4. lib/widgets/todo_item.dart — 개별 할일 위젯
+5. lib/widgets/add_todo_dialog.dart — 추가 다이얼로그
+6. lib/services/storage_service.dart — SharedPreferences 저장
+
+Sub-Agent를 활용해서 모델/화면/위젯/서비스를 병렬로 만들어줘.
+
+코딩 규칙:
+- StatefulWidget 대신 가능하면 StatelessWidget + setState 패턴
+- const 생성자 적극 활용
+- 한글 주석으로 핵심 로직 설명</code></pre>
+          </div>
+
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["사용자 요청\n'Todo 앱 만들어줘'"] --> B["Main Agent\n작업 분석 & 분배"]
+    B --> C["Sub-Agent 1\n데이터 모델\ntodo.dart"]
+    B --> D["Sub-Agent 2\n메인 화면\nhome_screen.dart"]
+    B --> E["Sub-Agent 3\n위젯 컴포넌트\ntodo_item.dart\nadd_todo_dialog.dart"]
+    B --> F["Sub-Agent 4\n저장 서비스\nstorage_service.dart"]
+    C --> G["Main Agent\n통합 + main.dart 생성"]
+    D --> G
+    E --> G
+    F --> G
+    G --> H["flutter run\n에뮬레이터에서 실행"]
+
+    style A fill:#4a9eff,color:#fff
+    style B fill:#ff9800,color:#fff
+    style G fill:#9c27b0,color:#fff
+    style H fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <h4>핵심 코드 구조 미리보기</h4>
+          <pre><code class="language-dart">// lib/models/todo.dart — 할 일 데이터 모델
+class Todo {
+  final String id;
+  final String title;
+  final Priority priority;
+  final DateTime createdAt;
+  bool isCompleted;
+
+  Todo({
+    required this.id,
+    required this.title,
+    this.priority = Priority.medium,
+    required this.createdAt,
+    this.isCompleted = false,
+  });
+
+  // JSON 변환 (SharedPreferences 저장용)
+  Map&lt;String, dynamic&gt; toJson() =&gt; {
+    'id': id,
+    'title': title,
+    'priority': priority.index,
+    'createdAt': createdAt.toIso8601String(),
+    'isCompleted': isCompleted,
+  };
+
+  factory Todo.fromJson(Map&lt;String, dynamic&gt; json) =&gt; Todo(
+    id: json['id'],
+    title: json['title'],
+    priority: Priority.values[json['priority']],
+    createdAt: DateTime.parse(json['createdAt']),
+    isCompleted: json['isCompleted'],
+  );
+}
+
+enum Priority { low, medium, high }</code></pre>
+
+          <pre><code class="language-dart">// lib/main.dart — 앱 진입점 (핵심 부분)
+import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
+
+void main() =&gt; runApp(const TodoApp());
+
+class TodoApp extends StatefulWidget {
+  const TodoApp({super.key});
+
+  @override
+  State&lt;TodoApp&gt; createState() =&gt; _TodoAppState();
+}
+
+class _TodoAppState extends State&lt;TodoApp&gt; {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  void _toggleTheme() {
+    setState(() {
+      _themeMode = _themeMode == ThemeMode.dark
+          ? ThemeMode.light
+          : ThemeMode.dark;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Todo App',
+      theme: ThemeData(
+        colorSchemeSeed: Colors.blue,
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        colorSchemeSeed: Colors.blue,
+        brightness: Brightness.dark,
+        useMaterial3: true,
+      ),
+      themeMode: _themeMode,
+      home: HomeScreen(onToggleTheme: _toggleTheme),
+    );
+  }
+}</code></pre>
+
+          <h4>Step 4: 에뮬레이터 테스트 & MCP 활용</h4>
+
+          <pre><code class="language-bash"># 에뮬레이터 실행 방법
+# 1. 에뮬레이터 목록 확인
+flutter emulators
+
+# 2. 에뮬레이터 실행
+flutter emulators --launch Pixel_7_API_34
+
+# 3. 앱 실행 (Hot Reload 활성화)
+flutter run
+
+# 4. Hot Reload: 코드 수정 후 r 키 입력
+# 5. Hot Restart: R 키 입력 (상태 초기화)</code></pre>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: 앱 테스트 요청</div>
+            <pre><code class="language-text">Todo 앱을 에뮬레이터에서 테스트해줘.
+
+테스트 시나리오:
+1. 앱 실행 → 빈 목록 화면 표시 확인
+2. FAB(+) 버튼 클릭 → 추가 다이얼로그 표시
+3. "Flutter 공부하기" 입력 + 높음 우선순위 → 추가
+4. 할 일 체크박스 토글 → 완료 표시 (취소선)
+5. 스와이프 삭제 → 목록에서 제거
+6. 다크모드 토글 → 테마 전환 확인
+7. 앱 종료 후 재실행 → 데이터 유지 확인
+
+각 단계 결과를 PASS/FAIL로 정리해줘.</code></pre>
+          </div>
+
+          <table class="comparison-table">
+            <thead><tr><th>테스트 방법</th><th>도구</th><th>적합한 상황</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>에뮬레이터 수동 테스트</strong></td>
+                <td>Android Emulator / iOS Simulator</td>
+                <td>UI/UX 직접 확인, 터치 인터랙션 검증</td>
+              </tr>
+              <tr>
+                <td><strong>Flutter 통합 테스트</strong></td>
+                <td><code>flutter test</code></td>
+                <td>위젯 동작, 비즈니스 로직 자동 검증</td>
+              </tr>
+              <tr>
+                <td><strong>MCP Playwright</strong></td>
+                <td>Flutter Web 빌드 후 브라우저 테스트</td>
+                <td>웹 버전 자동 테스트 (크로스 플랫폼 확인)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: Flutter 통합 테스트 코드 생성</div>
+            <pre><code class="language-text">Todo 앱의 통합 테스트 코드를 작성해줘.
+
+test/widget_test.dart에 다음 테스트 추가:
+1. 앱 실행 시 빈 목록 표시 테스트
+2. Todo 추가 후 목록에 표시 테스트
+3. 완료 토글 동작 테스트
+4. 삭제 동작 테스트
+
+flutter test로 실행 가능하게 해줘.</code></pre>
+          </div>
+
+          <pre><code class="language-dart">// test/widget_test.dart — AI가 자동 생성하는 테스트 코드 예시
+import 'package:flutter_test/flutter_test.dart';
+import 'package:todo_app/main.dart';
+
+void main() {
+  testWidgets('빈 목록에서 Todo 추가 테스트', (tester) async {
+    // 앱 실행
+    await tester.pumpWidget(const TodoApp());
+
+    // 빈 목록 확인
+    expect(find.text('할 일이 없습니다'), findsOneWidget);
+
+    // FAB 클릭 → 다이얼로그 열기
+    await tester.tap(find.byType(FloatingActionButton));
+    await tester.pumpAndSettle();
+
+    // 제목 입력
+    await tester.enterText(
+      find.byType(TextField), 'Flutter 공부하기');
+
+    // 추가 버튼 클릭
+    await tester.tap(find.text('추가'));
+    await tester.pumpAndSettle();
+
+    // 목록에 표시 확인
+    expect(find.text('Flutter 공부하기'), findsOneWidget);
+  });
+}</code></pre>
+
+          <h4>Step 5: APK 빌드 — 실제 기기에 설치</h4>
+          <p>테스트가 완료되면 <strong>APK 파일</strong>을 빌드하여 안드로이드 기기에 설치할 수 있습니다.</p>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: APK 빌드 요청</div>
+            <pre><code class="language-text">Todo 앱을 APK로 빌드해줘.
+
+빌드 전 확인:
+1. pubspec.yaml에 앱 이름, 버전 정보 확인
+2. 앱 아이콘 설정 (기본 Flutter 아이콘 → 커스텀)
+3. 불필요한 권한 제거
+
+빌드 옵션:
+- Release 모드 (디버그 아님)
+- APK 파일로 생성 (AAB 아님)
+- 파일 크기 최소화</code></pre>
+          </div>
+
+          <pre><code class="language-bash"># APK 빌드 명령어
+# 1. 의존성 정리
+flutter clean
+flutter pub get
+
+# 2. Release APK 빌드
+flutter build apk --release
+
+# 빌드 완료 시 출력 위치:
+# build/app/outputs/flutter-apk/app-release.apk
+
+# 3. 파일 크기 확인
+ls -lh build/app/outputs/flutter-apk/app-release.apk
+# 예: 약 15~25MB
+
+# 4. 연결된 기기에 직접 설치
+flutter install</code></pre>
+
+          <h4>APK 빌드 과정 상세</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["Dart 소스 코드\nlib/*.dart"] --> B["flutter build apk\n--release"]
+    B --> C["Dart → 네이티브 코드\nAOT 컴파일"]
+    C --> D["리소스 패키징\n아이콘, 폰트, 이미지"]
+    D --> E["서명 & 압축\nRelease 키로 서명"]
+    E --> F["app-release.apk\n설치 가능한 파일"]
+    F --> G["기기 설치\nflutter install\n또는 USB 복사"]
+
+    style A fill:#02569B,color:#fff
+    style B fill:#ff9800,color:#fff
+    style F fill:#4caf50,color:#fff
+    style G fill:#9c27b0,color:#fff
+            </div>
+          </div>
+
+          <table class="comparison-table">
+            <thead><tr><th>빌드 옵션</th><th>명령어</th><th>용도</th><th>파일 크기</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Debug APK</strong></td>
+                <td><code>flutter build apk --debug</code></td>
+                <td>개발 중 테스트용</td>
+                <td>~60MB (디버그 정보 포함)</td>
+              </tr>
+              <tr>
+                <td><strong>Release APK</strong></td>
+                <td><code>flutter build apk --release</code></td>
+                <td>배포용 (최적화됨)</td>
+                <td>~15-25MB</td>
+              </tr>
+              <tr>
+                <td><strong>Split APK</strong></td>
+                <td><code>flutter build apk --split-per-abi</code></td>
+                <td>CPU 아키텍처별 분리</td>
+                <td>~7-12MB (아키텍처당)</td>
+              </tr>
+              <tr>
+                <td><strong>App Bundle</strong></td>
+                <td><code>flutter build appbundle</code></td>
+                <td>Google Play 스토어 등록용</td>
+                <td>~10-15MB (자동 최적화)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>APK 빌드 전 체크리스트</h4>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: 빌드 전 설정 요청</div>
+            <pre><code class="language-text">APK 빌드 전에 다음 설정을 확인하고 수정해줘:
+
+1. pubspec.yaml:
+   - name: todo_app
+   - description: 바이브 코딩으로 만든 할 일 관리 앱
+   - version: 1.0.0+1
+
+2. android/app/build.gradle:
+   - minSdkVersion: 21 (Android 5.0 이상)
+   - targetSdkVersion: 34
+   - versionCode, versionName 확인
+
+3. android/app/src/main/AndroidManifest.xml:
+   - 앱 이름을 한글로: "할 일 관리"
+   - 불필요한 인터넷 권한 제거 (오프라인 앱이므로)
+
+4. 앱 아이콘:
+   - flutter_launcher_icons 패키지로 커스텀 아이콘 설정</code></pre>
+          </div>
+
+          <pre><code class="language-yaml"># pubspec.yaml — 핵심 설정
+name: todo_app
+description: 바이브 코딩으로 만든 할 일 관리 앱
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.2.0    # 로컬 데이터 저장
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.13.0  # 앱 아이콘 생성
+
+# 앱 아이콘 설정
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"</code></pre>
+
+          <h4>기기에 설치하기</h4>
+          <table class="comparison-table">
+            <thead><tr><th>설치 방법</th><th>절차</th><th>필요한 것</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>USB 직접 설치</strong></td>
+                <td>USB 연결 → <code>flutter install</code></td>
+                <td>USB 케이블, 개발자 모드 활성화</td>
+              </tr>
+              <tr>
+                <td><strong>APK 파일 전송</strong></td>
+                <td>APK 파일을 기기로 복사 → 파일 탐색기에서 설치</td>
+                <td>"출처를 알 수 없는 앱" 설치 허용</td>
+              </tr>
+              <tr>
+                <td><strong>QR 코드 공유</strong></td>
+                <td>APK를 클라우드 업로드 → QR 코드 생성 → 스캔 설치</td>
+                <td>Google Drive, Firebase App Distribution 등</td>
+              </tr>
+              <tr>
+                <td><strong>Play Store 등록</strong></td>
+                <td>AAB 빌드 → Google Play Console 업로드</td>
+                <td>개발자 계정 ($25 일회성)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>웹 게시판 vs Flutter 앱 — 바이브 코딩 비교</h4>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>비교 항목</th>
+                <th>5.10 웹 게시판</th>
+                <th>5.11 Flutter 앱</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>결과물</strong></td>
+                <td>HTML 파일 (브라우저에서 실행)</td>
+                <td>APK 파일 (스마트폰에 설치)</td>
+              </tr>
+              <tr>
+                <td><strong>기술 스택</strong></td>
+                <td>HTML + CSS + JavaScript</td>
+                <td>Flutter + Dart</td>
+              </tr>
+              <tr>
+                <td><strong>데이터 저장</strong></td>
+                <td>localStorage</td>
+                <td>SharedPreferences</td>
+              </tr>
+              <tr>
+                <td><strong>테스트</strong></td>
+                <td>MCP Playwright (브라우저)</td>
+                <td>flutter test + 에뮬레이터</td>
+              </tr>
+              <tr>
+                <td><strong>배포</strong></td>
+                <td>GitHub Pages / Netlify</td>
+                <td>APK 파일 / Play Store</td>
+              </tr>
+              <tr>
+                <td><strong>바이브 코딩 난이도</strong></td>
+                <td>초급 (환경 설정 불필요)</td>
+                <td>중급 (Flutter SDK 설치 필요)</td>
+              </tr>
+              <tr>
+                <td><strong>생산성 단축률</strong></td>
+                <td>기존 대비 ~95% 단축</td>
+                <td>기존 대비 ~90% 단축</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Flutter 바이브 코딩 Tips</h4>
+          <table class="comparison-table">
+            <thead><tr><th>상황</th><th>프롬프트 예시</th><th>활용 도구</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>UI 수정</strong></td>
+                <td>"할 일 카드에 그림자 효과를 추가하고, 우선순위에 따라 왼쪽 테두리 색을 다르게 해줘"</td>
+                <td>바이브 코딩 + Hot Reload</td>
+              </tr>
+              <tr>
+                <td><strong>기능 추가</strong></td>
+                <td>"할 일에 마감일을 추가하고, 날짜 선택기(DatePicker)를 연동해줘"</td>
+                <td>바이브 코딩</td>
+              </tr>
+              <tr>
+                <td><strong>에러 해결</strong></td>
+                <td>"flutter run 하면 이 에러가 나와: [에러 메시지]. 해결해줘"</td>
+                <td>바이브 코딩</td>
+              </tr>
+              <tr>
+                <td><strong>성능 개선</strong></td>
+                <td>"목록 스크롤이 버벅여. ListView.builder로 최적화해줘"</td>
+                <td>바이브 코딩 + Sub-Agent</td>
+              </tr>
+              <tr>
+                <td><strong>APK 최적화</strong></td>
+                <td>"APK 크기를 줄여줘. 사용하지 않는 패키지 제거하고 ProGuard 적용"</td>
+                <td>바이브 코딩</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="practice-section">
+            <h4>Flutter 실습 과제</h4>
+            <p>다음 단계를 따라 나만의 모바일 앱을 완성해보세요:</p>
+            <ol>
+              <li><strong>환경 설정</strong>: <code>flutter doctor</code>로 개발 환경 확인</li>
+              <li><strong>프로젝트 생성</strong>: <code>flutter create todo_app</code>으로 시작</li>
+              <li><strong>설계</strong>: Claude Code에게 Todo 앱 설계 요청</li>
+              <li><strong>구현</strong>: Sub-Agent로 모델/화면/위젯/서비스 병렬 생성</li>
+              <li><strong>실행</strong>: <code>flutter run</code>으로 에뮬레이터에서 확인</li>
+              <li><strong>반복 개선</strong>: Hot Reload로 UI/기능 3회 이상 수정</li>
+              <li><strong>테스트</strong>: <code>flutter test</code>로 위젯 테스트 실행</li>
+              <li><strong>APK 빌드</strong>: <code>flutter build apk --release</code>로 APK 생성</li>
+              <li><strong>설치</strong>: 실제 기기에 APK 설치하여 동작 확인</li>
+              <li><strong>(응용)</strong>: 카테고리, 마감일, 알림 등 1가지 기능 추가</li>
+            </ol>
+          </div>
+
+          <div class="info-box">
+            <strong>핵심 요약</strong>: Flutter 바이브 코딩은 웹 실습의 연장선입니다. <strong>"자연어로 설명 → AI가 Dart 코드 생성 → Hot Reload로 즉시 확인 → 반복 개선"</strong> 패턴은 웹과 동일합니다. 차이점은 결과물이 <strong>실제 스마트폰에 설치되는 앱</strong>이라는 것입니다. PM/PL이 프로토타입 앱을 직접 만들어 "이런 앱을 만들고 싶어요"라고 보여줄 수 있다면, 개발팀과의 커뮤니케이션이 획기적으로 달라집니다.
           </div>
         </section>
 
