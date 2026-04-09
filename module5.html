@@ -1682,22 +1682,457 @@ graph TD
             </tbody>
           </table>
 
+          <h4>심화 1: Sub-Agent로 병렬 개발하기</h4>
+          <p>게시판처럼 여러 화면이 필요한 프로젝트는 <strong>Sub-Agent를 직접 생성</strong>하여 작업을 분담할 수 있습니다. 마치 팀장이 팀원에게 업무를 배분하는 것과 같습니다.</p>
+
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["PM/PL 사용자"] -->|"게시판을 Sub-Agent로\n나눠서 만들어줘"| B["Main Agent\n(팀장 역할)"]
+    B -->|"작업 분배"| C["Sub-Agent 1\nHTML 구조 담당"]
+    B -->|"작업 분배"| D["Sub-Agent 2\nCSS 스타일 담당"]
+    B -->|"작업 분배"| E["Sub-Agent 3\nJS 로직 담당"]
+    B -->|"작업 분배"| F["Sub-Agent 4\n테스트 시나리오 작성"]
+    C --> G["결과 취합 & 통합"]
+    D --> G
+    E --> G
+    F --> G
+    G --> H["board.html 완성\n+ 테스트 준비 완료"]
+
+    style A fill:#4a9eff,color:#fff
+    style B fill:#ff9800,color:#fff
+    style G fill:#9c27b0,color:#fff
+    style H fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: Sub-Agent 병렬 개발 요청</div>
+            <pre><code class="language-text">게시판을 Sub-Agent를 활용해서 병렬로 만들어줘.
+
+Sub-Agent 1 — HTML 구조:
+- 글 목록, 작성 폼, 상세 보기 3개 화면의 HTML 마크업
+- 시맨틱 태그 사용 (header, main, article, form)
+
+Sub-Agent 2 — CSS 디자인:
+- 반응형 레이아웃 (모바일/태블릿/데스크톱)
+- 다크모드 CSS 변수 시스템
+- 카드 스타일, 폼 스타일, 버튼 스타일
+
+Sub-Agent 3 — JavaScript 로직:
+- localStorage CRUD (생성, 읽기, 수정, 삭제)
+- 화면 전환 라우팅 (SPA 방식)
+- 폼 검증 및 에러 처리
+
+Sub-Agent 4 — 테스트 시나리오:
+- 각 CRUD 기능의 테스트 케이스 작성
+- 엣지 케이스 (빈 입력, 특수문자, 긴 텍스트) 포함
+
+각 Sub-Agent의 결과를 board.html 하나로 통합해줘.</code></pre>
+          </div>
+
+          <table class="comparison-table">
+            <thead><tr><th>Sub-Agent</th><th>담당 영역</th><th>병렬 실행</th><th>소요 시간 (예상)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Agent 1</strong></td>
+                <td>HTML 구조 설계</td>
+                <td>독립 실행</td>
+                <td>~30초</td>
+              </tr>
+              <tr>
+                <td><strong>Agent 2</strong></td>
+                <td>CSS 스타일링</td>
+                <td>독립 실행</td>
+                <td>~30초</td>
+              </tr>
+              <tr>
+                <td><strong>Agent 3</strong></td>
+                <td>JavaScript 로직</td>
+                <td>독립 실행</td>
+                <td>~45초</td>
+              </tr>
+              <tr>
+                <td><strong>Agent 4</strong></td>
+                <td>테스트 시나리오</td>
+                <td>독립 실행</td>
+                <td>~20초</td>
+              </tr>
+              <tr>
+                <td><strong>Main Agent</strong></td>
+                <td>결과 통합 + 검증</td>
+                <td>취합 후 실행</td>
+                <td>~15초</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="info-box">
+            <strong>Sub-Agent의 핵심 원리</strong>: 순차 실행하면 ~2분 40초 걸릴 작업이, Sub-Agent 병렬 실행으로 <strong>~1분</strong>에 완료됩니다. 4명의 팀원이 동시에 각자 맡은 부분을 개발하는 것과 같은 원리입니다. Claude Code는 작업의 복잡도를 분석하여 자동으로 Sub-Agent를 생성하기도 하지만, 위 프롬프트처럼 <strong>직접 분배를 지시</strong>하면 더 정확한 결과를 얻을 수 있습니다.
+          </div>
+
+          <h4>심화 2: Gap 분석 — 설계와 구현의 차이 검증</h4>
+          <p>설계 문서대로 구현이 되었는지 자동으로 검증하는 것이 <strong>Gap 분석</strong>입니다. "계획은 세웠는데, 실제로 다 만들어졌나?" 를 AI가 확인해주는 것입니다.</p>
+
+          <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    A["설계 문서\n(Plan/Design)"] --> C{"Gap 분석\n에이전트"}
+    B["구현 코드\n(board.html)"] --> C
+    C -->|"일치"| D["PASS\n설계대로 구현됨"]
+    C -->|"불일치"| E["GAP 발견\n누락/차이 목록"]
+    E --> F["자동 수정 요청\n(pdca-iterator)"]
+    F --> B
+
+    style C fill:#9c27b0,color:#fff
+    style D fill:#4caf50,color:#fff
+    style E fill:#f44336,color:#fff
+    style F fill:#ff9800,color:#fff
+            </div>
+          </div>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: Gap 분석 요청</div>
+            <pre><code class="language-text">설계 문서와 실제 구현을 비교해서 Gap 분석해줘.
+
+분석 항목:
+1. 기능 완성도 — 설계서의 모든 기능이 구현되었는지
+2. 데이터 구조 일치 — 설계한 필드가 모두 존재하는지
+3. UI 구성 — 설계한 화면이 모두 만들어졌는지
+4. 검증 로직 — 필수 입력 검증이 동작하는지
+5. 반응형/다크모드 — 디자인 요구사항 충족 여부
+
+각 항목마다 Match/Gap 판정과 Match Rate(%)를 알려줘.</code></pre>
+          </div>
+
+          <h4>Gap 분석 결과 예시</h4>
+          <table class="comparison-table">
+            <thead><tr><th>분석 항목</th><th>설계 요구사항</th><th>구현 상태</th><th>판정</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>글 목록 보기</strong></td>
+                <td>제목, 작성자, 날짜 표시</td>
+                <td>제목, 작성자, 날짜 모두 표시</td>
+                <td style="color: green;"><strong>Match</strong></td>
+              </tr>
+              <tr>
+                <td><strong>글 작성</strong></td>
+                <td>제목, 작성자, 내용 입력 폼</td>
+                <td>3개 필드 폼 구현 완료</td>
+                <td style="color: green;"><strong>Match</strong></td>
+              </tr>
+              <tr>
+                <td><strong>글 삭제</strong></td>
+                <td>확인 다이얼로그 후 삭제</td>
+                <td>confirm() 다이얼로그 구현</td>
+                <td style="color: green;"><strong>Match</strong></td>
+              </tr>
+              <tr>
+                <td><strong>빈 필드 검증</strong></td>
+                <td>제목, 작성자 필수</td>
+                <td>제목만 검증, 작성자 검증 누락</td>
+                <td style="color: red;"><strong>Gap</strong></td>
+              </tr>
+              <tr>
+                <td><strong>다크모드</strong></td>
+                <td>토글 버튼 + CSS 변수</td>
+                <td>토글 버튼 + CSS 변수 구현</td>
+                <td style="color: green;"><strong>Match</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="info-box">
+            <strong>Match Rate: 80%</strong> (4/5 항목 일치) — Gap이 발견되면 Claude Code에게 "작성자 필드 검증을 추가해줘"로 수정 요청 후, 다시 Gap 분석을 실행하여 <strong>90% 이상</strong>이 될 때까지 반복합니다. 이것이 <strong>PDCA(Plan-Do-Check-Act) 사이클</strong>의 핵심입니다.
+          </div>
+
+          <p>Claude Code의 PDCA 스킬을 사용하면 이 과정을 자동화할 수 있습니다:</p>
+          <table class="comparison-table">
+            <thead><tr><th>스킬/에이전트</th><th>명령어</th><th>역할</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Gap 분석</strong></td>
+                <td><code>/pdca analyze board</code></td>
+                <td>설계-구현 일치율을 자동 계산하고 누락 항목 목록 생성</td>
+              </tr>
+              <tr>
+                <td><strong>자동 개선</strong></td>
+                <td><code>/pdca iterate board</code></td>
+                <td>Gap이 90% 미만이면 자동으로 수정 → 재분석 반복 (최대 5회)</td>
+              </tr>
+              <tr>
+                <td><strong>완료 보고서</strong></td>
+                <td><code>/pdca report board</code></td>
+                <td>전체 PDCA 사이클 결과를 종합 보고서로 생성</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>심화 3: 테스트 보고서 DOCX 파일 생성</h4>
+          <p>테스트 결과를 마크다운이 아닌 <strong>공식 문서(DOCX)</strong>로 만들면, 팀 공유나 고객 보고에 바로 사용할 수 있습니다.</p>
+
+          <div class="prompt-example good">
+            <div class="prompt-label">프롬프트: DOCX 보고서 생성 요청</div>
+            <pre><code class="language-text">위 QA 테스트 결과와 Gap 분석 결과를 합쳐서
+공식 테스트 보고서를 DOCX 파일로 만들어줘.
+
+파일명: board-qa-report.docx
+
+보고서 구성:
+1. 표지 (프로젝트명, 작성일, 작성자, 버전)
+2. 목차
+3. 테스트 개요 (목적, 범위, 환경, 도구)
+4. 테스트 결과 요약 (PASS/FAIL 통계 표)
+5. 상세 테스트 결과 (시나리오별 표)
+6. Gap 분석 결과 (설계-구현 일치율 표)
+7. 발견 이슈 및 조치 내역
+8. 스크린샷 첨부 (테스트 증적)
+9. 결론 및 개선 권고
+
+테이블은 깔끔한 격자 스타일로,
+헤더에는 회사 로고 대신 프로젝트명을 넣어줘.</code></pre>
+          </div>
+
+          <h4>DOCX 생성 방법 비교</h4>
+          <table class="comparison-table">
+            <thead><tr><th>방법</th><th>프롬프트</th><th>장점</th><th>적합한 상황</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>방법 1: 직접 생성</strong></td>
+                <td>"DOCX 파일로 보고서 만들어줘"</td>
+                <td>한 번에 완성된 파일 생성</td>
+                <td>Node.js 환경에서 <code>docx</code> 라이브러리 사용 가능 시</td>
+              </tr>
+              <tr>
+                <td><strong>방법 2: HTML → 변환</strong></td>
+                <td>"보고서를 HTML로 만들고 인쇄용 스타일 적용해줘"</td>
+                <td>브라우저에서 바로 확인 + PDF/DOCX 저장 가능</td>
+                <td>추가 설치 없이 바로 사용하고 싶을 때</td>
+              </tr>
+              <tr>
+                <td><strong>방법 3: 마크다운 → Pandoc</strong></td>
+                <td>"마크다운으로 작성 후 pandoc으로 DOCX 변환해줘"</td>
+                <td>깔끔한 변환 품질, 템플릿 지원</td>
+                <td>Pandoc이 설치된 환경</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pre><code class="language-javascript">// 방법 1: Node.js docx 라이브러리로 DOCX 직접 생성 (Claude Code가 자동 작성)
+const { Document, Packer, Paragraph, Table, TableRow, TableCell } = require('docx');
+
+const doc = new Document({
+  sections: [{
+    properties: {},
+    children: [
+      new Paragraph({ text: "QA 테스트 보고서 — 웹 게시판", heading: "Title" }),
+      new Paragraph({ text: "작성일: 2026-04-09 | 도구: MCP Playwright" }),
+      // ... 테이블, 본문 자동 생성
+    ]
+  }]
+});
+
+// DOCX 파일 저장
+Packer.toBuffer(doc).then(buffer => {
+  fs.writeFileSync("board-qa-report.docx", buffer);
+});</code></pre>
+
+          <pre><code class="language-bash"># 방법 3: Pandoc으로 마크다운 → DOCX 변환
+pandoc board-qa-report.md -o board-qa-report.docx \
+  --reference-doc=template.docx \
+  --toc \
+  --highlight-style=tango</code></pre>
+
+          <div class="info-box">
+            <strong>PM 팁</strong>: Claude Code에게 "보고서를 DOCX로 만들어줘"라고 요청하면, 현재 환경에서 가능한 최적의 방법을 자동으로 선택합니다. Node.js 프로젝트라면 <code>docx</code> 라이브러리를, 없다면 HTML 보고서 + 인쇄용 CSS를 제안합니다. <strong>어떤 방법을 쓸지 고민할 필요 없이 "만들어줘"라고 하면 됩니다.</strong>
+          </div>
+
+          <h4>기존 개발 방식 vs AI 바이브 코딩 — 생산성 비교</h4>
+          <p>동일한 "웹 게시판" 프로젝트를 기존 방식과 AI 바이브 코딩으로 각각 진행했을 때, 생산성 차이를 비교합니다.</p>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>단계</th>
+                <th>기존 개발 방식</th>
+                <th>소요 시간</th>
+                <th>AI 바이브 코딩</th>
+                <th>소요 시간</th>
+                <th>단축률</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>요구사항 정의</strong></td>
+                <td>PM이 수동으로 문서 작성, 회의 2~3회</td>
+                <td>4~8시간</td>
+                <td><code>/pdca plan</code> 스킬로 자동 생성 + 검토</td>
+                <td>10~20분</td>
+                <td><strong>95%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>설계</strong></td>
+                <td>개발자가 ERD, 화면설계서, API 설계 작성</td>
+                <td>8~16시간</td>
+                <td><code>/pdca design</code> 스킬로 자동 생성</td>
+                <td>15~30분</td>
+                <td><strong>96%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>HTML/CSS 구현</strong></td>
+                <td>퍼블리셔/프론트엔드 개발자가 코딩</td>
+                <td>8~16시간</td>
+                <td>바이브 코딩 + Sub-Agent 병렬 생성</td>
+                <td>5~15분</td>
+                <td><strong>97%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>JavaScript 로직</strong></td>
+                <td>프론트엔드 개발자가 CRUD 구현</td>
+                <td>8~16시간</td>
+                <td>자연어로 기능 설명 → 자동 구현</td>
+                <td>10~20분</td>
+                <td><strong>96%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>테스트 코드 작성</strong></td>
+                <td>QA가 테스트 케이스 + 셀레니움 스크립트 작성</td>
+                <td>8~16시간</td>
+                <td>MCP Playwright로 자연어 테스트</td>
+                <td>10~15분</td>
+                <td><strong>97%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>테스트 실행</strong></td>
+                <td>QA가 수동 클릭 테스트 + 기록</td>
+                <td>2~4시간</td>
+                <td>MCP가 브라우저 자동 조작 + 스크린샷</td>
+                <td>2~5분</td>
+                <td><strong>97%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Gap 분석</strong></td>
+                <td>PM/PL이 설계서와 결과물 수동 대조</td>
+                <td>2~4시간</td>
+                <td><code>/pdca analyze</code> 자동 비교</td>
+                <td>1~3분</td>
+                <td><strong>98%</strong></td>
+              </tr>
+              <tr>
+                <td><strong>보고서 작성</strong></td>
+                <td>QA/PM이 워드로 수동 작성</td>
+                <td>2~4시간</td>
+                <td>에이전트가 DOCX 자동 생성</td>
+                <td>2~5분</td>
+                <td><strong>97%</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    subgraph Traditional["기존 방식"]
+        T1["설계\n1~2일"] --> T2["구현\n2~4일"]
+        T2 --> T3["테스트\n1~2일"]
+        T3 --> T4["보고서\n0.5일"]
+    end
+
+    subgraph AI["AI 바이브 코딩"]
+        A1["설계\n20분"] --> A2["구현\n15분"]
+        A2 --> A3["테스트\n15분"]
+        A3 --> A4["보고서\n5분"]
+    end
+
+    style Traditional fill:#ffebee,stroke:#f44336
+    style AI fill:#e8f5e9,stroke:#4caf50
+            </div>
+          </div>
+
+          <table class="comparison-table">
+            <thead><tr><th>비교 항목</th><th>기존 개발 방식</th><th>AI 바이브 코딩</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>총 소요 시간</strong></td>
+                <td>5~10일 (풀타임 기준)</td>
+                <td>1~2시간</td>
+              </tr>
+              <tr>
+                <td><strong>필요 인력</strong></td>
+                <td>PM 1명 + 개발자 1~2명 + QA 1명</td>
+                <td>PM/PL 1명 (비개발자 가능)</td>
+              </tr>
+              <tr>
+                <td><strong>필요 기술 지식</strong></td>
+                <td>HTML, CSS, JS, 테스트 프레임워크</td>
+                <td>자연어로 설명하는 능력</td>
+              </tr>
+              <tr>
+                <td><strong>품질 검증</strong></td>
+                <td>수동 테스트 + 육안 확인</td>
+                <td>MCP 자동 테스트 + Gap 분석 + 스크린샷</td>
+              </tr>
+              <tr>
+                <td><strong>문서화</strong></td>
+                <td>별도 작업 필요</td>
+                <td>개발 과정에서 자동 생성</td>
+              </tr>
+              <tr>
+                <td><strong>반복 수정 비용</strong></td>
+                <td>수정할 때마다 코딩 + 재테스트</td>
+                <td>"이 부분 수정해줘" 한 마디 → 자동 반영</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="warning-box">
+            <strong>주의: AI 바이브 코딩의 한계</strong>
+            <ul>
+              <li><strong>프로토타입/MVP에 최적</strong> — 이 비교는 간단한 게시판(프로토타입) 수준입니다. 대규모 상용 서비스는 여전히 전문 개발이 필요합니다.</li>
+              <li><strong>검증은 필수</strong> — AI가 만든 코드는 반드시 사람이 최종 확인해야 합니다. Gap 분석과 MCP 테스트가 그 역할을 합니다.</li>
+              <li><strong>복잡한 비즈니스 로직</strong> — 결제, 인증 등 보안이 중요한 기능은 전문 개발자와 협업하세요.</li>
+            </ul>
+          </div>
+
+          <h4>전체 실습 플로우 — 최종 정리</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["1. 설계\n/pdca plan + /pdca design"] --> B["2. Sub-Agent 병렬 구현\n4개 에이전트가 동시 개발"]
+    B --> C["3. MCP Playwright 테스트\n5개 시나리오 자동 실행"]
+    C --> D["4. Gap 분석\n/pdca analyze\n설계-구현 일치율 확인"]
+    D --> E{"Match Rate\n≥ 90%?"}
+    E -->|"No"| F["자동 수정\n/pdca iterate"]
+    F --> C
+    E -->|"Yes"| G["5. 보고서 DOCX 생성\n에이전트 + docx 라이브러리"]
+    G --> H["완료\n설계 → 구현 → 테스트 → 검증 → 보고서"]
+
+    style A fill:#4a9eff,color:#fff
+    style B fill:#ff9800,color:#fff
+    style C fill:#9c27b0,color:#fff
+    style D fill:#f44336,color:#fff
+    style G fill:#4caf50,color:#fff
+    style H fill:#2196f3,color:#fff
+            </div>
+          </div>
+
           <div class="practice-section">
             <h4>종합 실습 과제</h4>
             <p>다음 단계를 따라 웹 게시판 프로젝트를 완성해보세요:</p>
             <ol>
               <li><strong>설계</strong>: Claude Code에게 게시판 요구사항을 설명하고 설계 문서 받기</li>
-              <li><strong>구현</strong>: "이 설계대로 board.html을 만들어줘"로 바이브 코딩</li>
+              <li><strong>구현</strong>: Sub-Agent를 활용하여 HTML/CSS/JS를 병렬로 생성</li>
               <li><strong>확인</strong>: 브라우저에서 직접 열어 기본 동작 확인</li>
               <li><strong>자동 테스트</strong>: MCP Playwright로 5가지 시나리오 자동 테스트 실행</li>
-              <li><strong>수정</strong>: 테스트에서 발견된 이슈를 AI에게 수정 요청 (반복 개선)</li>
-              <li><strong>보고서</strong>: 최종 테스트 결과를 QA 보고서로 정리</li>
+              <li><strong>Gap 분석</strong>: <code>/pdca analyze</code>로 설계-구현 일치율 확인 (90% 이상 목표)</li>
+              <li><strong>수정</strong>: Gap이 있으면 <code>/pdca iterate</code>로 자동 수정 반복</li>
+              <li><strong>보고서</strong>: 테스트 + Gap 분석 결과를 DOCX 보고서로 생성</li>
               <li><strong>응용</strong>: 검색, 카테고리 등 1가지 이상 기능 확장</li>
             </ol>
           </div>
 
           <div class="info-box">
-            <strong>핵심 요약</strong>: 이 실습은 바이브 코딩의 "만들기"에서 한 단계 나아가 <strong>"검증하기"</strong>까지 다룹니다. 스킬로 설계하고, 바이브 코딩으로 만들고, MCP로 테스트하고, 에이전트로 보고서를 만드는 이 흐름이 <strong>AI 네이티브 개발의 실전 패턴</strong>입니다. PM/PL이 이 패턴을 이해하면, 개발팀과 더 깊이 있는 협업이 가능해집니다.
+            <strong>핵심 요약</strong>: 이 실습은 바이브 코딩의 "만들기"에서 한 단계 나아가 <strong>"검증하기"</strong>와 <strong>"보고하기"</strong>까지 다룹니다. Sub-Agent로 병렬 개발하고, MCP로 테스트하고, Gap 분석으로 품질을 확인하고, DOCX로 공식 보고서를 만드는 이 흐름이 <strong>AI 네이티브 개발의 실전 패턴</strong>입니다. 기존 방식 대비 <strong>90% 이상의 시간 단축</strong>이 가능하며, PM/PL이 이 패턴을 이해하면 개발팀과 더 깊이 있는 협업이 가능해집니다.
           </div>
         </section>
 
