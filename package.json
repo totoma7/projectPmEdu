@@ -1,0 +1,15 @@
+{
+  "name": "projectpmedu",
+  "version": "1.0.0",
+  "description": "PM(Product Manager)과 PL(Project Leader)을 위한 AI 바이브 코딩 교육자료입니다.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
