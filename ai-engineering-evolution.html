@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 엔지니어링 4년간의 진화</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0a0a0f;--card:#12121a;--border:#1e1e2e;
+--t1:#f0f0f5;--t2:#a0a0b8;--t3:#6a6a82;
+--accent1:#ff6b35;--accent2:#3b82f6;--accent3:#a855f7;--accent4:#10b981;
+--g1:linear-gradient(135deg,#ff6b35,#ff8a5c);
+--g2:linear-gradient(135deg,#3b82f6,#60a5fa);
+--g3:linear-gradient(135deg,#a855f7,#c084fc);
+--g4:linear-gradient(135deg,#10b981,#34d399);
+}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--t1);overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:40px 20px 80px}
+
+/* Header */
+.header{text-align:center;padding:60px 0 50px;position:relative}
+.header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(168,85,247,.08) 0%,transparent 70%);pointer-events:none}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent3);border:1px solid rgba(168,85,247,.3);padding:6px 16px;border-radius:20px;margin-bottom:20px}
+h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.3;margin-bottom:12px;background:linear-gradient(135deg,#f0f0f5 30%,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:var(--t2);font-size:15px;font-weight:300;max-width:500px;margin:0 auto}
+
+/* Timeline spine */
+.timeline{position:relative;padding-left:0}
+.timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent1),var(--accent2),var(--accent3),var(--accent4));opacity:.4}
+
+/* Era block */
+.era{position:relative;margin-bottom:56px;padding-left:72px}
+.era-dot{position:absolute;left:18px;top:6px;width:22px;height:22px;border-radius:50%;border:3px solid var(--bg);z-index:2}
+.era-dot.e1{background:var(--g1)}.era-dot.e2{background:var(--g2)}.era-dot.e3{background:var(--g3)}.era-dot.e4{background:var(--g4)}
+.era-year{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:1px;margin-bottom:6px}
+.era-year.c1{color:var(--accent1)}.era-year.c2{color:var(--accent2)}.era-year.c3{color:var(--accent3)}.era-year.c4{color:var(--accent4)}
+.era h2{font-size:clamp(20px,3.5vw,26px);font-weight:800;margin-bottom:4px}
+.era .desc{color:var(--t2);font-size:14px;line-height:1.7;margin-bottom:18px}
+
+/* Card grid */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;transition:border-color .2s,transform .2s}
+.card:hover{transform:translateY(-2px)}
+.card.b1:hover{border-color:rgba(255,107,53,.4)}.card.b2:hover{border-color:rgba(59,130,246,.4)}.card.b3:hover{border-color:rgba(168,85,247,.4)}.card.b4:hover{border-color:rgba(16,185,129,.4)}
+.card-icon{font-size:22px;margin-bottom:8px}
+.card h4{font-size:14px;font-weight:700;margin-bottom:5px}
+.card p{font-size:12.5px;color:var(--t2);line-height:1.6}
+
+/* Limit box */
+.limit{background:rgba(255,60,60,.06);border:1px solid rgba(255,60,60,.15);border-radius:12px;padding:14px 18px;margin-top:16px;display:flex;align-items:flex-start;gap:10px}
+.limit-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.limit p{font-size:13px;color:#f0a0a0;line-height:1.6}
+.limit strong{color:#ff8080}
+
+/* Flow diagram for Harness */
+.flow{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.flow-step{flex:1;min-width:140px;text-align:center;padding:16px 12px;background:var(--card);border:1px solid var(--border);border-radius:12px;position:relative}
+.flow-step .num{display:inline-block;width:28px;height:28px;line-height:28px;border-radius:50%;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;margin-bottom:8px;color:#fff}
+.flow-step .num.n1{background:var(--g4)}.flow-step .num.n2{background:var(--g4)}.flow-step .num.n3{background:var(--g4)}.flow-step .num.n4{background:var(--g3)}
+.flow-step h5{font-size:13px;font-weight:700;margin-bottom:4px}
+.flow-step p{font-size:11.5px;color:var(--t3);line-height:1.5}
+.flow-arrow{display:flex;align-items:center;color:var(--t3);font-size:18px;flex-shrink:0}
+
+/* Big evolution arrow */
+.evo-bar{display:flex;align-items:stretch;gap:0;margin:50px 0 30px;border-radius:16px;overflow:hidden;min-height:80px}
+.evo-seg{flex:1;padding:16px 20px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.evo-seg:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);font-size:18px;color:rgba(255,255,255,.6);z-index:2}
+.evo-seg.s1{background:linear-gradient(135deg,rgba(255,107,53,.15),rgba(255,107,53,.05))}
+.evo-seg.s2{background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(59,130,246,.05))}
+.evo-seg.s3{background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(168,85,247,.05))}
+.evo-seg h5{font-size:12px;font-weight:700;margin-bottom:2px}
+.evo-seg.s1 h5{color:var(--accent1)}.evo-seg.s2 h5{color:var(--accent2)}.evo-seg.s3 h5{color:var(--accent3)}
+.evo-seg p{font-size:11px;color:var(--t2);line-height:1.4}
+
+/* Conclusion */
+.conclusion{background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(16,185,129,.06));border:1px solid rgba(168,85,247,.15);border-radius:16px;padding:28px;margin-top:10px}
+.conclusion h3{font-size:18px;font-weight:800;margin-bottom:10px;color:var(--accent3)}
+.conclusion p{font-size:13.5px;color:var(--t2);line-height:1.8}
+.conclusion strong{color:var(--t1)}
+
+@media(max-width:600px){
+  .timeline::before{left:18px}
+  .era{padding-left:52px}
+  .era-dot{left:8px;width:22px;height:22px}
+  .cards{grid-template-columns:1fr}
+  .flow{flex-direction:column}
+  .flow-arrow{transform:rotate(90deg);justify-content:center}
+  .evo-bar{flex-direction:column;border-radius:12px}
+  .evo-seg:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-10px;transform:translateX(-50%)}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <div class="tag">개발동생 · 2026</div>
+  <h1>AI 엔지니어링<br>4년간의 진화</h1>
+  <p class="subtitle">프롬프트에서 하네스까지 — 개발자 역할의 패러다임 전환</p>
+</div>
+
+<!-- Evolution Bar -->
+<div class="evo-bar">
+  <div class="evo-seg s1">
+    <h5>프롬프트 엔지니어링</h5>
+    <p>"어떻게 질문할 것인가"</p>
+  </div>
+  <div class="evo-seg s2">
+    <h5>컨텍스트 엔지니어링</h5>
+    <p>"무엇을 알게 할 것인가"</p>
+  </div>
+  <div class="evo-seg s3">
+    <h5>하네스 엔지니어링</h5>
+    <p>"어떻게 통제할 것인가"</p>
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="timeline">
+
+  <!-- Era 1 -->
+  <div class="era">
+    <div class="era-dot e1"></div>
+    <div class="era-year c1">PHASE 1 · 2022~</div>
+    <h2>프롬프트 엔지니어링</h2>
+    <p class="desc">LLM의 한계를 극복하기 위해 '질문을 잘 구성하는 기술'에 집중한 시대</p>
+    <div class="cards">
+      <div class="card b1">
+        <div class="card-icon">🎭</div>
+        <h4>역할 부여 (Persona)</h4>
+        <p>AI에게 전문가 페르소나를 부여하여 도메인 특화 답변을 유도</p>
+      </div>
+      <div class="card b1">
+        <div class="card-icon">🔗</div>
+        <h4>Chain of Thought</h4>
+        <p>"단계별로 생각해 줘" — 추론 과정을 명시해 복잡한 문제 해결력 극대화</p>
+      </div>
+      <div class="card b1">
+        <div class="card-icon">⚡</div>
+        <h4>ReAct 패턴</h4>
+        <p>추론(Reasoning) + 행동(Acting) 교대 수행 → 현재 코딩 에이전트의 원형</p>
+      </div>
+      <div class="card b1">
+        <div class="card-icon">📝</div>
+        <h4>Few-shot 프롬프팅</h4>
+        <p>입출력 예시를 프롬프트에 포함시켜 모델이 패턴을 학습하도록 유도</p>
+      </div>
+      <div class="card b1">
+        <div class="card-icon">🔀</div>
+        <h4>Self-Consistency</h4>
+        <p>동일 질문에 여러 답변을 생성 후 다수결로 최종 답 도출 — 정확도 향상</p>
+      </div>
+    </div>
+    <div class="limit">
+      <div class="limit-icon">⚠️</div>
+      <p><strong>한계:</strong> 컨텍스트 윈도우 초과 시 이전 지시사항 망각 · 환각 현상 발생 · 성능 급격히 저하</p>
+    </div>
+  </div>
+
+  <!-- Era 2 -->
+  <div class="era">
+    <div class="era-dot e2"></div>
+    <div class="era-year c2">PHASE 2 · 2024~</div>
+    <h2>컨텍스트 엔지니어링</h2>
+    <p class="desc">단일 프롬프트를 넘어, 한정된 기억력 안에서 시스템 파이프라인 전체를 최적화</p>
+    <div class="cards">
+      <div class="card b2">
+        <div class="card-icon">🧠</div>
+        <h4>시스템 프롬프트</h4>
+        <p>모델의 기본 행동 규칙과 역할을 사전 정의</p>
+      </div>
+      <div class="card b2">
+        <div class="card-icon">💾</div>
+        <h4>장기 기억 / 히스토리</h4>
+        <p>채팅 히스토리 압축 및 장기 기억 관리로 컨텍스트 효율화</p>
+      </div>
+      <div class="card b2">
+        <div class="card-icon">🔍</div>
+        <h4>RAG</h4>
+        <p>검색 증강 생성으로 외부 지식을 실시간 주입</p>
+      </div>
+      <div class="card b2">
+        <div class="card-icon">🔌</div>
+        <h4>MCP 프로토콜</h4>
+        <p>외부 도구 연동 표준화로 에이전트 능력 확장</p>
+      </div>
+      <div class="card b2">
+        <div class="card-icon">🛠️</div>
+        <h4>Tool Use / Function Calling</h4>
+        <p>모델이 외부 함수를 직접 호출 — 검색·계산·API 연동으로 능력 확장</p>
+      </div>
+      <div class="card b2">
+        <div class="card-icon">📋</div>
+        <h4>CLAUDE.md / Rules</h4>
+        <p>프로젝트별 규칙·컨벤션을 파일로 명문화하여 모델에 자동 주입</p>
+      </div>
+    </div>
+    <div class="limit">
+      <div class="limit-icon">📉</div>
+      <p><strong>바이브 코딩의 쇠퇴:</strong> AI에 전적 의존한 코딩 방식은 개발자가 코드를 통제·이해하지 못하는 한계로 인기 하락</p>
+    </div>
+  </div>
+
+  <!-- Era 3 -->
+  <div class="era">
+    <div class="era-dot e3"></div>
+    <div class="era-year c3">PHASE 3 · 2026~</div>
+    <h2>하네스 엔지니어링</h2>
+    <p class="desc">자율형 AI 에이전트의 폭주를 방지하는 안전장치이자 제약 환경 구축</p>
+    <div class="cards">
+      <div class="card b3">
+        <div class="card-icon">🛡️</div>
+        <h4>핵심 개념</h4>
+        <p>에이전트가 안전하고 일관되게 동작하도록 하는 제약 환경 = <strong>하네스</strong></p>
+      </div>
+      <div class="card b3">
+        <div class="card-icon">🔄</div>
+        <h4>역할 전환</h4>
+        <p>직접 코딩 → AI가 올바른 환경에서 작업하도록 <strong>환경 구축</strong>이 주된 업무</p>
+      </div>
+      <div class="card b3">
+        <div class="card-icon">🔒</div>
+        <h4>Permission Modes</h4>
+        <p>에이전트의 도구 사용 권한을 단계별로 제어 — 자율과 통제의 균형</p>
+      </div>
+      <div class="card b3">
+        <div class="card-icon">🤖</div>
+        <h4>Sub-Agent 오케스트레이션</h4>
+        <p>전문 에이전트를 병렬 배치하여 복잡한 작업을 분할·정복하는 멀티 에이전트 체계</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Era 4: 4-step guide -->
+  <div class="era">
+    <div class="era-dot e4"></div>
+    <div class="era-year c4">실전 가이드 · 4단계</div>
+    <h2>나만의 하네스 구축</h2>
+    <p class="desc">작은 것부터 점진적으로 — 커맨드에서 훅까지</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="num n1">1</div>
+        <h5>커맨드</h5>
+        <p>반복 프롬프트를 재사용 가능한 템플릿으로 단축</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="num n2">2</div>
+        <h5>룰</h5>
+        <p>코딩 스타일·컨벤션·아키텍처를 .md로 명문화</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="num n3">3</div>
+        <h5>스킬</h5>
+        <p>코드 스크립트·예시 템플릿을 패키지로 묶어 제공</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="num n4">4</div>
+        <h5>훅 ★</h5>
+        <p>코드 레벨에서 조건 검사 및 행동을 <strong>강제</strong> 통제</p>
+      </div>
+    </div>
+
+    <div style="margin-top:18px">
+      <div class="cards">
+        <div class="card b4">
+          <div class="card-icon">🛑</div>
+          <h4>프로텍션</h4>
+          <p>운영 브랜치 직접 푸시 금지, 테스트 누락 시 커밋 거부 등 치명적 에러 차단</p>
+        </div>
+        <div class="card b4">
+          <div class="card-icon">🔔</div>
+          <h4>리마인더</h4>
+          <p>규칙 위반 감지 시 강제로 룰 재로드 · 커맨드 재호출로 워크플로우 교정</p>
+        </div>
+        <div class="card b4">
+          <div class="card-icon">✅</div>
+          <h4>자동 검증</h4>
+          <p>코드 변경 후 린트·타입체크·테스트를 자동 실행하여 품질 게이트 통과 강제</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /timeline -->
+
+<!-- Conclusion -->
+<div class="conclusion">
+  <h3>💡 핵심 조언</h3>
+  <p>
+    처음부터 완벽한 시스템을 설계하지 말 것. <strong>작은 커맨드 → 룰 → 스킬 → 훅</strong> 순서로 점진적으로 접근하라.
+    범용 플러그인에 의존하기보다 <strong>자신의 워크플로우에 맞는 커스텀 하네스</strong>를 직접 조합·구축하는 것이 훨씬 효율적이고 안전하다.
+  </p>
+</div>
+
+</div>
+</body>
+</html>
