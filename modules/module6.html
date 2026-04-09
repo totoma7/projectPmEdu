@@ -1,0 +1,638 @@
+<article class="module" id="module6">
+  <h2>6. PM vs PL 역할 이해</h2>
+  <p class="module-intro">프로젝트 현장에서 자주 혼동되는 PM(Product Manager)과 PL(Project Leader)의 역할 차이를 명확히 이해하고, PL의 핵심 역량과 AI를 활용한 프로젝트 관리 실무를 학습합니다.</p>
+
+  <!-- 6.1 PM vs PL 역할 비교 -->
+  <section id="s6-1">
+    <h3>6.1 PM vs PL 역할 비교</h3>
+
+    <div class="info-box">
+      <strong>핵심 구분</strong>: PM(Product Manager)은 <strong>"무엇을 만들 것인가"</strong>를, PL(Project Leader)은 <strong>"어떻게 만들어 낼 것인가"</strong>를 책임집니다. 두 역할은 서로 다른 관점에서 프로젝트의 성공을 이끌며, 긴밀한 협업이 필수입니다.
+    </div>
+
+    <h4>역할 비교 상세</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>PM (Product Manager)</th>
+          <th>PL (Project Leader)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>핵심 질문</strong></td>
+          <td>무엇을 만들 것인가? (What)</td>
+          <td>어떻게 만들어 낼 것인가? (How)</td>
+        </tr>
+        <tr>
+          <td><strong>주요 산출물</strong></td>
+          <td>PRD, 사용자 스토리, 로드맵, 시장 분석</td>
+          <td>프로젝트 계획서, WBS, 일정표, 리스크 관리대장</td>
+        </tr>
+        <tr>
+          <td><strong>성공 기준</strong></td>
+          <td>사용자 만족도, 시장 점유율, 비즈니스 KPI</td>
+          <td>일정 준수율, 예산 집행률, 품질 지표 달성</td>
+        </tr>
+        <tr>
+          <td><strong>핵심 역량</strong></td>
+          <td>시장 분석, 사용자 이해, 제품 비전, 우선순위 결정</td>
+          <td>일정 관리, 리스크 관리, 팀 리딩, 이해관계자 관리</td>
+        </tr>
+        <tr>
+          <td><strong>협업 대상</strong></td>
+          <td>고객, 마케팅, 경영진, 디자이너</td>
+          <td>개발팀, QA, 인프라, 외부 협력사</td>
+        </tr>
+        <tr>
+          <td><strong>시간 관점</strong></td>
+          <td>중장기 (제품 로드맵, 분기/연간 계획)</td>
+          <td>단기~중기 (스프린트, 마일스톤, 릴리즈)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>PM과 PL의 역할 관계</h4>
+    <div class="diagram-container">
+      <pre class="mermaid">
+graph LR
+    subgraph PM["PM 영역 (What)"]
+        A[시장/고객 분석] --> B[제품 비전 수립]
+        B --> C[요구사항 정의]
+        C --> D[우선순위 결정]
+    end
+
+    subgraph Overlap["협업 영역"]
+        E[스코프 합의]
+        F[일정 협의]
+        G[리스크 공유]
+    end
+
+    subgraph PL["PL 영역 (How)"]
+        H[프로젝트 계획] --> I[자원 배분]
+        I --> J[실행 관리]
+        J --> K[품질/납기 보장]
+    end
+
+    D --> E
+    E --> H
+    D --> F
+    F --> H
+    D --> G
+    G --> H
+      </pre>
+    </div>
+
+    <div class="info-box">
+      <strong>실무 팁</strong>: 조직 규모에 따라 PM과 PL을 한 사람이 겸하는 경우도 많습니다. 중요한 것은 "제품 관점"과 "프로젝트 관점"을 모두 갖추고, 상황에 맞게 역할을 전환할 수 있는 능력입니다.
+    </div>
+  </section>
+
+  <!-- 6.2 PL의 핵심 역량 -->
+  <section id="s6-2">
+    <h3>6.2 PL의 핵심 역량</h3>
+
+    <p>PL이 프로젝트를 성공적으로 이끌기 위해 갖추어야 할 <strong>5가지 핵심 역량</strong>을 살펴봅니다.</p>
+
+    <ol class="step-list">
+      <li>
+        <strong>프로젝트 계획 (Project Planning)</strong>
+        <p>WBS 작성, 일정 수립, 자원 할당, 예산 계획 등 프로젝트의 전체 청사진을 설계하는 능력입니다. 명확한 계획이 없으면 프로젝트는 방향을 잃습니다.</p>
+      </li>
+      <li>
+        <strong>리스크 관리 (Risk Management)</strong>
+        <p>잠재적 위험요소를 사전에 식별하고, 발생 확률과 영향도를 평가하여 대응 전략을 수립하는 능력입니다. "예상치 못한 문제"를 최소화합니다.</p>
+      </li>
+      <li>
+        <strong>팀 리딩 (Team Leading)</strong>
+        <p>팀원의 역량을 파악하고, 적재적소에 배치하며, 동기를 부여하고 갈등을 해결하는 능력입니다. 프로젝트의 성패는 결국 사람에게 달려 있습니다.</p>
+      </li>
+      <li>
+        <strong>이해관계자 관리 (Stakeholder Management)</strong>
+        <p>경영진, 고객, 협력 부서 등 다양한 이해관계자의 기대를 조율하고, 적시에 올바른 정보를 공유하는 능력입니다.</p>
+      </li>
+      <li>
+        <strong>문제 해결 (Problem Solving)</strong>
+        <p>프로젝트 진행 중 발생하는 기술적, 조직적, 일정상의 문제를 신속하게 분석하고 해결책을 도출하는 능력입니다.</p>
+      </li>
+    </ol>
+
+    <h4>PL 핵심 역량별 AI 활용 가능 영역</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>핵심 역량</th>
+          <th>전통 방식</th>
+          <th>AI 활용 영역</th>
+          <th>활용 효과</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>프로젝트 계획</strong></td>
+          <td>수작업 WBS, 엑셀 일정표</td>
+          <td>AI로 WBS 자동 생성, 일정 초안 작성</td>
+          <td>계획 수립 시간 60% 단축</td>
+        </tr>
+        <tr>
+          <td><strong>리스크 관리</strong></td>
+          <td>경험 기반 리스크 식별</td>
+          <td>AI로 유사 프로젝트 리스크 패턴 분석</td>
+          <td>리스크 식별률 향상</td>
+        </tr>
+        <tr>
+          <td><strong>팀 리딩</strong></td>
+          <td>1:1 면담, 회의 운영</td>
+          <td>회의록 자동 작성, 액션 아이템 추출</td>
+          <td>회의 후속 관리 효율화</td>
+        </tr>
+        <tr>
+          <td><strong>이해관계자 관리</strong></td>
+          <td>수동 보고서 작성</td>
+          <td>AI로 맞춤형 보고서 자동 생성</td>
+          <td>보고서 작성 시간 70% 단축</td>
+        </tr>
+        <tr>
+          <td><strong>문제 해결</strong></td>
+          <td>브레인스토밍, 전문가 자문</td>
+          <td>AI로 원인 분석, 해결책 탐색</td>
+          <td>대안 도출 속도 향상</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 6.3 프로젝트 일정 관리 -->
+  <section id="s6-3">
+    <h3>6.3 프로젝트 일정 관리</h3>
+
+    <p>프로젝트 일정 관리의 핵심은 <strong>WBS(Work Breakdown Structure)</strong>로 업무를 분해하고, <strong>간트 차트(Gantt Chart)</strong>로 시각화하는 것입니다.</p>
+
+    <h4>WBS (작업 분해 구조)</h4>
+    <div class="info-box">
+      <strong>WBS란?</strong> 프로젝트의 전체 범위를 관리 가능한 작은 단위로 계층적으로 분해한 구조입니다. "코끼리를 먹는 방법은 한 입씩"이라는 원칙과 같습니다.
+    </div>
+
+    <div class="diagram-container">
+      <pre class="mermaid">
+graph TD
+    A["🎯 모바일 앱 출시 프로젝트"] --> B["📋 1. 기획"]
+    A --> C["🎨 2. 디자인"]
+    A --> D["💻 3. 개발"]
+    A --> E["🧪 4. 테스트"]
+    A --> F["🚀 5. 출시"]
+
+    B --> B1["1.1 요구사항 정의"]
+    B --> B2["1.2 기능 명세서 작성"]
+    B --> B3["1.3 기술 검토"]
+
+    C --> C1["2.1 와이어프레임"]
+    C --> C2["2.2 UI 디자인"]
+    C --> C3["2.3 디자인 리뷰"]
+
+    D --> D1["3.1 프론트엔드 개발"]
+    D --> D2["3.2 백엔드 개발"]
+    D --> D3["3.3 API 연동"]
+
+    E --> E1["4.1 단위 테스트"]
+    E --> E2["4.2 통합 테스트"]
+    E --> E3["4.3 사용자 테스트"]
+
+    F --> F1["5.1 스토어 등록"]
+    F --> F2["5.2 마케팅 준비"]
+    F --> F3["5.3 정식 출시"]
+      </pre>
+    </div>
+
+    <h4>간트 차트 (Gantt Chart)</h4>
+    <p>WBS의 각 작업을 시간 축 위에 배치하여 전체 일정과 의존 관계를 한눈에 파악할 수 있는 차트입니다.</p>
+
+    <div class="diagram-container">
+      <pre class="mermaid">
+gantt
+    title 모바일 앱 출시 프로젝트 일정
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m/%d
+
+    section 기획
+    요구사항 정의       :a1, 2025-01-06, 5d
+    기능 명세서 작성    :a2, after a1, 5d
+    기술 검토           :a3, after a1, 3d
+
+    section 디자인
+    와이어프레임        :b1, after a2, 5d
+    UI 디자인           :b2, after b1, 7d
+    디자인 리뷰         :b3, after b2, 2d
+
+    section 개발
+    프론트엔드 개발     :c1, after b3, 15d
+    백엔드 개발         :c2, after a3, 15d
+    API 연동            :c3, after c1, 5d
+
+    section 테스트
+    단위 테스트         :d1, after c3, 5d
+    통합 테스트         :d2, after d1, 5d
+    사용자 테스트       :d3, after d2, 5d
+
+    section 출시
+    스토어 등록         :e1, after d3, 3d
+    마케팅 준비         :e2, after d2, 7d
+    정식 출시           :milestone, e3, after e1, 0d
+      </pre>
+    </div>
+
+    <h4>AI로 WBS와 일정 초안 만들기</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">WBS 생성 프롬프트</div>
+      <pre><code class="language-text">다음 프로젝트의 WBS를 3단계로 분해해줘.
+
+프로젝트: 사내 업무 관리 웹앱 개발
+기간: 3개월 (12주)
+팀 구성: PM 1명, 디자이너 1명, 프론트엔드 2명, 백엔드 2명, QA 1명
+
+요구사항:
+- 업무 등록/수정/삭제 (CRUD)
+- 칸반보드 형태 UI
+- 팀원별 업무 할당
+- 마감일 알림 기능
+- 대시보드 (통계)
+
+각 작업별 예상 소요일, 선행 작업, 담당자를 포함해서 표로 정리해줘.
+그리고 Mermaid 간트 차트로도 시각화해줘.</code></pre>
+    </div>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">일정 최적화 프롬프트</div>
+      <pre><code class="language-text">위 프로젝트 일정을 분석해서 다음을 알려줘:
+
+1. 크리티컬 패스 (Critical Path): 지연 시 전체 일정에 영향을 주는 경로
+2. 병렬 처리 가능한 작업: 동시에 진행할 수 있는 작업 조합
+3. 일정 리스크: 지연 가능성이 높은 작업과 버퍼 권장 기간
+4. 마일스톤 제안: 주요 체크포인트 3~5개</code></pre>
+    </div>
+  </section>
+
+  <!-- 6.4 리스크 & 이슈 관리 -->
+  <section id="s6-4">
+    <h3>6.4 리스크 &amp; 이슈 관리</h3>
+
+    <p>프로젝트에서 <strong>리스크(Risk)</strong>는 "아직 발생하지 않은 잠재적 문제"이고, <strong>이슈(Issue)</strong>는 "이미 발생한 현재의 문제"입니다. 두 개념을 구분하고 체계적으로 관리하는 것이 PL의 핵심 업무입니다.</p>
+
+    <h4>리스크 vs 이슈 비교</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>리스크 (Risk)</th>
+          <th>이슈 (Issue)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>정의</strong></td>
+          <td>미래에 발생할 수 있는 불확실한 사건</td>
+          <td>현재 발생하여 대응이 필요한 사건</td>
+        </tr>
+        <tr>
+          <td><strong>시점</strong></td>
+          <td>아직 발생하지 않음</td>
+          <td>이미 발생함</td>
+        </tr>
+        <tr>
+          <td><strong>대응 방식</strong></td>
+          <td>예방, 완화, 전가, 수용</td>
+          <td>즉시 해결, 에스컬레이션, 우회</td>
+        </tr>
+        <tr>
+          <td><strong>관리 도구</strong></td>
+          <td>리스크 등록부, 리스크 매트릭스</td>
+          <td>이슈 로그, 이슈 트래커</td>
+        </tr>
+        <tr>
+          <td><strong>예시</strong></td>
+          <td>"핵심 개발자가 퇴사할 수 있다"</td>
+          <td>"핵심 개발자가 오늘 퇴사 통보를 했다"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>리스크 관리 프로세스</h4>
+    <div class="diagram-container">
+      <pre class="mermaid">
+graph LR
+    A["🔍 1. 식별"] --> B["📊 2. 분석"]
+    B --> C["🛡️ 3. 대응 수립"]
+    C --> D["👁️ 4. 모니터링"]
+    D --> E["⚡ 5. 대응 실행"]
+    E -->|"반복"| A
+      </pre>
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>단계</th>
+          <th>활동</th>
+          <th>산출물</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. 식별</strong></td>
+          <td>브레인스토밍, 체크리스트, AI 분석</td>
+          <td>리스크 목록</td>
+        </tr>
+        <tr>
+          <td><strong>2. 분석</strong></td>
+          <td>발생 확률 평가, 영향도 평가, 우선순위 결정</td>
+          <td>리스크 매트릭스</td>
+        </tr>
+        <tr>
+          <td><strong>3. 대응 수립</strong></td>
+          <td>회피 / 완화 / 전가 / 수용 전략 선택</td>
+          <td>대응 계획서</td>
+        </tr>
+        <tr>
+          <td><strong>4. 모니터링</strong></td>
+          <td>정기 리뷰, 지표 추적, 상태 업데이트</td>
+          <td>리스크 현황 보고</td>
+        </tr>
+        <tr>
+          <td><strong>5. 대응 실행</strong></td>
+          <td>이슈 전환 시 즉시 대응, 결과 기록</td>
+          <td>이슈 로그</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>리스크 매트릭스 (확률 x 영향도)</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>확률 \ 영향도</th>
+          <th>낮음 (1)</th>
+          <th>보통 (2)</th>
+          <th>높음 (3)</th>
+          <th>심각 (4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>높음 (3)</strong></td>
+          <td style="background:#fff3cd;">보통 (3)</td>
+          <td style="background:#ffe0b2;">높음 (6)</td>
+          <td style="background:#ffcdd2;">심각 (9)</td>
+          <td style="background:#ffcdd2;">심각 (12)</td>
+        </tr>
+        <tr>
+          <td><strong>보통 (2)</strong></td>
+          <td style="background:#c8e6c9;">낮음 (2)</td>
+          <td style="background:#fff3cd;">보통 (4)</td>
+          <td style="background:#ffe0b2;">높음 (6)</td>
+          <td style="background:#ffcdd2;">심각 (8)</td>
+        </tr>
+        <tr>
+          <td><strong>낮음 (1)</strong></td>
+          <td style="background:#c8e6c9;">낮음 (1)</td>
+          <td style="background:#c8e6c9;">낮음 (2)</td>
+          <td style="background:#fff3cd;">보통 (3)</td>
+          <td style="background:#ffe0b2;">높음 (4)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <strong>PL 필수 원칙</strong>: 리스크 점수가 6점 이상인 항목은 반드시 대응 전략을 수립하고, 주간 단위로 모니터링해야 합니다. 9점 이상은 경영진 보고 대상입니다.
+    </div>
+
+    <h4>AI로 리스크 식별하기</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">리스크 식별 프롬프트</div>
+      <pre><code class="language-text">다음 프로젝트의 잠재적 리스크를 식별하고 관리대장을 만들어줘.
+
+프로젝트: 사내 레거시 시스템을 클라우드로 마이그레이션
+기간: 6개월
+팀: 내부 개발자 5명 + 외부 클라우드 컨설턴트 2명
+주요 제약: 서비스 중단 최소화, 데이터 무결성 보장
+
+다음 형식으로 정리해줘:
+| 번호 | 리스크 | 발생확률(1-3) | 영향도(1-4) | 점수 | 대응전략 | 담당자 | 모니터링 주기 |
+
+카테고리별로 분류해줘:
+- 기술적 리스크
+- 인력/조직 리스크
+- 일정 리스크
+- 외부 리스크</code></pre>
+    </div>
+  </section>
+
+  <!-- 6.5 팀 리딩과 커뮤니케이션 -->
+  <section id="s6-5">
+    <h3>6.5 팀 리딩과 커뮤니케이션</h3>
+
+    <p>PL에게 가장 중요한 역량 중 하나는 <strong>이해관계자별 맞춤 커뮤니케이션</strong>입니다. 같은 정보라도 대상에 따라 전달 방식과 깊이를 달리해야 합니다.</p>
+
+    <h4>이해관계자별 커뮤니케이션 계획</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>이해관계자</th>
+          <th>관심 사항</th>
+          <th>커뮤니케이션 방법</th>
+          <th>주기</th>
+          <th>핵심 콘텐츠</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>경영진/스폰서</strong></td>
+          <td>ROI, 일정 준수, 주요 리스크</td>
+          <td>대시보드, 요약 보고서</td>
+          <td>격주 또는 월간</td>
+          <td>진행률, 예산 현황, Top 3 리스크</td>
+        </tr>
+        <tr>
+          <td><strong>PM (제품팀)</strong></td>
+          <td>스코프, 기능 완성도, 일정</td>
+          <td>주간 미팅, 이슈 트래커</td>
+          <td>주간</td>
+          <td>기능별 진행 상황, 스코프 변경 사항</td>
+        </tr>
+        <tr>
+          <td><strong>개발팀</strong></td>
+          <td>기술 명세, 우선순위, 일정</td>
+          <td>데일리 스탠드업, 슬랙</td>
+          <td>일간</td>
+          <td>오늘 할 일, 블로커, 기술 결정사항</td>
+        </tr>
+        <tr>
+          <td><strong>QA팀</strong></td>
+          <td>테스트 범위, 일정, 품질 기준</td>
+          <td>테스트 계획 미팅, 버그 트래커</td>
+          <td>주 2~3회</td>
+          <td>테스트 대상, 결함 현황, 릴리즈 판단</td>
+        </tr>
+        <tr>
+          <td><strong>외부 협력사</strong></td>
+          <td>계약 범위, 납기, 인터페이스 명세</td>
+          <td>공식 미팅, 이메일</td>
+          <td>주간 또는 격주</td>
+          <td>진행 현황, 연동 이슈, 일정 변경</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>회의 유형별 AI 활용법</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>회의 유형</th>
+          <th>목적</th>
+          <th>빈도</th>
+          <th>AI 활용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>데일리 스탠드업</strong></td>
+          <td>진행 상황 공유, 블로커 식별</td>
+          <td>매일 15분</td>
+          <td>AI로 전일 작업 요약 자동 생성, 블로커 패턴 분석</td>
+        </tr>
+        <tr>
+          <td><strong>주간 프로젝트 리뷰</strong></td>
+          <td>진행률 점검, 일정 조정</td>
+          <td>주 1회 1시간</td>
+          <td>AI로 주간 보고서 초안 작성, 일정 지연 분석</td>
+        </tr>
+        <tr>
+          <td><strong>스프린트 회고</strong></td>
+          <td>개선점 도출, 팀 학습</td>
+          <td>스프린트 종료 시</td>
+          <td>AI로 회고 퍼실리테이션 질문 생성, 액션 아이템 정리</td>
+        </tr>
+        <tr>
+          <td><strong>리스크 리뷰</strong></td>
+          <td>리스크 상태 업데이트</td>
+          <td>격주 1회</td>
+          <td>AI로 리스크 현황 분석, 새로운 리스크 식별 지원</td>
+        </tr>
+        <tr>
+          <td><strong>이해관계자 보고</strong></td>
+          <td>의사결정 지원, 승인 요청</td>
+          <td>필요 시</td>
+          <td>AI로 맞춤형 보고서 생성, 시각화 자료 제작</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>커뮤니케이션 원칙</strong>: PL의 커뮤니케이션은 "투명성", "적시성", "맞춤성" 3가지 원칙을 지켜야 합니다. 나쁜 소식일수록 빨리 공유하고, 대안과 함께 전달하세요.
+    </div>
+  </section>
+
+  <!-- 6.6 AI로 PL 업무 자동화 -->
+  <section id="s6-6">
+    <h3>6.6 AI로 PL 업무 자동화</h3>
+
+    <p>AI를 활용하면 PL의 반복적이고 시간이 많이 소요되는 업무를 크게 효율화할 수 있습니다. 아래 표는 주요 PL 업무별 AI 활용 방안과 예상 시간 절감 효과입니다.</p>
+
+    <h4>PL 업무별 AI 자동화 가이드</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>업무</th>
+          <th>전통 방식</th>
+          <th>AI 활용</th>
+          <th>시간 절감</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>WBS 작성</strong></td>
+          <td>경험 기반 수작업 분해 (2~3일)</td>
+          <td>AI에게 프로젝트 개요 제공 → WBS 초안 자동 생성</td>
+          <td>약 70%</td>
+        </tr>
+        <tr>
+          <td><strong>일정 수립</strong></td>
+          <td>엑셀로 수동 일정표 작성 (1~2일)</td>
+          <td>AI로 간트 차트 초안 + 크리티컬 패스 분석</td>
+          <td>약 60%</td>
+        </tr>
+        <tr>
+          <td><strong>리스크 식별</strong></td>
+          <td>팀 브레인스토밍 (반나절)</td>
+          <td>AI로 유사 프로젝트 기반 리스크 목록 생성</td>
+          <td>약 50%</td>
+        </tr>
+        <tr>
+          <td><strong>회의록 작성</strong></td>
+          <td>회의 중 수기 기록 (30분~1시간)</td>
+          <td>AI 녹취 요약 → 액션 아이템 자동 추출</td>
+          <td>약 80%</td>
+        </tr>
+        <tr>
+          <td><strong>주간 보고서</strong></td>
+          <td>데이터 수집 + 수동 작성 (2~3시간)</td>
+          <td>AI로 데이터 종합 → 보고서 초안 자동 생성</td>
+          <td>약 70%</td>
+        </tr>
+        <tr>
+          <td><strong>이슈 분석</strong></td>
+          <td>원인 파악 + 대안 검토 (수시간)</td>
+          <td>AI로 근본 원인 분석 + 해결 방안 제안</td>
+          <td>약 40%</td>
+        </tr>
+        <tr>
+          <td><strong>이해관계자 보고</strong></td>
+          <td>대상별 맞춤 보고서 작성 (1~2시간)</td>
+          <td>AI로 동일 데이터 → 대상별 맞춤 보고서 변환</td>
+          <td>약 75%</td>
+        </tr>
+        <tr>
+          <td><strong>회고 퍼실리테이션</strong></td>
+          <td>질문 준비 + 진행 (1~2시간)</td>
+          <td>AI로 맞춤형 회고 질문 생성 + 인사이트 정리</td>
+          <td>약 50%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <strong>주의사항</strong>: AI는 PL의 "판단"을 대체하는 것이 아니라 "준비"를 도와주는 도구입니다. AI가 생성한 WBS, 일정, 리스크 목록은 반드시 PL의 경험과 프로젝트 맥락을 반영하여 검토·수정해야 합니다.
+    </div>
+
+    <div class="practice-section">
+      <h4>실습 과제: AI로 프로젝트 계획 수립하기</h4>
+      <p>아래 시나리오를 바탕으로 AI를 활용하여 프로젝트 계획을 수립해보세요.</p>
+      <ol>
+        <li>
+          <strong>프로젝트 시나리오 설정</strong>
+          <p>가상의 프로젝트를 하나 선정합니다. (예: 사내 교육 플랫폼 구축, 고객 포털 리뉴얼, 모바일 앱 MVP 개발 등)</p>
+        </li>
+        <li>
+          <strong>WBS 작성 (AI 활용)</strong>
+          <p>AI에게 프로젝트 개요를 전달하고 3단계 WBS를 생성하세요. 생성된 WBS를 검토하고 수정하세요.</p>
+        </li>
+        <li>
+          <strong>간트 차트 작성 (AI 활용)</strong>
+          <p>WBS를 기반으로 AI에게 간트 차트(Mermaid)를 생성하도록 요청하세요. 크리티컬 패스를 식별하세요.</p>
+        </li>
+        <li>
+          <strong>리스크 관리대장 작성 (AI 활용)</strong>
+          <p>AI에게 프로젝트 리스크를 식별하고 리스크 매트릭스를 작성하도록 요청하세요.</p>
+        </li>
+        <li>
+          <strong>커뮤니케이션 계획 수립</strong>
+          <p>이해관계자를 정의하고, 각 이해관계자별 커뮤니케이션 계획을 수립하세요.</p>
+        </li>
+        <li>
+          <strong>결과 비교</strong>
+          <p>AI가 생성한 초안과 본인이 수정한 최종본을 비교하며, AI 활용의 강점과 한계를 정리하세요.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+</article>

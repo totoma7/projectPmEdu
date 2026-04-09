@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2. AI 활용 문서 작성 - PM/PL 바이브 코딩 교육자료</title>
+  <meta name="description" content="PM과 비개발자를 위한 AI 바이브 코딩 교육자료. AI 기초, 문서 작성, 도식화, 자료 조사, 바이브 코딩 실습을 다룹니다.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <button id="menu-toggle" aria-label="메뉴 열기">
+    <span class="hamburger"></span>
+  </button>
+
+  <div id="sidebar-overlay"></div>
+
+  <nav id="sidebar" aria-label="교육 목차">
+    <div class="sidebar-header">
+      <h1 class="sidebar-title">PM/PL 바이브 코딩</h1>
+      <button id="theme-toggle" aria-label="테마 전환">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item" data-module="module1">
+        <a href="index.html" class="nav-title">
+          <span class="nav-number">1</span>
+          <span>AI 기초 개념</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="index.html#s1-1">1.1 AI와 LLM이란?</a></li>
+          <li><a href="index.html#s1-2">1.2 생성형 AI의 동작 원리</a></li>
+          <li><a href="index.html#s1-3">1.3 프롬프트 엔지니어링 기초</a></li>
+          <li><a href="index.html#s1-4">1.4 주요 AI 도구 소개</a></li>
+          <li><a href="index.html#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
+          <li><a href="index.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
+          <li><a href="index.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
+          <li><a href="index.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+        </ul>
+      </li>
+      <li class="nav-item active" data-module="module2">
+        <a href="module2.html" class="nav-title">
+          <span class="nav-number">2</span>
+          <span>AI 활용 문서 작성</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="#s2-1">2.1 PRD 작성</a></li>
+          <li><a href="#s2-2">2.2 기획서/제안서 자동 생성</a></li>
+          <li><a href="#s2-3">2.3 요구사항 정의서 작성</a></li>
+          <li><a href="#s2-4">2.4 회의록/보고서 자동 정리</a></li>
+          <li><a href="#s2-5">2.5 프롬프트 템플릿 활용법</a></li>
+          <li><a href="#s2-6">2.6 PL 프로젝트 관리 문서</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module3">
+        <a href="module3.html" class="nav-title">
+          <span class="nav-number">3</span>
+          <span>AI 도식화 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module3.html#s3-1">3.1 플로우차트 생성</a></li>
+          <li><a href="module3.html#s3-2">3.2 시스템 아키텍처 다이어그램</a></li>
+          <li><a href="module3.html#s3-3">3.3 ER 다이어그램</a></li>
+          <li><a href="module3.html#s3-4">3.4 사용자 여정 맵</a></li>
+          <li><a href="module3.html#s3-5">3.5 AI 도구별 도식화 비교</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module4">
+        <a href="module4.html" class="nav-title">
+          <span class="nav-number">4</span>
+          <span>AI 자료 조사 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module4.html#s4-1">4.1 시장 조사 및 트렌드 분석</a></li>
+          <li><a href="module4.html#s4-2">4.2 경쟁사 분석 프레임워크</a></li>
+          <li><a href="module4.html#s4-3">4.3 사용자 페르소나 생성</a></li>
+          <li><a href="module4.html#s4-4">4.4 데이터 수집 및 정리</a></li>
+          <li><a href="module4.html#s4-5">4.5 리서치 결과 보고서 작성</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module5">
+        <a href="module5.html" class="nav-title">
+          <span class="nav-number">5</span>
+          <span>바이브 코딩 실습</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module5.html#s5-1">5.1 바이브 코딩이란?</a></li>
+          <li><a href="module5.html#s5-2">5.2 Claude Code 시작하기</a></li>
+          <li><a href="module5.html#s5-3">5.3 프롬프트로 웹페이지 만들기</a></li>
+          <li><a href="module5.html#s5-4">5.4 반복 개선으로 완성도 높이기</a></li>
+          <li><a href="module5.html#s5-5">5.5 실전 프로젝트: 랜딩페이지</a></li>
+          <li><a href="module5.html#s5-6">5.6 Claude Code 핵심 용어</a></li>
+          <li><a href="module5.html#s5-7">5.7 유용한 스킬 & 활용법</a></li>
+          <li><a href="module5.html#s5-8">5.8 커뮤니티 스킬 & 확장 생태계</a></li>
+          <li><a href="module5.html#s5-9">5.9 PL을 위한 실전 활용 전략</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module6">
+        <a href="module6.html" class="nav-title">
+          <span class="nav-number">6</span>
+          <span>PM vs PL 역할 이해</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module6.html#s6-1">6.1 PM vs PL 역할 비교</a></li>
+          <li><a href="module6.html#s6-2">6.2 PL의 핵심 역량</a></li>
+          <li><a href="module6.html#s6-3">6.3 프로젝트 일정 관리</a></li>
+          <li><a href="module6.html#s6-4">6.4 리스크 & 이슈 관리</a></li>
+          <li><a href="module6.html#s6-5">6.5 팀 리딩과 커뮤니케이션</a></li>
+          <li><a href="module6.html#s6-6">6.6 AI로 PL 업무 자동화</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <p>&copy; 2026 PM/PL 바이브 코딩 교육자료</p>
+    </div>
+  </nav>
+
+  <main id="content">
+    <div id="module-container">
+      <article class="module" id="module2">
+  <h2>2. AI 활용 문서 작성</h2>
+  <p class="module-intro">AI를 활용하여 PRD, 기획서, 요구사항 정의서 등 PM/PL 핵심 문서를 효율적으로 작성하는 방법을 학습합니다.</p>
+
+  <!-- 2.1 PRD 작성 -->
+  <section id="s2-1">
+    <h3>2.1 PRD(제품 요구사항 문서) 작성</h3>
+
+    <div class="info-box">
+      <strong>PRD란?</strong> Product Requirements Document의 약자로, 제품이나 기능의 목적, 요구사항, 성공 지표를 정의하는 핵심 문서입니다.
+    </div>
+
+    <h4>AI로 PRD 작성하기 — 단계별 가이드</h4>
+    <ol class="step-list">
+      <li>
+        <strong>Step 1: 배경과 목적 정의</strong>
+        <p>기능의 배경, 해결할 문제, 대상 사용자를 AI에게 전달합니다.</p>
+      </li>
+      <li>
+        <strong>Step 2: 요구사항 도출</strong>
+        <p>기능적/비기능적 요구사항을 AI와 함께 브레인스토밍합니다.</p>
+      </li>
+      <li>
+        <strong>Step 3: 성공 지표 설정</strong>
+        <p>KPI와 측정 방법을 구체적으로 정의합니다.</p>
+      </li>
+      <li>
+        <strong>Step 4: 리스크 분석</strong>
+        <p>예상 리스크와 대응 방안을 AI에게 요청합니다.</p>
+      </li>
+    </ol>
+
+    <h4>프롬프트 예시</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">PRD 작성 프롬프트</div>
+      <pre><code class="language-text">당신은 B2B SaaS 제품의 시니어 PM입니다.
+
+다음 기능의 PRD를 작성해주세요:
+
+## 배경
+- 제품: 프로젝트 관리 도구
+- 기능: 팀 대시보드 실시간 현황판
+- 문제: 팀장이 팀원들의 작업 현황을 파악하기 어려움
+- 대상: 5~20명 규모 팀의 팀장
+
+## PRD 구조
+1. 기능 개요 (목적, 배경, 대상 사용자)
+2. 사용자 스토리 (3가지 이상)
+3. 기능 요구사항 (테이블: ID, 요구사항, 우선순위, 상태)
+4. 비기능 요구사항 (성능, 보안, 접근성)
+5. 성공 지표 (KPI 3가지, 측정 방법 포함)
+6. 타임라인 (4주 기준)
+7. 리스크 및 대응 방안
+
+마크다운 형식으로 작성해주세요.</code></pre>
+    </div>
+
+    <div class="practice-section">
+      <h4>실습 과제</h4>
+      <p>여러분의 실제 프로젝트에서 하나의 기능을 선택하여 위 프롬프트 템플릿을 수정하고, AI로 PRD를 생성해보세요.</p>
+    </div>
+  </section>
+
+  <!-- 2.2 기획서/제안서 자동 생성 -->
+  <section id="s2-2">
+    <h3>2.2 기획서/제안서 자동 생성</h3>
+
+    <p>기획서와 제안서는 이해관계자를 설득하기 위한 문서입니다. AI를 활용하면 초안 작성 시간을 크게 단축할 수 있습니다.</p>
+
+    <h4>기획서 구조 템플릿</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>섹션</th>
+          <th>내용</th>
+          <th>AI 활용 방법</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. 요약</td>
+          <td>핵심 내용을 1페이지로 정리</td>
+          <td>전체 기획 내용을 요약 요청</td>
+        </tr>
+        <tr>
+          <td>2. 문제 정의</td>
+          <td>해결할 문제와 현재 상황</td>
+          <td>문제 분석 및 근거 데이터 요청</td>
+        </tr>
+        <tr>
+          <td>3. 솔루션</td>
+          <td>제안하는 해결 방안</td>
+          <td>여러 대안 비교표 생성</td>
+        </tr>
+        <tr>
+          <td>4. 실행 계획</td>
+          <td>일정, 리소스, 마일스톤</td>
+          <td>WBS 및 간트차트 구조 요청</td>
+        </tr>
+        <tr>
+          <td>5. 기대 효과</td>
+          <td>정량적/정성적 효과</td>
+          <td>ROI 계산 프레임워크 요청</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">기획서 작성 프롬프트</div>
+      <pre><code class="language-text">다음 프로젝트의 기획서를 작성해주세요.
+
+[프로젝트 개요]
+- 프로젝트명: 고객 피드백 자동 분류 시스템
+- 목표: CS팀의 피드백 분류 시간을 50% 단축
+- 예산: 3,000만원
+- 기간: 3개월
+
+포함할 항목:
+1. Executive Summary (1페이지)
+2. 현재 문제점 분석 (데이터 기반)
+3. 제안 솔루션 3가지 비교표
+4. 선택한 솔루션의 상세 실행 계획
+5. 예상 ROI 및 기대 효과
+6. 리스크 매트릭스 (영향도 x 발생확률)</code></pre>
+    </div>
+  </section>
+
+  <!-- 2.3 요구사항 정의서 작성 -->
+  <section id="s2-3">
+    <h3>2.3 요구사항 정의서 작성</h3>
+
+    <p>요구사항 정의서는 개발팀에게 "무엇을 만들어야 하는지" 전달하는 문서입니다.</p>
+
+    <h4>요구사항 유형</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>유형</th>
+          <th>설명</th>
+          <th>예시</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>기능 요구사항 (FR)</strong></td>
+          <td>시스템이 수행해야 할 기능</td>
+          <td>"사용자는 이메일로 로그인할 수 있다"</td>
+        </tr>
+        <tr>
+          <td><strong>비기능 요구사항 (NFR)</strong></td>
+          <td>성능, 보안, 사용성 등</td>
+          <td>"페이지 로딩은 3초 이내"</td>
+        </tr>
+        <tr>
+          <td><strong>비즈니스 규칙 (BR)</strong></td>
+          <td>업무 로직과 제약 조건</td>
+          <td>"무료 플랜은 프로젝트 3개까지"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">요구사항 도출 프롬프트</div>
+      <pre><code class="language-text">다음 기능의 요구사항 정의서를 작성해주세요.
+
+기능: 팀 멤버 초대 및 권한 관리
+대상: SaaS 프로젝트 관리 도구
+
+다음 형식의 테이블로 정리해주세요:
+
+| ID | 유형 | 요구사항 | 우선순위 | 수용 기준 |
+|----|------|---------|---------|----------|
+
+- 기능 요구사항 최소 10개
+- 비기능 요구사항 최소 5개
+- 각 요구사항에 테스트 가능한 수용 기준 포함
+- 우선순위: Must/Should/Could/Won't (MoSCoW)</code></pre>
+    </div>
+  </section>
+
+  <!-- 2.4 회의록/보고서 자동 정리 -->
+  <section id="s2-4">
+    <h3>2.4 회의록/보고서 자동 정리</h3>
+
+    <p>AI를 활용하면 회의록 작성과 보고서 정리 시간을 크게 줄일 수 있습니다.</p>
+
+    <h4>회의록 정리 워크플로우</h4>
+    <ol class="step-list">
+      <li>
+        <strong>회의 내용 입력</strong>
+        <p>회의 중 메모한 내용이나 녹취록을 AI에 입력합니다.</p>
+      </li>
+      <li>
+        <strong>구조화 요청</strong>
+        <p>AI에게 정해진 형식으로 정리해달라고 요청합니다.</p>
+      </li>
+      <li>
+        <strong>액션 아이템 추출</strong>
+        <p>담당자, 기한이 포함된 액션 아이템을 별도 추출합니다.</p>
+      </li>
+    </ol>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">회의록 정리 프롬프트</div>
+      <pre><code class="language-text">다음 회의 내용을 정리해주세요.
+
+[회의 메모]
+(여기에 회의 메모를 붙여넣기)
+
+정리 형식:
+1. 회의 개요 (일시, 참석자, 목적)
+2. 주요 논의 사항 (bullet point)
+3. 결정 사항 (번호 매기기)
+4. 액션 아이템 테이블:
+   | 번호 | 항목 | 담당자 | 기한 | 상태 |
+5. 다음 회의 일정 및 안건</code></pre>
+    </div>
+  </section>
+
+  <!-- 2.5 프롬프트 템플릿 활용법 -->
+  <section id="s2-5">
+    <h3>2.5 프롬프트 템플릿 활용법</h3>
+
+    <p>자주 사용하는 프롬프트를 템플릿화하면 일관된 품질의 문서를 빠르게 생성할 수 있습니다.</p>
+
+    <h4>PM/PL용 프롬프트 템플릿 라이브러리</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>문서 유형</th>
+          <th>핵심 프롬프트 구조</th>
+          <th>사용 시점</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PRD</td>
+          <td>역할 + 배경 + 기능 개요 + PRD 구조 + 형식</td>
+          <td>신규 기능 기획 시</td>
+        </tr>
+        <tr>
+          <td>사용자 스토리</td>
+          <td>페르소나 + 기능 설명 + "As a... I want... So that..." 형식</td>
+          <td>스프린트 계획 시</td>
+        </tr>
+        <tr>
+          <td>경쟁 분석</td>
+          <td>자사 정보 + 비교 항목 + 테이블 형식 + SWOT</td>
+          <td>전략 수립 시</td>
+        </tr>
+        <tr>
+          <td>릴리스 노트</td>
+          <td>변경사항 목록 + 대상 독자(사용자) + 톤앤매너</td>
+          <td>배포 직전</td>
+        </tr>
+        <tr>
+          <td>주간 보고서</td>
+          <td>이번 주 성과 + 다음 주 계획 + 이슈/블로커 + 형식</td>
+          <td>매주 금요일</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>팁</strong>: 프롬프트 템플릿을 노션이나 메모앱에 저장해두고, 상황에 맞게 [변수] 부분만 교체하여 사용하면 효율적입니다.
+    </div>
+
+    <div class="practice-section">
+      <h4>실습 과제</h4>
+      <p>위 5가지 문서 유형 중 2개를 선택하여 여러분만의 프롬프트 템플릿을 만들어보세요. 실제 프로젝트 맥락을 반영하면 더욱 좋습니다.</p>
+    </div>
+  </section>
+
+  <!-- 2.6 PL을 위한 프로젝트 관리 문서 -->
+  <section id="s2-6">
+    <h3>2.6 PL을 위한 프로젝트 관리 문서</h3>
+
+    <div class="info-box">
+      <strong>PL 관점</strong>: PM이 "무엇을 만들 것인가"를 정의하는 문서를 작성한다면, PL은 "어떻게, 언제까지 만들 것인가"를 관리하는 문서를 작성합니다.
+    </div>
+
+    <h4>PL 핵심 문서 유형</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>문서</th>
+          <th>목적</th>
+          <th>AI 활용 방법</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>WBS (작업 분해 구조)</strong></td>
+          <td>프로젝트를 관리 가능한 작업 단위로 분해</td>
+          <td>기능 목록 입력 → AI가 하위 작업 분해</td>
+        </tr>
+        <tr>
+          <td><strong>프로젝트 일정표</strong></td>
+          <td>마일스톤과 작업별 일정 관리</td>
+          <td>WBS + 리소스 → AI가 간트차트 구조 생성</td>
+        </tr>
+        <tr>
+          <td><strong>리스크 관리대장</strong></td>
+          <td>프로젝트 리스크 식별 및 대응 계획</td>
+          <td>프로젝트 맥락 → AI가 리스크 도출 및 대응방안 제시</td>
+        </tr>
+        <tr>
+          <td><strong>주간 상태 보고서</strong></td>
+          <td>진척 현황, 이슈, 다음 주 계획 공유</td>
+          <td>메모/데이터 입력 → AI가 구조화된 보고서 작성</td>
+        </tr>
+        <tr>
+          <td><strong>이슈 로그</strong></td>
+          <td>발생한 이슈 추적 및 해결 현황 관리</td>
+          <td>이슈 목록 → AI가 영향도 분석 및 우선순위 제안</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">WBS 생성 프롬프트</div>
+      <pre><code class="language-text">당신은 10년 경력의 프로젝트 리더(PL)입니다.
+
+다음 프로젝트의 WBS(Work Breakdown Structure)를 작성해주세요.
+
+## 프로젝트 개요
+- 프로젝트명: 고객 피드백 자동 분류 시스템
+- 기간: 12주
+- 팀 규모: 개발 3명, QA 1명, 디자이너 1명
+
+## WBS 작성 조건
+1. 3단계 깊이로 분해 (Phase → Task → Sub-task)
+2. 각 작업에 예상 소요일 포함
+3. 선행 작업(dependency) 관계 표시
+4. 마일스톤 3~4개 지정
+5. 테이블 형식으로 정리:
+   | WBS ID | Phase | Task | Sub-task | 담당 | 소요일 | 선행작업 |</code></pre>
+    </div>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">리스크 관리대장 프롬프트</div>
+      <pre><code class="language-text">다음 프로젝트의 리스크 관리대장을 작성해주세요.
+
+## 프로젝트 맥락
+- AI 기반 고객 피드백 분류 시스템 (12주)
+- 외부 AI API 연동 필수
+- 개인정보 포함 데이터 처리
+
+## 리스크 관리대장 형식
+| ID | 리스크 | 카테고리 | 발생확률 | 영향도 | 위험등급 | 대응전략 | 트리거 | 담당자 |
+
+- 기술, 일정, 리소스, 외부 카테고리 포함
+- 최소 10개 리스크 식별
+- 대응전략: 회피/전이/완화/수용 중 선택
+- 트리거: 리스크가 현실화되는 조건</code></pre>
+    </div>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">주간 상태 보고서 프롬프트</div>
+      <pre><code class="language-text">다음 정보로 PL 주간 상태 보고서를 작성해주세요.
+
+[이번 주 메모]
+(작업 현황, 이슈, 특이사항을 붙여넣기)
+
+보고서 형식:
+1. 전체 진척률 (%) 및 상태 (정상/주의/위험)
+2. 이번 주 완료 항목 (bullet point)
+3. 진행 중 항목 및 잔여 작업
+4. 이슈 & 블로커:
+   | 번호 | 이슈 | 영향도 | 상태 | 대응방안 |
+5. 다음 주 계획 (우선순위순)
+6. 리스크 업데이트
+7. 의사결정 필요 사항</code></pre>
+    </div>
+
+    <div class="practice-section">
+      <h4>실습 과제</h4>
+      <p>현재 진행 중이거나 계획 중인 프로젝트를 하나 선택하여, AI로 WBS와 리스크 관리대장을 생성해보세요. AI가 도출한 결과를 검토하고 빠진 항목을 추가하는 것이 핵심입니다.</p>
+    </div>
+  </section>
+</article>
+    </div>
+
+    <div id="module-nav">
+      <a href="index.html" class="module-nav-btn">← 이전 모듈</a>
+      <span id="current-module-label">2. AI 활용 문서 작성</span>
+      <a href="module3.html" class="module-nav-btn">다음 모듈 →</a>
+    </div>
+  </main>
+
+  <button id="scroll-top" aria-label="맨 위로">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
