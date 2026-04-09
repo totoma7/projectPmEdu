@@ -1,0 +1,104 @@
+{
+  "version": "3.0",
+  "lastUpdated": "2026-04-09T08:46:15.563Z",
+  "activeFeatures": [
+    "pm-vibe-coding-edu",
+    "js",
+    "projectPmEdu"
+  ],
+  "primaryFeature": "pm-vibe-coding-edu",
+  "features": {
+    "pm-vibe-coding-edu": {
+      "phase": "check",
+      "matchRate": 95,
+      "startedAt": "2026-04-09T06:35:00.000Z",
+      "lastActivity": "2026-04-09T08:00:00.000Z",
+      "documents": {
+        "plan": "docs/01-plan/features/pm-vibe-coding-edu.plan.md",
+        "design": "docs/02-design/features/pm-vibe-coding-edu.design.md",
+        "analysis": "docs/03-analysis/pm-vibe-coding-edu.analysis.md"
+      }
+    },
+    "js": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-09T07:16:50.621Z",
+        "lastUpdated": "2026-04-09T07:16:50.621Z"
+      },
+      "lastFile": "C:\\Users\\totom\\projectPmEdu\\js\\main.js"
+    },
+    "projectPmEdu": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-04-09T08:46:15.563Z",
+        "lastUpdated": "2026-04-09T08:46:15.563Z"
+      },
+      "lastFile": "C:\\Users\\totom\\projectPmEdu\\server.js"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Starter",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-04-09T06:10:59.240Z",
+    "onboardingCompleted": true,
+    "lastActivity": "2026-04-09T08:46:15.563Z"
+  },
+  "history": [
+    {
+      "action": "plan_created",
+      "feature": "pm-vibe-coding-edu",
+      "timestamp": "2026-04-09T06:35:00.000Z"
+    },
+    {
+      "action": "design_created",
+      "feature": "pm-vibe-coding-edu",
+      "timestamp": "2026-04-09T06:40:00.000Z"
+    },
+    {
+      "action": "do_started",
+      "feature": "pm-vibe-coding-edu",
+      "timestamp": "2026-04-09T07:00:00.000Z"
+    },
+    {
+      "timestamp": "2026-04-09T07:16:50.621Z",
+      "feature": "js",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-04-09T08:46:15.563Z",
+      "feature": "projectPmEdu",
+      "phase": "do",
+      "action": "updated"
+    }
+  ],
+  "stateMachine": {
+    "defaultWorkflow": "default",
+    "activeWorkflows": {},
+    "totalTransitions": 3
+  },
+  "automation": {
+    "globalLevel": 2,
+    "trustScore": 40,
+    "pendingApprovals": 0,
+    "lastGateResult": null
+  },
+  "team": {
+    "enabled": true,
+    "stateFile": ".bkit/runtime/agent-state.json",
+    "eventsFile": ".bkit/runtime/agent-events.jsonl"
+  }
+}

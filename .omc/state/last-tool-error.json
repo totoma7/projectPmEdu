@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd C:/Users/totom/projectPmEdu && railway service\",\"description\":\"Select/list Railway services\"}",
+  "error": "Exit code 1\nService name required in non-interactive mode. Usage: railway service <name>",
+  "timestamp": "2026-04-09T08:52:41.776Z",
+  "retry_count": 2
+}
