@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>5. 바이브 코딩 실습 - PM/PL 바이브 코딩 교육자료</title>
-  <meta name="description" content="PM과 비개발자를 위한 AI 바이브 코딩 교육자료. AI 기초, 문서 작성, 도식화, 자료 조사, 바이브 코딩 실습을 다룹니다.">
+  <title>5. 바이브 코딩 실습 - PM/PL AI 실무 가이드</title>
+  <meta name="description" content="PM과 비개발자를 위한 AI 실무 가이드. AI 기초, 문서 작성, 도식화, 자료 조사, 바이브 코딩 실습을 다룹니다.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
 </head>
@@ -17,7 +17,7 @@
 
   <nav id="sidebar" aria-label="교육 목차">
     <div class="sidebar-header">
-      <h1 class="sidebar-title">PM/PL 바이브 코딩</h1>
+      <h1 class="sidebar-title">PM/PL AI 실무 가이드</h1>
       <button id="theme-toggle" aria-label="테마 전환">
         <span class="theme-icon">🌙</span>
       </button>
@@ -161,7 +161,8 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>&copy; 2026 PM/PL 바이브 코딩 교육자료</p>
+      <p>최근 업데이트: 2026.04.10</p>
+      <p>&copy; 2026 PM/PL AI 실무 가이드</p>
     </div>
   </nav>
 
@@ -176,7 +177,7 @@
     <h3>5.1 바이브 코딩이란?</h3>
 
     <div class="info-box">
-      <strong>바이브 코딩(Vibe Coding)</strong>: AI에게 자연어로 원하는 것을 설명하면, AI가 코드를 생성하고 실행하는 새로운 개발 패러다임입니다. "코드를 작성하는" 것이 아니라 "AI와 대화하며 만드는" 것입니다.
+      <strong class="ai-term">바이브 코딩(Vibe Coding)</strong>: AI에게 자연어로 원하는 것을 설명하면, AI가 코드를 생성하고 실행하는 새로운 개발 패러다임입니다. "코드를 작성하는" 것이 아니라 "AI와 대화하며 만드는" 것입니다.
     </div>
 
     <h4>전통적 코딩 vs 바이브 코딩</h4>
@@ -602,12 +603,12 @@ graph TD
                 <td>AI가 "말"에서 "행동"으로 진화하는 기반 기술. 에이전트 AI의 필수 요소</td>
               </tr>
               <tr>
-                <td><strong>MCP (Model Context Protocol)</strong></td>
+                <td><strong class="ai-term">MCP (Model Context Protocol)</strong></td>
                 <td>Claude가 외부 도구(DB, API, 브라우저 등)에 접근할 수 있게 하는 표준 프로토콜. USB 규격처럼 하나의 표준으로 다양한 도구 연결</td>
                 <td>AI가 사내 시스템과 연동되는 핵심 기술. 어떤 MCP 서버를 붙이느냐에 따라 AI 능력이 달라짐</td>
               </tr>
               <tr>
-                <td><strong>MCP 서버</strong></td>
+                <td><strong class="ai-term">MCP 서버</strong></td>
                 <td>MCP 규격에 맞춰 특정 기능을 제공하는 플러그인. 예: Gmail 서버(메일 읽기/쓰기), DB 서버(데이터 조회), 브라우저 서버(웹 탐색)</td>
                 <td>필요한 기능에 맞는 MCP 서버를 선택·조합하는 것이 AI 제품 기획의 핵심 판단 포인트</td>
               </tr>
@@ -1414,8 +1415,8 @@ graph LR
             <strong>이 실습에서 배우는 것</strong>:
             <ul>
               <li><strong>스킬(Skill)</strong> — <code>/pdca plan</code>, <code>/pdca design</code>으로 설계 문서 자동 생성</li>
-              <li><strong>에이전트(Agent)</strong> — Sub-Agent가 게시판 코드를 병렬로 생성</li>
-              <li><strong>MCP 서버</strong> — Playwright MCP로 브라우저 자동 테스트</li>
+              <li><strong class="ai-term">에이전트(Agent)</strong> — Sub-Agent가 게시판 코드를 병렬로 생성</li>
+              <li><strong class="ai-term">MCP 서버</strong> — Playwright MCP로 브라우저 자동 테스트</li>
               <li><strong>보고서</strong> — 테스트 결과를 정리한 QA 보고서 자동 생성</li>
             </ul>
           </div>
@@ -1540,7 +1541,7 @@ localStorage.setItem('posts', JSON.stringify([post1, post2, ...]));</code></pre>
 
           <h4>Step 3: MCP Playwright 자동 테스트 — MCP 서버 활용</h4>
 
-          <p><strong>MCP(Model Context Protocol)</strong>의 진가가 발휘되는 단계입니다. Playwright MCP 서버를 연결하면, Claude Code가 직접 브라우저를 열어 게시판을 테스트할 수 있습니다.</p>
+          <p><strong class="ai-term">MCP(Model Context Protocol)</strong>의 진가가 발휘되는 단계입니다. Playwright MCP 서버를 연결하면, Claude Code가 직접 브라우저를 열어 게시판을 테스트할 수 있습니다.</p>
 
           <div class="diagram-container">
             <div class="mermaid">
@@ -1648,7 +1649,7 @@ graph LR
           </table>
 
           <div class="info-box">
-            <strong>MCP의 핵심 가치</strong>: 테스트 코드를 직접 작성할 필요 없이 <strong>자연어로 테스트 시나리오만 설명</strong>하면, Claude Code가 MCP Playwright를 통해 실제 브라우저를 조작하고 결과를 확인합니다. 이것이 "비개발자도 QA를 할 수 있는" MCP의 힘입니다.
+            <strong class="ai-term">MCP의 핵심 가치</strong>: 테스트 코드를 직접 작성할 필요 없이 <strong>자연어로 테스트 시나리오만 설명</strong>하면, Claude Code가 MCP Playwright를 통해 실제 브라우저를 조작하고 결과를 확인합니다. 이것이 "비개발자도 QA를 할 수 있는" MCP의 힘입니다.
           </div>
 
           <h4>Step 4: 테스트 결과 보고서 — 에이전트 활용</h4>
@@ -1744,13 +1745,13 @@ graph TD
                 <td>반복 작업을 한 줄 명령으로 자동화</td>
               </tr>
               <tr>
-                <td><strong>MCP</strong></td>
+                <td><strong class="ai-term">MCP</strong></td>
                 <td>Playwright MCP</td>
                 <td>브라우저에서 게시판 자동 테스트</td>
                 <td>AI가 외부 도구(브라우저)를 직접 조작</td>
               </tr>
               <tr>
-                <td><strong>에이전트</strong></td>
+                <td><strong class="ai-term">에이전트</strong></td>
                 <td>Sub-Agent, report-generator</td>
                 <td>코드 생성 분담, 보고서 작성</td>
                 <td>복잡한 작업을 분할하여 병렬 처리</td>
@@ -2560,7 +2561,7 @@ flutter run
                 <td>위젯 동작, 비즈니스 로직 자동 검증</td>
               </tr>
               <tr>
-                <td><strong>MCP Playwright</strong></td>
+                <td><strong class="ai-term">MCP Playwright</strong></td>
                 <td>Flutter Web 빌드 후 브라우저 테스트</td>
                 <td>웹 버전 자동 테스트 (크로스 플랫폼 확인)</td>
               </tr>
@@ -2804,7 +2805,7 @@ flutter_launcher_icons:
                 <td>APK 파일 / Play Store</td>
               </tr>
               <tr>
-                <td><strong>바이브 코딩 난이도</strong></td>
+                <td><strong class="ai-term">바이브 코딩 난이도</strong></td>
                 <td>초급 (환경 설정 불필요)</td>
                 <td>중급 (Flutter SDK 설치 필요)</td>
               </tr>
@@ -3954,7 +3955,7 @@ graph TD
           <div class="info-box">
             <strong>비용 최적화 팁</strong>:
             <ul>
-              <li><code>/compact</code>를 적극 활용하면 동일 세션에서 <strong>토큰 사용량 30~50% 절감</strong></li>
+              <li><code>/compact</code>를 적극 활용하면 동일 세션에서 <strong class="ai-term">토큰 사용량 30~50% 절감</strong></li>
               <li>큰 파일 전체를 읽게 하지 말고, <strong>관련 부분만 지정</strong>: "auth.js의 login 함수만 봐줘"</li>
               <li>반복 프롬프트는 <code>CLAUDE.md</code>에 정의하여 <strong>매번 재입력 방지</strong></li>
               <li><strong>Plan Mode</strong>로 불필요한 수정-되돌리기 반복 방지</li>
