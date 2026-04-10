@@ -177,6 +177,21 @@
       <strong>시나리오</strong>: 중소기업 대상 "AI 기반 고객 피드백 분석 SaaS"를 기획하고, 바이브 코딩으로 MVP를 제작하여 시장에 출시하는 전체 프로세스입니다.
     </div>
 
+    <h4>SaaS MVP 출시 전체 프로세스</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A[시장 기회 발굴<br/>Module 4: AI 리서치] --> B[사용자 리서치<br/>페르소나/인터뷰]
+    B --> C[PRD 작성<br/>Module 2: AI 문서]
+    C --> D[MVP 개발<br/>Module 5: 바이브 코딩]
+    D --> E[사용자 테스트<br/>피드백 수집]
+    E --> F{PMF 달성?}
+    F -->|피드백 반영| D
+    F -->|검증 완료| G[출시 준비<br/>랜딩페이지/마케팅]
+    G --> H[MVP 출시 및<br/>지표 모니터링]
+      </div>
+    </div>
+
     <h4>전체 프로세스 오버뷰</h4>
     <table class="comparison-table">
       <thead>
@@ -319,6 +334,36 @@ PRD 구조:
       <strong>시나리오</strong>: 10년된 온프레미스 ERP 시스템을 클라우드 SaaS로 마이그레이션하는 6개월 프로젝트를 AI를 활용하여 관리합니다.
     </div>
 
+    <h4>레거시 마이그레이션 타임라인</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+gantt
+    title ERP 클라우드 마이그레이션 (6개월)
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m월
+
+    section 분석
+    현황 분석 및 요구사항 수집     :a1, 2026-01-01, 4w
+    AI 활용 리스크 분석            :a2, after a1, 2w
+
+    section 설계
+    아키텍처 설계                  :b1, after a2, 3w
+    데이터 마이그레이션 계획       :b2, after a2, 3w
+
+    section 개발
+    코어 모듈 마이그레이션         :c1, after b1, 6w
+    API 통합 개발                  :c2, after b1, 4w
+
+    section 테스트
+    통합 테스트                    :d1, after c1, 3w
+    사용자 수용 테스트(UAT)        :d2, after d1, 2w
+
+    section 전환
+    데이터 마이그레이션 실행       :e1, after d2, 1w
+    Go-Live 및 모니터링            :e2, after e1, 2w
+      </div>
+    </div>
+
     <h4>프로젝트 개요</h4>
     <table class="comparison-table">
       <thead>
@@ -419,6 +464,26 @@ PRD 구조:
 
     <div class="info-box">
       <strong>시나리오</strong>: 조직에 AI 도구(Claude, GitHub Copilot 등)를 공식 도입하기 위한 제안서를 작성하고, 파일럿 프로그램을 계획합니다. PM이 전략/ROI를, PL이 실행 계획/리스크를 담당합니다.
+    </div>
+
+    <h4>AI 도구 도입 PM+PL 협업 구조</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    subgraph PM 영역
+        A[시장 조사<br/>도입 사례 분석] --> B[ROI 산출<br/>비용 대비 효과]
+        B --> C[경영진 설득<br/>제안서 작성]
+    end
+    subgraph PL 영역
+        D[업무 프로세스 분석<br/>자동화 기회 식별] --> E[실행 계획 수립<br/>파일럿 설계]
+        E --> F[리스크 관리<br/>보안/컴플라이언스]
+    end
+    A <--> D
+    B <--> E
+    C --> G[파일럿 실행]
+    F --> G
+    G --> H[성과 측정 및<br/>전사 확대 결정]
+      </div>
     </div>
 
     <h4>PM+PL 역할 분담</h4>
@@ -999,6 +1064,13 @@ M4 (16주): 앱 출시
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>

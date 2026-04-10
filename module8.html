@@ -141,6 +141,7 @@
           <li><a href="module7.html#s7-1">7.1 SaaS 기획~MVP 출시</a></li>
           <li><a href="module7.html#s7-2">7.2 레거시 마이그레이션</a></li>
           <li><a href="module7.html#s7-3">7.3 AI 도구 도입 제안</a></li>
+          <li><a href="module7.html#s7-4">7.4 AI 툴 조합 업무 활용</a></li>
         </ul>
       </li>
       <li class="nav-item active" data-module="module8">
@@ -291,6 +292,24 @@
 
     <p>API 기반으로 AI를 사용할 때, 비용은 "토큰" 단위로 산정됩니다. PM/PL이 토큰 개념을 이해해야 예산을 정확히 계획할 수 있습니다.</p>
 
+    <h4>토큰 비용 구조</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A[사용자 입력<br/>프롬프트] --> B[입력 토큰<br/>Input Tokens]
+    B --> C[AI 모델 처리]
+    C --> D[출력 토큰<br/>Output Tokens]
+    B --> E[입력 비용<br/>상대적으로 저렴]
+    D --> F[출력 비용<br/>입력의 3~5배]
+    E --> G[총 비용 = 입력 비용 + 출력 비용]
+    F --> G
+    G --> H{비용 최적화}
+    H --> I[프롬프트 간결하게<br/>입력 토큰 절감]
+    H --> J[출력 형식 지정<br/>불필요한 출력 제한]
+    H --> K[적절한 모델 선택<br/>작업별 모델 구분]
+      </div>
+    </div>
+
     <h4>토큰이란?</h4>
     <table class="comparison-table">
       <thead>
@@ -398,6 +417,25 @@
     <h3>8.3 팀/조직 AI 도구 도입 ROI 산출</h3>
 
     <p>경영진에게 AI 도구 도입을 제안하려면 정량적인 ROI(Return on Investment)가 필수입니다.</p>
+
+    <h4>ROI 산출 구조도</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    subgraph 투자 비용
+        A[도구 라이선스<br/>월 구독료] --> D[총 비용]
+        B[교육/온보딩<br/>1회성 비용] --> D
+        C[관리 운영<br/>월간 비용] --> D
+    end
+    subgraph 기대 효과
+        E[시간 절감<br/>업무 시간 x 시급] --> H[총 효과]
+        F[품질 향상<br/>오류 감소/재작업 방지] --> H
+        G[매출 기여<br/>출시 속도 향상] --> H
+    end
+    D --> I["ROI = (총 효과 - 총 비용) / 총 비용 x 100%"]
+    H --> I
+      </div>
+    </div>
 
     <h4>ROI 산출 프레임워크</h4>
     <table class="comparison-table">
@@ -525,6 +563,20 @@
       </tbody>
     </table>
 
+    <h4>경영진 설득 단계별 프레임워크</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A["1단계: 현황 분석<br/>'왜 지금인가?'<br/>시장 긴급성 + 경쟁사 동향"] --> B["2단계: 파일럿 제안<br/>'작게 시작하자'<br/>3개월 소규모 팀 테스트"]
+    B --> C["3단계: 성과 측정<br/>'숫자로 증명'<br/>시간 절감/품질 향상 데이터"]
+    C --> D{"ROI 달성?"}
+    D -->|"ROI > 100%"| E["4단계: 전사 확대 제안<br/>단계별 롤아웃 계획"]
+    D -->|"ROI < 100%"| F[파일럿 범위/도구 조정<br/>재시도]
+    F --> B
+    E --> G[예산 승인 및<br/>도입 실행]
+      </div>
+    </div>
+
     <h4>경영진 설득 프레임워크</h4>
     <ol class="step-list">
       <li>
@@ -597,6 +649,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>

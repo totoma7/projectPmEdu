@@ -38,6 +38,8 @@
           <li><a href="index.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
           <li><a href="index.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
           <li><a href="index.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="index.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
+          <li><a href="index.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
         </ul>
       </li>
       <li class="nav-item" data-module="module2">
@@ -137,6 +139,7 @@
           <li><a href="module7.html#s7-1">7.1 SaaS 기획~MVP 출시</a></li>
           <li><a href="module7.html#s7-2">7.2 레거시 마이그레이션</a></li>
           <li><a href="module7.html#s7-3">7.3 AI 도구 도입 제안</a></li>
+          <li><a href="module7.html#s7-4">7.4 AI 툴 조합 업무 활용</a></li>
         </ul>
       </li>
       <li class="nav-item" data-module="module8">
@@ -173,6 +176,20 @@
     </div>
 
     <h4>AI 활용 시장 조사 프레임워크</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A[조사 목표 설정] --> B[AI로 초기 데이터 수집<br/>시장 규모, 트렌드, 경쟁사]
+    B --> C[AI 분석 요청<br/>TAM/SAM/SOM 추정]
+    C --> D[출처 검증<br/>공식 보고서/통계 교차 확인]
+    D --> E{신뢰도 평가}
+    E -->|A/B 등급| F[인사이트 도출]
+    E -->|C/D 등급| G[추가 데이터 수집]
+    G --> D
+    F --> H[리서치 보고서 작성]
+      </div>
+    </div>
+
     <ol class="step-list">
       <li>
         <strong>시장 규모 파악 (TAM/SAM/SOM)</strong>
@@ -450,6 +467,21 @@
       <strong>핵심</strong>: 2025년 이후 AI 검색 도구가 빠르게 발전하고 있습니다. 기존 생성형 AI와 검색 특화 AI를 구분하여 적재적소에 활용하는 것이 PM/PL의 리서치 역량입니다.
     </div>
 
+    <h4>검색형 + 생성형 AI 통합 리서치 워크플로우</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    A[리서치 주제 정의] --> B[검색형 AI<br/>Perplexity, Genspark]
+    A --> C[생성형 AI<br/>Claude, ChatGPT]
+    B --> D[최신 데이터 수집<br/>출처 포함]
+    C --> E[분석 프레임워크<br/>구조화/해석]
+    D --> F[종합 분석]
+    E --> F
+    F --> G[PM/PL 검토 및<br/>인사이트 정리]
+    G --> H[보고서/기획서<br/>반영]
+      </div>
+    </div>
+
     <h4>검색형 AI vs 생성형 AI 비교</h4>
     <table class="comparison-table">
       <thead>
@@ -557,6 +589,20 @@
 
     <div class="info-box">
       <strong>핵심</strong>: AI가 생성한 데이터를 그대로 보고서에 사용하면 신뢰를 잃을 수 있습니다. PM/PL은 AI 결과물의 "편집장" 역할을 해야 합니다.
+    </div>
+
+    <h4>AI 데이터 검증 5단계 프로세스</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A["1단계: AI 데이터 수집"] --> B["2단계: 1차 출처 확인<br/>공식 보고서/통계청/기업 공시"]
+    B --> C["3단계: 교차 검증<br/>2개 이상 독립 출처 비교"]
+    C --> D["4단계: 신뢰도 등급 부여<br/>A~D 등급 분류"]
+    D --> E{"5단계: 사용 판단"}
+    E -->|A/B등급| F[보고서에 직접 인용 가능]
+    E -->|C등급| G[참고 자료로만 활용<br/>추가 검증 필요 명시]
+    E -->|D등급| H[사용 불가<br/>재조사 필요]
+      </div>
     </div>
 
     <h4>AI 리서치 신뢰도 등급 프레임워크</h4>
@@ -862,6 +908,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>

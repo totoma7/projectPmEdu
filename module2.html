@@ -38,6 +38,8 @@
           <li><a href="index.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
           <li><a href="index.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
           <li><a href="index.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="index.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
+          <li><a href="index.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
         </ul>
       </li>
       <li class="nav-item active" data-module="module2">
@@ -135,6 +137,7 @@
           <li><a href="module7.html#s7-1">7.1 SaaS 기획~MVP 출시</a></li>
           <li><a href="module7.html#s7-2">7.2 레거시 마이그레이션</a></li>
           <li><a href="module7.html#s7-3">7.3 AI 도구 도입 제안</a></li>
+          <li><a href="module7.html#s7-4">7.4 AI 툴 조합 업무 활용</a></li>
         </ul>
       </li>
       <li class="nav-item" data-module="module8">
@@ -168,6 +171,22 @@
 
     <div class="info-box">
       <strong>PRD란?</strong> Product Requirements Document의 약자로, 제품이나 기능의 목적, 요구사항, 성공 지표를 정의하는 핵심 문서입니다.
+    </div>
+
+    <h4>PRD 작성 워크플로우</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A[요구사항 수집] --> B[AI에게 초안 요청]
+    B --> C[AI 초안 생성]
+    C --> D{PM 검토}
+    D -->|수정 필요| E[피드백 반영 요청]
+    E --> C
+    D -->|승인| F[이해관계자 리뷰]
+    F --> G{최종 승인}
+    G -->|수정 필요| E
+    G -->|승인| H[PRD 확정 및 공유]
+      </div>
     </div>
 
     <h4>AI로 PRD 작성하기 — 단계별 가이드</h4>
@@ -344,6 +363,19 @@
 
     <p>AI를 활용하면 회의록 작성과 보고서 정리 시간을 크게 줄일 수 있습니다.</p>
 
+    <h4>회의록 자동 정리 파이프라인</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    A[회의 녹음/메모] --> B[음성 전사<br/>Clova Note, Otter]
+    B --> C[AI 구조화<br/>Claude, ChatGPT]
+    C --> D[액션 아이템 추출]
+    D --> E{PM/PL 검토}
+    E -->|보완 필요| C
+    E -->|확인 완료| F[팀 공유<br/>Slack, Notion]
+      </div>
+    </div>
+
     <h4>회의록 정리 워크플로우</h4>
     <ol class="step-list">
       <li>
@@ -515,6 +547,25 @@
       <strong>PL 관점</strong>: PM이 "무엇을 만들 것인가"를 정의하는 문서를 작성한다면, PL은 "어떻게, 언제까지 만들 것인가"를 관리하는 문서를 작성합니다.
     </div>
 
+    <h4>PM/PL 문서 체계 관계도</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    subgraph PM 영역
+        A[PRD<br/>무엇을 만들 것인가] --> B[기획서/제안서]
+        A --> C[요구사항 정의서]
+        A --> D[스펙 문서/API 명세]
+    end
+    subgraph PL 영역
+        E[WBS<br/>작업 분해 구조] --> F[프로젝트 일정표]
+        E --> G[리스크 관리대장]
+        F --> H[주간 보고서]
+    end
+    A -->|요구사항 전달| E
+    C -->|범위 확정| F
+      </div>
+    </div>
+
     <h4>PL 핵심 문서 유형</h4>
     <table class="comparison-table">
       <thead>
@@ -621,6 +672,22 @@
 
     <div class="info-box">
       <strong>핵심</strong>: AI가 생성한 문서를 그대로 사용하면 품질 문제가 발생합니다. PM/PL은 AI 결과물의 "편집자"이자 "품질 관리자" 역할을 해야 합니다.
+    </div>
+
+    <h4>AI 문서 품질 관리 프로세스</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A[AI 문서 생성] --> B[정확성 검증<br/>수치/날짜/고유명사]
+    B --> C[일관성 확인<br/>용어/표기법/어투]
+    C --> D[맥락 적합성<br/>조직 상황 반영 여부]
+    D --> E[톤앤매너 조정<br/>대상에 맞는 어투]
+    E --> F{품질 기준 통과?}
+    F -->|미달| G[AI에 수정 요청<br/>구체적 피드백]
+    G --> B
+    F -->|통과| H[버전 관리 등록]
+    H --> I[최종 승인 및 배포]
+      </div>
     </div>
 
     <h4>AI 문서 검토 체크리스트</h4>
@@ -835,6 +902,13 @@ PM과 개발팀이 함께 리뷰하며 확정합니다.</code></pre>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    });
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
