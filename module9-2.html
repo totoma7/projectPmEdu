@@ -718,31 +718,31 @@ graph LR
       <tbody>
         <tr>
           <td><strong>API 연동</strong></td>
-          <td><code>openai</code>, <code>anthropic</code>, <code>langchain</code></td>
+          <td><a href="https://github.com/openai/openai-python" target="_blank" rel="noopener"><code>openai</code></a>, <a href="https://github.com/anthropics/anthropic-sdk-python" target="_blank" rel="noopener"><code>anthropic</code></a>, <a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener"><code>langchain</code></a></td>
           <td>AI 챗봇 만들기 — 시스템 프롬프트 + 대화 히스토리 관리</td>
           <td>⭐⭐</td>
         </tr>
         <tr>
           <td><strong>RAG</strong></td>
-          <td><code>chromadb</code>, <code>llama-index</code>, <code>sentence-transformers</code></td>
+          <td><a href="https://github.com/chroma-core/chroma" target="_blank" rel="noopener"><code>chromadb</code></a>, <a href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener"><code>llama-index</code></a>, <a href="https://github.com/UKPLab/sentence-transformers" target="_blank" rel="noopener"><code>sentence-transformers</code></a></td>
           <td>사내 문서 검색 챗봇 — PDF 업로드 → 청킹 → 벡터 저장 → 질의응답</td>
           <td>⭐⭐⭐</td>
         </tr>
         <tr>
           <td><strong>에이전트</strong></td>
-          <td><code>langgraph</code>, <code>crewai</code>, <code>autogen</code></td>
+          <td><a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener"><code>langgraph</code></a>, <a href="https://github.com/crewAIInc/crewAI" target="_blank" rel="noopener"><code>crewai</code></a>, <a href="https://github.com/microsoft/autogen" target="_blank" rel="noopener"><code>autogen</code></a></td>
           <td>자동 리서치 에이전트 — 웹 검색 → 정보 수집 → 보고서 생성</td>
           <td>⭐⭐⭐⭐</td>
         </tr>
         <tr>
           <td><strong>MCP 서버</strong></td>
-          <td><code>mcp</code> (Python SDK), <code>fastmcp</code></td>
+          <td><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener"><code>mcp</code></a> (Python SDK), <a href="https://github.com/jlowin/fastmcp" target="_blank" rel="noopener"><code>fastmcp</code></a></td>
           <td>사내 DB 조회 MCP 서버 — PostgreSQL 연동 → AI가 자연어로 쿼리</td>
           <td>⭐⭐⭐</td>
         </tr>
         <tr>
           <td><strong>프로덕션</strong></td>
-          <td><code>fastapi</code>, <code>langsmith</code>, <code>streamlit</code></td>
+          <td><a href="https://github.com/fastapi/fastapi" target="_blank" rel="noopener"><code>fastapi</code></a>, <a href="https://github.com/langchain-ai/langsmith-sdk" target="_blank" rel="noopener"><code>langsmith</code></a>, <a href="https://github.com/streamlit/streamlit" target="_blank" rel="noopener"><code>streamlit</code></a></td>
           <td>RAG 챗봇 웹 서비스 — API 서빙 + 모니터링 + 사용자 피드백 수집</td>
           <td>⭐⭐⭐⭐</td>
         </tr>
@@ -773,22 +773,22 @@ graph LR
     <h4>Java 개발자 학습 로드맵</h4>
 
     <div class="info-box">
-      <strong>왜 Java + AI인가?</strong>: 국내 엔터프라이즈 시장의 70% 이상이 Java/Spring 기반입니다. 기존 시스템을 버리고 Python으로 재작성하는 것이 아니라, <strong>현재 Java 시스템에 AI 역량을 통합</strong>하는 것이 현실적인 전략입니다. Spring AI의 등장으로 Java 개발자도 Python과 동등한 수준의 AI 개발이 가능해졌습니다.
+      <strong>왜 Java + AI인가?</strong>: 국내 엔터프라이즈 시장의 70% 이상이 Java/Spring 기반입니다. 기존 시스템을 버리고 Python으로 재작성하는 것이 아니라, <strong>현재 Java 시스템에 AI 역량을 통합</strong>하는 것이 현실적인 전략입니다. <strong><a href="https://docs.langchain4j.dev/" target="_blank" rel="noopener">LangChain4j</a></strong>는 Java 생태계에 최적화된 AI 프레임워크로, Python의 LangChain보다 Java 개발자에게 더 자연스러운 선언적 패턴(AiService, @Tool)을 제공합니다. Spring Boot로 서빙/인프라를, LangChain4j로 AI 로직을 담당하는 조합이 가장 실전적입니다.
     </div>
 
     <div class="diagram-container">
       <div class="mermaid">
 graph TD
-    J0["☕ Java 개발자\n(Spring Boot 보유)"] --> S1["1단계\nSpring AI 기초 & LLM API\n(2주)"]
+    J0["☕ Java 개발자\n(Spring Boot 보유)"] --> S1["1단계\nLangChain4j 기초 & LLM API\n(2주)"]
     S1 --> S2["2단계\nRAG 파이프라인\n(3주)"]
     S2 --> S3["3단계\nAI 에이전트 & Tool Use\n(3주)"]
     S3 --> S4["4단계\nMCP 서버 개발\n(2주)"]
     S4 --> S5["5단계\n프로덕션 배포 & 운영\n(2주)"]
     S5 --> S6["6단계\n엔터프라이즈 AI 아키텍처\n(2주)"]
 
-    S1 -.- D1["ChatClient\nPrompt Template\nOutput Parser"]
-    S2 -.- D2["PgVector\nApache Tika\nDocument Reader"]
-    S3 -.- D3["Function Calling\nLangChain4j\nReAct 패턴"]
+    S1 -.- D1["AiService\n@SystemMessage\nOutput Parser"]
+    S2 -.- D2["ContentRetriever\nEmbeddingStore\nApache Tika"]
+    S3 -.- D3["@Tool\nReAct 패턴\n멀티 에이전트"]
     S4 -.- D4["MCP Java SDK\nSpring Boot 서버\n사내 시스템 연동"]
     S5 -.- D5["Docker/K8s\nMicrometer\nGrafana"]
     S6 -.- D6["멀티 에이전트\n가드레일\n비용 최적화"]
@@ -804,31 +804,31 @@ graph TD
       <tbody>
         <tr>
           <td><strong>1단계 — API 연동</strong></td>
-          <td>Spring AI, Anthropic Java SDK, OpenAI Java SDK</td>
-          <td>AI 챗봇 REST API — Spring Boot + Claude API + 대화 히스토리</td>
+          <td><a href="https://github.com/langchain4j/langchain4j" target="_blank" rel="noopener">LangChain4j</a>, langchain4j-spring-boot-starter</td>
+          <td>AI 챗봇 REST API — AiService + Claude API + 대화 메모리</td>
           <td>⭐⭐</td>
         </tr>
         <tr>
           <td><strong>2단계 — RAG</strong></td>
-          <td>Spring AI VectorStore, PgVector, Apache Tika</td>
-          <td>사내 문서 검색 API — PDF 파싱 → PgVector 저장 → REST 검색 API</td>
+          <td>LangChain4j EmbeddingStore, <a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">PgVector</a>, <a href="https://github.com/apache/tika" target="_blank" rel="noopener">Apache Tika</a></td>
+          <td>사내 문서 검색 API — PDF 파싱 → PgVector 저장 → ContentRetriever 검색</td>
           <td>⭐⭐⭐</td>
         </tr>
         <tr>
           <td><strong>3단계 — 에이전트</strong></td>
-          <td>LangChain4j, Spring AI Function Calling</td>
+          <td>LangChain4j @Tool, AiService, ChatMemory</td>
           <td>업무 자동화 에이전트 — DB 조회 + 이메일 발송 + 보고서 생성</td>
           <td>⭐⭐⭐⭐</td>
         </tr>
         <tr>
           <td><strong>4단계 — MCP 서버</strong></td>
-          <td>MCP Java SDK, Spring Boot</td>
+          <td><a href="https://github.com/modelcontextprotocol/java-sdk" target="_blank" rel="noopener">MCP Java SDK</a>, Spring Boot</td>
           <td>사내 시스템 MCP 서버 — Jira/Confluence 연동 → AI가 이슈 관리</td>
           <td>⭐⭐⭐⭐</td>
         </tr>
         <tr>
           <td><strong>5단계 — 프로덕션</strong></td>
-          <td>Spring Boot, Micrometer, Grafana, Docker</td>
+          <td>Spring Boot + LangChain4j, Micrometer, Docker</td>
           <td>RAG 서비스 운영 — 컨테이너 배포 + 토큰 비용 모니터링 + 캐싱</td>
           <td>⭐⭐⭐⭐</td>
         </tr>
@@ -842,10 +842,10 @@ graph TD
     </table>
 
     <!-- 1단계 상세 -->
-    <h4>1단계: Spring AI 기초 & LLM API 연동 (2주)</h4>
+    <h4>1단계: LangChain4j 기초 & LLM API 연동 (2주)</h4>
 
     <div class="info-box">
-      <strong>학습 목표</strong>: Spring AI의 핵심 추상화(ChatClient, Prompt, OutputParser)를 이해하고, Claude/GPT API를 Spring Boot 애플리케이션에서 호출할 수 있다.
+      <strong>학습 목표</strong>: LangChain4j의 핵심 추상화(AiService, @SystemMessage, 출력 파싱)를 이해하고, 인터페이스 선언만으로 Claude/GPT API를 호출하는 AI 서비스를 구축할 수 있다.
     </div>
 
     <table class="comparison-table">
@@ -853,61 +853,68 @@ graph TD
       <tbody>
         <tr>
           <td><strong>1주차</strong></td>
-          <td>Spring AI 프로젝트 설정 & ChatClient</td>
+          <td>LangChain4j 프로젝트 설정 & AiService</td>
           <td>
             <ul>
-              <li>Spring AI BOM & 의존성 구성</li>
-              <li><code>ChatClient</code> — LLM 호출 통합 인터페이스</li>
-              <li><code>Prompt</code> / <code>SystemMessage</code> / <code>UserMessage</code></li>
+              <li><code>langchain4j-spring-boot-starter</code> 의존성 구성</li>
+              <li><code>AiService</code> — 인터페이스만 정의하면 AI 로직 자동 구현 (JpaRepository 패턴)</li>
+              <li><code>@SystemMessage</code> / <code>@UserMessage</code> — 어노테이션 기반 프롬프트</li>
+              <li><code>@V</code> — 메서드 파라미터 → 프롬프트 변수 자동 바인딩</li>
               <li>모델 설정: temperature, maxTokens, topP</li>
             </ul>
           </td>
-          <td>간단한 질의응답 REST API 만들기</td>
+          <td>AiService 기반 질의응답 REST API 만들기</td>
         </tr>
         <tr>
           <td><strong>2주차</strong></td>
-          <td>프롬프트 템플릿 & 출력 파싱</td>
+          <td>구조화된 출력 & 대화 메모리</td>
           <td>
             <ul>
-              <li><code>PromptTemplate</code> — 변수 치환 기반 프롬프트</li>
-              <li><code>BeanOutputConverter</code> — JSON → Java 객체 자동 변환</li>
-              <li><code>ListOutputConverter</code> — 리스트 형태 출력 파싱</li>
-              <li>스트리밍 응답 (<code>stream()</code>) 처리</li>
-              <li>멀티 모델 전환 (Claude ↔ GPT 런타임 스위칭)</li>
+              <li>반환 타입 자동 파싱 — Java Record/POJO로 LLM 응답 자동 변환</li>
+              <li>enum 반환 — 분류(감성 분석 등)를 enum으로 직접 받기</li>
+              <li><code>ChatMemory</code> — MessageWindowChatMemory, TokenWindowChatMemory</li>
+              <li>사용자별 대화 격리 (<code>@MemoryId</code>)</li>
+              <li>스트리밍 응답 (<code>TokenStream</code>) 처리</li>
+              <li>멀티 모델 전환 (Claude ↔ GPT ↔ Ollama)</li>
             </ul>
           </td>
-          <td>구조화된 응답을 반환하는 분석 API 만들기</td>
+          <td>구조화된 응답 + 대화 메모리 챗봇 완성</td>
         </tr>
       </tbody>
     </table>
 
     <div class="prompt-example good">
-      <div class="prompt-label">1단계 실습 — Spring AI 챗봇 프롬프트</div>
-      <pre><code class="language-text">Spring Boot + Spring AI로 AI 챗봇 REST API를 만들어줘.
+      <div class="prompt-label">1단계 실습 — LangChain4j 챗봇 프롬프트</div>
+      <pre><code class="language-text">Spring Boot + LangChain4j로 AI 챗봇 REST API를 만들어줘.
 
 기술 스택:
-- Java 17, Spring Boot 3.3, Spring AI 1.0
+- Java 17, Spring Boot 3.3, LangChain4j 1.0
+- langchain4j-spring-boot-starter, langchain4j-anthropic
 - LLM: Claude Sonnet 4.6 (Anthropic API)
 - 빌드: Gradle Kotlin DSL
 
 기능:
-1. POST /api/chat — 사용자 메시지를 받아 Claude 응답 반환
-   - 시스템 프롬프트로 챗봇 역할 정의
-   - 대화 히스토리를 메모리에 유지 (세션 기반)
+1. POST /api/chat — AiService 기반 채팅
+   - @SystemMessage로 챗봇 역할 정의
+   - ChatMemory로 사용자별 대화 히스토리 유지 (@MemoryId)
 2. POST /api/analyze — 텍스트를 받아 구조화된 분석 결과 반환
-   - BeanOutputConverter로 AnalysisResult 객체로 파싱
-   - 감성 분석, 키워드 추출, 요약을 한 번에 수행
-3. GET /api/chat/stream — SSE(Server-Sent Events) 스트리밍 응답
+   - 반환 타입을 AnalysisResult record로 정의하면 자동 파싱
+   - 감성(enum Sentiment), 키워드(List), 요약(String)을 한 번에 수행
+3. POST /api/classify — 감성 분석 (enum 직접 반환)
+4. GET /api/chat/stream — TokenStream 기반 SSE 스트리밍
 
-Spring AI의 ChatClient, PromptTemplate, BeanOutputConverter를 활용하고,
-application.yml에 Anthropic API 키 설정 포함해서 작성해줘.</code></pre>
+LangChain4j의 AiService 인터페이스 패턴을 활용하고,
+application.yml에 Anthropic API 키 설정 포함해서 작성해줘.
+
+참고: Spring AI의 ChatClient 방식과 비교하면, AiService는
+인터페이스만 정의하면 구현체가 자동 생성되어 코드가 훨씬 간결함.</code></pre>
     </div>
 
     <!-- 2단계 상세 -->
     <h4>2단계: RAG 파이프라인 구축 (3주)</h4>
 
     <div class="info-box">
-      <strong>학습 목표</strong>: 문서를 벡터화하여 저장하고, 사용자 질문에 관련 문서를 검색해 LLM에 컨텍스트로 제공하는 RAG 시스템을 구축할 수 있다.
+      <strong>학습 목표</strong>: LangChain4j의 ContentRetriever와 EmbeddingStore를 활용하여, 문서를 벡터화하고 사용자 질문에 관련 문서를 검색해 LLM에 컨텍스트로 제공하는 RAG 시스템을 구축할 수 있다.
     </div>
 
     <div class="diagram-container">
@@ -915,18 +922,18 @@ application.yml에 Anthropic API 키 설정 포함해서 작성해줘.</code></p
 graph LR
     subgraph 수집["문서 수집"]
         A1["PDF/DOCX\n업로드"]
-        A2["Apache Tika\n파싱"]
+        A2["Apache Tika\nDocumentParser"]
     end
     subgraph 처리["문서 처리"]
-        B1["TokenTextSplitter\n청킹 (512토큰)"]
-        B2["임베딩 생성\n(OpenAI ada-002)"]
+        B1["DocumentSplitter\n청킹 (512토큰)"]
+        B2["EmbeddingModel\n임베딩 생성"]
     end
     subgraph 저장["벡터 저장"]
-        C1["PgVector\nVectorStore"]
+        C1["EmbeddingStore\n(PgVector)"]
     end
     subgraph 검색["검색 & 응답"]
-        D1["유사도 검색\nTop-K"]
-        D2["QuestionAnswerAdvisor\nRAG 응답 생성"]
+        D1["ContentRetriever\nTop-K 검색"]
+        D2["AiService + RAG\n응답 생성"]
     end
 
     A1 --> A2 --> B1 --> B2 --> C1
@@ -942,10 +949,10 @@ graph LR
           <td>문서 파싱 & 청킹</td>
           <td>
             <ul>
-              <li><code>DocumentReader</code> — PDF, DOCX, HTML 문서 읽기</li>
-              <li>Apache Tika 연동 — 다양한 문서 포맷 지원</li>
-              <li><code>TokenTextSplitter</code> — 토큰 기반 청킹 전략</li>
-              <li>청킹 파라미터: 크기(512), 오버랩(50), 최소 크기</li>
+              <li><code>DocumentParser</code> — PDF, DOCX, HTML 문서 읽기 (Apache Tika 기반)</li>
+              <li><code>DocumentSplitter</code> — 문단별, 문장별, 토큰별, 재귀적 분할 전략</li>
+              <li>청킹 파라미터: 크기(512토큰), 오버랩(50), 최소 크기</li>
+              <li><code>Document</code> + <code>Metadata</code> — 문서 구조와 메타데이터 관리</li>
             </ul>
           </td>
           <td>PDF 업로드 → 청크 분할 API</td>
@@ -955,24 +962,25 @@ graph LR
           <td>벡터 DB & 임베딩</td>
           <td>
             <ul>
-              <li>PostgreSQL + pgvector 확장 설치 & 설정</li>
-              <li><code>PgVectorStore</code> — Spring AI 벡터 저장소</li>
-              <li>임베딩 모델 선택: OpenAI ada-002 vs Cohere</li>
-              <li>유사도 검색: 코사인 유사도, Top-K, 임계값 필터링</li>
+              <li><code>EmbeddingStore</code> — LangChain4j 벡터 저장소 추상화 (15+ DB 지원)</li>
+              <li><code>PgVectorEmbeddingStore</code> — PostgreSQL + pgvector 연동</li>
+              <li><code>EmbeddingModel</code> — OpenAI, Cohere, 로컬 임베딩 모델 선택</li>
+              <li>유사도 검색: 코사인 유사도, Top-K, 최소 점수 필터링</li>
+              <li>메타데이터 필터링 — <code>Filter</code> API로 부서별, 날짜별 필터</li>
             </ul>
           </td>
           <td>문서 임베딩 저장 → 유사 문서 검색 API</td>
         </tr>
         <tr>
           <td><strong>3주차</strong></td>
-          <td>RAG 통합 & 최적화</td>
+          <td>RAG 통합 & AiService 연동</td>
           <td>
             <ul>
-              <li><code>QuestionAnswerAdvisor</code> — RAG 자동 파이프라인</li>
-              <li>검색 결과 재랭킹 (Re-ranking)</li>
+              <li><code>ContentRetriever</code> — AiService에 RAG 자동 연결</li>
+              <li><code>EmbeddingStoreContentRetriever</code> — 벡터 검색 기반 검색기</li>
+              <li><code>QueryTransformer</code> — 질문 확장/변환으로 검색 품질 향상</li>
               <li>하이브리드 검색: 벡터 + 키워드 (Full-text search)</li>
-              <li>메타데이터 필터링 (부서별, 날짜별 문서 필터)</li>
-              <li>청킹 전략 A/B 테스트 & 품질 평가</li>
+              <li><code>RetrievalAugmentor</code> — 고급 RAG 파이프라인 커스터마이징</li>
             </ul>
           </td>
           <td>사내 문서 검색 챗봇 완성</td>
@@ -981,32 +989,34 @@ graph LR
     </table>
 
     <div class="prompt-example good">
-      <div class="prompt-label">2단계 실습 — Spring AI RAG 프로젝트 프롬프트</div>
-      <pre><code class="language-text">Java Spring Boot로 사내 문서 검색 RAG API를 만들어줘.
+      <div class="prompt-label">2단계 실습 — LangChain4j RAG 프로젝트 프롬프트</div>
+      <pre><code class="language-text">Spring Boot + LangChain4j로 사내 문서 검색 RAG API를 만들어줘.
 
 기술 스택:
-- Java 17, Spring Boot 3.3, Spring AI 1.0
+- Java 17, Spring Boot 3.3, LangChain4j 1.0
+- langchain4j-spring-boot-starter, langchain4j-anthropic
+- langchain4j-pgvector, langchain4j-document-parser-apache-tika
 - LLM: Claude Sonnet 4.6 (Anthropic API)
 - 벡터 DB: PostgreSQL 16 + pgvector 0.7
 - 임베딩: OpenAI text-embedding-ada-002
-- 문서 파싱: Apache Tika 2.9
 
 기능:
 1. POST /api/documents/upload
    - PDF/DOCX 멀티파트 업로드
-   - Tika로 텍스트 추출 → TokenTextSplitter로 청킹 (512토큰, 50 오버랩)
-   - 임베딩 생성 → PgVectorStore 저장
+   - DocumentParser(Tika)로 텍스트 추출
+   - DocumentSplitter로 청킹 (512토큰, 50 오버랩)
+   - EmbeddingStore(PgVector)에 저장
    - 메타데이터: 파일명, 업로드 일시, 부서, 페이지 번호
 
 2. POST /api/chat
-   - 사용자 질문 → PgVectorStore 유사도 검색 (Top-5)
-   - QuestionAnswerAdvisor로 RAG 응답 생성
+   - AiService + ContentRetriever로 RAG 질의응답
+   - EmbeddingStoreContentRetriever (Top-5, minScore 0.7)
    - 응답에 출처 문서명 + 페이지 번호 포함
 
 3. GET /api/documents — 업로드된 문서 목록 조회
 4. DELETE /api/documents/{id} — 문서 및 관련 벡터 삭제
 
-Spring AI의 VectorStore, ChatClient, QuestionAnswerAdvisor를 활용하고,
+AiService 인터페이스에 ContentRetriever를 연결하는 방식으로 구현하고,
 docker-compose.yml에 PostgreSQL + pgvector 설정도 포함해줘.</code></pre>
     </div>
 
@@ -1014,13 +1024,13 @@ docker-compose.yml에 PostgreSQL + pgvector 설정도 포함해줘.</code></pre>
     <h4>3단계: AI 에이전트 & Tool Use (3주)</h4>
 
     <div class="info-box">
-      <strong>학습 목표</strong>: LLM이 외부 도구(DB 조회, API 호출, 파일 처리)를 자율적으로 선택하고 실행하는 AI 에이전트를 구축할 수 있다.
+      <strong>학습 목표</strong>: LangChain4j의 <code>@Tool</code>과 AiService를 활용하여, LLM이 외부 도구(DB 조회, API 호출, 파일 처리)를 자율적으로 선택하고 실행하는 AI 에이전트를 구축할 수 있다. LangChain4j의 에이전트 패턴은 Java 개발자에게 가장 자연스러운 방식으로 Tool Use를 구현합니다.
     </div>
 
     <div class="diagram-container">
       <div class="mermaid">
 graph TD
-    U["사용자 요청"] --> A["AI 에이전트\n(Spring AI)"]
+    U["사용자 요청"] --> A["AI 에이전트\n(LangChain4j AiService)"]
     A -->|"도구 선택"| T1["DB 조회\n@Tool"]
     A -->|"도구 선택"| T2["이메일 발송\n@Tool"]
     A -->|"도구 선택"| T3["외부 API\n@Tool"]
@@ -1041,12 +1051,13 @@ graph TD
       <tbody>
         <tr>
           <td><strong>1주차</strong></td>
-          <td>Function Calling 기초</td>
+          <td>@Tool 기반 Function Calling</td>
           <td>
             <ul>
-              <li>Spring AI <code>@Tool</code> 어노테이션 — 함수를 LLM 도구로 등록</li>
-              <li><code>@Tool</code> 파라미터 정의 — 이름, 설명, 입출력 스키마</li>
-              <li>LLM의 도구 선택 메커니즘 이해</li>
+              <li>LangChain4j <code>@Tool</code> — 일반 Java 메서드를 AI 도구로 등록</li>
+              <li><code>@P</code> 어노테이션 — 파라미터 설명을 LLM에 전달</li>
+              <li>메서드 시그니처에서 도구 스키마 자동 생성</li>
+              <li>AiService에 도구 등록: <code>AiServices.builder().tools()</code></li>
               <li>단일 도구 호출 vs 병렬 도구 호출</li>
             </ul>
           </td>
@@ -1058,23 +1069,24 @@ graph TD
           <td>
             <ul>
               <li>ReAct 패턴 — 추론(Reasoning) → 행동(Action) → 관찰(Observation)</li>
-              <li>멀티 스텝 도구 체이닝 — 여러 도구를 순차 실행</li>
-              <li>에이전트 메모리 — 대화 컨텍스트 + 도구 실행 결과 유지</li>
+              <li>멀티 스텝 도구 체이닝 — 여러 도구를 순차 자동 실행</li>
+              <li>ChatMemory + Tool — 대화 컨텍스트와 도구 실행 결과 동시 유지</li>
               <li>에러 핸들링 — 도구 실패 시 재시도 & 대안 전략</li>
+              <li>RAG + Tool Use 결합 — ContentRetriever + @Tool 동시 사용</li>
             </ul>
           </td>
           <td>DB 조회 → 분석 → 이메일 보고서 자동 생성 에이전트</td>
         </tr>
         <tr>
           <td><strong>3주차</strong></td>
-          <td>LangChain4j & 고급 에이전트</td>
+          <td>고급 에이전트 & 가드레일</td>
           <td>
             <ul>
-              <li>LangChain4j — Java 네이티브 AI 프레임워크</li>
-              <li><code>AiService</code> — 인터페이스 기반 AI 서비스 정의</li>
-              <li><code>ContentRetriever</code> — RAG + 에이전트 결합</li>
               <li>가드레일 — 입력 검증, 출력 필터링, 비용 제한</li>
-              <li>Spring AI vs LangChain4j 비교 & 선택 기준</li>
+              <li><code>@MemoryId</code> — 사용자별 에이전트 상태 격리</li>
+              <li>동적 도구 등록 — 런타임에 도구 추가/제거</li>
+              <li>에이전트 체이닝 — 여러 AiService 연결 (분석 → 판단 → 실행)</li>
+              <li>Spring AI @Tool과 비교 — LangChain4j가 더 간결한 이유</li>
             </ul>
           </td>
           <td>멀티 도구 업무 자동화 에이전트 완성</td>
@@ -1083,27 +1095,32 @@ graph TD
     </table>
 
     <div class="prompt-example good">
-      <div class="prompt-label">3단계 실습 — AI 에이전트 프롬프트</div>
-      <pre><code class="language-text">Spring Boot + Spring AI로 업무 자동화 AI 에이전트를 만들어줘.
+      <div class="prompt-label">3단계 실습 — LangChain4j AI 에이전트 프롬프트</div>
+      <pre><code class="language-text">Spring Boot + LangChain4j로 업무 자동화 AI 에이전트를 만들어줘.
 
 기술 스택:
-- Java 17, Spring Boot 3.3, Spring AI 1.0
+- Java 17, Spring Boot 3.3, LangChain4j 1.0
+- langchain4j-spring-boot-starter, langchain4j-anthropic
 - LLM: Claude Sonnet 4.6
 - DB: PostgreSQL (직원/프로젝트 데이터)
 
-에이전트 도구 (@Tool):
-1. searchEmployees(department, role) — 부서/역할로 직원 검색
-2. getProjectStatus(projectId) — 프로젝트 진행 상황 조회
-3. sendEmail(to, subject, body) — 이메일 발송
-4. generateReport(type, dateRange) — PDF 보고서 생성
-5. createJiraTicket(summary, description, assignee) — Jira 이슈 생성
+AiService 인터페이스:
+- @SystemMessage로 에이전트 역할 정의
+- ChatMemory로 대화 히스토리 유지
+- @MemoryId로 사용자별 상태 격리
+
+에이전트 도구 (@Tool + @P):
+1. searchEmployees(@P("부서명 또는 역할") query) — 직원 검색
+2. getProjectStatus(@P("프로젝트 ID") projectId) — 진행 상황 조회
+3. sendEmail(@P("수신자") to, @P("제목") subject, @P("본문") body) — 이메일 발송
+4. generateReport(@P("보고서 유형") type, @P("기간") dateRange) — PDF 보고서 생성
+5. createJiraTicket(@P("요약") summary, @P("설명") desc, @P("담당자") assignee) — Jira 이슈
 
 시나리오 예시:
 - "개발팀 이번 달 프로젝트 현황을 정리해서 팀장에게 이메일로 보내줘"
-  → getProjectStatus → generateReport → searchEmployees → sendEmail
+  → searchEmployees → getProjectStatus → generateReport → sendEmail (자동 체이닝)
 
-에이전트가 사용자 요청을 분석해서 필요한 도구를 자율적으로 선택하고,
-멀티 스텝으로 실행하도록 구현해줘.
+AiServices.builder()로 에이전트를 구성하고,
 도구 실행 실패 시 재시도 로직과 최대 5회 도구 호출 제한도 넣어줘.</code></pre>
     </div>
 
@@ -1209,7 +1226,7 @@ claude_desktop_config.json 설정 예시도 포함해줘.</code></pre>
       <div class="mermaid">
 graph LR
     subgraph 개발["개발 환경"]
-        A1["Spring Boot\nAI 애플리케이션"]
+        A1["Spring Boot + LangChain4j\nAI 애플리케이션"]
     end
     subgraph CI["CI/CD"]
         B1["GitHub Actions\n빌드 & 테스트"]
@@ -1353,105 +1370,17 @@ graph LR
       </tbody>
     </table>
 
-    <h4>LangChain4j 심화 가이드</h4>
+    <h4>LangChain4j 코드 패턴 레퍼런스</h4>
 
     <div class="info-box">
-      <strong>LangChain4j란?</strong>: Python의 LangChain을 Java로 포팅한 것이 아니라, <strong>Java 생태계에 맞게 재설계</strong>된 AI 프레임워크입니다. 인터페이스 기반 선언적 프로그래밍, Spring Boot 자동 설정, 강타입 안전성 등 Java 개발자에게 익숙한 패턴을 제공합니다. Spring AI와 함께 Java AI 개발의 양대 축을 이루고 있습니다.
+      <strong>빠른 참조용 코드 패턴</strong>: 1~3단계에서 학습한 LangChain4j의 3대 핵심 패턴(AiService, RAG, Tool Use)을 실전 코드로 정리했습니다. 프로젝트 시작 시 복사해서 바로 활용하세요.
     </div>
-
-    <h4>LangChain4j 핵심 아키텍처</h4>
-
-    <div class="diagram-container">
-      <div class="mermaid">
-graph TD
-    subgraph 선언층["선언적 API 레이어"]
-        A1["AiService\n인터페이스 기반 AI 서비스"]
-        A2["@SystemMessage\n@UserMessage\n어노테이션 프롬프트"]
-    end
-    subgraph 핵심층["핵심 컴포넌트"]
-        B1["ChatLanguageModel\nLLM 호출"]
-        B2["ContentRetriever\nRAG 검색"]
-        B3["ToolSpecification\nTool Use"]
-        B4["ChatMemory\n대화 메모리"]
-    end
-    subgraph 통합층["통합 레이어"]
-        C1["Anthropic\nClaude"]
-        C2["OpenAI\nGPT"]
-        C3["Ollama\n로컬 LLM"]
-        C4["PgVector\nChroma\nElastic"]
-    end
-
-    A1 --> B1 & B2 & B3 & B4
-    A2 --> A1
-    B1 --> C1 & C2 & C3
-    B2 --> C4
-
-    style A1 fill:#4a9eff,color:#fff
-    style B1 fill:#ff9800,color:#fff
-      </div>
-    </div>
-
-    <h4>LangChain4j 핵심 개념 상세</h4>
-
-    <table class="comparison-table">
-      <thead><tr><th>개념</th><th>설명</th><th>Spring AI 대응</th><th>사용 시점</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>AiService</strong></td>
-          <td>Java 인터페이스만 정의하면 LangChain4j가 AI 로직을 자동 구현. Spring의 JpaRepository처럼 동작</td>
-          <td>ChatClient</td>
-          <td>AI 기능을 서비스 레이어에 통합할 때</td>
-        </tr>
-        <tr>
-          <td><strong>@SystemMessage / @UserMessage</strong></td>
-          <td>어노테이션으로 프롬프트 정의. 메서드 파라미터가 자동으로 변수에 바인딩</td>
-          <td>PromptTemplate</td>
-          <td>프롬프트를 코드에 선언적으로 관리할 때</td>
-        </tr>
-        <tr>
-          <td><strong>@Tool</strong></td>
-          <td>일반 Java 메서드를 AI가 호출할 수 있는 도구로 등록. 메서드 시그니처에서 스키마 자동 생성</td>
-          <td>@Tool (Spring AI)</td>
-          <td>에이전트가 외부 시스템과 상호작용할 때</td>
-        </tr>
-        <tr>
-          <td><strong>ChatMemory</strong></td>
-          <td>대화 히스토리 관리. MessageWindowChatMemory(최근 N개), TokenWindowChatMemory(토큰 제한)</td>
-          <td>ChatMemory (Spring AI)</td>
-          <td>멀티턴 대화가 필요한 챗봇</td>
-        </tr>
-        <tr>
-          <td><strong>ContentRetriever</strong></td>
-          <td>RAG 검색 추상화. EmbeddingStore 기반 벡터 검색 + SQL 검색 + 웹 검색 조합 가능</td>
-          <td>VectorStore + QuestionAnswerAdvisor</td>
-          <td>RAG 파이프라인 구축 시</td>
-        </tr>
-        <tr>
-          <td><strong>EmbeddingStore</strong></td>
-          <td>벡터 저장소 추상화. PgVector, Chroma, Elasticsearch, Milvus, Redis 등 15+ 벡터 DB 지원</td>
-          <td>VectorStore</td>
-          <td>문서 임베딩 저장 & 유사도 검색</td>
-        </tr>
-        <tr>
-          <td><strong>DocumentSplitter</strong></td>
-          <td>문서 분할기. 문단별, 문장별, 토큰별, 재귀적 분할 전략 제공</td>
-          <td>TokenTextSplitter</td>
-          <td>RAG용 문서 청킹 시</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h4>LangChain4j 실전 패턴</h4>
 
     <div class="prompt-example good">
       <div class="prompt-label">패턴 1: AiService — 선언적 AI 서비스</div>
       <pre><code class="language-java">// 인터페이스만 정의하면 LangChain4j가 구현을 자동 생성
 public interface AssistantService {
 
-    // 단순 채팅 — 메서드 호출만으로 LLM 응답
-    String chat(String userMessage);
-
-    // 시스템 프롬프트 + 변수 바인딩
     @SystemMessage("당신은 {{role}} 전문가입니다. 한국어로 답변하세요.")
     String chatAs(@V("role") String role,
                   @UserMessage String question);
@@ -1463,44 +1392,23 @@ public interface AssistantService {
     // 감성 분석 — enum 반환도 가능
     @UserMessage("다음 리뷰의 감성을 분류하세요: {{it}}")
     Sentiment classifySentiment(String review);
-}
-
-// Spring Boot에서 사용
-@RestController
-public class ChatController {
-    private final AssistantService assistant; // 자동 주입
-
-    @PostMapping("/api/chat")
-    public String chat(@RequestBody String message) {
-        return assistant.chat(message);
-    }
 }</code></pre>
     </div>
 
     <div class="prompt-example good">
-      <div class="prompt-label">패턴 2: RAG — 문서 검색 기반 질의응답</div>
-      <pre><code class="language-java">// RAG 지원 AI 서비스
-public interface RagAssistant {
-
-    @SystemMessage("""
-        사내 문서를 기반으로 정확하게 답변하세요.
-        문서에 없는 내용은 '확인된 문서에서 해당 정보를 찾을 수 없습니다'라고 답변하세요.
-        답변 시 출처 문서명을 반드시 포함하세요.
-        """)
+      <div class="prompt-label">패턴 2: RAG — ContentRetriever + AiService</div>
+      <pre><code class="language-java">public interface RagAssistant {
+    @SystemMessage("사내 문서 기반으로 답변하세요. 출처를 포함하세요.")
     String answer(@UserMessage String question);
 }
 
-// RAG 구성
 @Bean
 RagAssistant ragAssistant(ChatLanguageModel model,
                           EmbeddingStore&lt;TextSegment&gt; store,
                           EmbeddingModel embeddingModel) {
     ContentRetriever retriever = EmbeddingStoreContentRetriever.builder()
-        .embeddingStore(store)
-        .embeddingModel(embeddingModel)
-        .maxResults(5)
-        .minScore(0.7)
-        .build();
+        .embeddingStore(store).embeddingModel(embeddingModel)
+        .maxResults(5).minScore(0.7).build();
 
     return AiServices.builder(RagAssistant.class)
         .chatLanguageModel(model)
@@ -1511,136 +1419,86 @@ RagAssistant ragAssistant(ChatLanguageModel model,
     </div>
 
     <div class="prompt-example good">
-      <div class="prompt-label">패턴 3: Tool Use — AI 에이전트 도구 호출</div>
-      <pre><code class="language-java">// 도구 정의 — 일반 Java 메서드에 @Tool 어노테이션
-@Component
+      <div class="prompt-label">패턴 3: Tool Use — @Tool + @P 에이전트</div>
+      <pre><code class="language-java">@Component
 public class CompanyTools {
-
     @Tool("직원 정보를 이름 또는 부서로 검색합니다")
     public List&lt;Employee&gt; searchEmployees(
             @P("검색할 직원 이름 또는 부서명") String query) {
         return employeeRepository.searchByNameOrDept(query);
     }
-
-    @Tool("프로젝트의 현재 진행 상태를 조회합니다")
-    public ProjectStatus getProjectStatus(
-            @P("프로젝트 ID") String projectId) {
-        return projectRepository.findStatus(projectId);
-    }
-
-    @Tool("지정된 수신자에게 이메일을 발송합니다")
-    public String sendEmail(
-            @P("수신자 이메일") String to,
-            @P("메일 제목") String subject,
-            @P("메일 본문") String body) {
-        mailService.send(to, subject, body);
-        return "이메일 발송 완료: " + to;
-    }
 }
 
 // 도구를 가진 에이전트 구성
 @Bean
-AssistantService agent(ChatLanguageModel model,
-                       CompanyTools tools) {
+AssistantService agent(ChatLanguageModel model, CompanyTools tools) {
     return AiServices.builder(AssistantService.class)
-        .chatLanguageModel(model)
-        .tools(tools)
+        .chatLanguageModel(model).tools(tools)
         .chatMemory(MessageWindowChatMemory.withMaxMessages(20))
         .build();
 }
-// "개발팀 김철수의 프로젝트 현황을 조회해서 메일로 보내줘"
+// "김철수의 프로젝트 현황 조회해서 메일로 보내줘"
 // → searchEmployees → getProjectStatus → sendEmail 자동 체이닝</code></pre>
     </div>
 
-    <h4>Spring AI vs LangChain4j 선택 가이드</h4>
+    <h4>Spring AI vs LangChain4j 비교</h4>
 
     <table class="comparison-table">
-      <thead><tr><th>항목</th><th>Spring AI</th><th>LangChain4j</th><th>선택 기준</th></tr></thead>
+      <thead><tr><th>항목</th><th>Spring AI</th><th>LangChain4j</th><th>판정</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>철학</strong></td>
-          <td>Spring 생태계 통합 우선. Spring Boot 자동 설정, Spring Security, Spring Data 연동</td>
-          <td>AI 기능 우선. 선언적 AiService, 풍부한 AI 패턴, 독립 실행 가능</td>
-          <td>기존 Spring 프로젝트 → Spring AI<br>AI 기능 중심 → LangChain4j</td>
-        </tr>
         <tr>
           <td><strong>API 스타일</strong></td>
           <td>ChatClient 빌더 패턴 (명령적)</td>
           <td>AiService 인터페이스 (선언적)</td>
-          <td>세밀한 제어 → Spring AI<br>간결한 코드 → LangChain4j</td>
+          <td>LangChain4j — 코드 간결성</td>
         </tr>
         <tr>
           <td><strong>RAG</strong></td>
-          <td>VectorStore + Advisor 패턴</td>
+          <td>VectorStore + Advisor</td>
           <td>ContentRetriever + EmbeddingStore</td>
-          <td>유사한 수준. Spring Data 연동 → Spring AI</td>
+          <td>LangChain4j — 더 다양한 검색 전략</td>
         </tr>
         <tr>
           <td><strong>에이전트</strong></td>
           <td>@Tool + ChatClient</td>
-          <td>@Tool + AiService (더 간결)</td>
-          <td>복잡한 에이전트 → LangChain4j<br>단순 Tool Use → Spring AI</td>
+          <td>@Tool + @P + AiService</td>
+          <td>LangChain4j — 더 직관적인 도구 등록</td>
         </tr>
         <tr>
           <td><strong>모델 지원</strong></td>
-          <td>주요 모델 (Anthropic, OpenAI, Ollama 등)</td>
-          <td>더 많은 모델 (15+ 제공자)</td>
-          <td>다양한 모델 실험 → LangChain4j</td>
+          <td>주요 모델 (Anthropic, OpenAI 등)</td>
+          <td>15+ 제공자 (더 다양)</td>
+          <td>LangChain4j — 폭넓은 선택</td>
         </tr>
         <tr>
           <td><strong>벡터 DB</strong></td>
           <td>PgVector, Chroma, Milvus 등</td>
-          <td>15+ 벡터 DB (더 다양)</td>
-          <td>특정 벡터 DB 필요 → LangChain4j</td>
+          <td>15+ 벡터 DB</td>
+          <td>LangChain4j — 더 다양한 옵션</td>
+        </tr>
+        <tr>
+          <td><strong>구조화 출력</strong></td>
+          <td>BeanOutputConverter 필요</td>
+          <td>반환 타입만 정의하면 자동 파싱</td>
+          <td>LangChain4j — 제로 보일러플레이트</td>
+        </tr>
+        <tr>
+          <td><strong>Spring 통합</strong></td>
+          <td>네이티브 통합 (Security, Data 등)</td>
+          <td>spring-boot-starter로 통합</td>
+          <td>Spring AI — 깊은 생태계 연동 시</td>
         </tr>
         <tr>
           <td><strong>성숙도</strong></td>
           <td>Spring 팀 공식 지원, 안정적</td>
           <td>활발한 오픈소스, 빠른 기능 추가</td>
-          <td>안정성 → Spring AI<br>최신 기능 → LangChain4j</td>
-        </tr>
-        <tr>
-          <td><strong>함께 사용</strong></td>
-          <td colspan="3">두 프레임워크는 <strong>같은 프로젝트에서 함께 사용 가능</strong>합니다. Spring AI로 인프라(VectorStore, 설정)를 관리하고, LangChain4j의 AiService로 AI 로직을 구현하는 조합이 실무에서 효과적입니다.</td>
+          <td>동등 — 용도에 따라 선택</td>
         </tr>
       </tbody>
     </table>
 
-    <div class="prompt-example good">
-      <div class="prompt-label">LangChain4j 프로젝트 시작 프롬프트</div>
-      <pre><code class="language-text">Spring Boot + LangChain4j로 사내 업무 AI 어시스턴트를 만들어줘.
-
-기술 스택:
-- Java 17, Spring Boot 3.3
-- LangChain4j 1.0 + langchain4j-spring-boot-starter
-- LLM: Claude Sonnet 4.6 (Anthropic)
-- 벡터 DB: PostgreSQL + pgvector
-- 임베딩: OpenAI text-embedding-ada-002
-
-핵심 기능:
-1. AiService 기반 AI 서비스
-   - AssistantService 인터페이스 — @SystemMessage로 역할 정의
-   - 구조화된 출력 — 분석 결과를 Java Record로 자동 파싱
-   - ChatMemory — 사용자별 대화 히스토리 유지
-
-2. RAG (사내 문서 검색)
-   - POST /api/documents/upload — PDF 업로드 → 청킹 → PgVector 저장
-   - ContentRetriever로 질문 관련 문서 자동 검색
-   - 하이브리드 검색: 벡터 유사도 + 키워드 매칭
-
-3. 업무 도구 에이전트 (@Tool)
-   - searchEmployees(query) — 직원 검색
-   - getProjectStatus(projectId) — 프로젝트 현황
-   - executeSQL(query) — 읽기 전용 DB 조회 (SELECT만 허용)
-   - sendSlackMessage(channel, message) — Slack 알림
-
-4. REST API
-   - POST /api/chat — 채팅 (RAG + Tool Use 통합)
-   - POST /api/analyze — 텍스트 분석 (구조화 출력)
-   - GET /api/chat/history — 대화 이력
-
-LangChain4j의 AiServices.builder()로 조합하고,
-application.yml 설정과 프로젝트 구조 전체를 작성해줘.</code></pre>
+    <div class="warning-box">
+      <strong>실무 추천 조합</strong>: <strong>LangChain4j(AI 로직) + Spring Boot(서빙/인프라)</strong>가 가장 효과적입니다. LangChain4j의 AiService로 AI 기능을 구현하고, Spring Boot로 REST API, 보안, 모니터링을 담당합니다. 두 프레임워크는 같은 프로젝트에서 충돌 없이 함께 사용할 수 있습니다.
     </div>
 
     <h4>Java AI 개발자 추천 학습 자료</h4>
@@ -1649,33 +1507,53 @@ application.yml 설정과 프로젝트 구조 전체를 작성해줘.</code></pr
       <tbody>
         <tr>
           <td><strong>공식 문서</strong></td>
-          <td>Spring AI Reference Documentation</td>
-          <td>Spring AI 공식 레퍼런스 — ChatClient, VectorStore, Function Calling 전체 가이드</td>
+          <td><a href="https://docs.langchain4j.dev/" target="_blank" rel="noopener">LangChain4j Documentation</a></td>
+          <td>LangChain4j 공식 문서 — AiService, RAG, 에이전트 패턴 전체 가이드</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub</strong></td>
+          <td><a href="https://github.com/langchain4j/langchain4j" target="_blank" rel="noopener">langchain4j/langchain4j</a></td>
+          <td>LangChain4j GitHub — 소스 코드, 이슈, 릴리스 노트</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub</strong></td>
+          <td><a href="https://github.com/langchain4j/langchain4j-examples" target="_blank" rel="noopener">langchain4j/langchain4j-examples</a></td>
+          <td>LangChain4j 공식 예제 — AiService, RAG, Tool Use, 스트리밍 등 30+ 예제</td>
         </tr>
         <tr>
           <td><strong>공식 문서</strong></td>
-          <td>LangChain4j Documentation</td>
-          <td>LangChain4j 공식 문서 — AiService, RAG, 에이전트 패턴</td>
+          <td><a href="https://docs.spring.io/spring-ai/reference/" target="_blank" rel="noopener">Spring AI Reference Documentation</a></td>
+          <td>Spring AI 공식 레퍼런스 — ChatClient, VectorStore, Function Calling</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub</strong></td>
+          <td><a href="https://github.com/spring-projects/spring-ai" target="_blank" rel="noopener">spring-projects/spring-ai</a></td>
+          <td>Spring AI GitHub — 소스 코드 및 이슈 트래커</td>
         </tr>
         <tr>
           <td><strong>공식 문서</strong></td>
-          <td>Anthropic MCP Specification</td>
-          <td>MCP 프로토콜 명세 — Java SDK 포함</td>
+          <td><a href="https://modelcontextprotocol.io/docs" target="_blank" rel="noopener">Model Context Protocol Specification</a></td>
+          <td>MCP 프로토콜 공식 명세 — 서버/클라이언트 SDK 포함</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub</strong></td>
+          <td><a href="https://github.com/modelcontextprotocol/java-sdk" target="_blank" rel="noopener">modelcontextprotocol/java-sdk</a></td>
+          <td>MCP Java SDK — Spring Boot 기반 MCP 서버 개발</td>
+        </tr>
+        <tr>
+          <td><strong>공식 문서</strong></td>
+          <td><a href="https://docs.anthropic.com/en/api/getting-started" target="_blank" rel="noopener">Anthropic API Documentation</a></td>
+          <td>Claude API 공식 문서 — 모델, 가격, Tool Use, 비전 가이드</td>
+        </tr>
+        <tr>
+          <td><strong>GitHub</strong></td>
+          <td><a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener">pgvector/pgvector</a></td>
+          <td>pgvector — PostgreSQL 벡터 유사도 검색 확장</td>
         </tr>
         <tr>
           <td><strong>실습</strong></td>
-          <td>Spring AI Samples (GitHub)</td>
-          <td>Spring 팀 공식 예제 — 챗봇, RAG, Function Calling, 이미지 생성</td>
-        </tr>
-        <tr>
-          <td><strong>실습</strong></td>
-          <td>Spring AI + Claude 통합 가이드</td>
-          <td>Anthropic API를 Spring AI에서 사용하는 상세 가이드</td>
-        </tr>
-        <tr>
-          <td><strong>커뮤니티</strong></td>
-          <td>Spring AI GitHub Discussions</td>
-          <td>Spring AI 커뮤니티 Q&A — 이슈 해결, 패턴 공유</td>
+          <td><a href="https://github.com/spring-projects/spring-ai/tree/main/spring-ai-integration-tests" target="_blank" rel="noopener">Spring AI Integration Tests</a></td>
+          <td>Spring AI 통합 테스트 — 실전 사용 패턴 참고</td>
         </tr>
       </tbody>
     </table>
@@ -1697,7 +1575,7 @@ application.yml 설정과 프로젝트 구조 전체를 작성해줘.</code></pr
     <div class="warning-box">
       <strong>기술 스택 선택 시 PM/PL 판단 기준</strong>:
       <ul>
-        <li><strong>팀 역량</strong>: 기존 팀이 Java 기반이면 Spring AI로 시작, Python 기반이면 LangChain으로 시작</li>
+        <li><strong>팀 역량</strong>: 기존 팀이 Java 기반이면 <a href="https://docs.langchain4j.dev/" target="_blank" rel="noopener">LangChain4j</a>로 시작, Python 기반이면 <a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener">LangChain</a>으로 시작</li>
         <li><strong>프로젝트 성격</strong>: PoC/MVP → Python (빠른 검증), 프로덕션/엔터프라이즈 → Java (안정성)</li>
         <li><strong>일정</strong>: Python은 AI 예제가 풍부해 학습 2~3주 단축 가능</li>
         <li><strong>채용</strong>: AI 전문가 채용 시 Python 필수, 기존 백엔드 팀 AI 전환 시 Java 활용</li>
