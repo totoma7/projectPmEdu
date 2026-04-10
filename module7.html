@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7. AI 실전 케이스 스터디 - PM/PL 바이브 코딩 교육자료</title>
+  <meta name="description" content="PM과 비개발자를 위한 AI 바이브 코딩 교육자료. AI 기초, 문서 작성, 도식화, 자료 조사, 바이브 코딩 실습을 다룹니다.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <button id="menu-toggle" aria-label="메뉴 열기">
+    <span class="hamburger"></span>
+  </button>
+
+  <div id="sidebar-overlay"></div>
+
+  <nav id="sidebar" aria-label="교육 목차">
+    <div class="sidebar-header">
+      <h1 class="sidebar-title">PM/PL 바이브 코딩</h1>
+      <button id="theme-toggle" aria-label="테마 전환">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item" data-module="module1">
+        <a href="index.html" class="nav-title">
+          <span class="nav-number">1</span>
+          <span>AI 기초 개념</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="index.html#s1-1">1.1 AI와 LLM이란?</a></li>
+          <li><a href="index.html#s1-2">1.2 생성형 AI의 동작 원리</a></li>
+          <li><a href="index.html#s1-3">1.3 프롬프트 엔지니어링 기초</a></li>
+          <li><a href="index.html#s1-4">1.4 주요 AI 도구 소개</a></li>
+          <li><a href="index.html#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
+          <li><a href="index.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
+          <li><a href="index.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
+          <li><a href="index.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="index.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
+          <li><a href="index.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module2">
+        <a href="module2.html" class="nav-title">
+          <span class="nav-number">2</span>
+          <span>AI 활용 문서 작성</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module2.html#s2-1">2.1 PRD 작성</a></li>
+          <li><a href="module2.html#s2-2">2.2 기획서/제안서 자동 생성</a></li>
+          <li><a href="module2.html#s2-3">2.3 요구사항 정의서 작성</a></li>
+          <li><a href="module2.html#s2-4">2.4 회의록/보고서 자동 정리</a></li>
+          <li><a href="module2.html#s2-5">2.5 프롬프트 템플릿 활용법</a></li>
+          <li><a href="module2.html#s2-6">2.6 PL 프로젝트 관리 문서</a></li>
+          <li><a href="module2.html#s2-7">2.7 AI 문서 품질 관리</a></li>
+          <li><a href="module2.html#s2-8">2.8 스펙 문서 및 API 명세</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module3">
+        <a href="module3.html" class="nav-title">
+          <span class="nav-number">3</span>
+          <span>AI 도식화 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module3.html#s3-1">3.1 플로우차트 생성</a></li>
+          <li><a href="module3.html#s3-2">3.2 시스템 아키텍처 다이어그램</a></li>
+          <li><a href="module3.html#s3-3">3.3 ER 다이어그램</a></li>
+          <li><a href="module3.html#s3-4">3.4 사용자 여정 맵</a></li>
+          <li><a href="module3.html#s3-5">3.5 AI 도구별 도식화 비교</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module4">
+        <a href="module4.html" class="nav-title">
+          <span class="nav-number">4</span>
+          <span>AI 자료 조사 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module4.html#s4-1">4.1 시장 조사 및 트렌드 분석</a></li>
+          <li><a href="module4.html#s4-2">4.2 경쟁사 분석 프레임워크</a></li>
+          <li><a href="module4.html#s4-3">4.3 사용자 페르소나 생성</a></li>
+          <li><a href="module4.html#s4-4">4.4 데이터 수집 및 정리</a></li>
+          <li><a href="module4.html#s4-5">4.5 리서치 결과 보고서 작성</a></li>
+          <li><a href="module4.html#s4-6">4.6 AI 검색 도구 활용</a></li>
+          <li><a href="module4.html#s4-7">4.7 팩트 체크 및 검증</a></li>
+          <li><a href="module4.html#s4-8">4.8 인터뷰 설계 및 분석</a></li>
+          <li><a href="module4.html#s4-9">4.9 A/B 테스트 설계</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module5">
+        <a href="module5.html" class="nav-title">
+          <span class="nav-number">5</span>
+          <span>바이브 코딩 실습</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module5.html#s5-1">5.1 바이브 코딩이란?</a></li>
+          <li><a href="module5.html#s5-2">5.2 Claude Code 시작하기</a></li>
+          <li><a href="module5.html#s5-3">5.3 프롬프트로 웹페이지 만들기</a></li>
+          <li><a href="module5.html#s5-4">5.4 반복 개선으로 완성도 높이기</a></li>
+          <li><a href="module5.html#s5-5">5.5 실전 프로젝트: 랜딩페이지</a></li>
+          <li><a href="module5.html#s5-6">5.6 Claude Code 핵심 용어</a></li>
+          <li><a href="module5.html#s5-7">5.7 유용한 스킬 & 활용법</a></li>
+          <li><a href="module5.html#s5-8">5.8 커뮤니티 스킬 & 확장 생태계</a></li>
+          <li><a href="module5.html#s5-9">5.9 PL을 위한 실전 활용 전략</a></li>
+          <li><a href="module5.html#s5-10">5.10 웹 게시판 & MCP 테스트</a></li>
+          <li><a href="module5.html#s5-11">5.11 Flutter 앱 & APK 빌드</a></li>
+          <li><a href="module5.html#s5-12">5.12 기존 소스 대규모 개선</a></li>
+          <li><a href="module5.html#s5-13">5.13 업무 능률 극대화 전략</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module6">
+        <a href="module6.html" class="nav-title">
+          <span class="nav-number">6</span>
+          <span>PM vs PL 역할 이해</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module6.html#s6-1">6.1 PM vs PL 역할 비교</a></li>
+          <li><a href="module6.html#s6-2">6.2 PL의 핵심 역량</a></li>
+          <li><a href="module6.html#s6-3">6.3 프로젝트 일정 관리</a></li>
+          <li><a href="module6.html#s6-4">6.4 리스크 & 이슈 관리</a></li>
+          <li><a href="module6.html#s6-5">6.5 팀 리딩과 커뮤니케이션</a></li>
+          <li><a href="module6.html#s6-6">6.6 AI로 PL 업무 자동화</a></li>
+          <li><a href="module6.html#s6-7">6.7 AI 시대 역할 변화</a></li>
+          <li><a href="module6.html#s6-8">6.8 AI 거버넌스 및 윤리</a></li>
+          <li><a href="module6.html#s6-9">6.9 애자일/스크럼 심화</a></li>
+        </ul>
+      </li>
+      <li class="nav-item active" data-module="module7">
+        <a href="module7.html" class="nav-title">
+          <span class="nav-number">7</span>
+          <span>AI 실전 케이스 스터디</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="#s7-1">7.1 SaaS 기획~MVP 출시</a></li>
+          <li><a href="#s7-2">7.2 레거시 마이그레이션</a></li>
+          <li><a href="#s7-3">7.3 AI 도구 도입 제안</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module8">
+        <a href="module8.html" class="nav-title">
+          <span class="nav-number">8</span>
+          <span>AI 도구 비용/ROI 관리</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module8.html#s8-1">8.1 AI 도구 요금제 비교</a></li>
+          <li><a href="module8.html#s8-2">8.2 토큰 비용 계산</a></li>
+          <li><a href="module8.html#s8-3">8.3 AI 도입 ROI 산출</a></li>
+          <li><a href="module8.html#s8-4">8.4 예산 편성 및 설득</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <p>&copy; 2026 PM/PL 바이브 코딩 교육자료</p>
+    </div>
+  </nav>
+
+  <main id="content">
+    <div id="module-container">
+      <article class="module" id="module7">
+  <h2>7. AI 프로젝트 실전 케이스 스터디</h2>
+  <p class="module-intro">앞서 배운 AI 활용 기법들을 엔드투엔드로 연결하여, 실제 프로젝트에서 PM과 PL이 AI를 어떻게 활용하는지 통합 시나리오로 학습합니다.</p>
+
+  <!-- 7.1 케이스 1: SaaS 기획부터 MVP 출시까지 -->
+  <section id="s7-1">
+    <h3>7.1 케이스 1: 신규 SaaS 제품 기획~MVP 출시 (PM 관점)</h3>
+
+    <div class="info-box">
+      <strong>시나리오</strong>: 중소기업 대상 "AI 기반 고객 피드백 분석 SaaS"를 기획하고, 바이브 코딩으로 MVP를 제작하여 시장에 출시하는 전체 프로세스입니다.
+    </div>
+
+    <h4>전체 프로세스 오버뷰</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>단계</th>
+          <th>활용 모듈</th>
+          <th>AI 활용 내용</th>
+          <th>산출물</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. 시장 조사</strong></td>
+          <td>Module 4</td>
+          <td>AI 검색 도구로 시장 규모 조사, 경쟁사 분석</td>
+          <td>시장 분석 보고서, 경쟁사 Feature Matrix</td>
+        </tr>
+        <tr>
+          <td><strong>2. 사용자 리서치</strong></td>
+          <td>Module 4</td>
+          <td>AI로 인터뷰 질문지 설계, 페르소나 생성</td>
+          <td>페르소나 3명, 인터뷰 분석 보고서</td>
+        </tr>
+        <tr>
+          <td><strong>3. 기획</strong></td>
+          <td>Module 2</td>
+          <td>AI로 PRD 작성, 기획서 생성, 요구사항 정의</td>
+          <td>PRD, 기능 요구사항 정의서</td>
+        </tr>
+        <tr>
+          <td><strong>4. 설계</strong></td>
+          <td>Module 3</td>
+          <td>AI로 시스템 아키텍처, ER 다이어그램, 사용자 여정 맵</td>
+          <td>아키텍처 다이어그램, 화면 흐름도</td>
+        </tr>
+        <tr>
+          <td><strong>5. MVP 개발</strong></td>
+          <td>Module 5</td>
+          <td>Claude Code로 바이브 코딩, 반복 개선</td>
+          <td>동작하는 MVP 웹 애플리케이션</td>
+        </tr>
+        <tr>
+          <td><strong>6. 검증 및 출시</strong></td>
+          <td>Module 4, 2</td>
+          <td>A/B 테스트 설계, 릴리스 노트 작성</td>
+          <td>테스트 결과 보고서, 출시 문서</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Step 1: AI로 시장 기회 발굴</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">시장 기회 분석 프롬프트</div>
+      <pre><code class="language-text">한국 중소기업(50~200명) 대상 고객 피드백 분석 SaaS 시장을 조사해주세요.
+
+분석 항목:
+1. 시장 규모 (TAM/SAM/SOM 추정, 출처 포함)
+2. 기존 솔루션과 한계 (Zendesk, 채널톡, 직접 구축)
+3. 중소기업이 겪는 핵심 Pain Point 5가지
+4. 차별화 기회 (AI 기반 자동 분류, 감성 분석, 트렌드 예측)
+5. Go-to-Market 전략 제안
+
+결론을 "투자할 가치가 있는가?"로 정리해주세요.</code></pre>
+    </div>
+
+    <h4>Step 2: PRD 작성 및 검토</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">MVP PRD 작성 프롬프트</div>
+      <pre><code class="language-text">다음 시장 조사 결과를 바탕으로 MVP PRD를 작성해주세요.
+
+[시장 조사 요약]
+(Step 1 결과를 붙여넣기)
+
+MVP 범위:
+- Phase 1(출시): 피드백 수집 + AI 자동 분류 + 기본 대시보드
+- Phase 2(1개월 후): 감성 분석 + 트렌드 리포트
+- Phase 3(3개월 후): 액션 아이템 자동 생성 + Slack 연동
+
+PRD 구조:
+1. 제품 비전 및 목표
+2. 타겟 사용자 및 페르소나
+3. MVP 기능 요구사항 (MoSCoW 우선순위)
+4. 성공 지표 (DAU, 피드백 분류 정확도, NPS)
+5. 기술 제약사항 및 의존성
+6. 4주 개발 타임라인</code></pre>
+    </div>
+
+    <h4>Step 3: 바이브 코딩으로 MVP 제작</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">Claude Code MVP 개발 프롬프트</div>
+      <pre><code class="language-text">고객 피드백 분석 SaaS의 MVP를 만들어주세요.
+
+## 핵심 기능
+1. 피드백 입력 폼 (텍스트, 별점)
+2. AI 자동 분류 (카테고리: 기능요청/버그/칭찬/불만/기타)
+3. 대시보드 (카테고리별 비율, 최근 피드백 목록, 감성 트렌드)
+4. 간단한 관리자 페이지
+
+## 기술 스택
+- Frontend: React + Tailwind CSS
+- Backend: Node.js + Express
+- Database: SQLite (MVP용)
+- AI: OpenAI API (분류용)
+
+## 요구사항
+- 반응형 디자인 (모바일 대응)
+- 다크모드 지원
+- 데모 데이터 50건 포함</code></pre>
+    </div>
+
+    <h4>Step 4: 검증 및 출시 준비</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">출시 체크리스트 프롬프트</div>
+      <pre><code class="language-text">MVP 출시를 위한 체크리스트와 릴리스 노트를 작성해주세요.
+
+## 출시 체크리스트
+- 기능 테스트 완료 여부
+- 보안 점검 (API 키 노출, SQL 인젝션 등)
+- 성능 테스트 (동시 사용자 50명 기준)
+- 랜딩 페이지 및 온보딩 가이드
+- 피드백 수집 채널 준비
+
+## 릴리스 노트
+- 대상: 초기 베타 사용자 20개 기업
+- 어투: 친근하지만 전문적
+- 포함: 핵심 기능 소개, 사용 가이드 링크, 피드백 요청</code></pre>
+    </div>
+
+    <div class="practice-section">
+      <h4>종합 실습</h4>
+      <p>위 4단계를 직접 수행하여, 여러분만의 SaaS 아이디어를 시장 조사 → PRD → MVP까지 만들어보세요. 전체 과정에서 AI를 어떻게 활용했는지, 사람이 직접 한 부분은 무엇인지를 기록하세요.</p>
+    </div>
+  </section>
+
+  <!-- 7.2 케이스 2: 레거시 시스템 마이그레이션 -->
+  <section id="s7-2">
+    <h3>7.2 케이스 2: 레거시 시스템 마이그레이션 프로젝트 관리 (PL 관점)</h3>
+
+    <div class="info-box">
+      <strong>시나리오</strong>: 10년된 온프레미스 ERP 시스템을 클라우드 SaaS로 마이그레이션하는 6개월 프로젝트를 AI를 활용하여 관리합니다.
+    </div>
+
+    <h4>프로젝트 개요</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>내용</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>프로젝트명</strong></td>
+          <td>ERP 클라우드 마이그레이션</td>
+        </tr>
+        <tr>
+          <td><strong>기간</strong></td>
+          <td>6개월 (24주)</td>
+        </tr>
+        <tr>
+          <td><strong>팀 규모</strong></td>
+          <td>개발 5명, QA 2명, DBA 1명, 인프라 1명, PM 1명</td>
+        </tr>
+        <tr>
+          <td><strong>핵심 리스크</strong></td>
+          <td>데이터 무결성, 업무 중단 최소화, 사용자 저항</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>PL의 AI 활용 타임라인</h4>
+    <ol class="step-list">
+      <li>
+        <strong>Phase 1 (1~4주): 분석 및 계획</strong>
+        <p>AI로 현행 시스템 분석 보고서 작성, WBS 3단계 분해, 리스크 관리대장 초안 생성, 이해관계자 분석 및 커뮤니케이션 계획 수립</p>
+      </li>
+      <li>
+        <strong>Phase 2 (5~12주): 설계 및 개발</strong>
+        <p>AI로 주간 상태 보고서 자동 생성, 기술 이슈 분석 지원, 일정 영향 분석, 데일리 스탠드업 메모 자동 정리</p>
+      </li>
+      <li>
+        <strong>Phase 3 (13~20주): 테스트 및 데이터 마이그레이션</strong>
+        <p>AI로 테스트 시나리오 생성, 데이터 검증 체크리스트 작성, 롤백 계획 문서화, QA 결과 분석 및 리포트</p>
+      </li>
+      <li>
+        <strong>Phase 4 (21~24주): 전환 및 안정화</strong>
+        <p>AI로 전환 매뉴얼 작성, 사용자 교육 자료 생성, 장애 대응 매뉴얼, 프로젝트 종료 보고서</p>
+      </li>
+    </ol>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">마이그레이션 WBS 생성 프롬프트</div>
+      <pre><code class="language-text">온프레미스 ERP를 클라우드 SaaS로 마이그레이션하는 프로젝트의 WBS를 작성해주세요.
+
+## 프로젝트 정보
+- 기간: 24주
+- 팀: 개발 5명, QA 2명, DBA 1명, 인프라 1명
+- 현행 시스템: Java/Oracle 기반 ERP (모듈: 회계, 인사, 재고, 영업)
+- 목표 시스템: 클라우드 네이티브 SaaS (AWS)
+
+## WBS 요구사항
+1. 4개 Phase로 구분
+2. 각 Phase는 5~8개 Task
+3. 각 Task는 2~4개 Sub-task
+4. 마일스톤 6개 지정
+5. 의존관계 및 크리티컬 패스 표시
+6. 테이블 형식:
+   | WBS ID | Phase | Task | Sub-task | 담당 | 소요(주) | 선행 | 마일스톤 |</code></pre>
+    </div>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">마이그레이션 리스크 분석 프롬프트</div>
+      <pre><code class="language-text">ERP 클라우드 마이그레이션 프로젝트의 리스크를 분석해주세요.
+
+## 프로젝트 특성
+- 10년된 레거시 시스템 (문서화 부족)
+- 일일 트랜잭션 약 10만건
+- 24/7 운영 시스템 (다운타임 최소화 필수)
+- 사용자 300명 (변화 저항 예상)
+
+## 분석 요청
+1. 기술 리스크 5개
+2. 일정 리스크 3개
+3. 조직/인적 리스크 3개
+4. 데이터 리스크 3개
+
+각 리스크에 대해:
+| 리스크 | 발생확률 | 영향도 | 등급 | 대응전략 | 조기경보 신호 |</code></pre>
+    </div>
+
+    <div class="practice-section">
+      <h4>종합 실습</h4>
+      <p>가상의 마이그레이션 프로젝트를 설정하고, AI를 활용하여 WBS, 리스크 관리대장, 커뮤니케이션 계획을 생성해보세요. PL로서 AI 결과물을 어떻게 검토하고 수정했는지 기록하세요.</p>
+    </div>
+  </section>
+
+  <!-- 7.3 케이스 3: AI 도구 도입 제안서 -->
+  <section id="s7-3">
+    <h3>7.3 케이스 3: AI 도구 도입 제안서 작성 (PM+PL 협업)</h3>
+
+    <div class="info-box">
+      <strong>시나리오</strong>: 조직에 AI 도구(Claude, GitHub Copilot 등)를 공식 도입하기 위한 제안서를 작성하고, 파일럿 프로그램을 계획합니다. PM이 전략/ROI를, PL이 실행 계획/리스크를 담당합니다.
+    </div>
+
+    <h4>PM+PL 역할 분담</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>산출물</th>
+          <th>PM 역할</th>
+          <th>PL 역할</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>시장 조사</strong></td>
+          <td>AI 도구 시장 트렌드, 경쟁사 도입 사례 조사</td>
+          <td>현재 팀 업무 프로세스 분석, 자동화 기회 식별</td>
+        </tr>
+        <tr>
+          <td><strong>ROI 분석</strong></td>
+          <td>비용 대비 효과 산출, 경영진 설득 자료</td>
+          <td>업무 시간 절감 데이터 수집, 파일럿 측정 지표 설계</td>
+        </tr>
+        <tr>
+          <td><strong>도입 계획</strong></td>
+          <td>도구 선정 기준, 라이선스 비교, 벤더 평가</td>
+          <td>파일럿 일정, 교육 계획, 변경 관리 전략</td>
+        </tr>
+        <tr>
+          <td><strong>리스크 관리</strong></td>
+          <td>보안/컴플라이언스 리스크 식별</td>
+          <td>기술적 리스크 분석, 롤백 계획</td>
+        </tr>
+        <tr>
+          <td><strong>결과 보고</strong></td>
+          <td>파일럿 결과 분석, 전사 확대 제안</td>
+          <td>파일럿 운영 보고, 사용 가이드 문서화</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>AI 도구 도입 제안서 작성</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">AI 도구 도입 제안서 프롬프트</div>
+      <pre><code class="language-text">우리 조직에 AI 개발 도구를 도입하기 위한 경영진 제안서를 작성해주세요.
+
+## 조직 정보
+- 규모: 개발자 30명, PM/PL 10명 (총 40명)
+- 현재 도구: VS Code, Jira, Confluence, Slack
+- 연간 개발 예산: 5억원
+- 주요 기술: Java/Spring, React, PostgreSQL
+
+## 도입 후보 도구
+1. Claude Code (Pro Plan: $20/월/인)
+2. GitHub Copilot Business ($19/월/인)
+3. Cursor Pro ($20/월/인)
+
+## 제안서 구조
+1. Executive Summary (반 페이지)
+2. 왜 지금 AI 도구가 필요한가? (시장 트렌드, 경쟁사 사례)
+3. 도구별 비교표 (기능, 가격, 보안, 지원 언어)
+4. 예상 ROI 분석
+   - 개발 생산성 향상률 추정 (업계 벤치마크 기반)
+   - 연간 비용 vs 절감 효과
+5. 파일럿 프로그램 계획 (4주, 5명)
+6. 보안 및 컴플라이언스 검토
+7. 리스크 및 대응 방안
+8. 권고사항 및 다음 단계</code></pre>
+    </div>
+
+    <h4>파일럿 프로그램 계획</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">파일럿 계획 프롬프트</div>
+      <pre><code class="language-text">AI 개발 도구 도입을 위한 4주 파일럿 프로그램을 계획해주세요.
+
+## 파일럿 조건
+- 기간: 4주
+- 참여자: 개발자 3명, PM 1명, PL 1명 (총 5명)
+- 도구: Claude Code Pro
+- 대상 업무: 신규 기능 개발 1건, 버그 수정 5건, 문서 작성 3건
+
+## 계획 포함 항목
+1. 주별 활동 계획
+   | 주차 | 활동 | 측정 지표 | 담당 |
+2. 성공 지표 (KPI)
+   - 정량: 코드 생산성, 문서 작성 시간, 버그 수정 속도
+   - 정성: 사용자 만족도, 코드 품질 체감
+3. 데이터 수집 방법
+4. 주간 체크인 미팅 안건
+5. 파일럿 종료 후 평가 프레임워크
+6. Go/No-Go 판단 기준</code></pre>
+    </div>
+
+    <div class="practice-section">
+      <h4>종합 실습</h4>
+      <p>여러분의 실제 조직을 대상으로 AI 도구 도입 제안서를 작성해보세요. 시장 조사(Module 4), 문서 작성(Module 2), ROI 분석(Module 8)을 통합하여 경영진이 읽을 수 있는 수준의 제안서를 완성하세요.</p>
+    </div>
+  </section>
+</article>
+    </div>
+
+    <div id="module-nav">
+      <a href="module6.html" class="module-nav-btn">&larr; 이전 모듈</a>
+      <span id="current-module-label">7. AI 실전 케이스 스터디</span>
+      <a href="module8.html" class="module-nav-btn">다음 모듈 &rarr;</a>
+    </div>
+  </main>
+
+  <button id="scroll-top" aria-label="맨 위로">&uarr;</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
