@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5. 바이브 코딩 스킬 - PM/PL AI 실무 가이드</title>
+  <meta name="description" content="PM과 비개발자를 위한 AI 실무 가이드. AI 기초, 문서 작성, 도식화, 자료 조사, 바이브 코딩 실습을 다룹니다.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <button id="menu-toggle" aria-label="메뉴 열기">
+    <span class="hamburger"></span>
+  </button>
+
+  <div id="sidebar-overlay"></div>
+
+  <nav id="sidebar" aria-label="교육 목차">
+    <div class="sidebar-header">
+      <h1 class="sidebar-title">PM/PL AI 실무 가이드</h1>
+      <button id="theme-toggle" aria-label="테마 전환">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item" data-module="module1">
+        <a href="index.html" class="nav-title">
+          <span class="nav-number">1</span>
+          <span>AI 기초 개념</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="index.html#s1-1">1.1 AI와 LLM이란?</a></li>
+          <li><a href="index.html#s1-2">1.2 생성형 AI의 동작 원리</a></li>
+          <li><a href="index.html#s1-3">1.3 프롬프트 엔지니어링 기초</a></li>
+          <li><a href="index.html#s1-4">1.4 주요 AI 도구 소개</a></li>
+          <li><a href="index.html#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
+          <li><a href="module1-2.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
+          <li><a href="module1-2.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
+          <li><a href="module1-2.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="module1-2.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
+          <li><a href="module1-2.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module2">
+        <a href="module2-1.html" class="nav-title">
+          <span class="nav-number">2</span>
+          <span>AI 활용 문서 작성</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module2-1.html#s2-1">2.1 PRD 작성</a></li>
+          <li><a href="module2-1.html#s2-2">2.2 기획서/제안서 자동 생성</a></li>
+          <li><a href="module2-1.html#s2-3">2.3 요구사항 정의서 작성</a></li>
+          <li><a href="module2-1.html#s2-4">2.4 회의록/보고서 자동 정리</a></li>
+          <li><a href="module2-2.html#s2-5">2.5 프롬프트 템플릿 활용법</a></li>
+          <li><a href="module2-2.html#s2-6">2.6 PL 프로젝트 관리 문서</a></li>
+          <li><a href="module2-2.html#s2-7">2.7 AI 문서 품질 관리</a></li>
+          <li><a href="module2-2.html#s2-8">2.8 스펙 문서 및 API 명세</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module3">
+        <a href="module3.html" class="nav-title">
+          <span class="nav-number">3</span>
+          <span>AI 도식화 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module3.html#s3-1">3.1 플로우차트 생성</a></li>
+          <li><a href="module3.html#s3-2">3.2 시스템 아키텍처 다이어그램</a></li>
+          <li><a href="module3.html#s3-3">3.3 ER 다이어그램</a></li>
+          <li><a href="module3.html#s3-4">3.4 사용자 여정 맵</a></li>
+          <li><a href="module3.html#s3-5">3.5 AI 도구별 도식화 비교</a></li>
+          <li><a href="module3.html#s3-6">3.6 시퀀스 다이어그램</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module4">
+        <a href="module4-1.html" class="nav-title">
+          <span class="nav-number">4</span>
+          <span>AI 자료 조사 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module4-1.html#s4-1">4.1 시장 조사 및 트렌드 분석</a></li>
+          <li><a href="module4-1.html#s4-2">4.2 경쟁사 분석 프레임워크</a></li>
+          <li><a href="module4-1.html#s4-3">4.3 사용자 페르소나 생성</a></li>
+          <li><a href="module4-1.html#s4-4">4.4 데이터 수집 및 정리</a></li>
+          <li><a href="module4-1.html#s4-5">4.5 리서치 결과 보고서 작성</a></li>
+          <li><a href="module4-2.html#s4-6">4.6 AI 검색 도구 활용</a></li>
+          <li><a href="module4-2.html#s4-7">4.7 팩트 체크 및 검증</a></li>
+          <li><a href="module4-2.html#s4-8">4.8 인터뷰 설계 및 분석</a></li>
+          <li><a href="module4-2.html#s4-9">4.9 A/B 테스트 설계</a></li>
+        </ul>
+      </li>
+      <li class="nav-item active" data-module="module5">
+        <a href="module5-1.html" class="nav-title">
+          <span class="nav-number">5</span>
+          <span>바이브 코딩 실습</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module5-1.html#s5-1">5.1 바이브 코딩이란?</a></li>
+          <li><a href="module5-1.html#s5-2">5.2 Claude Code 시작하기</a></li>
+          <li><a href="module5-1.html#s5-3">5.3 프롬프트로 웹페이지 만들기</a></li>
+          <li><a href="module5-1.html#s5-4">5.4 반복 개선으로 완성도 높이기</a></li>
+          <li><a href="module5-1.html#s5-5">5.5 실전 프로젝트: 랜딩페이지</a></li>
+          <li><a href="#s5-6">5.6 Claude Code 핵심 용어</a></li>
+          <li><a href="#s5-7">5.7 유용한 스킬 & 활용법</a></li>
+          <li><a href="#s5-8">5.8 커뮤니티 스킬 & 확장 생태계</a></li>
+          <li><a href="module5-3.html#s5-9">5.9 PL을 위한 실전 활용 전략</a></li>
+          <li><a href="module5-3.html#s5-10">5.10 웹 게시판 & MCP 테스트</a></li>
+          <li><a href="module5-4.html#s5-11">5.11 Flutter 앱 & APK 빌드</a></li>
+          <li><a href="module5-4.html#s5-12">5.12 기존 소스 대규모 개선</a></li>
+          <li><a href="module5-4.html#s5-13">5.13 업무 능률 극대화 전략</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module6">
+        <a href="module6-1.html" class="nav-title">
+          <span class="nav-number">6</span>
+          <span>PM vs PL 역할 이해</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module6-1.html#s6-1">6.1 PM vs PL 역할 비교</a></li>
+          <li><a href="module6-1.html#s6-2">6.2 PL의 핵심 역량</a></li>
+          <li><a href="module6-1.html#s6-3">6.3 프로젝트 일정 관리</a></li>
+          <li><a href="module6-2.html#s6-4">6.4 리스크 & 이슈 관리</a></li>
+          <li><a href="module6-2.html#s6-5">6.5 팀 리딩과 커뮤니케이션</a></li>
+          <li><a href="module6-2.html#s6-6">6.6 AI로 PL 업무 자동화</a></li>
+          <li><a href="module6-3.html#s6-7">6.7 AI 시대 역할 변화</a></li>
+          <li><a href="module6-3.html#s6-8">6.8 AI 거버넌스 및 윤리</a></li>
+          <li><a href="module6-3.html#s6-9">6.9 애자일/스크럼 심화</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module7">
+        <a href="module7-1.html" class="nav-title">
+          <span class="nav-number">7</span>
+          <span>AI 실전 케이스 스터디</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module7-1.html#s7-1">7.1 SaaS 기획~MVP 출시</a></li>
+          <li><a href="module7-1.html#s7-2">7.2 레거시 마이그레이션</a></li>
+          <li><a href="module7-2.html#s7-3">7.3 AI 도구 도입 제안</a></li>
+          <li><a href="module7-2.html#s7-4">7.4 AI 툴 조합 업무 활용</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module8">
+        <a href="module8-1.html" class="nav-title">
+          <span class="nav-number">8</span>
+          <span>AI 도구 비용/ROI 관리</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module8-1.html#s8-1">8.1 AI 도구 요금제 비교</a></li>
+          <li><a href="module8-1.html#s8-2">8.2 토큰 비용 계산</a></li>
+          <li><a href="module8-1.html#s8-3">8.3 AI 도입 ROI 산출</a></li>
+          <li><a href="module8-2.html#s8-4">8.4 예산 편성 및 설득</a></li>
+          <li><a href="module8-2.html#s8-5">8.5 AI 도구 선정 매트릭스</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module9">
+        <a href="module9-1.html" class="nav-title">
+          <span class="nav-number">9</span>
+          <span>AI 코딩 도구 & 보안</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module9-1.html#s9-1">9.1 AI 코딩 도구 생태계</a></li>
+          <li><a href="module9-1.html#s9-2">9.2 AI 보안 필수 가이드</a></li>
+          <li><a href="module9-2.html#s9-3">9.3 AI 거버넌스 프레임워크</a></li>
+          <li><a href="module9-2.html#s9-4">9.4 AI 도구 도입 로드맵</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module10">
+        <a href="module10-1.html" class="nav-title">
+          <span class="nav-number">10</span>
+          <span>No-Code & 2026 트렌드</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module10-1.html#s10-1">10.1 No-Code AI 자동화</a></li>
+          <li><a href="module10-1.html#s10-2">10.2 컨텍스트 엔지니어링</a></li>
+          <li><a href="module10-1.html#s10-3">10.3 추론 모델 & 확장된 사고</a></li>
+          <li><a href="module10-2.html#s10-4">10.4 멀티모달 AI 실무</a></li>
+          <li><a href="module10-2.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <p>최근 업데이트: 2026.04.10</p>
+      <p>&copy; 2026 PM/PL AI 실무 가이드</p>
+    </div>
+  </nav>
+
+  <main id="content">
+    <div id="module-container">
+      <section id="s5-6">
+          <h3>5.6 Claude Code 핵심 용어 정리</h3>
+
+          <p>Claude Code를 효과적으로 사용하려면 주요 개념과 용어를 이해해야 합니다. 개발자가 아니어도 알아두면 소통이 훨씬 수월해집니다.</p>
+
+          <h4>Claude Code 구조 한눈에 보기</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A[사용자] -->|자연어 지시| B[Claude Code CLI]
+    B --> C{어떤 작업?}
+    C -->|파일 읽기/쓰기| D[Read / Write / Edit 도구]
+    C -->|명령 실행| E[Bash 도구]
+    C -->|코드 검색| F[Grep / Glob 도구]
+    C -->|복잡한 작업| G[Sub-Agent 위임]
+    C -->|확장 기능| H[MCP 서버]
+    C -->|자동화| I[Hooks]
+
+    B --> J[CLAUDE.md\n프로젝트 설정]
+    B --> K[Skills\n슬래시 명령어]
+
+    style A fill:#4a9eff,color:#fff
+    style B fill:#ff9800,color:#fff
+    style G fill:#9c27b0,color:#fff
+    style H fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <h4>핵심 용어 — 기본 개념</h4>
+          <table class="comparison-table">
+            <thead><tr><th>용어</th><th>의미</th><th>비유</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>CLI (Command Line Interface)</strong></td>
+                <td>텍스트 기반 명령어 인터페이스. Claude Code는 터미널에서 실행됩니다</td>
+                <td>카카오톡 채팅방처럼 텍스트로 대화하는 창</td>
+              </tr>
+              <tr>
+                <td><strong>CLAUDE.md</strong></td>
+                <td>프로젝트 루트에 두는 설정 파일. Claude Code가 프로젝트를 이해하는 "매뉴얼"</td>
+                <td>신입사원에게 주는 팀 온보딩 문서</td>
+              </tr>
+              <tr>
+                <td><strong>컨텍스트 (Context)</strong></td>
+                <td>Claude가 현재 대화에서 기억하고 있는 전체 정보</td>
+                <td>회의 중 지금까지 나온 모든 대화 내용</td>
+              </tr>
+              <tr>
+                <td><strong>Tool (도구)</strong></td>
+                <td>Claude가 파일 읽기, 코드 실행 등 실제 작업을 수행하는 기능</td>
+                <td>비서가 사용하는 업무 도구 (엑셀, 이메일 등)</td>
+              </tr>
+              <tr>
+                <td><strong>Permission (권한)</strong></td>
+                <td>Claude가 파일 수정, 명령 실행 등을 할 때 사용자 승인을 받는 체계</td>
+                <td>결재 시스템 — 중요한 건 승인 후 진행</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>핵심 용어 — 고급 기능</h4>
+          <table class="comparison-table">
+            <thead><tr><th>용어</th><th>의미</th><th>PM/PL이 알아야 하는 이유</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Skill (스킬)</strong></td>
+                <td><code>/commit</code>, <code>/review</code> 같은 슬래시 명령어. 복잡한 작업을 한 줄로 실행하는 매크로</td>
+                <td>반복 작업을 자동화하여 생산성 향상. 커스텀 스킬도 만들 수 있음</td>
+              </tr>
+              <tr>
+                <td><strong>Sub-Agent (서브에이전트)</strong></td>
+                <td>복잡한 작업을 처리하기 위해 Claude가 "분신"을 만들어 병렬로 작업을 분배하는 기능</td>
+                <td>팀장이 팀원에게 업무를 분배하는 것과 동일. 큰 작업을 빠르게 처리</td>
+              </tr>
+              <tr>
+                <td><strong>Hooks (훅)</strong></td>
+                <td>특정 이벤트(파일 저장, 도구 실행 등) 발생 시 자동으로 실행되는 스크립트</td>
+                <td>자동화 트리거 — "코드 수정 시 자동 포맷팅" 같은 규칙 설정</td>
+              </tr>
+              <tr>
+                <td><strong>Tool Use (Function Calling)</strong></td>
+                <td>AI가 텍스트 생성 외에 외부 도구를 직접 호출하는 기능. MCP 서버의 도구들을 실제로 실행하는 메커니즘</td>
+                <td>AI가 "말"에서 "행동"으로 진화하는 기반 기술. 에이전트 AI의 필수 요소</td>
+              </tr>
+              <tr>
+                <td><strong class="ai-term">MCP (Model Context Protocol)</strong></td>
+                <td>Claude가 외부 도구(DB, API, 브라우저 등)에 접근할 수 있게 하는 표준 프로토콜. USB 규격처럼 하나의 표준으로 다양한 도구 연결</td>
+                <td>AI가 사내 시스템과 연동되는 핵심 기술. 어떤 MCP 서버를 붙이느냐에 따라 AI 능력이 달라짐</td>
+              </tr>
+              <tr>
+                <td><strong class="ai-term">MCP 서버</strong></td>
+                <td>MCP 규격에 맞춰 특정 기능을 제공하는 플러그인. 예: Gmail 서버(메일 읽기/쓰기), DB 서버(데이터 조회), 브라우저 서버(웹 탐색)</td>
+                <td>필요한 기능에 맞는 MCP 서버를 선택·조합하는 것이 AI 제품 기획의 핵심 판단 포인트</td>
+              </tr>
+              <tr>
+                <td><strong>Plan Mode (계획 모드)</strong></td>
+                <td>코드를 바로 작성하지 않고, 먼저 계획을 세우고 사용자 승인 후 실행하는 모드</td>
+                <td>PM의 기획 → 리뷰 → 실행 프로세스와 동일</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>Sub-Agent 동작 방식</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["사용자: '5개 페이지를\n모두 만들어줘'"] --> B[Claude Code\nMain Agent]
+    B --> C["Sub-Agent 1\nindex.html 생성"]
+    B --> D["Sub-Agent 2\nmodule2.html 생성"]
+    B --> E["Sub-Agent 3\nmodule3.html 생성"]
+    B --> F["Sub-Agent 4\nmodule4.html 생성"]
+    C --> G[결과 취합]
+    D --> G
+    E --> G
+    F --> G
+    G --> H["완료 보고\n'4개 파일 생성 완료'"]
+
+    style A fill:#4a9eff,color:#fff
+    style B fill:#ff9800,color:#fff
+    style G fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <h4>Hooks 활용 예시</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    subgraph 이벤트["트리거 이벤트"]
+        E1["파일 저장"]
+        E2["도구 실행 전"]
+        E3["세션 시작"]
+    end
+
+    subgraph 훅["자동 실행 (Hooks)"]
+        H1["코드 포맷팅"]
+        H2["보안 검사"]
+        H3["프로젝트 설정 로드"]
+    end
+
+    E1 --> H1
+    E2 --> H2
+    E3 --> H3
+            </div>
+          </div>
+
+          <pre><code class="language-javascript">// .claude/settings.json — Hooks 설정 예시
+{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Write|Edit",
+      "command": "echo '파일이 수정되었습니다'"
+    }],
+    "SessionStart": [{
+      "command": "echo '세션을 시작합니다'"
+    }]
+  }
+}</code></pre>
+
+          <div class="info-box">
+            <strong>PM 포인트</strong>: Hooks는 품질 관리 자동화에 유용합니다. 예를 들어 "코드 수정 시 자동으로 린트 검사" 같은 규칙을 설정하면, AI가 만든 코드의 품질을 자동으로 관리할 수 있습니다.
+          </div>
+        </section>
+
+<section id="s5-7">
+          <h3>5.7 유용한 Claude Code 스킬 & 활용법</h3>
+
+          <p>Claude Code의 슬래시 명령어(Skill)를 활용하면 복잡한 작업을 한 줄로 처리할 수 있습니다. PM이 실무에서 바로 쓸 수 있는 핵심 스킬을 소개합니다.</p>
+
+          <h4>필수 내장 스킬</h4>
+          <table class="comparison-table">
+            <thead><tr><th>스킬</th><th>기능</th><th>PM 활용 시나리오</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>/help</code></td>
+                <td>도움말 표시</td>
+                <td>모르는 기능이 있을 때 바로 확인</td>
+              </tr>
+              <tr>
+                <td><code>/clear</code></td>
+                <td>대화 초기화</td>
+                <td>새로운 작업 시작 시 컨텍스트 리셋</td>
+              </tr>
+              <tr>
+                <td><code>/compact</code></td>
+                <td>대화 내용 압축</td>
+                <td>긴 작업 중 컨텍스트가 부족할 때</td>
+              </tr>
+              <tr>
+                <td><code>/cost</code></td>
+                <td>현재 세션 비용 확인</td>
+                <td>API 사용량 모니터링</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>생산성 향상 스킬</h4>
+          <table class="comparison-table">
+            <thead><tr><th>스킬</th><th>기능</th><th>사용 예시</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>/commit</code></td>
+                <td>Git 커밋 메시지 자동 생성 + 커밋</td>
+                <td>코드 변경 후 "이 변경사항을 커밋해줘" 대신 한 줄로 처리</td>
+              </tr>
+              <tr>
+                <td><code>/review</code></td>
+                <td>PR(Pull Request) 코드 리뷰</td>
+                <td>다른 팀원의 코드를 AI가 먼저 검토</td>
+              </tr>
+              <tr>
+                <td><code>/simplify</code></td>
+                <td>코드 간소화 및 품질 개선</td>
+                <td>복잡해진 코드를 깔끔하게 정리</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>PDCA 스킬 — 체계적 개발 사이클 관리</h4>
+          <p><strong>PDCA(Plan-Do-Check-Act)</strong> 스킬은 설계부터 검증까지 전체 개발 사이클을 한 줄 명령으로 관리하는 강력한 워크플로우 자동화 도구입니다.</p>
+          <table class="comparison-table">
+            <thead><tr><th>스킬</th><th>PDCA 단계</th><th>기능</th><th>PM/PL 활용 시나리오</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>/pdca plan {기능명}</code></td>
+                <td>Plan (계획)</td>
+                <td>기능 목록, 우선순위, 구현 전략이 담긴 계획 문서 자동 생성</td>
+                <td>새 기능 기획 시 PRD 초안을 빠르게 작성</td>
+              </tr>
+              <tr>
+                <td><code>/pdca design {기능명}</code></td>
+                <td>Plan (설계)</td>
+                <td>데이터 구조, 화면 구성, API 설계가 담긴 설계 문서 생성</td>
+                <td>개발팀에 전달할 상세 설계서 자동 작성</td>
+              </tr>
+              <tr>
+                <td><code>/pdca do {기능명}</code></td>
+                <td>Do (실행)</td>
+                <td>설계 문서를 기반으로 실제 코드 구현 시작</td>
+                <td>설계서대로 프로토타입을 자동 생성</td>
+              </tr>
+              <tr>
+                <td><code>/pdca analyze {기능명}</code></td>
+                <td>Check (검증)</td>
+                <td>설계-구현 일치율(Gap) 자동 분석, Match Rate 계산</td>
+                <td>구현 결과가 설계서대로인지 자동 검증</td>
+              </tr>
+              <tr>
+                <td><code>/pdca iterate {기능명}</code></td>
+                <td>Act (개선)</td>
+                <td>Gap이 90% 미만이면 자동 수정 → 재분석 반복 (최대 5회)</td>
+                <td>품질 미달 시 자동 수정 루프 실행</td>
+              </tr>
+              <tr>
+                <td><code>/pdca report {기능명}</code></td>
+                <td>보고</td>
+                <td>전체 PDCA 사이클 결과를 종합 보고서로 생성</td>
+                <td>프로젝트 완료 보고서 자동 작성</td>
+              </tr>
+              <tr>
+                <td><code>/pdca status</code></td>
+                <td>상태 확인</td>
+                <td>현재 PDCA 진행 상황과 Match Rate 표시</td>
+                <td>프로젝트 진행률을 한눈에 확인</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    A["/pdca plan\n계획 수립"] --> B["/pdca design\n상세 설계"]
+    B --> C["/pdca do\n구현"]
+    C --> D["/pdca analyze\nGap 분석"]
+    D --> E{"Match Rate\n≥ 90%?"}
+    E -->|"No"| F["/pdca iterate\n자동 개선"]
+    F --> D
+    E -->|"Yes"| G["/pdca report\n완료 보고서"]
+
+    style A fill:#4a9eff,color:#fff
+    style C fill:#ff9800,color:#fff
+    style D fill:#9c27b0,color:#fff
+    style F fill:#f44336,color:#fff
+    style G fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <div class="info-box">
+            <strong>PM 포인트</strong>: PDCA 스킬의 핵심 가치는 <strong>"설계와 구현의 괴리를 자동으로 잡아내는 것"</strong>입니다. PM이 기획한 내용이 실제로 다 구현되었는지, 수동으로 대조할 필요 없이 <code>/pdca analyze</code> 한 줄이면 됩니다. Match Rate가 90% 미만이면 <code>/pdca iterate</code>로 자동 수정까지 가능합니다.
+          </div>
+
+          <h4>PM 업무별 활용 시나리오</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A[PM 업무] --> B["📝 문서 작성"]
+    A --> C["🎨 프로토타입"]
+    A --> D["📊 데이터 분석"]
+    A --> E["🔍 코드 이해"]
+
+    B --> B1["'PRD 초안을 마크다운으로\n작성해줘'"]
+    C --> C1["'로그인 페이지를\nHTML로 만들어줘'"]
+    D --> D1["'이 CSV 파일을\n분석해서 차트 만들어줘'"]
+    E --> E1["'이 코드가 어떤 기능을\n하는지 설명해줘'"]
+
+    style A fill:#4a9eff,color:#fff
+    style B fill:#ff9800,color:#fff
+    style C fill:#9c27b0,color:#fff
+    style D fill:#4caf50,color:#fff
+    style E fill:#f44336,color:#fff
+            </div>
+          </div>
+
+          <h4>CLAUDE.md 작성 가이드</h4>
+          <p>프로젝트 루트에 <code>CLAUDE.md</code> 파일을 만들면, Claude Code가 프로젝트를 더 잘 이해합니다.</p>
+
+          <pre><code class="language-markdown"># CLAUDE.md 예시
+
+## 프로젝트 개요
+- 이 프로젝트는 PM 교육용 정적 웹사이트입니다
+- HTML + CSS + JS만 사용합니다 (프레임워크 없음)
+
+## 코딩 컨벤션
+- 한국어 주석 사용
+- CSS는 BEM 네이밍 대신 단순 클래스명 사용
+- JavaScript는 ES6+ 문법 사용
+
+## 중요 규칙
+- 외부 라이브러리는 CDN으로만 사용 (npm 없음)
+- 모든 페이지는 반응형 (모바일 대응 필수)
+- 다크모드를 반드시 지원할 것</code></pre>
+
+          <h4>효과적인 바이브 코딩 워크플로우</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["1️⃣ CLAUDE.md 작성\n프로젝트 규칙 설정"] --> B["2️⃣ 큰 그림 요청\n'교육 사이트 전체 구조 만들어줘'"]
+    B --> C["3️⃣ 섹션별 구현\n'모듈1 콘텐츠를 작성해줘'"]
+    C --> D["4️⃣ 브라우저 확인\n직접 열어서 검증"]
+    D --> E{"만족?"}
+    E -->|No| F["5️⃣ 구체적 피드백\n'헤더 색상을 #4A90D9로'"]
+    F --> D
+    E -->|Yes| G["6️⃣ /commit\n변경사항 저장"]
+    G --> H["다음 섹션으로"]
+    H --> C
+
+    style A fill:#4a9eff,color:#fff
+    style D fill:#ff9800,color:#fff
+    style G fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <h4>자주 쓰는 프롬프트 패턴</h4>
+          <table class="comparison-table">
+            <thead><tr><th>상황</th><th>프롬프트 예시</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>새 파일 만들기</strong></td>
+                <td>"회원가입 페이지를 module6.html로 만들어줘. 기존 모듈과 같은 스타일로"</td>
+              </tr>
+              <tr>
+                <td><strong>디자인 수정</strong></td>
+                <td>"사이드바 배경색을 좀 더 진한 남색(#0a1628)으로 바꿔줘"</td>
+              </tr>
+              <tr>
+                <td><strong>버그 수정</strong></td>
+                <td>"모바일에서 메뉴 버튼을 눌러도 사이드바가 안 열려. 수정해줘"</td>
+              </tr>
+              <tr>
+                <td><strong>기능 추가</strong></td>
+                <td>"각 모듈 페이지에 학습 진행률 표시 바를 상단에 추가해줘"</td>
+              </tr>
+              <tr>
+                <td><strong>코드 이해</strong></td>
+                <td>"main.js의 IntersectionObserver 부분이 무슨 역할인지 쉽게 설명해줘"</td>
+              </tr>
+              <tr>
+                <td><strong>일괄 수정</strong></td>
+                <td>"모든 페이지의 footer 텍스트를 '© 2026 우리팀'으로 바꿔줘"</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="practice-section">
+            <h4>실습 과제</h4>
+            <p>Claude Code를 실행하고 다음을 직접 해보세요:</p>
+            <ol>
+              <li>프로젝트 폴더에 <code>CLAUDE.md</code> 파일 만들기</li>
+              <li><code>/help</code>로 사용 가능한 명령어 확인</li>
+              <li>"간단한 할일 목록 웹페이지를 만들어줘"로 첫 바이브 코딩 체험</li>
+              <li>결과를 보고 3번 이상 피드백으로 개선하기</li>
+              <li><code>/cost</code>로 사용량 확인</li>
+            </ol>
+          </div>
+
+          <div class="info-box">
+            <strong>핵심 요약</strong>: 바이브 코딩의 본질은 "완벽한 프롬프트"가 아니라 <strong>"빠른 반복"</strong>입니다. 대충 시작하고, 결과를 보고, 구체적으로 수정 요청하세요. 3~5회 반복이면 대부분 원하는 결과를 얻을 수 있습니다.
+          </div>
+        </section>
+
+<section id="s5-8">
+          <h3>5.8 커뮤니티 스킬 & 확장 생태계</h3>
+
+          <p>Claude Code는 내장 스킬 외에도 GitHub과 커뮤니티에서 만든 수천 개의 스킬을 설치해 사용할 수 있습니다. 마치 스마트폰의 앱스토어처럼, 필요한 기능을 골라 AI의 능력을 확장하는 방식입니다.</p>
+
+          <h4>스킬 생태계 구조</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A[Claude Code 스킬 생태계] --> B["🏢 공식 스킬\nAnthropic 제공"]
+    A --> C["🌐 커뮤니티 스킬\nGitHub 오픈소스"]
+    A --> D["🛒 스킬 마켓플레이스\n큐레이션된 목록"]
+
+    B --> B1["/commit /review\n/simplify 등"]
+    C --> C1["GStack\noh-my-claudecode\nSuperpowers"]
+    D --> D1["awesome-claude-skills\nclaude-skills\nSkillsMP"]
+
+    style A fill:#4a9eff,color:#fff
+    style B fill:#4caf50,color:#fff
+    style C fill:#ff9800,color:#fff
+    style D fill:#9c27b0,color:#fff
+            </div>
+          </div>
+
+          <h4>스킬 vs MCP 서버 — 뭐가 다를까?</h4>
+          <p>둘 다 Claude Code의 기능을 확장하지만, 역할이 다릅니다.</p>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A[Claude Code 확장 방법] --> B["🔧 스킬 (Skill)"]
+    A --> C["🔌 MCP 서버"]
+
+    B --> B1["슬래시 명령어로 실행\n예: /commit /review /qa"]
+    B --> B2["작업 워크플로우 자동화\n'이렇게 일해라' 매크로"]
+    B --> B3["CLAUDE.md에 추가하거나\n/plugin install로 설치"]
+
+    C --> C1["외부 도구를 AI에 연결\n예: Gmail, DB, Slack"]
+    C --> C2["AI의 접근 가능한\n도구/데이터 확장"]
+    C --> C3["settings.json에\nMCP 서버로 등록"]
+
+    style A fill:#4a9eff,color:#fff
+    style B fill:#ff9800,color:#fff
+    style C fill:#9c27b0,color:#fff
+            </div>
+          </div>
+          <table class="comparison-table">
+            <thead><tr><th>구분</th><th>스킬 (Skill)</th><th>MCP 서버</th></tr></thead>
+            <tbody>
+              <tr><td><strong>비유</strong></td><td>업무 매뉴얼 / SOP</td><td>USB로 연결한 외부 장치</td></tr>
+              <tr><td><strong>역할</strong></td><td>"어떻게 일할지" 절차 정의</td><td>"무엇에 접근할지" 능력 확장</td></tr>
+              <tr><td><strong>예시</strong></td><td>/commit, /review, /qa</td><td>Gmail 서버, DB 서버, 브라우저 서버</td></tr>
+              <tr><td><strong>설치</strong></td><td>CLAUDE.md 또는 /plugin install</td><td>settings.json에 서버 등록</td></tr>
+            </tbody>
+          </table>
+
+          <h4>인기 GitHub 스킬 프레임워크 — TOP 3</h4>
+
+          <div class="info-box" style="border-left: 4px solid #4caf50;">
+            <strong>1. GStack</strong> — Garry Tan(Y Combinator CEO)의 Claude Code 스킬팩
+            <p>23개 이상의 전문 스킬을 역할별(CEO, 디자이너, 엔지니어, QA 등)로 구성한 오픈소스 프레임워크입니다. 소프트웨어 개발의 전체 라이프사이클을 커버합니다.</p>
+          </div>
+          <table class="comparison-table">
+            <thead><tr><th>스킬</th><th>역할</th><th>기능</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>/plan-ceo-review</code></td>
+                <td>CEO/창업자</td>
+                <td>10-star 제품 관점에서 계획을 재검토. 전제를 도전하고 스코프 확장 제안</td>
+              </tr>
+              <tr>
+                <td><code>/design-consultation</code></td>
+                <td>디자이너</td>
+                <td>디자인 시스템 제안(타이포그래피, 색상, 레이아웃) + 프리뷰 페이지 생성</td>
+              </tr>
+              <tr>
+                <td><code>/ship</code></td>
+                <td>릴리스 매니저</td>
+                <td>테스트 → 리뷰 → 버전 업 → 커밋 → PR 생성 자동화</td>
+              </tr>
+              <tr>
+                <td><code>/qa</code></td>
+                <td>QA 엔지니어</td>
+                <td>웹사이트 체계적 테스트 + 버그 발견 시 자동 수정 후 재검증</td>
+              </tr>
+              <tr>
+                <td><code>/investigate</code></td>
+                <td>디버거</td>
+                <td>4단계 체계적 디버깅: 조사 → 분석 → 가설 → 수정</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="info-box" style="border-left: 4px solid #ff9800;">
+            <strong>2. oh-my-claudecode (OMC)</strong> — 멀티 에이전트 오케스트레이션 플랫폼
+            <p>19개 전문 에이전트와 36개 이상의 스킬을 제공합니다. 여러 AI 에이전트가 팀처럼 협업하여 복잡한 작업을 병렬 처리합니다.</p>
+          </div>
+          <table class="comparison-table">
+            <thead><tr><th>스킬</th><th>기능</th><th>특징</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>/autopilot</code></td>
+                <td>아이디어에서 작동하는 코드까지 자율 실행</td>
+                <td>사람 개입 최소화, 전체 워크플로우 자동화</td>
+              </tr>
+              <tr>
+                <td><code>/team</code></td>
+                <td>N개 에이전트가 공유 태스크 리스트로 협업</td>
+                <td>팀 프로젝트처럼 역할 분담하여 병렬 작업</td>
+              </tr>
+              <tr>
+                <td><code>/deep-interview</code></td>
+                <td>소크라테스식 질문으로 요구사항 구체화</td>
+                <td>모호한 요청을 명확한 스펙으로 변환</td>
+              </tr>
+              <tr>
+                <td><code>/ultrawork</code></td>
+                <td>고처리량 병렬 실행 엔진</td>
+                <td>대규모 작업을 동시에 처리하여 속도 극대화</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="info-box" style="border-left: 4px solid #9c27b0;">
+            <strong>3. Superpowers (obra)</strong> — 에이전트형 스킬 프레임워크
+            <p>20개 이상의 실전 검증된 스킬을 제공합니다. 특별한 프롬프트 없이도 상황에 맞는 스킬이 자동으로 활성화됩니다.</p>
+          </div>
+          <table class="comparison-table">
+            <thead><tr><th>스킬</th><th>기능</th><th>특징</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><code>/brainstorm</code></td>
+                <td>아이디어 브레인스토밍 구조화</td>
+                <td>발산 → 수렴 과정을 체계적으로 진행</td>
+              </tr>
+              <tr>
+                <td><code>/write-plan</code></td>
+                <td>구현 계획 수립</td>
+                <td>아이디어를 실행 가능한 단계로 분해</td>
+              </tr>
+              <tr>
+                <td><code>/execute-plan</code></td>
+                <td>계획에 따른 자동 구현</td>
+                <td>TDD 패턴 내장, 단계별 검증</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>분야별 추천 커뮤니티 스킬</h4>
+          <table class="comparison-table">
+            <thead><tr><th>분야</th><th>스킬</th><th>기능</th><th>PM 활용 포인트</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>UI/디자인</strong></td>
+                <td>Frontend-Design (공식)</td>
+                <td>AI 특유의 밋밋한 디자인을 벗어나 개성있는 UI 생성 가이드</td>
+                <td>프로토타입 품질을 크게 높임. 277K+ 설치</td>
+              </tr>
+              <tr>
+                <td><strong>브라우저 자동화</strong></td>
+                <td>Playwright / Browse</td>
+                <td>웹 브라우저를 자동 조작하여 테스트·데이터 수집</td>
+                <td>QA 테스트 자동화, 경쟁사 사이트 분석</td>
+              </tr>
+              <tr>
+                <td><strong>외부 연동</strong></td>
+                <td>Composio</td>
+                <td>850+ SaaS 도구(Slack, Notion, Google Workspace 등) 연결</td>
+                <td>AI가 실제 업무 도구와 직접 상호작용</td>
+              </tr>
+              <tr>
+                <td><strong>보안</strong></td>
+                <td>Trail of Bits Security</td>
+                <td>코드 취약점 자동 스캔 (CodeQL/Semgrep 활용)</td>
+                <td>보안 리뷰 자동화, 출시 전 취약점 점검</td>
+              </tr>
+              <tr>
+                <td><strong>다이어그램</strong></td>
+                <td>Excalidraw Generator</td>
+                <td>아키텍처 다이어그램을 코드로 자동 생성</td>
+                <td>회의·문서용 시각자료를 빠르게 생성</td>
+              </tr>
+              <tr>
+                <td><strong>데이터 분석</strong></td>
+                <td>Valyu</td>
+                <td>SEC 공시, PubMed, 금융 데이터 등 전문 데이터 소스 접근</td>
+                <td>시장조사, 경쟁 분석에 신뢰할 수 있는 데이터 활용</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>스킬 찾기 — 주요 마켓플레이스 & 디렉토리</h4>
+          <table class="comparison-table">
+            <thead><tr><th>사이트</th><th>특징</th><th>규모</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>awesome-claude-skills</strong><br><small>GitHub</small></td>
+                <td>커뮤니티 큐레이션 목록. 카테고리별로 정리된 검증된 스킬 모음</td>
+                <td>100+ 스킬</td>
+              </tr>
+              <tr>
+                <td><strong>claude-skills</strong><br><small>GitHub (alirezarezvani)</small></td>
+                <td>9개 도메인(개발, 제품, 마케팅, 컴플라이언스, 재무 등) 233+ 스킬. 11개 AI 플랫폼 호환</td>
+                <td>233+ 스킬</td>
+              </tr>
+              <tr>
+                <td><strong>SkillsMP</strong><br><small>skillsmp.com</small></td>
+                <td>직업별·인기순 필터링 가능한 대규모 스킬 검색 엔진</td>
+                <td>700,000+ 스킬</td>
+              </tr>
+              <tr>
+                <td><strong>Anthropic 공식 플러그인</strong><br><small>GitHub</small></td>
+                <td>Anthropic이 직접 관리하는 공식 플러그인. 품질과 호환성 보증</td>
+                <td>엄선된 공식 스킬</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h4>스킬 설치 및 사용법</h4>
+          <pre><code class="language-bash"># 1. GitHub 스킬 프레임워크 설치 (예: GStack)
+npm install -g gstack
+
+# 2. 공식 플러그인 설치
+/plugin install frontend-design
+
+# 3. 커뮤니티 스킬 추가 (CLAUDE.md에 규칙 추가 방식)
+#    프로젝트의 CLAUDE.md 파일에 스킬 내용을 복사하여 사용
+
+# 4. MCP 서버 방식 설치 (settings.json에 추가)
+#    Claude Code 설정에서 MCP 서버로 등록하여 사용</code></pre>
+
+          <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    A["스킬이 필요해!"] --> B{"어디서 찾지?"}
+    B --> C["GitHub에서\n검색"]
+    B --> D["마켓플레이스에서\n탐색"]
+    B --> E["공식 플러그인\n확인"]
+    C --> F["CLAUDE.md에\n규칙 추가"]
+    D --> F
+    E --> G["/plugin install\n명령어 실행"]
+    F --> H["Claude Code에서\n즉시 사용!"]
+    G --> H
+
+    style A fill:#f44336,color:#fff
+    style H fill:#4caf50,color:#fff
+            </div>
+          </div>
+
+          <div class="practice-section">
+            <h4>실습 과제</h4>
+            <p>커뮤니티 스킬 생태계를 직접 탐색해보세요:</p>
+            <ol>
+              <li>GitHub에서 <code>awesome-claude-skills</code>를 검색하여 어떤 스킬이 있는지 둘러보기</li>
+              <li>관심있는 스킬 1개를 선택하여 CLAUDE.md에 규칙으로 추가해보기</li>
+              <li>"이 프로젝트에 유용한 Claude Code 스킬을 추천해줘"라고 Claude에게 물어보기</li>
+            </ol>
+          </div>
+
+          <div class="info-box">
+            <strong>PM/PL을 위한 핵심 포인트</strong>: 스킬 생태계는 빠르게 성장하고 있습니다. 모든 스킬을 알 필요는 없지만, <strong>"내 업무에 맞는 스킬을 찾아 설치할 수 있다"</strong>는 것 자체가 AI 도구 활용 역량의 핵심입니다. 앱스토어에서 앱을 고르듯, 필요할 때 찾아 쓰면 됩니다.
+          </div>
+        </section>
+    </div>
+
+    <div id="module-nav">
+      <a href="module5-1.html" class="module-nav-btn">&larr; 이전</a>
+      <span id="current-module-label">5. 바이브 코딩 스킬</span>
+      <a href="module5-3.html" class="module-nav-btn">다음 &rarr;</a>
+    </div>
+  </main>
+
+  <button id="scroll-top" aria-label="맨 위로">&uarr;</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

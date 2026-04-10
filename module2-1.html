@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2. AI 문서 작성 (상) - PM/PL AI 실무 가이드</title>
+  <meta name="description" content="PM과 비개발자를 위한 AI 실무 가이드. AI 기초, 문서 작성, 도식화, 자료 조사, 바이브 코딩 실습을 다룹니다.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <button id="menu-toggle" aria-label="메뉴 열기">
+    <span class="hamburger"></span>
+  </button>
+
+  <div id="sidebar-overlay"></div>
+
+  <nav id="sidebar" aria-label="교육 목차">
+    <div class="sidebar-header">
+      <h1 class="sidebar-title">PM/PL AI 실무 가이드</h1>
+      <button id="theme-toggle" aria-label="테마 전환">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item" data-module="module1">
+        <a href="index.html" class="nav-title">
+          <span class="nav-number">1</span>
+          <span>AI 기초 개념</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="index.html#s1-1">1.1 AI와 LLM이란?</a></li>
+          <li><a href="index.html#s1-2">1.2 생성형 AI의 동작 원리</a></li>
+          <li><a href="index.html#s1-3">1.3 프롬프트 엔지니어링 기초</a></li>
+          <li><a href="index.html#s1-4">1.4 주요 AI 도구 소개</a></li>
+          <li><a href="index.html#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
+          <li><a href="module1-2.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
+          <li><a href="module1-2.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
+          <li><a href="module1-2.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="module1-2.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
+          <li><a href="module1-2.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
+        </ul>
+      </li>
+      <li class="nav-item active" data-module="module2">
+        <a href="module2-1.html" class="nav-title">
+          <span class="nav-number">2</span>
+          <span>AI 활용 문서 작성</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="#s2-1">2.1 PRD 작성</a></li>
+          <li><a href="#s2-2">2.2 기획서/제안서 자동 생성</a></li>
+          <li><a href="#s2-3">2.3 요구사항 정의서 작성</a></li>
+          <li><a href="#s2-4">2.4 회의록/보고서 자동 정리</a></li>
+          <li><a href="module2-2.html#s2-5">2.5 프롬프트 템플릿 활용법</a></li>
+          <li><a href="module2-2.html#s2-6">2.6 PL 프로젝트 관리 문서</a></li>
+          <li><a href="module2-2.html#s2-7">2.7 AI 문서 품질 관리</a></li>
+          <li><a href="module2-2.html#s2-8">2.8 스펙 문서 및 API 명세</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module3">
+        <a href="module3.html" class="nav-title">
+          <span class="nav-number">3</span>
+          <span>AI 도식화 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module3.html#s3-1">3.1 플로우차트 생성</a></li>
+          <li><a href="module3.html#s3-2">3.2 시스템 아키텍처 다이어그램</a></li>
+          <li><a href="module3.html#s3-3">3.3 ER 다이어그램</a></li>
+          <li><a href="module3.html#s3-4">3.4 사용자 여정 맵</a></li>
+          <li><a href="module3.html#s3-5">3.5 AI 도구별 도식화 비교</a></li>
+          <li><a href="module3.html#s3-6">3.6 시퀀스 다이어그램</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module4">
+        <a href="module4-1.html" class="nav-title">
+          <span class="nav-number">4</span>
+          <span>AI 자료 조사 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module4-1.html#s4-1">4.1 시장 조사 및 트렌드 분석</a></li>
+          <li><a href="module4-1.html#s4-2">4.2 경쟁사 분석 프레임워크</a></li>
+          <li><a href="module4-1.html#s4-3">4.3 사용자 페르소나 생성</a></li>
+          <li><a href="module4-1.html#s4-4">4.4 데이터 수집 및 정리</a></li>
+          <li><a href="module4-1.html#s4-5">4.5 리서치 결과 보고서 작성</a></li>
+          <li><a href="module4-2.html#s4-6">4.6 AI 검색 도구 활용</a></li>
+          <li><a href="module4-2.html#s4-7">4.7 팩트 체크 및 검증</a></li>
+          <li><a href="module4-2.html#s4-8">4.8 인터뷰 설계 및 분석</a></li>
+          <li><a href="module4-2.html#s4-9">4.9 A/B 테스트 설계</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module5">
+        <a href="module5-1.html" class="nav-title">
+          <span class="nav-number">5</span>
+          <span>바이브 코딩 실습</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module5-1.html#s5-1">5.1 바이브 코딩이란?</a></li>
+          <li><a href="module5-1.html#s5-2">5.2 Claude Code 시작하기</a></li>
+          <li><a href="module5-1.html#s5-3">5.3 프롬프트로 웹페이지 만들기</a></li>
+          <li><a href="module5-1.html#s5-4">5.4 반복 개선으로 완성도 높이기</a></li>
+          <li><a href="module5-1.html#s5-5">5.5 실전 프로젝트: 랜딩페이지</a></li>
+          <li><a href="module5-2.html#s5-6">5.6 Claude Code 핵심 용어</a></li>
+          <li><a href="module5-2.html#s5-7">5.7 유용한 스킬 & 활용법</a></li>
+          <li><a href="module5-2.html#s5-8">5.8 커뮤니티 스킬 & 확장 생태계</a></li>
+          <li><a href="module5-3.html#s5-9">5.9 PL을 위한 실전 활용 전략</a></li>
+          <li><a href="module5-3.html#s5-10">5.10 웹 게시판 & MCP 테스트</a></li>
+          <li><a href="module5-4.html#s5-11">5.11 Flutter 앱 & APK 빌드</a></li>
+          <li><a href="module5-4.html#s5-12">5.12 기존 소스 대규모 개선</a></li>
+          <li><a href="module5-4.html#s5-13">5.13 업무 능률 극대화 전략</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module6">
+        <a href="module6-1.html" class="nav-title">
+          <span class="nav-number">6</span>
+          <span>PM vs PL 역할 이해</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module6-1.html#s6-1">6.1 PM vs PL 역할 비교</a></li>
+          <li><a href="module6-1.html#s6-2">6.2 PL의 핵심 역량</a></li>
+          <li><a href="module6-1.html#s6-3">6.3 프로젝트 일정 관리</a></li>
+          <li><a href="module6-2.html#s6-4">6.4 리스크 & 이슈 관리</a></li>
+          <li><a href="module6-2.html#s6-5">6.5 팀 리딩과 커뮤니케이션</a></li>
+          <li><a href="module6-2.html#s6-6">6.6 AI로 PL 업무 자동화</a></li>
+          <li><a href="module6-3.html#s6-7">6.7 AI 시대 역할 변화</a></li>
+          <li><a href="module6-3.html#s6-8">6.8 AI 거버넌스 및 윤리</a></li>
+          <li><a href="module6-3.html#s6-9">6.9 애자일/스크럼 심화</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module7">
+        <a href="module7-1.html" class="nav-title">
+          <span class="nav-number">7</span>
+          <span>AI 실전 케이스 스터디</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module7-1.html#s7-1">7.1 SaaS 기획~MVP 출시</a></li>
+          <li><a href="module7-1.html#s7-2">7.2 레거시 마이그레이션</a></li>
+          <li><a href="module7-2.html#s7-3">7.3 AI 도구 도입 제안</a></li>
+          <li><a href="module7-2.html#s7-4">7.4 AI 툴 조합 업무 활용</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module8">
+        <a href="module8-1.html" class="nav-title">
+          <span class="nav-number">8</span>
+          <span>AI 도구 비용/ROI 관리</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module8-1.html#s8-1">8.1 AI 도구 요금제 비교</a></li>
+          <li><a href="module8-1.html#s8-2">8.2 토큰 비용 계산</a></li>
+          <li><a href="module8-1.html#s8-3">8.3 AI 도입 ROI 산출</a></li>
+          <li><a href="module8-2.html#s8-4">8.4 예산 편성 및 설득</a></li>
+          <li><a href="module8-2.html#s8-5">8.5 AI 도구 선정 매트릭스</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module9">
+        <a href="module9-1.html" class="nav-title">
+          <span class="nav-number">9</span>
+          <span>AI 코딩 도구 & 보안</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module9-1.html#s9-1">9.1 AI 코딩 도구 생태계</a></li>
+          <li><a href="module9-1.html#s9-2">9.2 AI 보안 필수 가이드</a></li>
+          <li><a href="module9-2.html#s9-3">9.3 AI 거버넌스 프레임워크</a></li>
+          <li><a href="module9-2.html#s9-4">9.4 AI 도구 도입 로드맵</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module10">
+        <a href="module10-1.html" class="nav-title">
+          <span class="nav-number">10</span>
+          <span>No-Code & 2026 트렌드</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module10-1.html#s10-1">10.1 No-Code AI 자동화</a></li>
+          <li><a href="module10-1.html#s10-2">10.2 컨텍스트 엔지니어링</a></li>
+          <li><a href="module10-1.html#s10-3">10.3 추론 모델 & 확장된 사고</a></li>
+          <li><a href="module10-2.html#s10-4">10.4 멀티모달 AI 실무</a></li>
+          <li><a href="module10-2.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <p>최근 업데이트: 2026.04.10</p>
+      <p>&copy; 2026 PM/PL AI 실무 가이드</p>
+    </div>
+  </nav>
+
+  <main id="content">
+    <div id="module-container">
+      <section id="s2-1">
+    <h3>2.1 PRD(제품 요구사항 문서) 작성</h3>
+
+    <div class="info-box">
+      <strong>PRD란?</strong> Product Requirements Document의 약자로, 제품이나 기능의 목적, 요구사항, 성공 지표를 정의하는 핵심 문서입니다.
+    </div>
+
+    <h4>PRD 작성 워크플로우</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A[요구사항 수집] --> B[AI에게 초안 요청]
+    B --> C[AI 초안 생성]
+    C --> D{PM 검토}
+    D -->|수정 필요| E[피드백 반영 요청]
+    E --> C
+    D -->|승인| F[이해관계자 리뷰]
+    F --> G{최종 승인}
+    G -->|수정 필요| E
+    G -->|승인| H[PRD 확정 및 공유]
+      </div>
+    </div>
+
+    <h4>AI로 PRD 작성하기 — 단계별 가이드</h4>
+    <ol class="step-list">
+      <li>
+        <strong>Step 1: 배경과 목적 정의</strong>
+        <p>기능의 배경, 해결할 문제, 대상 사용자를 AI에게 전달합니다.</p>
+      </li>
+      <li>
+        <strong>Step 2: 요구사항 도출</strong>
+        <p>기능적/비기능적 요구사항을 AI와 함께 브레인스토밍합니다.</p>
+      </li>
+      <li>
+        <strong>Step 3: 성공 지표 설정</strong>
+        <p>KPI와 측정 방법을 구체적으로 정의합니다.</p>
+      </li>
+      <li>
+        <strong>Step 4: 리스크 분석</strong>
+        <p>예상 리스크와 대응 방안을 AI에게 요청합니다.</p>
+      </li>
+    </ol>
+
+    <h4>프롬프트 예시</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">PRD 작성 프롬프트</div>
+      <pre><code class="language-text">당신은 B2B SaaS 제품의 시니어 PM입니다.
+
+다음 기능의 PRD를 작성해주세요:
+
+## 배경
+- 제품: 프로젝트 관리 도구
+- 기능: 팀 대시보드 실시간 현황판
+- 문제: 팀장이 팀원들의 작업 현황을 파악하기 어려움
+- 대상: 5~20명 규모 팀의 팀장
+
+## PRD 구조
+1. 기능 개요 (목적, 배경, 대상 사용자)
+2. 사용자 스토리 (3가지 이상)
+3. 기능 요구사항 (테이블: ID, 요구사항, 우선순위, 상태)
+4. 비기능 요구사항 (성능, 보안, 접근성)
+5. 성공 지표 (KPI 3가지, 측정 방법 포함)
+6. 타임라인 (4주 기준)
+7. 리스크 및 대응 방안
+
+마크다운 형식으로 작성해주세요.</code></pre>
+    </div>
+
+    <div class="practice-section">
+      <h4>실습 과제</h4>
+      <p>여러분의 실제 프로젝트에서 하나의 기능을 선택하여 위 프롬프트 템플릿을 수정하고, AI로 PRD를 생성해보세요.</p>
+    </div>
+  </section>
+
+<section id="s2-2">
+    <h3>2.2 기획서/제안서 자동 생성</h3>
+
+    <p>기획서와 제안서는 이해관계자를 설득하기 위한 문서입니다. AI를 활용하면 초안 작성 시간을 크게 단축할 수 있습니다.</p>
+
+    <h4>기획서 구조 템플릿</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>섹션</th>
+          <th>내용</th>
+          <th>AI 활용 방법</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. 요약</td>
+          <td>핵심 내용을 1페이지로 정리</td>
+          <td>전체 기획 내용을 요약 요청</td>
+        </tr>
+        <tr>
+          <td>2. 문제 정의</td>
+          <td>해결할 문제와 현재 상황</td>
+          <td>문제 분석 및 근거 데이터 요청</td>
+        </tr>
+        <tr>
+          <td>3. 솔루션</td>
+          <td>제안하는 해결 방안</td>
+          <td>여러 대안 비교표 생성</td>
+        </tr>
+        <tr>
+          <td>4. 실행 계획</td>
+          <td>일정, 리소스, 마일스톤</td>
+          <td>WBS 및 간트차트 구조 요청</td>
+        </tr>
+        <tr>
+          <td>5. 기대 효과</td>
+          <td>정량적/정성적 효과</td>
+          <td>ROI 계산 프레임워크 요청</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">기획서 작성 프롬프트</div>
+      <pre><code class="language-text">다음 프로젝트의 기획서를 작성해주세요.
+
+[프로젝트 개요]
+- 프로젝트명: 고객 피드백 자동 분류 시스템
+- 목표: CS팀의 피드백 분류 시간을 50% 단축
+- 예산: 3,000만원
+- 기간: 3개월
+
+포함할 항목:
+1. Executive Summary (1페이지)
+2. 현재 문제점 분석 (데이터 기반)
+3. 제안 솔루션 3가지 비교표
+4. 선택한 솔루션의 상세 실행 계획
+5. 예상 ROI 및 기대 효과
+6. 리스크 매트릭스 (영향도 x 발생확률)</code></pre>
+    </div>
+  </section>
+
+<section id="s2-3">
+    <h3>2.3 요구사항 정의서 작성</h3>
+
+    <p>요구사항 정의서는 개발팀에게 "무엇을 만들어야 하는지" 전달하는 문서입니다.</p>
+
+    <h4>요구사항 유형</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>유형</th>
+          <th>설명</th>
+          <th>예시</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>기능 요구사항 (FR)</strong></td>
+          <td>시스템이 수행해야 할 기능</td>
+          <td>"사용자는 이메일로 로그인할 수 있다"</td>
+        </tr>
+        <tr>
+          <td><strong>비기능 요구사항 (NFR)</strong></td>
+          <td>성능, 보안, 사용성 등</td>
+          <td>"페이지 로딩은 3초 이내"</td>
+        </tr>
+        <tr>
+          <td><strong>비즈니스 규칙 (BR)</strong></td>
+          <td>업무 로직과 제약 조건</td>
+          <td>"무료 플랜은 프로젝트 3개까지"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">요구사항 도출 프롬프트</div>
+      <pre><code class="language-text">다음 기능의 요구사항 정의서를 작성해주세요.
+
+기능: 팀 멤버 초대 및 권한 관리
+대상: SaaS 프로젝트 관리 도구
+
+다음 형식의 테이블로 정리해주세요:
+
+| ID | 유형 | 요구사항 | 우선순위 | 수용 기준 |
+|----|------|---------|---------|----------|
+
+- 기능 요구사항 최소 10개
+- 비기능 요구사항 최소 5개
+- 각 요구사항에 테스트 가능한 수용 기준 포함
+- 우선순위: Must/Should/Could/Won't (MoSCoW)</code></pre>
+    </div>
+  </section>
+
+<section id="s2-4">
+    <h3>2.4 회의록/보고서 자동 정리</h3>
+
+    <p>AI를 활용하면 회의록 작성과 보고서 정리 시간을 크게 줄일 수 있습니다.</p>
+
+    <h4>회의록 자동 정리 파이프라인</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    A[회의 녹음/메모] --> B[음성 전사<br/>Clova Note, Otter]
+    B --> C[AI 구조화<br/>Claude, ChatGPT]
+    C --> D[액션 아이템 추출]
+    D --> E{PM/PL 검토}
+    E -->|보완 필요| C
+    E -->|확인 완료| F[팀 공유<br/>Slack, Notion]
+      </div>
+    </div>
+
+    <h4>회의록 정리 워크플로우</h4>
+    <ol class="step-list">
+      <li>
+        <strong>회의 내용 입력</strong>
+        <p>회의 중 메모한 내용이나 녹취록을 AI에 입력합니다.</p>
+      </li>
+      <li>
+        <strong>구조화 요청</strong>
+        <p>AI에게 정해진 형식으로 정리해달라고 요청합니다.</p>
+      </li>
+      <li>
+        <strong>액션 아이템 추출</strong>
+        <p>담당자, 기한이 포함된 액션 아이템을 별도 추출합니다.</p>
+      </li>
+    </ol>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">회의록 정리 프롬프트</div>
+      <pre><code class="language-text">다음 회의 내용을 정리해주세요.
+
+[회의 메모]
+(여기에 회의 메모를 붙여넣기)
+
+정리 형식:
+1. 회의 개요 (일시, 참석자, 목적)
+2. 주요 논의 사항 (bullet point)
+3. 결정 사항 (번호 매기기)
+4. 액션 아이템 테이블:
+   | 번호 | 항목 | 담당자 | 기한 | 상태 |
+5. 다음 회의 일정 및 안건</code></pre>
+    </div>
+
+    <h4>음성 기반 회의록 자동 생성 워크플로우</h4>
+    <div class="info-box">
+      <strong>2025+ 트렌드</strong>: 텍스트 메모 대신 회의 녹음을 AI가 자동으로 텍스트 변환하고 구조화하는 워크플로우가 표준이 되고 있습니다.
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>도구</th>
+          <th>특징</th>
+          <th>활용 방법</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Clova Note</strong></td>
+          <td>한국어 특화, 화자 분리, 무료 플랜 제공</td>
+          <td>한국어 회의 녹음 → 텍스트 변환 → AI로 구조화</td>
+        </tr>
+        <tr>
+          <td><strong>Otter.ai</strong></td>
+          <td>영어 특화, 실시간 전사, 요약 자동 생성</td>
+          <td>영어 회의/글로벌 콜 → 실시간 녹취 → 요약 추출</td>
+        </tr>
+        <tr>
+          <td><strong>Whisper (OpenAI)</strong></td>
+          <td>오픈소스, 다국어 지원, 높은 정확도</td>
+          <td>녹음 파일 → Whisper 변환 → Claude/ChatGPT로 분석</td>
+        </tr>
+        <tr>
+          <td><strong>MS Teams Copilot</strong></td>
+          <td>Teams 내장, 자동 요약 및 액션아이템 추출</td>
+          <td>Teams 회의 → 자동 녹취 → Copilot 요약 → 내보내기</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ol class="step-list">
+      <li>
+        <strong>회의 녹음</strong>
+        <p>참석자 동의 하에 회의를 녹음합니다. 스마트폰 녹음 앱이나 화상회의 녹화 기능을 활용합니다.</p>
+      </li>
+      <li>
+        <strong>음성 → 텍스트 변환 (STT)</strong>
+        <p>Clova Note, Whisper 등으로 녹음 파일을 텍스트로 변환합니다. 화자 분리가 되면 더욱 유용합니다.</p>
+      </li>
+      <li>
+        <strong>AI로 구조화 및 요약</strong>
+        <p>변환된 텍스트를 Claude나 ChatGPT에 입력하여 회의록 형식으로 정리합니다.</p>
+      </li>
+      <li>
+        <strong>액션 아이템 추출 및 공유</strong>
+        <p>AI가 추출한 결정 사항과 액션 아이템을 Jira, Notion 등 협업 도구에 등록합니다.</p>
+      </li>
+    </ol>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">음성 녹취록 → 회의록 변환 프롬프트</div>
+      <pre><code class="language-text">다음은 회의 녹음의 텍스트 변환 결과입니다. 공식 회의록으로 정리해주세요.
+
+[녹취록]
+(STT 도구로 변환된 텍스트를 붙여넣기)
+
+정리 요청:
+1. 회의 개요 (일시, 참석자, 안건)
+2. 안건별 논의 요약 (핵심만 간결하게)
+3. 결정 사항 (번호 매기기)
+4. 액션 아이템 테이블:
+   | 번호 | 항목 | 담당자 | 기한 | 우선순위 |
+5. 미결 사항 및 후속 논의 필요 항목
+6. 다음 회의 일정
+
+[주의] 구어체를 문어체로 변환하고,
+불필요한 반복이나 사담은 제외해주세요.</code></pre>
+    </div>
+  </section>
+    </div>
+
+    <div id="module-nav">
+      <a href="module1-2.html" class="module-nav-btn">&larr; 이전</a>
+      <span id="current-module-label">2. AI 문서 작성 (상)</span>
+      <a href="module2-2.html" class="module-nav-btn">다음 &rarr;</a>
+    </div>
+  </main>
+
+  <button id="scroll-top" aria-label="맨 위로">&uarr;</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6. PM/PL 역할 (상) - PM/PL AI 실무 가이드</title>
+  <meta name="description" content="PM과 비개발자를 위한 AI 실무 가이드. AI 기초, 문서 작성, 도식화, 자료 조사, 바이브 코딩 실습을 다룹니다.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <button id="menu-toggle" aria-label="메뉴 열기">
+    <span class="hamburger"></span>
+  </button>
+
+  <div id="sidebar-overlay"></div>
+
+  <nav id="sidebar" aria-label="교육 목차">
+    <div class="sidebar-header">
+      <h1 class="sidebar-title">PM/PL AI 실무 가이드</h1>
+      <button id="theme-toggle" aria-label="테마 전환">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item" data-module="module1">
+        <a href="index.html" class="nav-title">
+          <span class="nav-number">1</span>
+          <span>AI 기초 개념</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="index.html#s1-1">1.1 AI와 LLM이란?</a></li>
+          <li><a href="index.html#s1-2">1.2 생성형 AI의 동작 원리</a></li>
+          <li><a href="index.html#s1-3">1.3 프롬프트 엔지니어링 기초</a></li>
+          <li><a href="index.html#s1-4">1.4 주요 AI 도구 소개</a></li>
+          <li><a href="index.html#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
+          <li><a href="module1-2.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
+          <li><a href="module1-2.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
+          <li><a href="module1-2.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="module1-2.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
+          <li><a href="module1-2.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module2">
+        <a href="module2-1.html" class="nav-title">
+          <span class="nav-number">2</span>
+          <span>AI 활용 문서 작성</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module2-1.html#s2-1">2.1 PRD 작성</a></li>
+          <li><a href="module2-1.html#s2-2">2.2 기획서/제안서 자동 생성</a></li>
+          <li><a href="module2-1.html#s2-3">2.3 요구사항 정의서 작성</a></li>
+          <li><a href="module2-1.html#s2-4">2.4 회의록/보고서 자동 정리</a></li>
+          <li><a href="module2-2.html#s2-5">2.5 프롬프트 템플릿 활용법</a></li>
+          <li><a href="module2-2.html#s2-6">2.6 PL 프로젝트 관리 문서</a></li>
+          <li><a href="module2-2.html#s2-7">2.7 AI 문서 품질 관리</a></li>
+          <li><a href="module2-2.html#s2-8">2.8 스펙 문서 및 API 명세</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module3">
+        <a href="module3.html" class="nav-title">
+          <span class="nav-number">3</span>
+          <span>AI 도식화 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module3.html#s3-1">3.1 플로우차트 생성</a></li>
+          <li><a href="module3.html#s3-2">3.2 시스템 아키텍처 다이어그램</a></li>
+          <li><a href="module3.html#s3-3">3.3 ER 다이어그램</a></li>
+          <li><a href="module3.html#s3-4">3.4 사용자 여정 맵</a></li>
+          <li><a href="module3.html#s3-5">3.5 AI 도구별 도식화 비교</a></li>
+          <li><a href="module3.html#s3-6">3.6 시퀀스 다이어그램</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module4">
+        <a href="module4-1.html" class="nav-title">
+          <span class="nav-number">4</span>
+          <span>AI 자료 조사 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module4-1.html#s4-1">4.1 시장 조사 및 트렌드 분석</a></li>
+          <li><a href="module4-1.html#s4-2">4.2 경쟁사 분석 프레임워크</a></li>
+          <li><a href="module4-1.html#s4-3">4.3 사용자 페르소나 생성</a></li>
+          <li><a href="module4-1.html#s4-4">4.4 데이터 수집 및 정리</a></li>
+          <li><a href="module4-1.html#s4-5">4.5 리서치 결과 보고서 작성</a></li>
+          <li><a href="module4-2.html#s4-6">4.6 AI 검색 도구 활용</a></li>
+          <li><a href="module4-2.html#s4-7">4.7 팩트 체크 및 검증</a></li>
+          <li><a href="module4-2.html#s4-8">4.8 인터뷰 설계 및 분석</a></li>
+          <li><a href="module4-2.html#s4-9">4.9 A/B 테스트 설계</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module5">
+        <a href="module5-1.html" class="nav-title">
+          <span class="nav-number">5</span>
+          <span>바이브 코딩 실습</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module5-1.html#s5-1">5.1 바이브 코딩이란?</a></li>
+          <li><a href="module5-1.html#s5-2">5.2 Claude Code 시작하기</a></li>
+          <li><a href="module5-1.html#s5-3">5.3 프롬프트로 웹페이지 만들기</a></li>
+          <li><a href="module5-1.html#s5-4">5.4 반복 개선으로 완성도 높이기</a></li>
+          <li><a href="module5-1.html#s5-5">5.5 실전 프로젝트: 랜딩페이지</a></li>
+          <li><a href="module5-2.html#s5-6">5.6 Claude Code 핵심 용어</a></li>
+          <li><a href="module5-2.html#s5-7">5.7 유용한 스킬 & 활용법</a></li>
+          <li><a href="module5-2.html#s5-8">5.8 커뮤니티 스킬 & 확장 생태계</a></li>
+          <li><a href="module5-3.html#s5-9">5.9 PL을 위한 실전 활용 전략</a></li>
+          <li><a href="module5-3.html#s5-10">5.10 웹 게시판 & MCP 테스트</a></li>
+          <li><a href="module5-4.html#s5-11">5.11 Flutter 앱 & APK 빌드</a></li>
+          <li><a href="module5-4.html#s5-12">5.12 기존 소스 대규모 개선</a></li>
+          <li><a href="module5-4.html#s5-13">5.13 업무 능률 극대화 전략</a></li>
+        </ul>
+      </li>
+      <li class="nav-item active" data-module="module6">
+        <a href="module6-1.html" class="nav-title">
+          <span class="nav-number">6</span>
+          <span>PM vs PL 역할 이해</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="#s6-1">6.1 PM vs PL 역할 비교</a></li>
+          <li><a href="#s6-2">6.2 PL의 핵심 역량</a></li>
+          <li><a href="#s6-3">6.3 프로젝트 일정 관리</a></li>
+          <li><a href="module6-2.html#s6-4">6.4 리스크 & 이슈 관리</a></li>
+          <li><a href="module6-2.html#s6-5">6.5 팀 리딩과 커뮤니케이션</a></li>
+          <li><a href="module6-2.html#s6-6">6.6 AI로 PL 업무 자동화</a></li>
+          <li><a href="module6-3.html#s6-7">6.7 AI 시대 역할 변화</a></li>
+          <li><a href="module6-3.html#s6-8">6.8 AI 거버넌스 및 윤리</a></li>
+          <li><a href="module6-3.html#s6-9">6.9 애자일/스크럼 심화</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module7">
+        <a href="module7-1.html" class="nav-title">
+          <span class="nav-number">7</span>
+          <span>AI 실전 케이스 스터디</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module7-1.html#s7-1">7.1 SaaS 기획~MVP 출시</a></li>
+          <li><a href="module7-1.html#s7-2">7.2 레거시 마이그레이션</a></li>
+          <li><a href="module7-2.html#s7-3">7.3 AI 도구 도입 제안</a></li>
+          <li><a href="module7-2.html#s7-4">7.4 AI 툴 조합 업무 활용</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module8">
+        <a href="module8-1.html" class="nav-title">
+          <span class="nav-number">8</span>
+          <span>AI 도구 비용/ROI 관리</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module8-1.html#s8-1">8.1 AI 도구 요금제 비교</a></li>
+          <li><a href="module8-1.html#s8-2">8.2 토큰 비용 계산</a></li>
+          <li><a href="module8-1.html#s8-3">8.3 AI 도입 ROI 산출</a></li>
+          <li><a href="module8-2.html#s8-4">8.4 예산 편성 및 설득</a></li>
+          <li><a href="module8-2.html#s8-5">8.5 AI 도구 선정 매트릭스</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module9">
+        <a href="module9-1.html" class="nav-title">
+          <span class="nav-number">9</span>
+          <span>AI 코딩 도구 & 보안</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module9-1.html#s9-1">9.1 AI 코딩 도구 생태계</a></li>
+          <li><a href="module9-1.html#s9-2">9.2 AI 보안 필수 가이드</a></li>
+          <li><a href="module9-2.html#s9-3">9.3 AI 거버넌스 프레임워크</a></li>
+          <li><a href="module9-2.html#s9-4">9.4 AI 도구 도입 로드맵</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module10">
+        <a href="module10-1.html" class="nav-title">
+          <span class="nav-number">10</span>
+          <span>No-Code & 2026 트렌드</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module10-1.html#s10-1">10.1 No-Code AI 자동화</a></li>
+          <li><a href="module10-1.html#s10-2">10.2 컨텍스트 엔지니어링</a></li>
+          <li><a href="module10-1.html#s10-3">10.3 추론 모델 & 확장된 사고</a></li>
+          <li><a href="module10-2.html#s10-4">10.4 멀티모달 AI 실무</a></li>
+          <li><a href="module10-2.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <p>최근 업데이트: 2026.04.10</p>
+      <p>&copy; 2026 PM/PL AI 실무 가이드</p>
+    </div>
+  </nav>
+
+  <main id="content">
+    <div id="module-container">
+      <section id="s6-1">
+    <h3>6.1 PM vs PL 역할 비교</h3>
+
+    <div class="info-box">
+      <strong>PM(Product Manager)</strong>은 <strong>"무엇을 만들 것인가"</strong>를, <strong>PL(Project Leader)</strong>은 <strong>"어떻게 만들어 낼 것인가"</strong>를 책임집니다. 두 역할은 서로 보완적이며, 프로젝트의 성공을 위해 긴밀한 협업이 필수적입니다.
+    </div>
+
+    <h4>PM과 PL의 역할 구분</h4>
+    <p>아래 다이어그램은 PM과 PL이 각각 담당하는 영역과 공통 영역을 보여줍니다.</p>
+
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TB
+    subgraph PM["🎯 PM — 무엇을 만들 것인가?"]
+        direction LR
+        PM1["제품 비전\n수립"]
+        PM2["사용자 요구\n분석"]
+        PM3["기능 우선순위\n결정"]
+        PM4["시장 분석"]
+        PM5["성공 지표\n정의"]
+    end
+
+    subgraph COMMON["🤝 공통 — 함께 협업하는 영역"]
+        direction LR
+        C1["이해관계자 소통"]
+        C2["의사결정 참여"]
+        C3["일정-기능 트레이드오프"]
+    end
+
+    subgraph PL["📋 PL — 어떻게 만들어 낼 것인가?"]
+        direction LR
+        PL1["프로젝트\n계획"]
+        PL2["일정 관리"]
+        PL3["리스크\n관리"]
+        PL4["팀 조율"]
+        PL5["품질 보증"]
+    end
+
+    PM --- COMMON
+    COMMON --- PL
+
+    style PM fill:#e3f2fd,stroke:#1565c0,color:#000
+    style COMMON fill:#fff8e1,stroke:#f9a825,color:#000
+    style PL fill:#e8f5e9,stroke:#2e7d32,color:#000
+      </div>
+    </div>
+
+    <h4>PM vs PL 상세 비교</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>PM (Product Manager)</th>
+          <th>PL (Project Leader)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>핵심 질문</strong></td>
+          <td>"무엇을 만들어야 하는가?"<br>"왜 이것을 만드는가?"</td>
+          <td>"어떻게 만들 것인가?"<br>"언제까지 완료할 수 있는가?"</td>
+        </tr>
+        <tr>
+          <td><strong>주요 산출물</strong></td>
+          <td>PRD, 로드맵, 사용자 스토리,<br>시장 분석 보고서</td>
+          <td>WBS, 간트차트, 리스크 관리대장,<br>주간/월간 보고서</td>
+        </tr>
+        <tr>
+          <td><strong>성공 기준</strong></td>
+          <td>사용자 만족도, 매출/KPI 달성,<br>시장 점유율 변화</td>
+          <td>일정 준수율, 예산 준수율,<br>품질 기준 달성, 팀 만족도</td>
+        </tr>
+        <tr>
+          <td><strong>핵심 역량</strong></td>
+          <td>사용자 공감, 데이터 분석,<br>비즈니스 감각, 우선순위 결정</td>
+          <td>계획 수립, 리스크 관리,<br>리더십, 문제 해결 능력</td>
+        </tr>
+        <tr>
+          <td><strong>협업 대상</strong></td>
+          <td>디자이너, 마케팅, 경영진,<br>고객/사용자</td>
+          <td>개발팀, QA, 디자이너,<br>인프라/운영팀</td>
+        </tr>
+        <tr>
+          <td><strong>시간 관점</strong></td>
+          <td>중장기 (분기~연 단위 로드맵)</td>
+          <td>단기~중기 (스프린트~릴리즈 단위)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>실무 팁</strong>: 실무에서는 PM과 PL 역할이 한 사람에게 주어지기도 하고, 조직에 따라 경계가 다릅니다. 중요한 것은 두 역할의 <strong>관점을 모두 이해</strong>하는 것입니다. "무엇을(What)"과 "어떻게(How)"를 동시에 고려할 수 있는 사람이 가장 효과적인 프로젝트 리더입니다.
+    </div>
+  </section>
+
+<section id="s6-2">
+    <h3>6.2 PL의 핵심 역량</h3>
+
+    <p>성공적인 PL이 되기 위해서는 다음 5가지 핵심 역량이 필요합니다. 각 역량은 독립적이면서도 서로 밀접하게 연결되어 있습니다.</p>
+
+    <h4>PL 핵심 역량 맵</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    A(("PL\n핵심 역량"))
+
+    subgraph G1["📋 프로젝트 계획"]
+        B1["WBS 작성"]
+        B2["일정 계획"]
+        B3["리소스 배분"]
+    end
+
+    subgraph G2["🛡️ 리스크 관리"]
+        C1["리스크 식별"]
+        C2["영향도 평가"]
+        C3["대응 전략"]
+    end
+
+    subgraph G3["👥 팀 리딩"]
+        D1["동기부여"]
+        D2["갈등 해결"]
+        D3["성과 관리"]
+    end
+
+    subgraph G4["🤝 이해관계자"]
+        E1["진행 보고"]
+        E2["기대 관리"]
+        E3["효과적 소통"]
+    end
+
+    subgraph G5["🔧 문제 해결"]
+        F1["이슈 추적"]
+        F2["의사결정"]
+        F3["에스컬레이션"]
+    end
+
+    A --> G1
+    A --> G2
+    A --> G3
+    A --> G4
+    A --> G5
+
+    style A fill:#4a9eff,color:#fff
+    style G1 fill:#fff3e0,stroke:#ef6c00,color:#000
+    style G2 fill:#fce4ec,stroke:#c62828,color:#000
+    style G3 fill:#e8f5e9,stroke:#2e7d32,color:#000
+    style G4 fill:#f3e5f5,stroke:#6a1b9a,color:#000
+    style G5 fill:#e0f7fa,stroke:#00838f,color:#000
+      </div>
+    </div>
+
+    <h4>역량별 설명 및 AI 활용 영역</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>역량</th>
+          <th>설명</th>
+          <th>AI 활용 가능 영역</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>프로젝트 계획 수립</strong></td>
+          <td>프로젝트 범위를 정의하고, 작업을 분해(WBS)하며, 일정과 리소스를 배분합니다. 프로젝트의 기반이 되는 핵심 역량입니다.</td>
+          <td>WBS 초안 자동 생성, 일정 추정, 리소스 배분 시뮬레이션</td>
+        </tr>
+        <tr>
+          <td><strong>리스크 관리</strong></td>
+          <td>프로젝트에 영향을 줄 수 있는 불확실한 요소를 사전에 식별하고, 발생 확률과 영향도를 평가하여 대응 전략을 수립합니다.</td>
+          <td>리스크 패턴 분석, 유사 프로젝트 사례 조사, 대응 전략 제안</td>
+        </tr>
+        <tr>
+          <td><strong>팀 리딩</strong></td>
+          <td>팀원들에게 동기를 부여하고, 갈등을 해결하며, 팀 전체의 성과를 관리합니다. 기술적 역량만큼 중요한 소프트 스킬입니다.</td>
+          <td>1:1 미팅 안건 준비, 팀 성과 리포트 작성, 피드백 템플릿 생성</td>
+        </tr>
+        <tr>
+          <td><strong>이해관계자 관리</strong></td>
+          <td>경영진, 고객, 유관 부서 등 이해관계자에게 프로젝트 상황을 보고하고, 기대를 관리하며, 효과적으로 소통합니다.</td>
+          <td>보고서 자동 생성, 이해관계자 분석, 커뮤니케이션 계획 수립</td>
+        </tr>
+        <tr>
+          <td><strong>문제 해결</strong></td>
+          <td>프로젝트 진행 중 발생하는 이슈를 추적하고, 적시에 의사결정을 내리며, 필요시 상위 레벨로 에스컬레이션합니다.</td>
+          <td>이슈 패턴 분석, 유사 사례 해결 방안 조사, 의사결정 매트릭스 생성</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>PMBOK vs Agile 접근법 비교</h4>
+    <p>PL은 프로젝트 특성에 따라 전통적(PMBOK) 방식과 애자일(Agile) 방식을 선택하거나 혼합하여 사용합니다.</p>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>PMBOK (전통적 방법론)</th>
+          <th>Agile (애자일 방법론)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>계획 방식</strong></td>
+          <td>프로젝트 초기에 상세 계획 수립<br>(예측형, Predictive)</td>
+          <td>반복적으로 계획 수정<br>(적응형, Adaptive)</td>
+        </tr>
+        <tr>
+          <td><strong>변경 관리</strong></td>
+          <td>변경 통제 위원회(CCB)를 통한<br>공식 변경 절차</td>
+          <td>백로그를 통한 유연한 변경<br>스프린트 단위 조정</td>
+        </tr>
+        <tr>
+          <td><strong>산출물</strong></td>
+          <td>프로젝트 헌장, WBS, 간트차트,<br>리스크 대장, 변경 이력</td>
+          <td>프로덕트 백로그, 스프린트 백로그,<br>번다운 차트, 회고록</td>
+        </tr>
+        <tr>
+          <td><strong>팀 구조</strong></td>
+          <td>역할이 명확히 분리<br>(PM, 개발, QA, 디자인)</td>
+          <td>자기 조직화 팀<br>(크로스펑셔널)</td>
+        </tr>
+        <tr>
+          <td><strong>적합한 프로젝트</strong></td>
+          <td>요구사항이 명확하고 변경이 적은<br>대규모 프로젝트 (건설, 제조 등)</td>
+          <td>요구사항이 유동적이고 빠른 출시가<br>필요한 소프트웨어 프로젝트</td>
+        </tr>
+        <tr>
+          <td><strong>PL의 역할</strong></td>
+          <td>프로젝트 관리자 (계획/통제 중심)</td>
+          <td>스크럼 마스터 / 서번트 리더<br>(장애물 제거 중심)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+<section id="s6-3">
+    <h3>6.3 프로젝트 일정 관리 (WBS & 간트차트)</h3>
+
+    <p>프로젝트 일정 관리는 PL의 가장 기본적이면서도 중요한 업무입니다. WBS로 작업을 분해하고, 간트차트로 일정을 시각화하는 것이 핵심입니다.</p>
+
+    <h4>WBS (Work Breakdown Structure)</h4>
+    <p><strong>WBS</strong>는 프로젝트의 전체 범위를 관리 가능한 단위로 분해한 계층 구조입니다. "나무를 쓰러뜨리려면 먼저 가지를 쳐라"는 원리와 같습니다.</p>
+
+    <div class="diagram-container" style="overflow-x:auto; padding:2rem 0;">
+      <div class="mermaid" style="min-width:900px; font-size:18px;">
+%%{init: {'theme':'default', 'themeVariables':{'fontSize':'18px','nodeTextSize':'16px'}, 'flowchart':{'nodeSpacing':30,'rankSpacing':60,'padding':20}}}%%
+graph TB
+    A["<b style='font-size:20px'>🎯 모바일 앱 개발 프로젝트</b>"]
+
+    A --> B["<b>📋 1. 기획</b>"]
+    A --> C["<b>🎨 2. 디자인</b>"]
+    A --> D["<b>💻 3. 개발</b>"]
+    A --> E["<b>🧪 4. 테스트</b>"]
+    A --> F["<b>🚀 5. 출시</b>"]
+
+    B --> B1["1.1<br/>요구사항 분석"]
+    B --> B2["1.2<br/>기능 정의"]
+    B --> B3["1.3<br/>기술 검토"]
+
+    C --> C1["2.1<br/>와이어프레임"]
+    C --> C2["2.2<br/>UI 디자인"]
+    C --> C3["2.3<br/>디자인 리뷰"]
+
+    D --> D1["3.1<br/>프론트엔드 개발"]
+    D --> D2["3.2<br/>백엔드 API"]
+    D --> D3["3.3<br/>DB 설계 및 구축"]
+
+    E --> E1["4.1<br/>단위 테스트"]
+    E --> E2["4.2<br/>통합 테스트"]
+    E --> E3["4.3<br/>사용자 수용 테스트"]
+
+    F --> F1["5.1<br/>스토어 등록"]
+    F --> F2["5.2<br/>모니터링 설정"]
+    F --> F3["5.3<br/>운영 인수인계"]
+
+    style A fill:#4a9eff,color:#fff,stroke:#1565c0,stroke-width:3px,font-size:20px
+    style B fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000
+    style C fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px,color:#000
+    style D fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#000
+    style E fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#000
+    style F fill:#fce4ec,stroke:#c62828,stroke-width:2px,color:#000
+    style B1 fill:#e3f2fd,stroke:#90caf9,color:#333
+    style B2 fill:#e3f2fd,stroke:#90caf9,color:#333
+    style B3 fill:#e3f2fd,stroke:#90caf9,color:#333
+    style C1 fill:#f3e5f5,stroke:#ce93d8,color:#333
+    style C2 fill:#f3e5f5,stroke:#ce93d8,color:#333
+    style C3 fill:#f3e5f5,stroke:#ce93d8,color:#333
+    style D1 fill:#fff3e0,stroke:#ffb74d,color:#333
+    style D2 fill:#fff3e0,stroke:#ffb74d,color:#333
+    style D3 fill:#fff3e0,stroke:#ffb74d,color:#333
+    style E1 fill:#e8f5e9,stroke:#81c784,color:#333
+    style E2 fill:#e8f5e9,stroke:#81c784,color:#333
+    style E3 fill:#e8f5e9,stroke:#81c784,color:#333
+    style F1 fill:#fce4ec,stroke:#ef9a9a,color:#333
+    style F2 fill:#fce4ec,stroke:#ef9a9a,color:#333
+    style F3 fill:#fce4ec,stroke:#ef9a9a,color:#333
+      </div>
+    </div>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">AI 프롬프트: WBS 생성</div>
+      <pre><code class="language-text">당신은 10년 경력의 시니어 프로젝트 리더입니다.
+
+다음 프로젝트의 WBS(Work Breakdown Structure)를 3단계 깊이로 작성해주세요.
+
+프로젝트: 사내 업무 관리 웹 애플리케이션 개발
+기간: 4개월
+팀 규모: 프론트엔드 2명, 백엔드 2명, 디자이너 1명, QA 1명
+
+요구사항:
+1. WBS를 표 형식으로 작성 (WBS 번호, 작업명, 담당, 예상 기간, 선행 작업)
+2. 각 작업의 산출물을 명시
+3. 마일스톤을 별도로 정리
+4. Mermaid 간트차트용 코드도 함께 생성</code></pre>
+    </div>
+
+    <h4>간트차트 (Gantt Chart)</h4>
+    <p><strong>간트차트</strong>는 프로젝트 일정을 시각적으로 표현하는 막대형 차트입니다. 작업 간의 순서, 기간, 중복 구간을 한눈에 파악할 수 있습니다.</p>
+
+    <div class="diagram-container">
+      <div class="mermaid">
+gantt
+    title 모바일 앱 개발 프로젝트 일정
+    dateFormat  YYYY-MM-DD
+    axisFormat  %m/%d
+
+    section 기획
+    요구사항 분석       :a1, 2026-05-01, 10d
+    기능 정의           :a2, after a1, 7d
+    기술 검토           :a3, after a1, 5d
+
+    section 디자인
+    와이어프레임        :b1, after a2, 7d
+    UI 디자인          :b2, after b1, 14d
+    디자인 리뷰        :b3, after b2, 3d
+
+    section 개발
+    프론트엔드 개발     :c1, after b3, 30d
+    백엔드 API 개발    :c2, after a3, 35d
+    DB 설계 및 구축    :c3, after a2, 10d
+
+    section 테스트
+    단위 테스트         :d1, after c1, 7d
+    통합 테스트         :d2, after d1, 10d
+    사용자 수용 테스트  :d3, after d2, 5d
+
+    section 출시
+    스토어 등록         :e1, after d3, 3d
+    모니터링 설정       :e2, after d3, 5d
+      </div>
+    </div>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">AI 프롬프트: 간트차트 생성</div>
+      <pre><code class="language-text">아래 WBS를 기반으로 Mermaid 간트차트 코드를 생성해주세요.
+
+조건:
+- 프로젝트 시작일: 2026-05-01
+- 작업 간 의존관계를 반영
+- 병렬 작업이 가능한 항목은 동시 진행으로 표현
+- 주요 마일스톤을 별도 표시
+- 크리티컬 패스(가장 긴 경로)를 식별하고 설명
+
+[WBS 내용을 여기에 붙여넣기]</code></pre>
+    </div>
+  </section>
+    </div>
+
+    <div id="module-nav">
+      <a href="module5-4.html" class="module-nav-btn">&larr; 이전</a>
+      <span id="current-module-label">6. PM/PL 역할 (상)</span>
+      <a href="module6-2.html" class="module-nav-btn">다음 &rarr;</a>
+    </div>
+  </main>
+
+  <button id="scroll-top" aria-label="맨 위로">&uarr;</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
