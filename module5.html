@@ -153,6 +153,33 @@
         </a>
         <ul class="nav-sub">
           <li><a href="module8.html#s8-1">8.1 AI 도구 요금제 비교</a></li>
+<li class="nav-item" data-module="module9">
+        <a href="module9.html" class="nav-title">
+          <span class="nav-number">9</span>
+          <span>AI 코딩 도구 & 보안</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module9.html#s9-1">9.1 AI 코딩 도구 생태계</a></li>
+          <li><a href="module9.html#s9-2">9.2 AI 보안 필수 가이드</a></li>
+          <li><a href="module9.html#s9-3">9.3 AI 거버넌스 프레임워크</a></li>
+          <li><a href="module9.html#s9-4">9.4 AI 도구 도입 로드맵</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module10">
+        <a href="module10.html" class="nav-title">
+          <span class="nav-number">10</span>
+          <span>No-Code & 2026 트렌드</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module10.html#s10-1">10.1 No-Code AI 자동화</a></li>
+          <li><a href="module10.html#s10-2">10.2 컨텍스트 엔지니어링</a></li>
+          <li><a href="module10.html#s10-3">10.3 추론 모델 & 확장된 사고</a></li>
+          <li><a href="module10.html#s10-4">10.4 멀티모달 AI 실무</a></li>
+          <li><a href="module10.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
+        </ul>
+      </li>
           <li><a href="module8.html#s8-2">8.2 토큰 비용 계산</a></li>
           <li><a href="module8.html#s8-3">8.3 AI 도입 ROI 산출</a></li>
           <li><a href="module8.html#s8-4">8.4 예산 편성 및 설득</a></li>
@@ -2249,6 +2276,88 @@ graph TD
 
           <div class="info-box">
             <strong>핵심 요약</strong>: 이 실습은 바이브 코딩의 "만들기"에서 한 단계 나아가 <strong>"검증하기"</strong>와 <strong>"보고하기"</strong>까지 다룹니다. Sub-Agent로 병렬 개발하고, MCP로 테스트하고, Gap 분석으로 품질을 확인하고, DOCX로 공식 보고서를 만드는 이 흐름이 <strong>AI 네이티브 개발의 실전 패턴</strong>입니다. 기존 방식 대비 <strong>90% 이상의 시간 단축</strong>이 가능하며, PM/PL이 이 패턴을 이해하면 개발팀과 더 깊이 있는 협업이 가능해집니다.
+          </div>
+
+          <h4>MCP 생태계 심화 — 아키텍처와 주요 서버</h4>
+          <div class="info-box">
+            <strong class="ai-term">MCP(Model Context Protocol)</strong>는 AI가 외부 세계와 소통하는 표준 프로토콜입니다. USB가 다양한 장치를 하나의 규격으로 연결하듯, MCP는 AI를 다양한 도구/데이터에 연결합니다.
+          </div>
+
+          <h4>MCP 3계층 아키텍처</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    subgraph Host["🖥️ MCP 호스트 (Claude Code, Cursor 등)"]
+        H1["사용자 인터페이스"]
+    end
+    subgraph Client["🔌 MCP 클라이언트"]
+        C1["프로토콜 처리"]
+        C2["요청/응답 관리"]
+    end
+    subgraph Servers["⚙️ MCP 서버들"]
+        S1["Playwright\n브라우저 자동화"]
+        S2["GitHub\n코드 저장소"]
+        S3["Slack\n메시지/채널"]
+        S4["PostgreSQL\n데이터베이스"]
+        S5["Gmail\n이메일"]
+        S6["Jira\n프로젝트 관리"]
+    end
+    H1 --> C1
+    C1 --> S1
+    C1 --> S2
+    C1 --> S3
+    C2 --> S4
+    C2 --> S5
+    C2 --> S6
+
+    style H1 fill:#4a9eff,color:#fff
+    style C1 fill:#9c27b0,color:#fff
+    style C2 fill:#9c27b0,color:#fff
+            </div>
+          </div>
+
+          <h4>PM이 알아야 할 주요 MCP 서버</h4>
+          <table class="comparison-table">
+            <thead><tr><th>MCP 서버</th><th>기능</th><th>PM 활용 시나리오</th><th>난이도</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Playwright</strong></td><td>브라우저 자동 조작/테스트</td><td>QA 자동화, 스크린샷 기반 검수</td><td>쉬움</td></tr>
+              <tr><td><strong>GitHub</strong></td><td>PR 생성, 이슈 관리, 코드 검색</td><td>개발 진행 상황 자동 모니터링</td><td>쉬움</td></tr>
+              <tr><td><strong>Slack</strong></td><td>메시지 전송, 채널 관리</td><td>일일 보고서 자동 공유</td><td>쉬움</td></tr>
+              <tr><td><strong>Google Calendar</strong></td><td>일정 조회/생성/수정</td><td>회의 일정 자동 관리</td><td>쉬움</td></tr>
+              <tr><td><strong>PostgreSQL</strong></td><td>DB 조회/분석</td><td>데이터 기반 의사결정</td><td>중간</td></tr>
+              <tr><td><strong>Jira</strong></td><td>이슈 생성/수정/검색</td><td>백로그 관리 자동화</td><td>중간</td></tr>
+              <tr><td><strong>Gmail</strong></td><td>이메일 검색/발송/정리</td><td>고객 피드백 수집 자동화</td><td>쉬움</td></tr>
+            </tbody>
+          </table>
+
+          <h4>MCP vs 기존 API 연동 비교</h4>
+          <table class="comparison-table">
+            <thead><tr><th>항목</th><th>기존 API 연동</th><th>MCP 연동</th></tr></thead>
+            <tbody>
+              <tr><td><strong>설정 방식</strong></td><td>서비스별 개별 코드 작성</td><td>설정 파일 한 줄로 연결</td></tr>
+              <tr><td><strong>개발 필요</strong></td><td>API 클라이언트 직접 구현</td><td>MCP 서버 설치만 하면 즉시 사용</td></tr>
+              <tr><td><strong>표준화</strong></td><td>서비스마다 다른 인터페이스</td><td>하나의 프로토콜로 통일</td></tr>
+              <tr><td><strong>AI 통합</strong></td><td>별도 연동 로직 필요</td><td>AI가 자연어로 직접 호출</td></tr>
+              <tr><td><strong>비개발자 사용</strong></td><td>불가능</td><td>자연어 명령으로 가능</td></tr>
+            </tbody>
+          </table>
+
+          <h4>PM의 MCP 도입 판단 기준</h4>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph TD
+    A["MCP 도입 검토"] --> B{"반복적인\n수동 작업이\n있는가?"}
+    B -->|예| C{"해당 서비스의\nMCP 서버가\n존재하는가?"}
+    B -->|아니오| D["MCP 불필요\n기존 방식 유지"]
+    C -->|예| E["MCP 도입 추천\n설정 후 즉시 활용"]
+    C -->|아니오| F{"커스텀 MCP\n서버 개발\n가치가 있는가?"}
+    F -->|예| G["개발팀에\nMCP 서버 개발 요청"]
+    F -->|아니오| H["기존 API 연동\n또는 수동 처리"]
+
+    style A fill:#4a9eff,color:#fff
+    style E fill:#4caf50,color:#fff
+    style D fill:#ff9800,color:#fff
+            </div>
           </div>
         </section>
 

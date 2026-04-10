@@ -153,6 +153,33 @@
         </a>
         <ul class="nav-sub">
           <li><a href="#s8-1">8.1 AI 도구 요금제 비교</a></li>
+<li class="nav-item" data-module="module9">
+        <a href="module9.html" class="nav-title">
+          <span class="nav-number">9</span>
+          <span>AI 코딩 도구 & 보안</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module9.html#s9-1">9.1 AI 코딩 도구 생태계</a></li>
+          <li><a href="module9.html#s9-2">9.2 AI 보안 필수 가이드</a></li>
+          <li><a href="module9.html#s9-3">9.3 AI 거버넌스 프레임워크</a></li>
+          <li><a href="module9.html#s9-4">9.4 AI 도구 도입 로드맵</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module10">
+        <a href="module10.html" class="nav-title">
+          <span class="nav-number">10</span>
+          <span>No-Code & 2026 트렌드</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module10.html#s10-1">10.1 No-Code AI 자동화</a></li>
+          <li><a href="module10.html#s10-2">10.2 컨텍스트 엔지니어링</a></li>
+          <li><a href="module10.html#s10-3">10.3 추론 모델 & 확장된 사고</a></li>
+          <li><a href="module10.html#s10-4">10.4 멀티모달 AI 실무</a></li>
+          <li><a href="module10.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
+        </ul>
+      </li>
           <li><a href="#s8-2">8.2 토큰 비용 계산</a></li>
           <li><a href="#s8-3">8.3 AI 도입 ROI 산출</a></li>
           <li><a href="#s8-4">8.4 예산 편성 및 설득</a></li>
@@ -412,6 +439,82 @@ graph TD
 3. 두 방식 비교표 (어느 시점에서 어떤 방식이 유리한지)
 4. 최적 조합 제안 (예: PM은 월정액, 개발은 API)
 5. 연간 예산 추정 (월별 성장률 10% 감안)</code></pre>
+    </div>
+
+    <h4>비용 최적화 전략 — 프롬프트 캐싱</h4>
+    <div class="info-box">
+      <strong>프롬프트 캐싱</strong>: 동일하거나 유사한 프롬프트를 반복 사용할 때, 이전 처리 결과를 캐시하여 입력 토큰 비용을 최대 90%까지 절감하는 기술입니다. Anthropic Claude와 OpenAI 모두 지원합니다.
+    </div>
+
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    A["긴 시스템 프롬프트\n(5,000 토큰)"] --> B{"캐시에\n존재?"}
+    B -->|No| C["전체 토큰 과금\n$0.015"]
+    B -->|Yes| D["캐시 히트!\n90% 할인\n$0.0015"]
+    C --> E["캐시에 저장"]
+    D --> F["즉시 응답"]
+
+    style D fill:#4caf50,color:#fff
+    style C fill:#ff9800,color:#fff
+      </div>
+    </div>
+
+    <h4>모델 라우팅 — 작업별 최적 모델 선택</h4>
+    <p>모든 작업에 최고급 모델을 쓸 필요는 없습니다. 작업 복잡도에 따라 모델을 나누면 비용을 50~70% 절감할 수 있습니다.</p>
+    <table class="comparison-table">
+      <thead><tr><th>작업 유형</th><th>추천 모델</th><th>예상 비용/건</th><th>이유</th></tr></thead>
+      <tbody>
+        <tr><td>간단한 분류/요약</td><td>Haiku / GPT-4o-mini</td><td>~$0.001</td><td>빠르고 저렴, 단순 작업에 충분</td></tr>
+        <tr><td>문서 작성/분석</td><td>Sonnet / GPT-4o</td><td>~$0.01</td><td>품질과 비용의 균형</td></tr>
+        <tr><td>복잡한 추론/전략</td><td>Opus / o1</td><td>~$0.10</td><td>최고 품질, 중요한 의사결정에만</td></tr>
+      </tbody>
+    </table>
+
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A["작업 요청"] --> B{"복잡도\n판단"}
+    B -->|"단순\n(분류, 추출)"| C["Haiku/Mini\n💰 $0.001"]
+    B -->|"보통\n(작성, 분석)"| D["Sonnet/4o\n💰 $0.01"]
+    B -->|"복잡\n(전략, 추론)"| E["Opus/o1\n💰 $0.10"]
+    C --> F["월 비용 50~70%↓"]
+    D --> F
+    E --> F
+
+    style C fill:#4caf50,color:#fff
+    style D fill:#ff9800,color:#fff
+    style E fill:#f44336,color:#fff
+    style F fill:#4a9eff,color:#fff
+      </div>
+    </div>
+
+    <h4>토큰 절감 실전 기법 Top 5</h4>
+    <table class="comparison-table">
+      <thead><tr><th>#</th><th>기법</th><th>절감 효과</th><th>적용 방법</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>프롬프트 캐싱</strong></td><td>입력 비용 90%↓</td><td>시스템 프롬프트에 cache_control 설정</td></tr>
+        <tr><td>2</td><td><strong>모델 라우팅</strong></td><td>전체 비용 50~70%↓</td><td>작업 복잡도별 모델 자동 배분</td></tr>
+        <tr><td>3</td><td><strong>출력 형식 제한</strong></td><td>출력 토큰 30~50%↓</td><td>"3줄 이내로 답변", JSON 형식 지정</td></tr>
+        <tr><td>4</td><td><strong>배치 처리</strong></td><td>API 비용 50%↓</td><td>여러 요청을 하나로 묶어 처리</td></tr>
+        <tr><td>5</td><td><strong>컨텍스트 압축</strong></td><td>입력 토큰 40%↓</td><td>긴 문서를 요약 후 전달, /compact 활용</td></tr>
+      </tbody>
+    </table>
+
+    <h4>월간 AI 비용 추적 템플릿</h4>
+    <div class="prompt-example good">
+      <div class="prompt-label">프롬프트: AI 비용 추적 대시보드 생성</div>
+      <pre><code class="language-text">우리 팀의 월간 AI 비용을 추적하는 스프레드시트 템플릿을 만들어줘.
+
+포함할 항목:
+1. 도구별 비용 (ChatGPT Pro, Claude Pro, Cursor Pro, API 사용량)
+2. 팀원별 사용량 추적 (일일/주간/월간)
+3. 작업 유형별 비용 분류 (문서 작성, 코드 생성, 조사, 회의)
+4. 모델 라우팅 절감 효과 추적
+5. 전월 대비 비용 변동 그래프
+6. ROI 계산 (절감 시간 × 시급 vs AI 비용)
+
+Google Sheets 수식 포함해서 바로 사용할 수 있게 만들어줘.</code></pre>
     </div>
   </section>
 
@@ -805,7 +908,7 @@ graph TD
     <div id="module-nav">
       <a href="module7.html" class="module-nav-btn">&larr; 이전 모듈</a>
       <span id="current-module-label">8. AI 도구 비용/ROI 관리</span>
-      <span class="module-nav-btn disabled">다음 모듈 &rarr;</span>
+      <a href="module9.html" class="module-nav-btn">다음 모듈 &rarr;</a>
     </div>
   </main>
 

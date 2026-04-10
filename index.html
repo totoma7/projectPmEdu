@@ -153,6 +153,33 @@
         </a>
         <ul class="nav-sub">
           <li><a href="module8.html#s8-1">8.1 AI 도구 요금제 비교</a></li>
+<li class="nav-item" data-module="module9">
+        <a href="module9.html" class="nav-title">
+          <span class="nav-number">9</span>
+          <span>AI 코딩 도구 & 보안</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module9.html#s9-1">9.1 AI 코딩 도구 생태계</a></li>
+          <li><a href="module9.html#s9-2">9.2 AI 보안 필수 가이드</a></li>
+          <li><a href="module9.html#s9-3">9.3 AI 거버넌스 프레임워크</a></li>
+          <li><a href="module9.html#s9-4">9.4 AI 도구 도입 로드맵</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module10">
+        <a href="module10.html" class="nav-title">
+          <span class="nav-number">10</span>
+          <span>No-Code & 2026 트렌드</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module10.html#s10-1">10.1 No-Code AI 자동화</a></li>
+          <li><a href="module10.html#s10-2">10.2 컨텍스트 엔지니어링</a></li>
+          <li><a href="module10.html#s10-3">10.3 추론 모델 & 확장된 사고</a></li>
+          <li><a href="module10.html#s10-4">10.4 멀티모달 AI 실무</a></li>
+          <li><a href="module10.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
+        </ul>
+      </li>
           <li><a href="module8.html#s8-2">8.2 토큰 비용 계산</a></li>
           <li><a href="module8.html#s8-3">8.3 AI 도입 ROI 산출</a></li>
           <li><a href="module8.html#s8-4">8.4 예산 편성 및 설득</a></li>
@@ -480,6 +507,48 @@ graph TD
               <tr><td><strong>지연 시간</strong></td><td>검색+생성까지 허용 시간은?</td><td>실시간 챗봇: 2초 이내 / 배치 분석: 30초 이내</td></tr>
             </tbody>
           </table>
+
+          <h4>프로덕션 RAG — 벡터 DB 선택 가이드</h4>
+          <table class="comparison-table">
+            <thead><tr><th>벡터 DB</th><th>특징</th><th>가격</th><th>추천 규모</th><th>PM 판단 포인트</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Pinecone</strong></td><td>완전 관리형, 빠른 설정</td><td>무료 티어 있음, $70/월~</td><td>중소~대규모</td><td>빠른 PoC, 운영 부담 최소</td></tr>
+              <tr><td><strong>Weaviate</strong></td><td>오픈소스, 하이브리드 검색</td><td>오픈소스 무료, 클라우드 $25/월~</td><td>중규모</td><td>키워드+시맨틱 검색 필요 시</td></tr>
+              <tr><td><strong>Qdrant</strong></td><td>고성능, Rust 기반</td><td>오픈소스 무료, 클라우드 $25/월~</td><td>대규모</td><td>성능 중시 프로젝트</td></tr>
+              <tr><td><strong>ChromaDB</strong></td><td>가벼움, 로컬 개발 최적</td><td>완전 무료 (오픈소스)</td><td>소규모/PoC</td><td>빠른 프로토타이핑</td></tr>
+            </tbody>
+          </table>
+
+          <h4>청킹 전략 비교 — 정확도의 핵심</h4>
+          <p>문서를 어떻게 쪼개느냐에 따라 RAG 정확도가 크게 달라집니다.</p>
+          <table class="comparison-table">
+            <thead><tr><th>전략</th><th>방법</th><th>장점</th><th>단점</th><th>추천 상황</th></tr></thead>
+            <tbody>
+              <tr><td><strong>고정 크기</strong></td><td>500~1000토큰 단위로 분할</td><td>구현 간단, 예측 가능</td><td>문맥 단절 가능</td><td>빠른 PoC, 균일한 문서</td></tr>
+              <tr><td><strong>의미 기반</strong></td><td>문단/섹션 단위로 분할</td><td>문맥 보존</td><td>청크 크기 불균일</td><td>구조화된 문서 (위키, FAQ)</td></tr>
+              <tr><td><strong>재귀적</strong></td><td>큰 단위→작은 단위로 계층 분할</td><td>유연성 높음</td><td>구현 복잡</td><td>다양한 형태의 문서</td></tr>
+              <tr><td><strong>하이브리드</strong></td><td>의미 기반 + 오버랩</td><td>문맥 보존 + 검색 정확도</td><td>저장 공간 증가</td><td>프로덕션 환경 권장</td></tr>
+            </tbody>
+          </table>
+
+          <h4>하이브리드 검색 — 키워드 + 시맨틱</h4>
+          <div class="info-box">
+            <strong>하이브리드 검색</strong>: 전통적인 키워드 검색(BM25)과 벡터 유사도 검색을 결합하여 정확도를 높이는 방법입니다. 정확한 용어 매칭이 필요한 경우와 의미적 유사성이 필요한 경우를 모두 커버합니다.
+          </div>
+          <div class="diagram-container">
+            <div class="mermaid">
+graph LR
+    A["사용자 질문"] --> B["BM25 키워드 검색\n정확한 용어 매칭"]
+    A --> C["벡터 유사도 검색\n의미적 유사성"]
+    B --> D["리랭킹 모델\n결과 통합 & 재정렬"]
+    C --> D
+    D --> E["최종 Top-K 문서\n정확도 20~30% 향상"]
+
+    style A fill:#4a9eff,color:#fff
+    style D fill:#9c27b0,color:#fff
+    style E fill:#4caf50,color:#fff
+            </div>
+          </div>
         </section>
 
         <section id="s1-7">
