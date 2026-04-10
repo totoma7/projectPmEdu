@@ -71,6 +71,7 @@
           <li><a href="module3.html#s3-3">3.3 ER 다이어그램</a></li>
           <li><a href="module3.html#s3-4">3.4 사용자 여정 맵</a></li>
           <li><a href="module3.html#s3-5">3.5 AI 도구별 도식화 비교</a></li>
+          <li><a href="module3.html#s3-6">3.6 시퀀스 다이어그램</a></li>
         </ul>
       </li>
       <li class="nav-item" data-module="module4">
@@ -155,6 +156,7 @@
           <li><a href="#s8-2">8.2 토큰 비용 계산</a></li>
           <li><a href="#s8-3">8.3 AI 도입 ROI 산출</a></li>
           <li><a href="#s8-4">8.4 예산 편성 및 설득</a></li>
+          <li><a href="#s8-5">8.5 AI 도구 선정 매트릭스</a></li>
         </ul>
       </li>
     </ul>
@@ -620,6 +622,169 @@ graph TD
 - 경영진이 30초 만에 핵심을 파악할 수 있도록</code></pre>
     </div>
 
+  </section>
+
+  <!-- 8.5 AI 도구 선정 의사결정 매트릭스 -->
+  <section id="s8-5">
+    <h3>8.5 AI 도구 선정 의사결정 매트릭스</h3>
+
+    <div class="info-box">
+      <strong>핵심</strong>: AI 도구를 "느낌"이 아닌 체계적인 평가 기준으로 선정해야 도입 실패를 줄일 수 있습니다. 의사결정 매트릭스는 객관적 비교와 경영진 설득 모두에 유용합니다.
+    </div>
+
+    <h4>AI 도구 선정 프로세스</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A[요구사항 정의<br/>어떤 업무에 AI가 필요한가?] --> B[후보 도구 선정<br/>3~5개 후보 리스트업]
+    B --> C[평가 기준 설정<br/>기능/비용/보안/확장성/UX]
+    C --> D[가중치 부여<br/>조직 우선순위 반영]
+    D --> E[도구별 점수 평가<br/>1~5점 척도]
+    E --> F[가중 점수 계산<br/>점수 x 가중치]
+    F --> G{최종 비교}
+    G --> H[1순위 도구 선정]
+    H --> I[파일럿 테스트<br/>2~4주 실사용]
+    I --> J{파일럿 결과}
+    J -->|성공| K[정식 도입 결정]
+    J -->|미달| L[2순위 도구로<br/>파일럿 재실행]
+    L --> I
+      </div>
+    </div>
+
+    <h4>평가 기준별 가중치 예시</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>평가 기준</th>
+          <th>설명</th>
+          <th>가중치 (예시)</th>
+          <th>주요 확인 항목</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>핵심 기능</strong></td>
+          <td>우리 업무에 필요한 기능을 지원하는가?</td>
+          <td>30%</td>
+          <td>문서 작성, 코드 생성, 데이터 분석, 검색 등</td>
+        </tr>
+        <tr>
+          <td><strong>비용 효율</strong></td>
+          <td>예산 대비 가성비가 좋은가?</td>
+          <td>20%</td>
+          <td>인당 월 비용, API 토큰 단가, 무료 티어 범위</td>
+        </tr>
+        <tr>
+          <td><strong>보안/컴플라이언스</strong></td>
+          <td>기업 보안 기준을 충족하는가?</td>
+          <td>20%</td>
+          <td>데이터 보호 정책, SOC2, GDPR, 학습 비동의 옵션</td>
+        </tr>
+        <tr>
+          <td><strong>사용 편의성</strong></td>
+          <td>팀원들이 쉽게 사용할 수 있는가?</td>
+          <td>15%</td>
+          <td>UI 직관성, 한국어 지원, 학습 곡선, 온보딩 자료</td>
+        </tr>
+        <tr>
+          <td><strong>확장성/연동</strong></td>
+          <td>기존 도구와 연동 가능한가?</td>
+          <td>15%</td>
+          <td>API 제공, Slack/Notion 연동, SSO, 팀 관리</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>도구 비교 매트릭스 예시 (PM 문서 작성 용도)</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>평가 기준 (가중치)</th>
+          <th>Claude Team</th>
+          <th>ChatGPT Team</th>
+          <th>Gemini Business</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>핵심 기능 (30%)</strong></td>
+          <td>5점 (장문 문서 우수)</td>
+          <td>4점 (범용적)</td>
+          <td>4점 (검색 연동 강점)</td>
+        </tr>
+        <tr>
+          <td><strong>비용 효율 (20%)</strong></td>
+          <td>4점 ($25/월/인)</td>
+          <td>4점 ($25/월/인)</td>
+          <td>4점 ($24/월/인)</td>
+        </tr>
+        <tr>
+          <td><strong>보안 (20%)</strong></td>
+          <td>5점 (학습 미사용 명시)</td>
+          <td>4점 (Team은 학습 미사용)</td>
+          <td>4점 (Google Workspace 연동)</td>
+        </tr>
+        <tr>
+          <td><strong>사용 편의성 (15%)</strong></td>
+          <td>4점</td>
+          <td>5점 (가장 대중적)</td>
+          <td>4점</td>
+        </tr>
+        <tr>
+          <td><strong>확장성 (15%)</strong></td>
+          <td>4점 (API, MCP)</td>
+          <td>5점 (GPTs, Plugin 생태계)</td>
+          <td>4점 (Google 생태계)</td>
+        </tr>
+        <tr>
+          <td><strong>가중 합계</strong></td>
+          <td><strong>4.45점</strong></td>
+          <td><strong>4.35점</strong></td>
+          <td><strong>4.00점</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>팁</strong>: 위 점수는 예시입니다. 실제 평가 시에는 팀의 업무 특성과 기존 인프라(Google Workspace vs Microsoft 365 등)에 따라 가중치와 점수가 달라집니다. 반드시 파일럿 테스트로 실사용 경험을 반영하세요.
+    </div>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">AI에게 도구 비교 매트릭스 요청 프롬프트</div>
+      <pre><code class="language-text">우리 팀에 적합한 AI 도구를 선정하기 위한 의사결정 매트릭스를 만들어주세요.
+
+## 팀 정보
+- 팀 규모: 15명 (PM 3명, PL 2명, 개발자 7명, 디자이너 3명)
+- 주요 용도: PRD 작성, 코드 리뷰, 디자인 피드백, 회의록 정리
+- 기존 인프라: Google Workspace, Slack, Jira, Figma
+- 보안 요구: 고객 데이터 미학습 필수, SSO 지원 필요
+- 월 예산: 인당 $30 이내
+
+## 비교 대상
+1. Claude Team
+2. ChatGPT Team
+3. Gemini Business
+4. GitHub Copilot (개발자용)
+
+## 요청사항
+- 5가지 평가 기준별 1~5점 평가
+- 우리 팀 상황에 맞는 가중치 제안
+- 가중 합계 기준 순위
+- 최종 추천 및 근거</code></pre>
+    </div>
+
+    <div class="practice-section">
+      <h4>실습 과제</h4>
+      <p>여러분의 팀/조직 상황에 맞게 다음을 수행해보세요:</p>
+      <ol>
+        <li>팀의 AI 도구 요구사항을 5가지 이상 정리하세요</li>
+        <li>후보 도구 3개를 선정하고 위 매트릭스 양식으로 비교하세요</li>
+        <li>가중치를 팀 상황에 맞게 조정하여 최종 순위를 도출하세요</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
     <div class="practice-section">
       <h4>종합 실습</h4>
       <p>이 모듈에서 배운 내용을 종합하여 다음을 작성해보세요:</p>
@@ -628,6 +793,7 @@ graph TD
         <li>월간/연간 비용 추정 (8.2 참고)</li>
         <li>ROI 분석 (보수적/중립/낙관 3개 시나리오) (8.3 참고)</li>
         <li>경영진 1페이지 보고서 작성 (8.4 참고)</li>
+        <li>AI 도구 비교 매트릭스 작성 (8.5 참고)</li>
       </ol>
       <p>실제로 경영진에게 제출할 수 있는 수준을 목표로 하세요.</p>
     </div>
