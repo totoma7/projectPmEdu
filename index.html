@@ -861,6 +861,128 @@ graph TD
           <p style="margin-top:16px"><a href="ai-engineering-evolution.html" target="_blank">📊 타임라인 비주얼 버전으로 보기 →</a></p>
         </section>
 
+  <!-- 1.10 멀티모달 AI와 No-code 빌더 -->
+  <section id="s1-10">
+    <h3>1.10 멀티모달 AI와 No-code AI 빌더</h3>
+
+    <div class="info-box">
+      <strong>2025+ 트렌드</strong>: AI가 텍스트를 넘어 이미지, 음성, 영상을 이해하고 생성하는 "멀티모달" 시대가 본격화되었습니다. 동시에 코드 한 줄 없이 AI로 앱을 만드는 No-code AI 빌더도 급성장하고 있습니다.
+    </div>
+
+    <h4>멀티모달 AI란?</h4>
+    <p>텍스트뿐 아니라 이미지, 음성, 영상, 문서 등 여러 형태(모달리티)의 데이터를 입력받거나 출력할 수 있는 AI입니다.</p>
+
+    <h4>PM/PL을 위한 멀티모달 AI 활용</h4>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>활용 시나리오</th>
+          <th>입력</th>
+          <th>AI 결과물</th>
+          <th>활용 도구</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>디자인 리뷰</strong></td>
+          <td>UI 스크린샷 이미지</td>
+          <td>UX 개선점, 접근성 이슈, 디자인 피드백</td>
+          <td>ChatGPT Vision, Claude (이미지 입력)</td>
+        </tr>
+        <tr>
+          <td><strong>경쟁사 UI 분석</strong></td>
+          <td>경쟁사 앱 스크린샷</td>
+          <td>기능 비교, UI 패턴 분석, 차별화 포인트</td>
+          <td>Claude, Gemini</td>
+        </tr>
+        <tr>
+          <td><strong>문서 OCR 분석</strong></td>
+          <td>스캔한 계약서, 보고서 이미지</td>
+          <td>텍스트 추출 및 요약, 핵심 조항 정리</td>
+          <td>ChatGPT, Claude</td>
+        </tr>
+        <tr>
+          <td><strong>회의 녹음 분석</strong></td>
+          <td>음성 녹음 파일</td>
+          <td>텍스트 변환 + 요약 + 액션 아이템 추출</td>
+          <td>Whisper + ChatGPT/Claude</td>
+        </tr>
+        <tr>
+          <td><strong>프레젠테이션 자료</strong></td>
+          <td>텍스트 설명</td>
+          <td>다이어그램, 차트, 일러스트 이미지 생성</td>
+          <td>DALL-E, Midjourney, Ideogram</td>
+        </tr>
+        <tr>
+          <td><strong>와이어프레임 → 코드</strong></td>
+          <td>손그림/와이어프레임 이미지</td>
+          <td>실제 동작하는 HTML/CSS 코드</td>
+          <td>Claude, GPT-4o, v0</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>No-code AI 빌더 비교</h4>
+    <p>바이브 코딩(Module 5) 외에도, 코드 작성 없이 AI가 앱을 만들어주는 도구들이 있습니다.</p>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>도구</th>
+          <th>특징</th>
+          <th>적합한 용도</th>
+          <th>제한사항</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Bolt.new</strong></td>
+          <td>프롬프트로 풀스택 웹앱 즉시 생성, 브라우저 내 실행</td>
+          <td>빠른 프로토타입, 랜딩페이지, 간단한 웹앱</td>
+          <td>복잡한 백엔드 로직, 대규모 앱에 한계</td>
+        </tr>
+        <tr>
+          <td><strong>v0 (Vercel)</strong></td>
+          <td>UI 컴포넌트 중심, React/Next.js 코드 생성</td>
+          <td>UI 디자인 탐색, 프론트엔드 프로토타입</td>
+          <td>프론트엔드 중심, 풀스택 기능 제한적</td>
+        </tr>
+        <tr>
+          <td><strong>Lovable</strong></td>
+          <td>대화형 앱 빌더, Supabase 통합</td>
+          <td>데이터베이스 포함 웹앱, CRUD 애플리케이션</td>
+          <td>커스터마이징 깊이 한계</td>
+        </tr>
+        <tr>
+          <td><strong>Cursor</strong></td>
+          <td>AI 코드 에디터, 기존 코드베이스와 통합</td>
+          <td>기존 프로젝트 수정, 코드 이해 및 개선</td>
+          <td>코드 에디터이므로 약간의 기술 이해 필요</td>
+        </tr>
+        <tr>
+          <td><strong>Claude Code</strong></td>
+          <td>CLI 기반, 파일 시스템 직접 접근, 풀스택 개발</td>
+          <td>복잡한 프로젝트, 대규모 코드 수정, 전문적 개발</td>
+          <td>터미널 사용 필요, 학습 곡선</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>PM/PL 선택 가이드</strong>:
+      <ul>
+        <li><strong>아이디어 빠르게 시각화</strong>: Bolt.new, v0 → 5분 내 프로토타입</li>
+        <li><strong>동작하는 MVP 제작</strong>: Lovable, Bolt.new → 데이터베이스 포함 앱</li>
+        <li><strong>프로덕션 수준 개발</strong>: Claude Code, Cursor → 전문적 개발 지원</li>
+      </ul>
+    </div>
+
+    <div class="practice-section">
+      <h4>실습 과제</h4>
+      <p>경쟁사 앱의 스크린샷을 찍어 Claude나 ChatGPT에 입력하고 "이 UI의 장단점을 분석해주세요"라고 요청해보세요. 텍스트만으로 설명하는 것보다 훨씬 구체적인 피드백을 받을 수 있습니다.</p>
+    </div>
+  </section>
+
       </article>
     </div>
 
