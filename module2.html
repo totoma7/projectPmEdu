@@ -347,6 +347,82 @@
    | 번호 | 항목 | 담당자 | 기한 | 상태 |
 5. 다음 회의 일정 및 안건</code></pre>
     </div>
+
+    <h4>음성 기반 회의록 자동 생성 워크플로우</h4>
+    <div class="info-box">
+      <strong>2025+ 트렌드</strong>: 텍스트 메모 대신 회의 녹음을 AI가 자동으로 텍스트 변환하고 구조화하는 워크플로우가 표준이 되고 있습니다.
+    </div>
+
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>도구</th>
+          <th>특징</th>
+          <th>활용 방법</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Clova Note</strong></td>
+          <td>한국어 특화, 화자 분리, 무료 플랜 제공</td>
+          <td>한국어 회의 녹음 → 텍스트 변환 → AI로 구조화</td>
+        </tr>
+        <tr>
+          <td><strong>Otter.ai</strong></td>
+          <td>영어 특화, 실시간 전사, 요약 자동 생성</td>
+          <td>영어 회의/글로벌 콜 → 실시간 녹취 → 요약 추출</td>
+        </tr>
+        <tr>
+          <td><strong>Whisper (OpenAI)</strong></td>
+          <td>오픈소스, 다국어 지원, 높은 정확도</td>
+          <td>녹음 파일 → Whisper 변환 → Claude/ChatGPT로 분석</td>
+        </tr>
+        <tr>
+          <td><strong>MS Teams Copilot</strong></td>
+          <td>Teams 내장, 자동 요약 및 액션아이템 추출</td>
+          <td>Teams 회의 → 자동 녹취 → Copilot 요약 → 내보내기</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ol class="step-list">
+      <li>
+        <strong>회의 녹음</strong>
+        <p>참석자 동의 하에 회의를 녹음합니다. 스마트폰 녹음 앱이나 화상회의 녹화 기능을 활용합니다.</p>
+      </li>
+      <li>
+        <strong>음성 → 텍스트 변환 (STT)</strong>
+        <p>Clova Note, Whisper 등으로 녹음 파일을 텍스트로 변환합니다. 화자 분리가 되면 더욱 유용합니다.</p>
+      </li>
+      <li>
+        <strong>AI로 구조화 및 요약</strong>
+        <p>변환된 텍스트를 Claude나 ChatGPT에 입력하여 회의록 형식으로 정리합니다.</p>
+      </li>
+      <li>
+        <strong>액션 아이템 추출 및 공유</strong>
+        <p>AI가 추출한 결정 사항과 액션 아이템을 Jira, Notion 등 협업 도구에 등록합니다.</p>
+      </li>
+    </ol>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">음성 녹취록 → 회의록 변환 프롬프트</div>
+      <pre><code class="language-text">다음은 회의 녹음의 텍스트 변환 결과입니다. 공식 회의록으로 정리해주세요.
+
+[녹취록]
+(STT 도구로 변환된 텍스트를 붙여넣기)
+
+정리 요청:
+1. 회의 개요 (일시, 참석자, 안건)
+2. 안건별 논의 요약 (핵심만 간결하게)
+3. 결정 사항 (번호 매기기)
+4. 액션 아이템 테이블:
+   | 번호 | 항목 | 담당자 | 기한 | 우선순위 |
+5. 미결 사항 및 후속 논의 필요 항목
+6. 다음 회의 일정
+
+[주의] 구어체를 문어체로 변환하고,
+불필요한 반복이나 사담은 제외해주세요.</code></pre>
+    </div>
   </section>
 
   <!-- 2.5 프롬프트 템플릿 활용법 -->
