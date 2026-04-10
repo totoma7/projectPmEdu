@@ -647,6 +647,242 @@ A4 2페이지 분량, 경영진 보고서 형식으로 작성해주세요.
       </ol>
     </div>
   </section>
+
+  <section id="s9-5">
+    <h3>9.5 개발자 AI 솔루션 학습 로드맵</h3>
+
+    <div class="info-box">
+      <strong>AI 시대의 개발자 역량</strong>: AI 솔루션을 구축하려면 기존 개발 역량에 더해 LLM API 활용, 프롬프트 엔지니어링, RAG 구축, 에이전트 개발 능력이 필요합니다. 언어별 생태계에 따라 학습 경로가 다르므로, Java와 Python 개발자 각각의 최적 로드맵을 제시합니다.
+    </div>
+
+    <h4>공통 기초 — 언어 무관 필수 역량</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph TD
+    A["AI 솔루션 개발자\n공통 기초"] --> B["1단계\nAI/LLM 기본 이해\n(2주)"]
+    B --> C["2단계\nAPI 연동 & 프롬프트 엔지니어링\n(2주)"]
+    C --> D["3단계\nRAG 파이프라인 구축\n(3주)"]
+    D --> E["4단계\nAI 에이전트 개발\n(3주)"]
+    E --> F["5단계\nMLOps & 프로덕션 배포\n(2주)"]
+    F --> G["6단계\nMCP 서버 개발 & 통합\n(2주)"]
+
+    style A fill:#4a9eff,color:#fff
+    style D fill:#ff9800,color:#fff
+    style G fill:#4caf50,color:#fff
+      </div>
+    </div>
+
+    <table class="comparison-table">
+      <thead><tr><th>단계</th><th>학습 내용</th><th>핵심 역량</th><th>기간</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1단계</strong></td><td>LLM 동작 원리, 토큰/컨텍스트 윈도우, 모델 선택 기준</td><td>AI 기술 이해</td><td>2주</td></tr>
+        <tr><td><strong>2단계</strong></td><td>OpenAI/Anthropic API 연동, 프롬프트 설계, 출력 파싱</td><td>API 활용</td><td>2주</td></tr>
+        <tr><td><strong>3단계</strong></td><td>벡터 DB, 임베딩, 청킹 전략, 하이브리드 검색</td><td>RAG 구축</td><td>3주</td></tr>
+        <tr><td><strong>4단계</strong></td><td>Tool Use, Function Calling, ReAct 패턴, 멀티 에이전트</td><td>에이전트 개발</td><td>3주</td></tr>
+        <tr><td><strong>5단계</strong></td><td>프롬프트 버전 관리, A/B 테스트, 모니터링, 비용 최적화</td><td>LLMOps</td><td>2주</td></tr>
+        <tr><td><strong>6단계</strong></td><td>MCP 프로토콜 이해, 커스텀 MCP 서버 개발, 에이전트 연동</td><td>MCP 통합</td><td>2주</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Python 개발자 학습 로드맵</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    subgraph 기초["🐍 Python 기초 (보유 전제)"]
+        P0["Python 3.10+\nasyncio, 타입힌트"]
+    end
+    subgraph API["📡 API 연동 (2주)"]
+        P1["openai SDK\nanthropic SDK"]
+        P2["LangChain\n오케스트레이션"]
+    end
+    subgraph RAG["🔍 RAG 구축 (3주)"]
+        P3["ChromaDB / Pinecone\n벡터 DB"]
+        P4["LlamaIndex\nRAG 프레임워크"]
+    end
+    subgraph Agent["🤖 에이전트 (3주)"]
+        P5["LangGraph\n에이전트 그래프"]
+        P6["CrewAI\n멀티 에이전트"]
+    end
+    subgraph Prod["🚀 프로덕션 (2주)"]
+        P7["FastAPI\n서빙"]
+        P8["LangSmith\n모니터링"]
+    end
+
+    P0 --> P1 --> P2 --> P3 --> P4 --> P5 --> P6 --> P7 --> P8
+      </div>
+    </div>
+
+    <table class="comparison-table">
+      <thead><tr><th>단계</th><th>핵심 라이브러리/도구</th><th>학습 프로젝트</th><th>난이도</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>API 연동</strong></td>
+          <td><code>openai</code>, <code>anthropic</code>, <code>langchain</code></td>
+          <td>AI 챗봇 만들기 — 시스템 프롬프트 + 대화 히스토리 관리</td>
+          <td>⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>RAG</strong></td>
+          <td><code>chromadb</code>, <code>llama-index</code>, <code>sentence-transformers</code></td>
+          <td>사내 문서 검색 챗봇 — PDF 업로드 → 청킹 → 벡터 저장 → 질의응답</td>
+          <td>⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>에이전트</strong></td>
+          <td><code>langgraph</code>, <code>crewai</code>, <code>autogen</code></td>
+          <td>자동 리서치 에이전트 — 웹 검색 → 정보 수집 → 보고서 생성</td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>MCP 서버</strong></td>
+          <td><code>mcp</code> (Python SDK), <code>fastmcp</code></td>
+          <td>사내 DB 조회 MCP 서버 — PostgreSQL 연동 → AI가 자연어로 쿼리</td>
+          <td>⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>프로덕션</strong></td>
+          <td><code>fastapi</code>, <code>langsmith</code>, <code>streamlit</code></td>
+          <td>RAG 챗봇 웹 서비스 — API 서빙 + 모니터링 + 사용자 피드백 수집</td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">Python RAG 프로젝트 시작 프롬프트</div>
+      <pre><code class="language-text">Python으로 사내 문서 검색 RAG 챗봇을 만들어줘.
+
+기술 스택:
+- LLM: Claude Sonnet 4.6 (Anthropic API)
+- 벡터 DB: ChromaDB (로컬)
+- 임베딩: sentence-transformers (all-MiniLM-L6-v2)
+- 웹 UI: Streamlit
+- 문서 포맷: PDF, Markdown
+
+기능:
+1. PDF/MD 파일 업로드 → 자동 청킹 (512토큰, 50토큰 오버랩)
+2. 임베딩 생성 → ChromaDB 저장
+3. 사용자 질문 → 하이브리드 검색 → Top-5 문서 추출
+4. Claude API로 답변 생성 (출처 포함)
+5. 대화 히스토리 유지
+
+프로젝트 구조와 각 파일의 코드를 작성해줘.</code></pre>
+    </div>
+
+    <h4>Java 개발자 학습 로드맵</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    subgraph 기초["☕ Java 기초 (보유 전제)"]
+        J0["Java 17+\nSpring Boot 3.x"]
+    end
+    subgraph API["📡 API 연동 (2주)"]
+        J1["Spring AI\n통합 프레임워크"]
+        J2["Anthropic/OpenAI\nJava SDK"]
+    end
+    subgraph RAG["🔍 RAG 구축 (3주)"]
+        J3["Spring AI VectorStore\nPgVector / Milvus"]
+        J4["문서 파서\nApache Tika + 청킹"]
+    end
+    subgraph Agent["🤖 에이전트 (3주)"]
+        J5["Spring AI Function Calling\nTool Use 패턴"]
+        J6["LangChain4j\n에이전트 프레임워크"]
+    end
+    subgraph Prod["🚀 프로덕션 (2주)"]
+        J7["Spring Boot\nREST API 서빙"]
+        J8["Micrometer + Grafana\n모니터링"]
+    end
+
+    J0 --> J1 --> J2 --> J3 --> J4 --> J5 --> J6 --> J7 --> J8
+      </div>
+    </div>
+
+    <table class="comparison-table">
+      <thead><tr><th>단계</th><th>핵심 라이브러리/도구</th><th>학습 프로젝트</th><th>난이도</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>API 연동</strong></td>
+          <td>Spring AI, Anthropic Java SDK, OpenAI Java SDK</td>
+          <td>AI 챗봇 REST API — Spring Boot + Claude API + 대화 히스토리</td>
+          <td>⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>RAG</strong></td>
+          <td>Spring AI VectorStore, PgVector, Apache Tika</td>
+          <td>사내 문서 검색 API — PDF 파싱 → PgVector 저장 → REST 검색 API</td>
+          <td>⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>에이전트</strong></td>
+          <td>LangChain4j, Spring AI Function Calling</td>
+          <td>업무 자동화 에이전트 — DB 조회 + 이메일 발송 + 보고서 생성</td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>MCP 서버</strong></td>
+          <td>MCP Java SDK, Spring Boot</td>
+          <td>사내 시스템 MCP 서버 — Jira/Confluence 연동 → AI가 이슈 관리</td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td><strong>프로덕션</strong></td>
+          <td>Spring Boot, Micrometer, Grafana, Docker</td>
+          <td>RAG 서비스 운영 — 컨테이너 배포 + 토큰 비용 모니터링 + 캐싱</td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="prompt-example good">
+      <div class="prompt-label">Java RAG 프로젝트 시작 프롬프트</div>
+      <pre><code class="language-text">Java Spring Boot로 사내 문서 검색 RAG API를 만들어줘.
+
+기술 스택:
+- Java 17, Spring Boot 3.3, Spring AI
+- LLM: Claude Sonnet 4.6 (Anthropic API)
+- 벡터 DB: PostgreSQL + pgvector 확장
+- 임베딩: OpenAI ada-002
+- 문서 파싱: Apache Tika
+
+기능:
+1. POST /documents/upload — PDF 업로드 → Tika 파싱 → 청킹 → 임베딩 → pgvector 저장
+2. POST /chat — 사용자 질문 → 벡터 검색 → Top-5 문서 → Claude 답변 생성
+3. GET /chat/history — 대화 히스토리 조회
+
+Spring AI의 VectorStore, ChatClient를 활용하고,
+프로젝트 구조와 각 파일의 코드를 작성해줘.</code></pre>
+    </div>
+
+    <h4>Python vs Java — AI 개발 생태계 비교</h4>
+    <table class="comparison-table">
+      <thead><tr><th>항목</th><th>Python</th><th>Java</th><th>선택 기준</th></tr></thead>
+      <tbody>
+        <tr><td><strong>AI 라이브러리</strong></td><td>매우 풍부 (LangChain, LlamaIndex, CrewAI 등)</td><td>빠르게 성장 중 (Spring AI, LangChain4j)</td><td>PoC/스타트업 → Python, 엔터프라이즈 → Java</td></tr>
+        <tr><td><strong>러닝 커브</strong></td><td>낮음 — 대부분의 AI 튜토리얼이 Python</td><td>중간 — Spring AI 문서 증가 추세</td><td>빠른 프로토타입 → Python</td></tr>
+        <tr><td><strong>프로덕션 안정성</strong></td><td>중간 — 타입 안정성 약함, 비동기 처리 복잡</td><td>높음 — 강타입, Spring 생태계, 엔터프라이즈 검증</td><td>대규모 운영 → Java</td></tr>
+        <tr><td><strong>채용 시장</strong></td><td>AI/ML 포지션 주류</td><td>기존 백엔드 + AI 융합 포지션 증가</td><td>기존 Java팀 AI 전환 → Java</td></tr>
+        <tr><td><strong>MCP 서버 개발</strong></td><td>Python SDK (공식), FastMCP</td><td>Java SDK (커뮤니티), Spring Boot 기반</td><td>공식 지원 → Python, 사내 시스템 연동 → Java</td></tr>
+        <tr><td><strong>추천 시나리오</strong></td><td>AI 스타트업, R&D, 데이터 파이프라인</td><td>금융/공공, 기존 Java 시스템 AI 통합</td><td>팀 기존 역량에 따라 선택</td></tr>
+      </tbody>
+    </table>
+
+    <h4>PM/PL을 위한 시사점</h4>
+    <div class="warning-box">
+      <strong>기술 스택 선택 시 PM/PL 판단 기준</strong>:
+      <ul>
+        <li><strong>팀 역량</strong>: 기존 팀이 Java 기반이면 Spring AI로 시작, Python 기반이면 LangChain으로 시작</li>
+        <li><strong>프로젝트 성격</strong>: PoC/MVP → Python (빠른 검증), 프로덕션/엔터프라이즈 → Java (안정성)</li>
+        <li><strong>일정</strong>: Python은 AI 예제가 풍부해 학습 2~3주 단축 가능</li>
+        <li><strong>채용</strong>: AI 전문가 채용 시 Python 필수, 기존 백엔드 팀 AI 전환 시 Java 활용</li>
+        <li><strong>비용</strong>: 두 언어 모두 동일한 LLM API를 사용하므로 AI 비용은 동일, 차이는 개발 속도</li>
+      </ul>
+    </div>
+
+    <div class="practice-section">
+      <h4>실습 과제</h4>
+      <p>여러분 팀의 기술 스택(Java 또는 Python)에 맞는 학습 로드맵을 선택하고, 위 프롬프트를 활용해 첫 번째 RAG 프로젝트를 Claude Code로 직접 만들어보세요. 바이브 코딩으로 30분 안에 동작하는 프로토타입을 완성할 수 있습니다.</p>
+    </div>
+  </section>
     </div>
 
     <div id="module-nav">
