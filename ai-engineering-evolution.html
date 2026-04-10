@@ -80,6 +80,70 @@ h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.3;margin-bottom:
 .conclusion p{font-size:13.5px;color:var(--t2);line-height:1.8}
 .conclusion strong{color:var(--t1)}
 
+/* View toggle button */
+.view-toggle{position:fixed;top:20px;right:20px;z-index:1000;display:flex;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.view-btn{padding:10px 18px;font-size:13px;font-family:'Noto Sans KR',sans-serif;font-weight:600;color:var(--t2);background:transparent;border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.view-btn:hover{color:var(--t1)}
+.view-btn.active{background:var(--accent3);color:#fff}
+.view-btn svg{width:16px;height:16px;fill:currentColor}
+
+/* Slide mode */
+body.slide-mode{overflow:hidden}
+body.slide-mode .container{max-width:100%;padding:0;height:100vh;display:flex;flex-direction:column}
+body.slide-mode .slide{display:none;flex:1;flex-direction:column;justify-content:center;align-items:center;padding:60px 80px;min-height:100vh;animation:slideFadeIn .4s ease}
+body.slide-mode .slide.active-slide{display:flex}
+body.slide-mode .slide .slide-inner{max-width:1000px;width:100%}
+
+/* Slide header scaling */
+body.slide-mode .header{padding:20px 0 30px}
+body.slide-mode h1{font-size:clamp(36px,5vw,56px)}
+body.slide-mode .subtitle{font-size:18px}
+body.slide-mode .tag{font-size:13px;padding:8px 20px}
+
+/* Slide card scaling */
+body.slide-mode .era{padding-left:0;margin-bottom:0}
+body.slide-mode .era-dot{display:none}
+body.slide-mode .timeline::before{display:none}
+body.slide-mode .era-year{font-size:16px;margin-bottom:10px}
+body.slide-mode .era h2{font-size:clamp(28px,4vw,40px);margin-bottom:8px}
+body.slide-mode .era .desc{font-size:17px;margin-bottom:24px}
+body.slide-mode .card h4{font-size:16px}
+body.slide-mode .card p{font-size:14px}
+body.slide-mode .card{padding:22px}
+body.slide-mode .limit p{font-size:15px}
+
+/* Slide evo-bar scaling */
+body.slide-mode .evo-bar{margin:20px 0}
+body.slide-mode .evo-seg h5{font-size:15px}
+body.slide-mode .evo-seg p{font-size:13px}
+
+/* Slide conclusion scaling */
+body.slide-mode .conclusion h3{font-size:22px}
+body.slide-mode .conclusion p{font-size:16px}
+
+/* Slide flow scaling */
+body.slide-mode .flow-step h5{font-size:15px}
+body.slide-mode .flow-step p{font-size:13px}
+
+/* Slide nav */
+.slide-nav{display:none;position:fixed;bottom:30px;left:50%;transform:translateX(-50%);z-index:1000;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:10px 20px;align-items:center;gap:16px}
+body.slide-mode .slide-nav{display:flex}
+.slide-nav button{background:transparent;border:none;color:var(--t2);font-size:20px;cursor:pointer;padding:6px 12px;border-radius:8px;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.slide-nav button:hover{background:rgba(168,85,247,.15);color:var(--t1)}
+.slide-nav button:disabled{opacity:.3;cursor:default}
+.slide-nav button:disabled:hover{background:transparent;color:var(--t2)}
+.slide-counter{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--t2);min-width:60px;text-align:center}
+
+/* Slide progress bar */
+.slide-progress{display:none;position:fixed;top:0;left:0;height:3px;background:var(--g3);z-index:1001;transition:width .3s ease}
+body.slide-mode .slide-progress{display:block}
+
+/* Keyboard hint */
+.key-hint{display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t3);letter-spacing:1px;z-index:1000}
+body.slide-mode .key-hint{display:block}
+
+@keyframes slideFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
 @media(max-width:600px){
   .timeline::before{left:18px}
   .era{padding-left:52px}
@@ -89,10 +153,29 @@ h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.3;margin-bottom:
   .flow-arrow{transform:rotate(90deg);justify-content:center}
   .evo-bar{flex-direction:column;border-radius:12px}
   .evo-seg:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-10px;transform:translateX(-50%)}
+  body.slide-mode .slide{padding:30px 20px}
+  .view-toggle{top:10px;right:10px}
+  .view-btn{padding:8px 12px;font-size:12px}
 }
 </style>
 </head>
 <body>
+
+<!-- View Toggle -->
+<div class="view-toggle">
+  <button class="view-btn active" id="btnScroll" onclick="setView('scroll')">
+    <svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm0 8h18v2H3v-2zm0 8h18v2H3v-2zm0-4h12v2H3v-2zm0-8h12v2H3V7z"/></svg>
+    스크롤
+  </button>
+  <button class="view-btn" id="btnSlide" onclick="setView('slide')">
+    <svg viewBox="0 0 24 24"><path d="M2 3h20v14H2V3zm2 2v10h16V5H4zm-2 14h20v2H2v-2zm4-1h2v2H6v-2zm4 0h4v2h-4v-2z"/></svg>
+    슬라이드
+  </button>
+</div>
+
+<!-- Slide Progress Bar -->
+<div class="slide-progress" id="slideProgress"></div>
+
 <div class="container">
 
 <div class="header">
@@ -298,5 +381,143 @@ h1{font-size:clamp(28px,5vw,44px);font-weight:900;line-height:1.3;margin-bottom:
 </div>
 
 </div>
+
+<!-- Slide Navigation -->
+<div class="slide-nav" id="slideNav">
+  <button id="btnPrev" onclick="navSlide(-1)">◀</button>
+  <span class="slide-counter" id="slideCounter">1 / 6</span>
+  <button id="btnNext" onclick="navSlide(1)">▶</button>
+</div>
+<div class="key-hint">← → 방향키 또는 Space로 이동</div>
+
+<script>
+(function(){
+  const body = document.body;
+  const container = document.querySelector('.container');
+  let currentSlide = 0;
+  let slides = [];
+  let slideMode = false;
+
+  // Slide definitions: wrap content sections into slides
+  function buildSlides(){
+    // Collect slide-worthy sections
+    const header = container.querySelector('.header');
+    const evoBar = container.querySelector('.evo-bar');
+    const eras = container.querySelectorAll('.era');
+    const conclusion = container.querySelector('.conclusion');
+
+    const sections = [];
+    // Slide 1: Header + evo-bar
+    sections.push([header, evoBar]);
+    // Slide 2~N: Each era
+    eras.forEach(era => sections.push([era]));
+    // Last slide: Conclusion
+    sections.push([conclusion]);
+
+    return sections;
+  }
+
+  function enterSlideMode(){
+    slideMode = true;
+    const sections = buildSlides();
+    slides = [];
+
+    // Wrap each section group in a .slide div
+    sections.forEach((els, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'slide' + (i === 0 ? ' active-slide' : '');
+      const inner = document.createElement('div');
+      inner.className = 'slide-inner';
+      els.forEach(el => {
+        if(el) inner.appendChild(el);
+      });
+      slide.appendChild(inner);
+      slides.push(slide);
+    });
+
+    // Clear container and insert slides + timeline shell
+    const timeline = container.querySelector('.timeline');
+    container.innerHTML = '';
+    slides.forEach(s => container.appendChild(s));
+
+    body.classList.add('slide-mode');
+    currentSlide = 0;
+    updateSlideUI();
+  }
+
+  function exitSlideMode(){
+    slideMode = false;
+    body.classList.remove('slide-mode');
+
+    // Reconstruct original DOM
+    container.innerHTML = '';
+
+    // Gather all elements back from slides
+    const allEls = [];
+    slides.forEach(s => {
+      const inner = s.querySelector('.slide-inner');
+      while(inner.firstChild) allEls.push(inner.removeChild(inner.firstChild));
+    });
+
+    // Rebuild: header, evo-bar, timeline(eras), conclusion
+    const header = allEls.find(el => el.classList && el.classList.contains('header'));
+    const evoBar = allEls.find(el => el.classList && el.classList.contains('evo-bar'));
+    const eras = allEls.filter(el => el.classList && el.classList.contains('era'));
+    const conclusion = allEls.find(el => el.classList && el.classList.contains('conclusion'));
+
+    if(header) container.appendChild(header);
+    if(evoBar) container.appendChild(evoBar);
+
+    const timeline = document.createElement('div');
+    timeline.className = 'timeline';
+    eras.forEach(era => timeline.appendChild(era));
+    container.appendChild(timeline);
+
+    if(conclusion) container.appendChild(conclusion);
+
+    slides = [];
+  }
+
+  function updateSlideUI(){
+    slides.forEach((s, i) => {
+      s.classList.toggle('active-slide', i === currentSlide);
+    });
+    document.getElementById('slideCounter').textContent = (currentSlide + 1) + ' / ' + slides.length;
+    document.getElementById('btnPrev').disabled = currentSlide === 0;
+    document.getElementById('btnNext').disabled = currentSlide === slides.length - 1;
+
+    // Progress bar
+    const pct = ((currentSlide + 1) / slides.length) * 100;
+    document.getElementById('slideProgress').style.width = pct + '%';
+  }
+
+  window.navSlide = function(dir){
+    if(!slideMode) return;
+    const next = currentSlide + dir;
+    if(next < 0 || next >= slides.length) return;
+    currentSlide = next;
+    updateSlideUI();
+  };
+
+  window.setView = function(mode){
+    document.getElementById('btnScroll').classList.toggle('active', mode === 'scroll');
+    document.getElementById('btnSlide').classList.toggle('active', mode === 'slide');
+    if(mode === 'slide' && !slideMode) enterSlideMode();
+    else if(mode === 'scroll' && slideMode) exitSlideMode();
+  };
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e){
+    if(!slideMode) return;
+    if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown'){
+      e.preventDefault(); navSlide(1);
+    } else if(e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+      e.preventDefault(); navSlide(-1);
+    } else if(e.key === 'Escape'){
+      setView('scroll');
+    }
+  });
+})();
+</script>
 </body>
 </html>
