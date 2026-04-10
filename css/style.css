@@ -754,6 +754,116 @@ a.nav-title:hover {
   }
 }
 
+/* === Side Panel === */
+.side-panel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 4px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: var(--transition);
+}
+.side-panel-btn:hover {
+  color: var(--sidebar-active);
+  border-color: var(--sidebar-active);
+  background: var(--sidebar-active-bg);
+}
+
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -50vw;
+  width: 50vw;
+  height: 100vh;
+  background: var(--bg);
+  border-left: 2px solid var(--border);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.35s ease;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+}
+.side-panel.open {
+  right: 0;
+}
+.side-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+  flex-shrink: 0;
+}
+.side-panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+.side-panel-close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.side-panel-close:hover {
+  color: #f44336;
+  border-color: #f44336;
+  background: #ffebee;
+}
+.side-panel-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+}
+.side-panel-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1999;
+}
+.side-panel-overlay.open {
+  display: block;
+}
+
+/* Side panel open: shrink content */
+body.side-panel-active #content {
+  margin-right: 50vw;
+  transition: margin-right 0.35s ease;
+}
+
+@media (max-width: 768px) {
+  .side-panel {
+    width: 90vw;
+    right: -90vw;
+  }
+  body.side-panel-active #content {
+    margin-right: 0;
+  }
+}
+
 /* === Reduced Motion === */
 @media (prefers-reduced-motion: reduce) {
   *,

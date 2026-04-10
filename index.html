@@ -38,7 +38,7 @@
           <li><a href="#s1-6">1.6 RAG (검색 증강 생성)</a></li>
           <li><a href="#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
           <li><a href="#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
-          <li><a href="ai-engineering-evolution.html" target="_blank">1.9 AI 엔지니어링 4년간의 진화</a></li>
+          <li><a href="ai-engineering-evolution.html" target="_blank" class="evo-link">1.9 AI 엔지니어링 4년간의 진화</a> <button class="side-panel-btn" onclick="toggleSidePanel()" title="사이드 패널로 보기">◧</button></li>
         </ul>
       </li>
       <li class="nav-item" data-module="module2">
@@ -758,6 +758,16 @@ graph TD
     </div>
   </main>
 
+  <!-- Side Panel -->
+  <div id="side-panel" class="side-panel">
+    <div class="side-panel-header">
+      <span class="side-panel-title">AI 엔지니어링 4년간의 진화</span>
+      <button class="side-panel-close" onclick="toggleSidePanel()" title="닫기">✕</button>
+    </div>
+    <iframe id="side-panel-iframe" class="side-panel-iframe"></iframe>
+  </div>
+  <div id="side-panel-overlay" class="side-panel-overlay" onclick="toggleSidePanel()"></div>
+
   <button id="scroll-top" aria-label="맨 위로">↑</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
@@ -773,5 +783,25 @@ graph TD
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    function toggleSidePanel() {
+      const panel = document.getElementById('side-panel');
+      const overlay = document.getElementById('side-panel-overlay');
+      const iframe = document.getElementById('side-panel-iframe');
+      const isOpen = panel.classList.contains('open');
+
+      if (isOpen) {
+        panel.classList.remove('open');
+        overlay.classList.remove('open');
+        document.body.classList.remove('side-panel-active');
+        iframe.src = '';
+      } else {
+        iframe.src = 'ai-engineering-evolution.html';
+        panel.classList.add('open');
+        overlay.classList.add('open');
+        document.body.classList.add('side-panel-active');
+      }
+    }
+  </script>
 </body>
 </html>
