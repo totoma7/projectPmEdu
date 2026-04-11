@@ -101,6 +101,49 @@
     Prism.highlightAll();
   }
 
+  // --- Search ---
+  if (typeof SEARCH_DATA !== 'undefined') {
+    var header = document.querySelector('.sidebar-header');
+    var searchBox = document.createElement('div');
+    searchBox.className = 'search-container';
+    searchBox.innerHTML = '<input type="text" class="search-input" placeholder="검색 (Ctrl+K)" aria-label="섹션 검색"><div class="search-results"></div>';
+    header.parentNode.insertBefore(searchBox, header.nextSibling);
+
+    var searchInput = searchBox.querySelector('.search-input');
+    var searchResults = searchBox.querySelector('.search-results');
+
+    function doSearch(query) {
+      if (query.length < 2) { searchResults.innerHTML = ''; searchResults.style.display = 'none'; return; }
+      var q = query.toLowerCase();
+      var matches = SEARCH_DATA.filter(function(item) {
+        return item.title.toLowerCase().indexOf(q) !== -1 ||
+               item.desc.toLowerCase().indexOf(q) !== -1 ||
+               item.kw.toLowerCase().indexOf(q) !== -1;
+      }).slice(0, 8);
+
+      if (matches.length === 0) {
+        searchResults.innerHTML = '<div class="search-no-results">검색 결과 없음</div>';
+      } else {
+        searchResults.innerHTML = matches.map(function(item) {
+          var t = item.title.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<span class="search-highlight">$1</span>');
+          return '<a class="search-result-item" href="' + item.url + '"><div class="search-result-title">' + t + '</div><div class="search-result-desc">' + item.desc + '</div></a>';
+        }).join('');
+      }
+      searchResults.style.display = 'block';
+    }
+
+    searchInput.addEventListener('input', function() { doSearch(this.value.trim()); });
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { this.value = ''; searchResults.style.display = 'none'; }
+    });
+    document.addEventListener('click', function(e) {
+      if (!searchBox.contains(e.target)) searchResults.style.display = 'none';
+    });
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); searchInput.focus(); }
+    });
+  }
+
   // --- Init ---
   initTheme();
 })();
