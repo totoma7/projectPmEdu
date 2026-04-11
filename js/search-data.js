@@ -76,5 +76,6 @@ var SEARCH_DATA = [
   {title:"10.2 컨텍스트 엔지니어링",desc:"AI 컨텍스트 최적화 전략",url:"module10-1.html#s10-2",kw:"컨텍스트 엔지니어링 최적화"},
   {title:"10.3 추론 모델 & 확장된 사고",desc:"o1, Claude 추론 모드, 사고 과정",url:"module10-1.html#s10-3",kw:"추론 모델 사고 reasoning o1"},
   {title:"10.4 멀티모달 AI 실무",desc:"이미지/영상/음성 AI 활용",url:"module10-2.html#s10-4",kw:"멀티모달 이미지 영상 음성"},
-  {title:"10.5 AI 네이티브 팀 협업",desc:"AI 중심 팀 워크플로우 구축",url:"module10-2.html#s10-5",kw:"AI 네이티브 팀 협업 워크플로우"}
+  {title:"10.5 AI 네이티브 팀 협업",desc:"AI 중심 팀 워크플로우 구축",url:"module10-2.html#s10-5",kw:"AI 네이티브 팀 협업 워크플로우"},
+  {title:"10.6 하네스 엔지니어링",desc:"AI 실행 환경 전체 설계, 멀티 에이전트 오케스트레이션",url:"module10-2.html#s10-6",kw:"하네스 엔지니어링 Harness 에이전트 오케스트레이션 MCP CLAUDE.md"}
 ];

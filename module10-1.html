@@ -189,6 +189,7 @@
           <li><a href="#s10-3">10.3 추론 모델 & 확장된 사고</a></li>
           <li><a href="module10-2.html#s10-4">10.4 멀티모달 AI 실무</a></li>
           <li><a href="module10-2.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
+          <li><a href="module10-2.html#s10-6">10.6 하네스 엔지니어링</a></li>
         </ul>
       </li>
     </ul>
@@ -455,48 +456,104 @@ graph TD
       </div>
     </div>
 
-    <h4><strong class="ai-term">프롬프트 엔지니어링</strong> vs <strong class="ai-term">컨텍스트 엔지니어링</strong> 비교</h4>
+    <h4>3대 AI 엔지니어링 종합 비교</h4>
+    <div class="diagram-container">
+      <div class="mermaid">
+graph LR
+    subgraph "1. 프롬프트 엔지니어링"
+        P1["사용자"] -->|"좋은 질문"| P2["LLM"]
+        P2 --> P3["답변"]
+    end
+    subgraph "2. 컨텍스트 엔지니어링"
+        C1["시스템 프롬프트\n+ 도구 + 문서 + 메모리"] --> C2["LLM"]
+        C3["사용자"] --> C2
+        C2 --> C4["정확한 답변"]
+    end
+    subgraph "3. 하네스 엔지니어링"
+        H1["오케스트레이터"] --> H2["에이전트 A"]
+        H1 --> H3["에이전트 B"]
+        H1 --> H4["에이전트 C"]
+        H2 --> H5["도구/API"]
+        H3 --> H5
+        H4 --> H5
+        H5 --> H6["통합 결과"]
+    end
+    style P2 fill:#ff9800,color:#fff
+    style C2 fill:#4caf50,color:#fff
+    style H1 fill:#2196f3,color:#fff
+      </div>
+    </div>
+
     <table class="comparison-table">
       <thead>
         <tr>
           <th>구분</th>
           <th>프롬프트 엔지니어링</th>
           <th>컨텍스트 엔지니어링</th>
+          <th>하네스 엔지니어링</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td><strong>등장 시기</strong></td>
+          <td>2022~</td>
+          <td>2024~</td>
+          <td>2025~</td>
+        </tr>
+        <tr>
           <td><strong>범위</strong></td>
           <td>단일 프롬프트 최적화</td>
           <td>컨텍스트 윈도우 전체 설계</td>
+          <td>AI 시스템 실행 환경 전체 설계</td>
         </tr>
         <tr>
           <td><strong>대상</strong></td>
           <td>사용자 메시지 문구</td>
           <td>시스템 프롬프트 + 도구 + 문서 + 메모리</td>
+          <td>멀티 에이전트 + 도구 체인 + 권한 + 라우팅 + 메모리</td>
+        </tr>
+        <tr>
+          <td><strong>비유</strong></td>
+          <td>좋은 질문을 하는 기술</td>
+          <td>회의실 환경을 세팅하는 기술</td>
+          <td>조직 전체를 설계하는 기술</td>
         </tr>
         <tr>
           <td><strong>적용 시점</strong></td>
           <td>매 대화마다</td>
           <td>시스템 설계 단계</td>
+          <td>아키텍처 설계 단계</td>
         </tr>
         <tr>
           <td><strong>효과 지속성</strong></td>
           <td>일회성</td>
-          <td>지속적 (모든 세션에 적용)</td>
+          <td>지속적 (모든 세션)</td>
+          <td>영구적 (시스템 수명 동안)</td>
         </tr>
         <tr>
           <td><strong>필요 역량</strong></td>
           <td>좋은 질문 능력</td>
           <td>시스템 설계 + AI 이해</td>
+          <td>아키텍처 설계 + 오케스트레이션 + 보안</td>
         </tr>
         <tr>
           <td><strong>주요 활용</strong></td>
           <td>일회성 작업, 개인 사용</td>
           <td>에이전트 시스템, 팀 협업 도구</td>
+          <td>멀티 에이전트 플랫폼, 기업 AI 인프라</td>
+        </tr>
+        <tr>
+          <td><strong>대표 도구</strong></td>
+          <td>ChatGPT, Claude.ai</td>
+          <td>CLAUDE.md, AGENTS.md, MCP</td>
+          <td>Claude Code + Hooks, LangGraph, CrewAI</td>
         </tr>
       </tbody>
     </table>
+
+    <div class="info-box">
+      <strong>PM/PL 관점</strong>: 프롬프트 엔지니어링은 "개인 생산성", 컨텍스트 엔지니어링은 "팀 표준화", 하네스 엔지니어링은 "조직 AI 인프라"에 해당합니다. PM/PL은 컨텍스트 엔지니어링까지는 직접 설계할 수 있어야 하며, 하네스 엔지니어링은 개발팀과 협업하여 요구사항을 정의하는 역할을 합니다. 하네스 엔지니어링 상세는 <a href="module10-2.html#s10-6">10.6 하네스 엔지니어링</a>에서 다룹니다.
+    </div>
   </section>
 
 <section id="s10-3">
