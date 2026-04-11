@@ -1,6 +1,6 @@
-# PM/PL AI 실무 가이드
+# PM/PL & 개발자를 위한 AI 실무 가이드
 
-PM(Product Manager)과 PL(Project Leader)을 위한 AI 실무 교육자료입니다. AI 기초 개념부터 바이브 코딩 실습, 비용/ROI 관리, 보안, 2026 최신 트렌드까지 포괄합니다.
+PM(Product Manager), PL(Project Leader), 개발자를 위한 AI 실무 교육자료입니다. AI 기초 개념부터 바이브 코딩 실습, DevOps/테스팅/API 설계, 비용/ROI 관리, 보안, 하네스 엔지니어링까지 포괄합니다.
 
 ## 교육 모듈 (총 10개)
 
