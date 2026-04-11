@@ -232,7 +232,7 @@ a:hover {
 }
 
 .nav-item.active .nav-sub {
-  max-height: 500px;
+  max-height: 800px;
 }
 
 .nav-sub a {
