@@ -37,7 +37,7 @@
           <li><a href="index.html#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
           <li><a href="module1-2.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
           <li><a href="module1-2.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
-          <li><a href="module1-2.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="module1-2.html#s1-8">1.8 실무 필수 AI 용어 사전</a></li>
           <li><a href="module1-2.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
           <li><a href="module1-2.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
         </ul>
@@ -194,7 +194,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.04.11</p>
+      <p>최근 업데이트: 2026.04.13</p>
       <p>&copy; 2026 AI 실무 활용 가이드</p>
     </div>
   </nav>
@@ -612,7 +612,42 @@ graph TD
 - .env, secrets/: 접근 금지</code></pre>
   </div>
 
-  <h4>PM/PL이 하네스 엔지니어링에 기여하는 방법</h4>
+  <h4>Fowler의 하네스 2×2 분류체계</h4>
+  <p>Martin Fowler와 Birgitta Böckeler(ThoughtWorks)는 하네스 구성요소를 <strong>결정론/비결정론</strong> × <strong>피드포워드/피드백</strong> 두 축으로 분류했습니다.</p>
+  <table class="comparison-table">
+    <thead><tr><th>유형</th><th>방식</th><th>예시</th><th>특징</th></tr></thead>
+    <tbody>
+      <tr><td><strong>가이드</strong><br>(결정론적 사전유도)</td><td>규칙 파일로 사전 지시</td><td>AGENTS.md, .cursorrules</td><td>비용 ≈ 0, 강제성 약함</td></tr>
+      <tr><td><strong>연산적</strong><br>(결정론적 사후교정)</td><td>기계적으로 검사·강제</td><td>컴파일러, 린터, 타입체커</td><td>강제성 높음 — 에이전트가 스스로 수정</td></tr>
+      <tr><td><strong>시스템 프롬프트</strong><br>(비결정론적 사전유도)</td><td>뉘앙스 지침 제공</td><td>"공손하게", "확인 구하기"</td><td>방향 제시, 규칙이 아닌 지침</td></tr>
+      <tr><td><strong>추론적</strong><br>(비결정론적 사후교정)</td><td>다른 LLM이 평가</td><td>LLM-as-a-Judge, 의미론적 리뷰</td><td>생성 품질을 AI가 평가</td></tr>
+    </tbody>
+  </table>
+
+  <h4>실전 사례: Anthropic 3-에이전트 아키텍처</h4>
+  <p>Anthropic은 GAN 구조를 차용하여 <strong>Planner → Generator → Evaluator</strong> 3단계 품질 루프를 구축했습니다.</p>
+  <table class="comparison-table">
+    <thead><tr><th>에이전트</th><th>역할</th><th>핵심 원칙</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Planner</strong></td><td>프롬프트 → 상세 제품 스펙 생성</td><td>기술 지시 피함, 야심찬 범위와 상위 설계에 집중</td></tr>
+      <tr><td><strong>Generator</strong></td><td>한 번에 하나의 기능 구현</td><td>스프린트 단위 작업, 컨텍스트 주기적 리셋</td></tr>
+      <tr><td><strong>Evaluator</strong></td><td>Playwright E2E 테스트 + 채점</td><td>미달 시 구체 피드백과 함께 Generator로 복귀</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Ralph 패턴: 자율 코딩 루프</h4>
+  <p>PRD(제품 요구사항 문서) 기반으로 에이전트가 자율적으로 코드를 작성하는 커뮤니티 패턴입니다. 상태를 <strong>git 히스토리 + 파일 시스템</strong>에 저장하고, 매 이터레이션마다 클린 컨텍스트로 새로 시작합니다. 2개월 만에 GitHub 스타 12,000+를 기록하며 하네스 엔지니어링의 가장 직접적인 구현 사례로 주목받고 있습니다.</p>
+
+  <h4>보안: Lethal Trifecta와 Rule of Two</h4>
+  <div class="warning-box">
+    <strong>Lethal Trifecta</strong> (Simon Willison): 다음 세 가지가 동시에 존재하면 보안 사고는 필연입니다.<br>
+    ① <strong>신뢰 불가 입력</strong> (외부 웹, 이메일, 사용자) + ② <strong>민감 데이터 접근</strong> (개인정보, 내부 API) + ③ <strong>상태 변경 능력</strong> (이메일 발송, 파일 삭제)<br><br>
+    <strong>Meta의 Rule of Two</strong>: 최대 두 가지만 동시 보유 가능. 세 가지 모두 필요 시 <strong>human-in-the-loop 필수</strong>.
+  </div>
+
+  <p style="margin-top:16px"><a href="module1-2.html#s1-9">📖 1.9 AI 엔지니어링 4년간의 진화에서 전체 맥락 보기 →</a></p>
+
+  <h4>실무자가 하네스 엔지니어링에 기여하는 방법</h4>
   <table class="comparison-table">
     <thead>
       <tr>

@@ -37,7 +37,7 @@
           <li><a href="index.html#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
           <li><a href="#s1-6">1.6 RAG (검색 증강 생성)</a></li>
           <li><a href="#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
-          <li><a href="#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="#s1-8">1.8 실무 필수 AI 용어 사전</a></li>
           <li><a href="#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
           <li><a href="#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
         </ul>
@@ -194,7 +194,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.04.11</p>
+      <p>최근 업데이트: 2026.04.13</p>
       <p>&copy; 2026 AI 실무 활용 가이드</p>
     </div>
   </nav>
@@ -501,7 +501,7 @@ graph LR
           </table>
 
           <div class="warning-box">
-            <strong>PM/PL 핵심 포인트</strong>: AI 에이전트는 "프로그래밍을 대신하는 것"이 아니라, PM이 직접 프로토타입을 만들고 아이디어를 검증할 수 있게 해주는 도구입니다. 바이브 코딩(모듈 5)이 바로 이 에이전트를 활용하는 방법입니다.
+            <strong>실무 핵심 포인트</strong>: AI 에이전트는 "프로그래밍을 대신하는 것"이 아니라, PM이 직접 프로토타입을 만들고 아이디어를 검증할 수 있게 해주는 도구입니다. 바이브 코딩(모듈 5)이 바로 이 에이전트를 활용하는 방법입니다.
           </div>
 
           <h4>PL 심화 — 에이전트 아키텍처 패턴</h4>
@@ -557,13 +557,13 @@ graph LR
         </section>
 
 <section id="s1-8">
-          <h3>1.8 PM/PL 필수 AI 용어 사전</h3>
+          <h3>1.8 실무 필수 AI 용어 사전</h3>
 
           <p>AI 관련 회의에서 자주 등장하는 용어를 정리했습니다. PM은 개발팀과 소통할 때, PL은 기술 의사결정과 팀 리딩에 이 용어 이해가 필수입니다.</p>
 
           <h4>핵심 용어 — 모델 & 입출력</h4>
           <table class="comparison-table">
-            <thead><tr><th>용어</th><th>의미</th><th>PM/PL이 알아야 하는 이유</th></tr></thead>
+            <thead><tr><th>용어</th><th>의미</th><th>알아야 하는 이유</th></tr></thead>
             <tbody>
               <tr><td><strong class="ai-term">토큰 (Token)</strong></td><td>AI가 텍스트를 처리하는 최소 단위. 한글 1글자 ≈ 2~3토큰</td><td>API 비용이 토큰 단위로 과금됨. 비용 추정 시 필수</td></tr>
               <tr><td><strong class="ai-term">컨텍스트 윈도우</strong></td><td>AI가 한 번에 처리할 수 있는 최대 토큰 수</td><td>긴 문서 분석 가능 여부 판단 (예: Claude 1M 토큰)</td></tr>
@@ -594,7 +594,7 @@ graph LR
             </tbody>
           </table>
 
-          <h4>PM/PL이 자주 쓰는 마크다운 활용처</h4>
+          <h4>실무에서 자주 쓰는 마크다운 활용처</h4>
           <table class="comparison-table">
             <thead><tr><th>활용처</th><th>파일명</th><th>용도</th></tr></thead>
             <tbody>
@@ -607,12 +607,12 @@ graph LR
           </table>
 
           <div class="info-box">
-            <strong>PM/PL 팁</strong>: AI에게 "마크다운 표로 정리해줘", "마크다운 형식으로 보고서 작성해줘"라고 요청하면 바로 복사하여 Notion, GitHub, Confluence에 붙여넣기 할 수 있는 깔끔한 문서를 얻을 수 있습니다. 마크다운은 <strong>AI 시대의 공용 문서 형식</strong>입니다.
+            <strong>실무 팁</strong>: AI에게 "마크다운 표로 정리해줘", "마크다운 형식으로 보고서 작성해줘"라고 요청하면 바로 복사하여 Notion, GitHub, Confluence에 붙여넣기 할 수 있는 깔끔한 문서를 얻을 수 있습니다. 마크다운은 <strong>AI 시대의 공용 문서 형식</strong>입니다.
           </div>
 
           <h4>핵심 용어 — 기술 & 아키텍처</h4>
           <table class="comparison-table">
-            <thead><tr><th>용어</th><th>의미</th><th>PM/PL이 알아야 하는 이유</th></tr></thead>
+            <thead><tr><th>용어</th><th>의미</th><th>알아야 하는 이유</th></tr></thead>
             <tbody>
               <tr><td><strong class="ai-term">임베딩 (Embedding)</strong></td><td>텍스트를 숫자 벡터로 변환하는 기술</td><td>RAG, 유사 문서 검색의 핵심 기술. 벡터 DB와 함께 사용</td></tr>
               <tr><td><strong class="ai-term">벡터 DB</strong></td><td>임베딩된 데이터를 저장/검색하는 특수 데이터베이스</td><td>RAG 시스템 구축 시 필요. Pinecone, Weaviate 등</td></tr>
@@ -859,7 +859,10 @@ graph TD
             <li><a href="https://modelcontextprotocol.io/" target="_blank">MCP (Model Context Protocol)</a> — LLM-도구 연결 표준</li>
           </ul>
 
-          <p style="margin-top:16px"><a href="ai-engineering-evolution.html" target="_blank">📊 타임라인 비주얼 버전으로 보기 →</a></p>
+          <p style="margin-top:16px">
+            <a href="ai-engineering-evolution.html" target="_blank">📊 타임라인 비주얼 버전으로 보기 →</a><br>
+            <a href="module10-2.html#s10-6">🔧 10.6 하네스 엔지니어링 실전 가이드 보기 →</a>
+          </p>
         </section>
 
 <section id="s1-10">
@@ -872,7 +875,7 @@ graph TD
     <h4>멀티모달 AI란?</h4>
     <p>텍스트뿐 아니라 이미지, 음성, 영상, 문서 등 여러 형태(모달리티)의 데이터를 입력받거나 출력할 수 있는 AI입니다.</p>
 
-    <h4>PM/PL을 위한 멀티모달 AI 활용</h4>
+    <h4>실무자를 위한 멀티모달 AI 활용</h4>
     <table class="comparison-table">
       <thead>
         <tr>

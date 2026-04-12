@@ -37,7 +37,7 @@
           <li><a href="index.html#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
           <li><a href="module1-2.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
           <li><a href="module1-2.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
-          <li><a href="module1-2.html#s1-8">1.8 PM/PL 필수 AI 용어 사전</a></li>
+          <li><a href="module1-2.html#s1-8">1.8 실무 필수 AI 용어 사전</a></li>
           <li><a href="module1-2.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
           <li><a href="module1-2.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
         </ul>
@@ -194,7 +194,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.04.11</p>
+      <p>최근 업데이트: 2026.04.13</p>
       <p>&copy; 2026 AI 실무 활용 가이드</p>
     </div>
   </nav>
@@ -318,7 +318,7 @@ flowchart TD
     </table>
 
     <h4>AI 편향(Bias) 감지 및 대응 가이드</h4>
-    <p>AI가 생성한 콘텐츠나 분석 결과에는 학습 데이터의 편향이 반영될 수 있습니다. PM/PL은 다음 항목을 점검해야 합니다.</p>
+    <p>AI가 생성한 콘텐츠나 분석 결과에는 학습 데이터의 편향이 반영될 수 있습니다. 실무자는 다음 항목을 점검해야 합니다.</p>
     <table class="comparison-table">
       <thead>
         <tr>
@@ -410,7 +410,7 @@ flowchart LR
       <strong>2026년 현재</strong>: 한국은 AI 기본법이 시행되어 고위험 AI 서비스에 사전 영향평가가 의무화되었습니다. PM/PL은 AI 제품 기획 단계부터 규제 요건을 반영해야 합니다.
     </div>
     <table class="comparison-table">
-      <thead><tr><th>법률/규제</th><th>핵심 요구사항</th><th>PM/PL 체크 포인트</th></tr></thead>
+      <thead><tr><th>법률/규제</th><th>핵심 요구사항</th><th>실무 체크 포인트</th></tr></thead>
       <tbody>
         <tr><td><strong><a href="https://www.law.go.kr/법령/인공지능산업육성및신뢰기반조성등에관한법률" target="_blank" rel="noopener">AI 기본법 (2026)</a></strong></td><td>고위험 AI 사전 영향평가, AI 윤리 기준 준수</td><td>기획 단계에서 위험도 분류, 영향평가 일정 반영</td></tr>
         <tr><td><strong><a href="https://www.law.go.kr/법령/개인정보보호법" target="_blank" rel="noopener">개인정보보호법</a></strong></td><td>AI 자동 의사결정 시 설명 의무, 프로파일링 동의</td><td>AI 기능 기획 시 설명 가능성(XAI) 요구사항 포함</td></tr>
@@ -1575,9 +1575,9 @@ AssistantService agent(ChatLanguageModel model, CompanyTools tools) {
       </tbody>
     </table>
 
-    <h4>PM/PL을 위한 시사점</h4>
+    <h4>실무자를 위한 시사점</h4>
     <div class="warning-box">
-      <strong>기술 스택 선택 시 PM/PL 판단 기준</strong>:
+      <strong>기술 스택 선택 시 실무 판단 기준</strong>:
       <ul>
         <li><strong>팀 역량</strong>: 기존 팀이 Java 기반이면 <a href="https://docs.langchain4j.dev/" target="_blank" rel="noopener">LangChain4j</a>로 시작, Python 기반이면 <a href="https://github.com/langchain-ai/langchain" target="_blank" rel="noopener">LangChain</a>으로 시작</li>
         <li><strong>프로젝트 성격</strong>: PoC/MVP → Python (빠른 검증), 프로덕션/엔터프라이즈 → Java (안정성)</li>
