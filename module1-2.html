@@ -752,6 +752,9 @@ graph TD
               <tr><td><strong>ReAct 패턴</strong></td><td>추론(Reasoning) + 행동(Acting) 교대 수행 → 현재 코딩 에이전트의 원형</td></tr>
               <tr><td><strong>Few-shot 프롬프팅</strong></td><td>입출력 예시를 프롬프트에 포함시켜 모델이 패턴을 학습하도록 유도</td></tr>
               <tr><td><strong>Self-Consistency</strong></td><td>동일 질문에 여러 답변을 생성 후 다수결로 최종 답 도출 — 정확도 향상</td></tr>
+              <tr><td><strong>Tree-of-Thought</strong></td><td>CoT의 일직선 추론을 트리 탐색으로 확장 — 여러 경로를 동시 탐색하여 최적 해 도출 (<a href="https://arxiv.org/abs/2305.10601" target="_blank">Yao et al., 2023</a>)</td></tr>
+              <tr><td><strong>Ng의 4대 에이전틱 패턴</strong></td><td>Reflection · Tool Use · Planning · Multi-Agent — <a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/" target="_blank">Andrew Ng이 정의한</a> AI 에이전트 설계의 4가지 핵심 패턴 (2024)</td></tr>
+              <tr><td><strong>Copilot 진화 궤적</strong></td><td>자동완성(2022) → Chat(2023) → Agent Mode(2025.02) → Coding Agent(2025.05) — 단일 파일에서 완전 자율로</td></tr>
             </tbody>
           </table>
           <div class="warning-box">
@@ -769,6 +772,10 @@ graph TD
               <tr><td><strong class="ai-term">MCP 프로토콜</strong></td><td>외부 도구 연동 표준화로 에이전트 능력 확장</td></tr>
               <tr><td><strong>Tool Use / Function Calling</strong></td><td>모델이 외부 함수를 직접 호출 — 검색·계산·API 연동으로 능력 확장</td></tr>
               <tr><td><strong>CLAUDE.md / Rules</strong></td><td>프로젝트별 규칙·컨벤션을 파일로 명문화하여 모델에 자동 주입</td></tr>
+              <tr><td><strong>LLM-as-OS 개념</strong></td><td>커널=추론엔진 · RAM=컨텍스트윈도우 · 파일시스템=RAG · 시스콜=Tool Call — OS 비유로 이해하는 LLM</td></tr>
+              <tr><td><strong><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">WSCI 전략</a> (Anthropic)</strong></td><td>Write(작성) · Select(선택) · Compress(압축) · Isolate(격리) — 컨텍스트 윈도우 최적화 4원칙</td></tr>
+              <tr><td><strong>KV-cache 최적화</strong></td><td>접두어 안정성 유지 시 캐시 히트 → 비용 1/10 절감. 프롬프트 '품질'보다 '안정성'이 프로덕션 핵심</td></tr>
+              <tr><td><strong>Context Hub</strong></td><td>Andrew Ng 제안 — 최신 API 문서 실시간 검색·주입 시스템으로 LLM의 '전향성 기억상실증' 해결</td></tr>
             </tbody>
           </table>
           <div class="warning-box">
@@ -784,6 +791,10 @@ graph TD
               <tr><td><strong>역할 전환</strong></td><td>직접 코딩 → AI가 올바른 환경에서 작업하도록 <strong>환경 구축</strong>이 주된 업무</td></tr>
               <tr><td><strong>Permission Modes</strong></td><td>에이전트의 도구 사용 권한을 단계별로 제어 — 자율과 통제의 균형</td></tr>
               <tr><td><strong>Sub-Agent 오케스트레이션</strong></td><td>전문 에이전트를 병렬 배치하여 복잡한 작업을 분할·정복하는 멀티 에이전트 체계</td></tr>
+              <tr><td><strong><a href="https://martinfowler.com/articles/exploring-gen-ai.html" target="_blank">2×2 하네스 분류</a> (Fowler)</strong></td><td>결정론/비결정론 × 피드포워드/피드백 — 가이드·린터·시스템프롬프트·LLM-Judge로 4분류</td></tr>
+              <tr><td><strong><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank">3-에이전트 아키텍처</a></strong></td><td>Anthropic: Planner(기획) → Generator(구현) → Evaluator(평가) — GAN 구조 차용 품질 루프</td></tr>
+              <tr><td><strong>Ralph 패턴</strong></td><td>PRD 기반 자율 코딩 루프 — 상태를 git+파일에 저장, 클린 컨텍스트로 반복 (GitHub ★ 12,000+)</td></tr>
+              <tr><td><strong><a href="https://simonwillison.net/2025/Jun/14/lethal-trifecta/" target="_blank">Lethal Trifecta</a></strong></td><td>신뢰불가 입력 + 민감 데이터 + 상태 변경 = 보안 사고 필연. Meta의 Rule of Two로 방어</td></tr>
             </tbody>
           </table>
 
@@ -805,9 +816,48 @@ graph TD
             </tbody>
           </table>
 
+          <h4>3단계 진화 종합 비교</h4>
+          <table class="comparison-table">
+            <thead><tr><th>차원</th><th>프롬프트 엔지니어링</th><th>컨텍스트 엔지니어링</th><th>하네스 엔지니어링</th></tr></thead>
+            <tbody>
+              <tr><td><strong>시대</strong></td><td>2022 – 2024</td><td>2025</td><td>2026+</td></tr>
+              <tr><td><strong>핵심 질문</strong></td><td>어떤 말을 해야?</td><td>어떤 정보를 줄까?</td><td>어떤 시스템을 만들까?</td></tr>
+              <tr><td><strong>OS 비유</strong></td><td>명령어 한 줄</td><td>RAM 관리</td><td>운영체제 전체 설계</td></tr>
+              <tr><td><strong>핵심 메트릭</strong></td><td>응답 품질 (주관)</td><td>KV-cache 히트율</td><td>태스크 완료율 · 비용/태스크</td></tr>
+              <tr><td><strong>실패 모드</strong></td><td>Blind Prompting</td><td>컨텍스트 오염</td><td>오케스트레이션 버그 · 보안</td></tr>
+              <tr><td><strong>필요 역량</strong></td><td>언어 감각 + 도메인</td><td>정보 아키텍처</td><td>시스템 설계 + 보안</td></tr>
+            </tbody>
+          </table>
+
+          <h4>미래 전망: 엄밀함의 다음 이동</h4>
+          <table class="comparison-table">
+            <thead><tr><th>방향</th><th>설명</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Guardian Agent</strong></td><td>에이전트가 배포 시도 → 별도 에이전트가 규제·보안 준수 검증. 엄밀함이 '실행'에서 '감시'로 이동</td></tr>
+              <tr><td><strong>평가 엔지니어링</strong></td><td>벤치마크 점수 대신 행동 기반 평가 — LLM-as-a-judge의 편향 해결이 새로운 연구 분야로 부상</td></tr>
+              <tr><td><strong>지식 엔진</strong></td><td>코드 그래프 + 커밋 히스토리 + 메모리 시스템 통합 — "왜 이 아키텍처를 선택했는가"까지 추론</td></tr>
+            </tbody>
+          </table>
+
           <div class="info-box">
-            <strong>💡 핵심 조언</strong>: 처음부터 완벽한 시스템을 설계하지 말 것. <strong>작은 커맨드 → 룰 → 스킬 → 훅</strong> 순서로 점진적으로 접근하라. 범용 플러그인에 의존하기보다 <strong>자신의 워크플로우에 맞는 커스텀 하네스</strong>를 직접 조합·구축하는 것이 훨씬 효율적이고 안전하다.
+            <strong>💡 핵심 통찰</strong>: <em>"엄밀함은 사라지지 않았고, 더 높은 추상화 수준으로 이동했을 뿐이다. 프롬프트 엔지니어링은 '죽은 것'이 아니라 '승진한 것'이다."</em> — Chad Fowler. 처음부터 완벽한 시스템을 설계하지 말 것. <strong>작은 커맨드 → 룰 → 스킬 → 훅</strong> 순서로 점진적으로 접근하라.
           </div>
+
+          <h4>📎 참고 자료</h4>
+          <ul>
+            <li><a href="https://bits-bytes-nn.github.io/insights/agentic-ai/2026/04/05/evolution-of-ai-agentic-patterns.html" target="_blank">AI Agentic 패턴의 진화: 프롬프트에서 하네스까지</a> — Bits, Bytes & Neural Nets (2026.04, 원문)</li>
+            <li><a href="https://arxiv.org/abs/2201.11903" target="_blank">Chain-of-Thought Prompting</a> — Wei et al., 2022 (GSM8K 17.9%→58.1%)</li>
+            <li><a href="https://arxiv.org/abs/2210.03629" target="_blank">ReAct: Reasoning + Acting</a> — Yao et al., 2022 (에이전트의 원형)</li>
+            <li><a href="https://arxiv.org/abs/2305.10601" target="_blank">Tree-of-Thought Prompting</a> — Yao et al., 2023</li>
+            <li><a href="https://www.deeplearning.ai/the-batch/how-agents-can-improve-llm-performance/" target="_blank">Andrew Ng의 4대 에이전틱 패턴</a> — DeepLearning.AI, 2024.03</li>
+            <li><a href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank">Anthropic 컨텍스트 엔지니어링 (WSCI)</a></li>
+            <li><a href="https://google.github.io/adk-docs/" target="_blank">Google ADK 컨텍스트 스택 아키텍처</a></li>
+            <li><a href="https://mitchellh.com/writing/agent-harness-engineering" target="_blank">Mitchell Hashimoto — 하네스 엔지니어링의 기원</a> (2026.02)</li>
+            <li><a href="https://martinfowler.com/articles/exploring-gen-ai.html" target="_blank">Fowler & Böckeler — 2×2 하네스 분류 프레임워크</a></li>
+            <li><a href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank">Anthropic 3-에이전트 아키텍처</a></li>
+            <li><a href="https://simonwillison.net/2025/Jun/14/lethal-trifecta/" target="_blank">Simon Willison — Lethal Trifecta</a> (에이전트 보안)</li>
+            <li><a href="https://modelcontextprotocol.io/" target="_blank">MCP (Model Context Protocol)</a> — LLM-도구 연결 표준</li>
+          </ul>
 
           <p style="margin-top:16px"><a href="ai-engineering-evolution.html" target="_blank">📊 타임라인 비주얼 버전으로 보기 →</a></p>
         </section>
