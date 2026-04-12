@@ -45,7 +45,7 @@ app.use((err, req, res, next) => {
 });
 
 const server = app.listen(PORT, () => {
-  console.log(`PM/PL AI 실무 가이드 서버 실행 중: http://localhost:${PORT}`);
+  console.log(`AI 실무 활용 가이드 서버 실행 중: http://localhost:${PORT}`);
 });
 
 // Graceful shutdown
