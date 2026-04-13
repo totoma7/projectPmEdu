@@ -1,6 +1,22 @@
-# PM/PL & 개발자를 위한 AI 실무 가이드
+# AI 실무 활용 가이드
 
-PM(Product Manager), PL(Project Leader), 개발자를 위한 AI 실무 교육자료입니다. AI 기초 개념부터 바이브 코딩 실습, DevOps/테스팅/API 설계, 비용/ROI 관리, 보안, 하네스 엔지니어링까지 포괄합니다.
+> 사내 개발자·PM·PL을 위한 AI 실무 교육자료입니다.
+> 시간 날 때 지속적으로 콘텐츠를 갱신하고 있습니다.
+
+**🔗 바로가기: https://totoma7.github.io/projectPmEdu/**
+
+## 실습 환경 안내
+
+실습 섹션(Module 5)은 주로 **Claude Code**를 사용합니다.
+원활한 실습 및 경험을 위해 **Claude Max 요금제 이상**을 권장합니다.
+
+## 역할별 추천 학습 경로
+
+| 역할 | 추천 순서 | 핵심 모듈 |
+|------|-----------|-----------|
+| **개발자** | 5 → 9 → 10 → 1 | 바이브 코딩, AI 코딩 도구 & 보안, 2026 트렌드 |
+| **PM/기획자** | 1 → 2 → 4 → 6 → 7 | AI 기초, 문서 작성, 자료 조사, PM vs PL |
+| **PL/리더** | 6 → 8 → 7 → 9 | PM vs PL 역할, 비용/ROI, 케이스 스터디 |
 
 ## 교육 모듈 (총 10개)
 
@@ -17,23 +33,6 @@ PM(Product Manager), PL(Project Leader), 개발자를 위한 AI 실무 교육자
 | 9 | AI 코딩 도구 & 보안 | 코딩 도구 생태계, 보안 가이드, 거버넌스 프레임워크, 학습 로드맵 |
 | 10 | No-Code & 2026 트렌드 | No-Code 자동화, 컨텍스트 엔지니어링, 추론 모델, 멀티모달, AI 네이티브 협업 |
 
-## 기술 스택
-
-- HTML5 / CSS3 / JavaScript
-- Express.js (로컬 서버)
-- Mermaid.js (다이어그램)
-- Prism.js (코드 하이라이팅)
-
-## 실행 방법
-
-```bash
-# Express 서버로 실행
-npm start
-
-# 또는 로컬에서 직접 열기
-open index.html
-```
-
 ## 주요 기능
 
 - 사이드바 목차 네비게이션 (10개 모듈, 60+ 섹션)
@@ -41,4 +40,11 @@ open index.html
 - 반응형 디자인 (모바일 대응)
 - Mermaid 다이어그램 렌더링
 - 코드 블록 Syntax Highlighting
-- 외부 근거 링크 (공식 문서, 법률, 도구 등 44개+)
+- 전체 검색 (Ctrl+K)
+
+## 로컬 실행
+
+```bash
+npm start
+# 또는 index.html 직접 열기
+```
