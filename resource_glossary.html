@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 용어 사전 (150+) - AI 실무 활용 가이드</title>
+  <meta name="description" content="PM·개발자·PL이 자주 만나는 AI 용어 150여 개의 한국어 정의와 실무 예시.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .glossary-search { width:100%; padding:0.7rem 1rem; font-size:1rem; border:2px solid var(--border); border-radius:8px; margin-bottom:1.5rem; }
+    .glossary-search:focus { outline:none; border-color:var(--link); }
+    .letter-nav { display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:1rem; }
+    .letter-nav a { display:inline-block; padding:0.3rem 0.6rem; border:1px solid var(--border); border-radius:4px; font-size:0.85rem; text-decoration:none; color:var(--text); }
+    .letter-nav a:hover { background:var(--sidebar-hover); }
+    .letter-section h3 { margin-top:2rem; padding-bottom:0.3rem; border-bottom:2px solid var(--link); color:var(--link); }
+    .term { margin-bottom:1rem; padding:0.75rem 1rem; background:var(--bg-secondary); border-radius:6px; }
+    .term dt { font-weight:700; font-size:1.05rem; margin-bottom:0.25rem; }
+    .term dt .en { color:var(--text-secondary); font-weight:400; font-size:0.9rem; }
+    .term dd { margin:0; font-size:0.95rem; }
+    .term.hidden { display:none; }
+    .no-result { padding:2rem; text-align:center; color:var(--text-secondary); display:none; }
+  </style>
+</head>
+<body>
+  <main id="content" style="max-width: 960px; margin: 0 auto; padding: 2rem;">
+    <nav style="margin-bottom:1.5rem; font-size:0.9rem;">
+      <a href="index.html">← 메인으로</a> · <a href="module1-2.html#s1-8">1.8 기본 용어사전</a>
+    </nav>
+
+    <article class="module">
+      <h2>AI 용어 사전 — 확장판 (150+)</h2>
+      <p class="module-intro">실무에서 자주 만나는 AI/LLM/에이전트 관련 용어를 한국어 정의와 실무 맥락으로 정리했습니다. 영문 병기 + 관련 모듈 링크 포함.</p>
+
+      <input type="search" class="glossary-search" id="search" placeholder="용어 검색 (한글/영문) — 예: 토큰, RAG, MCP, Temperature">
+
+      <div class="letter-nav" id="letters">
+        <a href="#ko-ga">ㄱ</a><a href="#ko-na">ㄴ</a><a href="#ko-da">ㄷ</a><a href="#ko-ra">ㄹ</a>
+        <a href="#ko-ma">ㅁ</a><a href="#ko-ba">ㅂ</a><a href="#ko-sa">ㅅ</a><a href="#ko-a">ㅇ</a>
+        <a href="#ko-ja">ㅈ</a><a href="#ko-cha">ㅊ</a><a href="#ko-ka">ㅋ</a><a href="#ko-ta">ㅌ</a>
+        <a href="#ko-pa">ㅍ</a><a href="#ko-ha">ㅎ</a><a href="#en-a">A-E</a><a href="#en-f">F-J</a>
+        <a href="#en-k">K-O</a><a href="#en-p">P-T</a><a href="#en-u">U-Z</a>
+      </div>
+
+      <div id="glossary">
+
+      <div class="letter-section" id="ko-ga"><h3>ㄱ</h3>
+        <dl>
+          <div class="term"><dt>가드레일 <span class="en">Guardrails</span></dt><dd>LLM 출력이 금지 영역(욕설, 개인정보, 환각)을 넘지 않도록 하는 사전·사후 필터. 프로덕션 필수.</dd></div>
+          <div class="term"><dt>가명정보 <span class="en">Pseudonymized Data</span></dt><dd>개인정보를 식별자 치환으로 직접 식별이 어렵게 만든 데이터. 통계·연구 목적 사용 시 동의 완화.</dd></div>
+          <div class="term"><dt>감사 로그 <span class="en">Audit Log</span></dt><dd>누가·언제·어떤 프롬프트/도구를 호출했는지 기록한 로그. 컴플라이언스와 사고 추적의 기본.</dd></div>
+          <div class="term"><dt>강화학습 <span class="en">RL / Reinforcement Learning</span></dt><dd>보상 신호를 통해 정책을 학습하는 패러다임. RLHF가 대표적 응용.</dd></div>
+          <div class="term"><dt>거버넌스 <span class="en">Governance</span></dt><dd>AI 도입·운영 전반의 정책·역할·검증 체계. 9.3 참고.</dd></div>
+          <div class="term"><dt>계약서 분석 <span class="en">Contract Analysis</span></dt><dd>1M 컨텍스트 등장 이후 LLM으로 대규모 계약서 전체를 한 번에 분석하는 용례. 부록 F 참고.</dd></div>
+          <div class="term"><dt>고영향 AI <span class="en">High-risk AI</span></dt><dd>채용·대출·의료·공공 등 인간에게 중대한 영향을 주는 AI. 영향평가 필수. 부록 B 참고.</dd></div>
+          <div class="term"><dt>국외 이전 <span class="en">Cross-border Transfer</span></dt><dd>개인정보를 해외 서버로 전송하는 행위. 개보법상 별도 동의·DPA 필요.</dd></div>
+          <div class="term"><dt>그라운딩 <span class="en">Grounding</span></dt><dd>LLM이 주장의 근거를 제공된 소스에 의존하게 만드는 기법. RAG의 핵심.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-na"><h3>ㄴ</h3>
+        <dl>
+          <div class="term"><dt>네거티브 프롬프트 <span class="en">Negative Prompt</span></dt><dd>"~하지 마라"로 원하지 않는 출력을 배제. 역효과 가능성 있어 긍정 지시 선호.</dd></div>
+          <div class="term"><dt>노코드 <span class="en">No-Code</span></dt><dd>코딩 없이 드래그&amp;드롭/설정만으로 AI 자동화 구축. Zapier·Make·n8n 등.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-da"><h3>ㄷ</h3>
+        <dl>
+          <div class="term"><dt>다중모달 <span class="en">Multimodal</span></dt><dd>텍스트·이미지·음성·영상을 함께 처리하는 AI. GPT-4o, Claude, Gemini 3 Pro 등.</dd></div>
+          <div class="term"><dt>데이터 처리 위탁 <span class="en">DPA</span></dt><dd>개인정보 처리를 외부(예: LLM 벤더)에 맡길 때 체결하는 계약. 사내 법무팀 필수 검토.</dd></div>
+          <div class="term"><dt>도메인 적응 <span class="en">Domain Adaptation</span></dt><dd>일반 모델을 특정 분야(의료·금융)에 맞게 추가 학습/파인튜닝.</dd></div>
+          <div class="term"><dt>디코딩 전략 <span class="en">Decoding Strategy</span></dt><dd>다음 토큰 선택 방식. Greedy, Top-k, Top-p(nucleus), Beam Search 등.</dd></div>
+          <div class="term"><dt>딥페이크 <span class="en">Deepfake</span></dt><dd>생성형 AI로 만든 사실적 합성 이미지·영상. 국내 AI 기본법상 표기 의무.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-ra"><h3>ㄹ</h3>
+        <dl>
+          <div class="term"><dt>라벨링 <span class="en">Labeling</span></dt><dd>학습용 데이터에 정답을 부여하는 작업. 비용·품질이 모델 성능 좌우.</dd></div>
+          <div class="term"><dt>레드팀 <span class="en">Red Team</span></dt><dd>악의적 공격자 관점에서 시스템 취약점을 찾는 보안 활동. 프롬프트 인젝션 테스트 포함.</dd></div>
+          <div class="term"><dt>루브릭 <span class="en">Rubric</span></dt><dd>항목별 점수 기준표. LLM-as-Judge의 신뢰도 핵심. 부록 E 참고.</dd></div>
+          <div class="term"><dt>루프 <span class="en">Loop / Iterative</span></dt><dd>에이전트가 계획→실행→검증을 반복하는 구조. 부록 D 참고.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-ma"><h3>ㅁ</h3>
+        <dl>
+          <div class="term"><dt>마스킹 <span class="en">Masking</span></dt><dd>민감정보를 AI에 넣기 전 가리는 처리. PII·비밀번호·토큰 등.</dd></div>
+          <div class="term"><dt>멀티 에이전트 <span class="en">Multi-agent</span></dt><dd>여러 역할별 에이전트가 협업하는 구조. Planner/Researcher/Coder 등.</dd></div>
+          <div class="term"><dt>메타 프롬프팅 <span class="en">Meta-prompting</span></dt><dd>AI에게 "나를 위한 프롬프트를 먼저 만들어라"고 요청하는 기법.</dd></div>
+          <div class="term"><dt>모델 카드 <span class="en">Model Card</span></dt><dd>모델의 용도·한계·평가 결과를 정리한 공식 문서. 벤더 발행.</dd></div>
+          <div class="term"><dt>모달리티 <span class="en">Modality</span></dt><dd>입출력 형태(텍스트/이미지/오디오/비디오).</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-ba"><h3>ㅂ</h3>
+        <dl>
+          <div class="term"><dt>바이브 코딩 <span class="en">Vibe Coding</span></dt><dd>자연어로 의도만 전하고 AI가 코드를 생성·수정하게 하는 개발 방식. 5장 참고.</dd></div>
+          <div class="term"><dt>배치 처리 <span class="en">Batch Processing</span></dt><dd>여러 요청을 모아서 비동기 처리. Claude/OpenAI Batch API는 50% 할인.</dd></div>
+          <div class="term"><dt>벡터 데이터베이스 <span class="en">Vector DB</span></dt><dd>임베딩을 저장·유사도 검색. Pinecone, Weaviate, Chroma, Qdrant 등.</dd></div>
+          <div class="term"><dt>벤치마크 <span class="en">Benchmark</span></dt><dd>표준 테스트셋. MMLU, GSM8K, HumanEval, SWE-bench 등.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-sa"><h3>ㅅ</h3>
+        <dl>
+          <div class="term"><dt>샘플링 <span class="en">Sampling</span></dt><dd>생성 시 토큰을 무작위성 섞어 뽑는 방식. Temperature·Top-p로 조절.</dd></div>
+          <div class="term"><dt>서브에이전트 <span class="en">Subagent</span></dt><dd>메인 에이전트가 특정 하위 작업을 위해 호출하는 전문 에이전트.</dd></div>
+          <div class="term"><dt>스킬 <span class="en">Skill</span></dt><dd>Claude Code의 재사용 가능한 자동화 단위. 프롬프트+코드+리소스 묶음.</dd></div>
+          <div class="term"><dt>스트리밍 <span class="en">Streaming</span></dt><dd>응답을 토큰 단위로 실시간 전송. UX 지연 완화.</dd></div>
+          <div class="term"><dt>시스템 프롬프트 <span class="en">System Prompt</span></dt><dd>대화 최상단에 고정되는 규칙·역할 지시. 사용자 메시지와 분리.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-a"><h3>ㅇ</h3>
+        <dl>
+          <div class="term"><dt>양자화 <span class="en">Quantization</span></dt><dd>모델 가중치를 4·5·8비트로 압축해 메모리·속도 개선. 품질 손실 3~8%.</dd></div>
+          <div class="term"><dt>에이전트 <span class="en">Agent</span></dt><dd>도구 호출로 외부 세계와 상호작용하는 AI. 부록 D 참고.</dd></div>
+          <div class="term"><dt>엔드포인트 <span class="en">Endpoint</span></dt><dd>API 호출 대상 URL. OpenAI, Anthropic, 로컬(Ollama) 등.</dd></div>
+          <div class="term"><dt>온디바이스 <span class="en">On-device</span></dt><dd>클라우드 없이 기기 내부에서 AI 실행. 프라이버시·오프라인 강점. 부록 G.</dd></div>
+          <div class="term"><dt>온도 <span class="en">Temperature</span></dt><dd>샘플링 무작위성. 0=결정적, 0.7=창의, 1.0=다양. 코드 생성은 0~0.2 권장.</dd></div>
+          <div class="term"><dt>영향평가 <span class="en">AIA / AI Impact Assessment</span></dt><dd>AI 도입 전 프라이버시·차별·안전 영향을 평가·문서화. 고영향 AI 필수.</dd></div>
+          <div class="term"><dt>임베딩 <span class="en">Embedding</span></dt><dd>텍스트를 숫자 벡터로 변환. 유사도 검색·RAG의 기반.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-ja"><h3>ㅈ</h3>
+        <dl>
+          <div class="term"><dt>자동화된 결정 <span class="en">Automated Decision</span></dt><dd>인간 개입 없이 AI가 내리는 결정. 개보법 설명권·이의제기권 대상.</dd></div>
+          <div class="term"><dt>자연어처리 <span class="en">NLP</span></dt><dd>사람 언어를 처리하는 AI 분야. LLM은 NLP의 한 갈래.</dd></div>
+          <div class="term"><dt>전이학습 <span class="en">Transfer Learning</span></dt><dd>대형 모델을 작은 데이터로 특정 과제에 재사용.</dd></div>
+          <div class="term"><dt>조기 종료 <span class="en">Early Stopping</span></dt><dd>성능 개선이 멎으면 학습/생성을 중단. 비용·시간 절감.</dd></div>
+          <div class="term"><dt>지식 증류 <span class="en">Knowledge Distillation</span></dt><dd>큰 모델의 출력으로 작은 모델을 학습시켜 경량화.</dd></div>
+          <div class="term"><dt>지연시간 <span class="en">Latency</span></dt><dd>요청 후 첫 토큰까지(TTFT)와 전체 완료까지 시간. UX 설계 핵심.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-cha"><h3>ㅊ</h3>
+        <dl>
+          <div class="term"><dt>청크 <span class="en">Chunk</span></dt><dd>RAG에서 문서를 나눈 단위. 크기·중첩이 검색 품질에 큰 영향.</dd></div>
+          <div class="term"><dt>추론 <span class="en">Inference</span></dt><dd>학습된 모델로 결과를 생성하는 단계. 학습과 구분.</dd></div>
+          <div class="term"><dt>추론 모델 <span class="en">Reasoning Model</span></dt><dd>내부 사고 과정을 더 길게 수행하는 모델. Claude Extended Thinking, GPT-o 계열.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-ka"><h3>ㅋ</h3>
+        <dl>
+          <div class="term"><dt>컨텍스트 <span class="en">Context</span></dt><dd>프롬프트에 포함된 배경·규칙·예시·사용자 입력 전체.</dd></div>
+          <div class="term"><dt>컨텍스트 윈도우 <span class="en">Context Window</span></dt><dd>한 번에 처리 가능한 토큰 수. Opus 4.7은 1M(약 2,500페이지).</dd></div>
+          <div class="term"><dt>컨텍스트 엔지니어링 <span class="en">Context Engineering</span></dt><dd>필요한 정보를 적절히 선별·배치해 모델 성능을 끌어올리는 기술. 10.2 참고.</dd></div>
+          <div class="term"><dt>캐싱 <span class="en">Prompt Caching</span></dt><dd>불변 프롬프트를 캐시해 재사용 시 비용 10~12%. 부록 F.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-ta"><h3>ㅌ</h3>
+        <dl>
+          <div class="term"><dt>토큰 <span class="en">Token</span></dt><dd>모델이 다루는 텍스트 단위. 한국어는 글자당 1~1.5토큰, 영어는 단어의 0.75토큰 정도.</dd></div>
+          <div class="term"><dt>툴 <span class="en">Tool / Function</span></dt><dd>AI가 호출할 수 있는 외부 함수. Tool use · Function calling 동의어.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-pa"><h3>ㅍ</h3>
+        <dl>
+          <div class="term"><dt>파인튜닝 <span class="en">Fine-tuning</span></dt><dd>기존 모델을 내 데이터로 추가 학습. LoRA·QLoRA로 비용 절감.</dd></div>
+          <div class="term"><dt>페르소나 <span class="en">Persona</span></dt><dd>역할 지정(프롬프트 패턴 #1) 또는 UX 대상 가상 고객상.</dd></div>
+          <div class="term"><dt>프롬프트 <span class="en">Prompt</span></dt><dd>AI에 입력하는 지시문. 설계 기법은 부록 C 참고.</dd></div>
+          <div class="term"><dt>프롬프트 인젝션 <span class="en">Prompt Injection</span></dt><dd>사용자 입력·문서에 숨겨진 명령으로 시스템 프롬프트를 덮어쓰는 공격.</dd></div>
+          <div class="term"><dt>프롬프트 엔지니어링 <span class="en">Prompt Engineering</span></dt><dd>원하는 출력을 위해 프롬프트를 설계·최적화하는 기술.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="ko-ha"><h3>ㅎ</h3>
+        <dl>
+          <div class="term"><dt>하네스 엔지니어링 <span class="en">Harness Engineering</span></dt><dd>AI가 장시간 자율적으로 작업을 완수하도록 평가·가드·루프를 설계하는 엔지니어링. 10.6 참고.</dd></div>
+          <div class="term"><dt>하이브리드 <span class="en">Hybrid</span></dt><dd>클라우드 + 로컬, RAG + 1M 컨텍스트 등 혼합 아키텍처.</dd></div>
+          <div class="term"><dt>환각 <span class="en">Hallucination</span></dt><dd>사실이 아닌 내용을 그럴듯하게 생성. Grounding·RAG·인용 요구로 완화.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="en-a"><h3>A-E</h3>
+        <dl>
+          <div class="term"><dt>A/B 테스트 <span class="en">A/B Test</span></dt><dd>두 버전을 트래픽 분할로 비교. 프롬프트 변경 검증의 기본.</dd></div>
+          <div class="term"><dt>AGI</dt><dd>범용 인간 수준 AI. 현재 미달성, 연구 목표.</dd></div>
+          <div class="term"><dt>API</dt><dd>프로그램 간 호출 규약. Anthropic/OpenAI API로 LLM 호출.</dd></div>
+          <div class="term"><dt>Batch API</dt><dd>대량 요청을 비동기 처리. 50% 할인, 24h 내 완료.</dd></div>
+          <div class="term"><dt>BLEU / ROUGE / BERTScore</dt><dd>번역·요약 자동 평가 메트릭. 완벽하지 않아 사람 검수 병행.</dd></div>
+          <div class="term"><dt>Chain-of-Thought <span class="en">CoT</span></dt><dd>모델이 중간 추론 단계를 생성하게 하는 프롬프트 기법.</dd></div>
+          <div class="term"><dt>Context Precision</dt><dd>RAG 평가 메트릭. 검색된 컨텍스트가 질문과 얼마나 관련 있는지.</dd></div>
+          <div class="term"><dt>DPA <span class="en">Data Processing Agreement</span></dt><dd>데이터 처리 위탁 계약. 해외 LLM 사용 시 필수.</dd></div>
+          <div class="term"><dt>DLP <span class="en">Data Loss Prevention</span></dt><dd>민감정보 유출 방지 필터. AI 프롬프트 전 단계에 배치.</dd></div>
+          <div class="term"><dt>Embedding <span class="en">임베딩</span></dt><dd>텍스트 → 벡터 변환. Cohere/OpenAI/Voyage 등 전용 모델.</dd></div>
+          <div class="term"><dt>Eval <span class="en">평가</span></dt><dd>LLM 시스템 성능 평가. 부록 E 참고.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="en-f"><h3>F-J</h3>
+        <dl>
+          <div class="term"><dt>Faithfulness</dt><dd>RAGAS 메트릭. 답변이 주어진 컨텍스트에 충실한지.</dd></div>
+          <div class="term"><dt>Few-shot</dt><dd>프롬프트에 예시 2~5개를 제시해 포맷·스타일 학습.</dd></div>
+          <div class="term"><dt>Function Calling</dt><dd>AI가 구조화된 JSON으로 함수를 호출. Tool Use와 동의.</dd></div>
+          <div class="term"><dt>Grounding</dt><dd>응답 근거를 컨텍스트·검색 결과에 묶는 기법.</dd></div>
+          <div class="term"><dt>GPU</dt><dd>LLM 추론·학습의 핵심 하드웨어. A100/H100/B100 등.</dd></div>
+          <div class="term"><dt>Hallucination</dt><dd>→ 환각</dd></div>
+          <div class="term"><dt>ICL <span class="en">In-Context Learning</span></dt><dd>프롬프트 내 예시만으로 과제를 수행하는 능력.</dd></div>
+          <div class="term"><dt>ICIO</dt><dd>Instruction-Context-Input-Output 프롬프트 구조화 패턴.</dd></div>
+          <div class="term"><dt>JSON Mode</dt><dd>API가 JSON 출력을 보증하는 모드. 파싱 안정성.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="en-k"><h3>K-O</h3>
+        <dl>
+          <div class="term"><dt>KPI</dt><dd>핵심 지표. AI 과제의 Task Success Rate, $/task, Regression 등.</dd></div>
+          <div class="term"><dt>LangChain / LlamaIndex</dt><dd>LLM 애플리케이션 프레임워크. 체인·에이전트 구성 도구.</dd></div>
+          <div class="term"><dt>Latency</dt><dd>→ 지연시간</dd></div>
+          <div class="term"><dt>LLM <span class="en">Large Language Model</span></dt><dd>대규모 언어 모델. GPT·Claude·Gemini·Llama 등.</dd></div>
+          <div class="term"><dt>LLM-as-Judge</dt><dd>LLM이 다른 LLM 출력을 채점. 부록 E.</dd></div>
+          <div class="term"><dt>LoRA / QLoRA</dt><dd>경량 파인튜닝 기법. 소형 어댑터만 학습.</dd></div>
+          <div class="term"><dt>MCP <span class="en">Model Context Protocol</span></dt><dd>AI와 외부 도구를 연결하는 표준 프로토콜. 부록 A.</dd></div>
+          <div class="term"><dt>MoE <span class="en">Mixture of Experts</span></dt><dd>여러 전문가 네트워크 중 일부만 활성. 효율적 대형 모델.</dd></div>
+          <div class="term"><dt>NER <span class="en">Named Entity Recognition</span></dt><dd>개체명(인명·지명·날짜) 추출.</dd></div>
+          <div class="term"><dt>NL2SQL</dt><dd>자연어를 SQL로 변환. 비개발자 DB 질의에 유용.</dd></div>
+          <div class="term"><dt>OCR</dt><dd>이미지 내 텍스트 인식. 멀티모달 모델 내장.</dd></div>
+          <div class="term"><dt>Ollama</dt><dd>로컬 LLM 실행 CLI. 부록 G.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="en-p"><h3>P-T</h3>
+        <dl>
+          <div class="term"><dt>PII <span class="en">Personally Identifiable Information</span></dt><dd>개인 식별 정보. AI 입력 전 마스킹·가명 처리 권장.</dd></div>
+          <div class="term"><dt>Playwright MCP</dt><dd>브라우저 자동화 MCP 서버. 자연어 QA 테스트.</dd></div>
+          <div class="term"><dt>Prompt Caching</dt><dd>→ 캐싱</dd></div>
+          <div class="term"><dt>Prompt Injection</dt><dd>→ 프롬프트 인젝션</dd></div>
+          <div class="term"><dt>RAG <span class="en">Retrieval-Augmented Generation</span></dt><dd>외부 지식을 검색해 프롬프트에 주입하는 패턴. 1.6 참고.</dd></div>
+          <div class="term"><dt>RAGAS</dt><dd>RAG 전용 평가 메트릭 라이브러리.</dd></div>
+          <div class="term"><dt>ReAct</dt><dd>Reasoning + Acting. 생각→행동→관찰 반복 에이전트 패턴.</dd></div>
+          <div class="term"><dt>Reranker</dt><dd>RAG 검색 결과를 재순위화하는 2차 모델. 정확도 상승.</dd></div>
+          <div class="term"><dt>RLHF</dt><dd>사람 피드백 강화학습. LLM 얼라인먼트에 사용.</dd></div>
+          <div class="term"><dt>Self-Consistency</dt><dd>여러 샘플링의 다수결. 수학·추론 과제 성능↑.</dd></div>
+          <div class="term"><dt>Self-Critique</dt><dd>모델이 자기 출력을 비판·개선. 반복 품질 향상.</dd></div>
+          <div class="term"><dt>SSE <span class="en">Server-Sent Events</span></dt><dd>스트리밍 프로토콜. MCP HTTP 전송에도 사용.</dd></div>
+          <div class="term"><dt>System Prompt</dt><dd>→ 시스템 프롬프트</dd></div>
+          <div class="term"><dt>TDD <span class="en">Test-Driven Development</span></dt><dd>테스트 먼저 작성. AI 에이전트의 안전 가드에 유효.</dd></div>
+          <div class="term"><dt>Temperature</dt><dd>→ 온도</dd></div>
+          <div class="term"><dt>Token</dt><dd>→ 토큰</dd></div>
+          <div class="term"><dt>Tool Use</dt><dd>→ 툴</dd></div>
+          <div class="term"><dt>Top-p / Top-k</dt><dd>샘플링 후보 제한 기법.</dd></div>
+          <div class="term"><dt>TTFT <span class="en">Time To First Token</span></dt><dd>요청 후 첫 토큰까지의 지연. UX 핵심.</dd></div>
+        </dl>
+      </div>
+
+      <div class="letter-section" id="en-u"><h3>U-Z</h3>
+        <dl>
+          <div class="term"><dt>Uncertainty</dt><dd>모델 확신도. 높은 불확실성에서 거부·사람 개입 트리거.</dd></div>
+          <div class="term"><dt>VectorDB</dt><dd>→ 벡터 데이터베이스</dd></div>
+          <div class="term"><dt>vLLM</dt><dd>고성능 LLM 서빙 엔진. Continuous batching 지원.</dd></div>
+          <div class="term"><dt>Watermark</dt><dd>AI 생성물에 심는 식별 표식. 국내 AI 기본법 요구.</dd></div>
+          <div class="term"><dt>Workflow</dt><dd>여러 LLM 호출·도구 호출을 엮은 작업 흐름.</dd></div>
+          <div class="term"><dt>Zero-shot</dt><dd>예시 없이 지시만으로 수행. 최신 모델은 대부분 이 수준 충족.</dd></div>
+        </dl>
+      </div>
+
+      </div>
+
+      <div class="no-result" id="no-result">검색 결과가 없습니다.</div>
+    </article>
+
+    <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.04.17
+    </div>
+  </main>
+
+  <script>
+    const search = document.getElementById('search');
+    const terms = document.querySelectorAll('.term');
+    const sections = document.querySelectorAll('.letter-section');
+    const noResult = document.getElementById('no-result');
+    search.addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      let shown = 0;
+      terms.forEach(t => {
+        const txt = t.textContent.toLowerCase();
+        const hit = !q || txt.includes(q);
+        t.classList.toggle('hidden', !hit);
+        if (hit) shown++;
+      });
+      sections.forEach(sec => {
+        const visible = sec.querySelectorAll('.term:not(.hidden)').length;
+        sec.style.display = visible ? '' : 'none';
+      });
+      noResult.style.display = shown === 0 ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>
