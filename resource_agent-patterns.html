@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부록 D. Claude Code Agent 패턴 심화 - AI 실무 활용 가이드</title>
+  <meta name="description" content="Claude Code/Cursor의 에이전트를 제대로 쓰는 법: 멀티턴 워크플로, 피드백 루프, 대규모 마이그레이션 실전 사례.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <main id="content" style="max-width: 960px; margin: 0 auto; padding: 2rem;">
+    <nav style="margin-bottom:1.5rem; font-size:0.9rem;">
+      <a href="index.html">← 메인으로</a> · <a href="module5-3.html#s5-9">5.9 PL 실전 전략</a> · <a href="module10-2.html#s10-6">10.6 하네스 엔지니어링</a>
+    </nav>
+
+    <article class="module">
+      <h2>부록 D. Claude Code Agent 패턴 심화</h2>
+      <p class="module-intro">"한 번 물어보고 한 번 답 받는" 단일 턴을 넘어, 에이전트가 <strong>스스로 계획하고 검증하고 반복</strong>하게 만드는 실전 패턴입니다. Claude Code, Cursor agent, OpenAI Assistants, Google Agent Builder에 공통 적용됩니다.</p>
+
+      <section>
+        <h3>D.1 에이전트 성숙도 4단계</h3>
+        <table class="comparison-table">
+          <thead><tr><th>단계</th><th>특징</th><th>대표 예</th></tr></thead>
+          <tbody>
+            <tr><td>L0 Chat</td><td>단일 프롬프트 응답</td><td>ChatGPT 기본 대화</td></tr>
+            <tr><td>L1 Tool Use</td><td>MCP/함수 호출</td><td>웹 검색, 날씨 조회</td></tr>
+            <tr><td>L2 Multi-step</td><td>계획 → 여러 도구 호출 → 종합</td><td>Claude Code의 파일 편집</td></tr>
+            <tr><td>L3 Self-verifying</td><td>작업 후 스스로 테스트·수정</td><td>Cursor agent 루프, <code>/task</code> 체인</td></tr>
+            <tr><td>L4 Autonomous</td><td>장시간 목표 수행 + 실패 시 전략 전환</td><td>하네스 엔지니어링(10.6), Anthropic SWE-bench 에이전트</td></tr>
+          </tbody>
+        </table>
+        <p><strong>실무 팁</strong>: 프로덕션 대부분은 L2~L3가 스윗스팟. L4는 인프라·평가·거버넌스 비용이 급격히 증가.</p>
+      </section>
+
+      <section>
+        <h3>D.2 핵심 패턴 6선</h3>
+
+        <h4>패턴 1. Plan → Execute → Verify 루프</h4>
+        <pre><code class="language-text">[계획] 작업 단계 생성
+   ↓
+[실행] 각 단계를 도구 호출로 수행
+   ↓
+[검증] 테스트·린터·타입체커·스크린샷 비교
+   ↓  실패 시 ↻
+[보고]</code></pre>
+        <p>Claude Code 기본 동작이지만, 프롬프트에서 "각 단계 후 <code>npm test</code>를 실행하고 실패 시 스스로 수정하라"를 명시하면 안정도가 크게 향상됩니다.</p>
+
+        <h4>패턴 2. Critic-Actor 분리</h4>
+        <p>같은 모델에 두 역할을 주고 번갈아 수행:</p>
+        <pre><code class="language-text">Role A (Actor): 코드 작성
+Role B (Critic): A가 쓴 코드를 엄격히 리뷰 — 버그·보안·성능
+A는 Critic 피드백을 반영해 재작성. Critic이 "이상 없음" 선언할 때까지 반복(최대 3회).</code></pre>
+        <p>Claude의 <strong>서브에이전트 기능</strong>(Agent SDK)이나 Claude Code의 <code>oh-my-claudecode:critic</code> 같은 스킬로 자동화 가능.</p>
+
+        <h4>패턴 3. 메모리 분리 (Scratchpad)</h4>
+        <p>에이전트가 긴 작업 중 <strong>단기 메모</strong>를 남기게 해 컨텍스트 낭비를 막음:</p>
+        <ul>
+          <li><code>.claude/notes.md</code>에 진행 상황을 체크리스트로 기록</li>
+          <li>작업 재개 시 이 파일만 읽고 바로 이어감</li>
+          <li>완료된 항목은 삭제해 파일 크기 유지</li>
+        </ul>
+
+        <h4>패턴 4. 도구 호출 예산(Budget)</h4>
+        <p>에이전트가 무한 루프에 빠지지 않도록 상한을 지정:</p>
+        <pre><code class="language-text">- 최대 20개 파일 편집까지만
+- 도구 호출 30회 초과 시 중단 후 보고
+- 비용이 $5 초과 예상되면 확인 요청</code></pre>
+
+        <h4>패턴 5. Golden Path 우선</h4>
+        <p>에이전트에게 <strong>성공 케이스부터 먼저</strong> 구현·검증하게 하고, 엣지 케이스는 이후 단계로 분리. 안 그러면 에이전트가 예외 처리에만 매달려 본론이 늦어짐.</p>
+
+        <h4>패턴 6. Git 중심 워크플로</h4>
+        <ul>
+          <li>작업 시작 시 브랜치 생성</li>
+          <li>의미 있는 단위마다 중간 커밋</li>
+          <li>검증 실패 시 마지막 성공 커밋으로 <code>git reset</code>하고 재시도</li>
+        </ul>
+        <p>Claude Code의 <code>git worktree</code> 활용 시 실험을 격리할 수 있어 안전도 상승.</p>
+      </section>
+
+      <section>
+        <h3>D.3 실전 케이스 — 레거시 Java 200 파일 → Spring Boot 3</h3>
+
+        <h4>상황</h4>
+        <ul>
+          <li>Spring Boot 2.7 → 3.2 마이그레이션. <code>javax.*</code> → <code>jakarta.*</code>, Actuator 재구성, Security 설정 변경</li>
+          <li>대상 200 파일, 수작업 시 2~3주 추정</li>
+        </ul>
+
+        <h4>에이전트 설계</h4>
+        <ol class="step-list">
+          <li><strong>계획 에이전트</strong> — 마이그레이션 가이드(공식) + 실제 레포를 읽고 체크리스트 10개 단계로 분해</li>
+          <li><strong>변환 에이전트</strong> — 각 단계별로 파일을 순회하며 변환 + 개별 커밋</li>
+          <li><strong>테스트 에이전트</strong> — 각 커밋 후 <code>./gradlew test</code> 실행, 실패 시 직전 커밋으로 되돌리고 변환 전략 수정</li>
+          <li><strong>리뷰 에이전트</strong> — 전체 완료 후 <code>git diff</code>를 읽고 PR 설명 작성</li>
+        </ol>
+
+        <h4>결과</h4>
+        <ul>
+          <li>소요 시간: 실제 2~3주 → <strong>약 9시간</strong>(야간 무인 실행 + 아침 리뷰)</li>
+          <li>테스트 통과율 100%, 리뷰 후 12개 수동 보정(대부분 커스텀 어노테이션)</li>
+          <li>비용: API 호출 $28 + PR 리뷰 시간 2시간</li>
+        </ul>
+
+        <h4>교훈</h4>
+        <ul>
+          <li><strong>작은 커밋이 핵심</strong>. 5~20 파일 단위 커밋이 실패 복구의 생명줄</li>
+          <li><strong>테스트가 없으면 에이전트가 일 못함</strong>. 마이그 전 테스트 커버리지 확보 선행</li>
+          <li><strong>야간 실행 → 아침 리뷰</strong>가 심리적으로 안전. 실시간 감시는 피로</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>D.4 실전 케이스 — 고객 지원 티켓 분류 에이전트</h3>
+        <ul>
+          <li>하루 1,200건 티켓 수신. 이전엔 상담사가 수동 라벨링(평균 40초/건 = 13시간/일)</li>
+          <li>에이전트 설계: 티켓 내용 읽기 → 유사 과거 티켓 3건 검색(RAG) → 카테고리·우선도 판정 → 담당팀 라우팅 → 로그 기록</li>
+          <li>결과: 자동 처리율 78%, 수동 재분류 22% → 상담사 2.5명 시간 절감 → 고부가 케이스에 투입</li>
+          <li>주의: 오분류 시 피드백을 RAG 인덱스에 재학습. 분기별 공정성 감사(모듈 B 참고)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>D.5 안티 패턴 (피하세요)</h3>
+        <ul>
+          <li><strong>무한 톱레벨 권한</strong> — "모든 도구 허용 + 모든 디렉토리 쓰기"는 사고의 시간문제. <code>.claude/settings.json</code>의 permission 세분화 필수</li>
+          <li><strong>스스로에게 리뷰 맡기기</strong> — 같은 대화 맥락에서 Actor=Critic은 편향 강함. 최소한 <strong>새 세션</strong> 또는 별도 모델로 분리</li>
+          <li><strong>추측 기반 픽스</strong> — "일단 돌려보고 에러 나면 고치자"는 에이전트에겐 독. 사전에 테스트 정의 → TDD 흐름이 훨씬 안정</li>
+          <li><strong>컨텍스트 폭식</strong> — 전체 레포를 매번 프롬프트에 넣지 말고, <strong>필요한 파일만 동적으로</strong>. Claude Opus 4.7 1M이어도 비용 생각</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>D.6 PM/PL 관점의 KPI</h3>
+        <table class="comparison-table">
+          <thead><tr><th>지표</th><th>설명</th><th>목표</th></tr></thead>
+          <tbody>
+            <tr><td>Task Success Rate</td><td>에이전트가 사람 개입 없이 완료한 비율</td><td>70%+</td></tr>
+            <tr><td>Human-in-loop rate</td><td>개입이 필요했던 비율</td><td>&lt;30%</td></tr>
+            <tr><td>Average turns</td><td>완료까지 평균 턴 수</td><td>&lt;10</td></tr>
+            <tr><td>$/task</td><td>건당 평균 API 비용</td><td>수동 대비 &lt;20%</td></tr>
+            <tr><td>Regression rate</td><td>에이전트 작업 후 기존 기능 회귀</td><td>&lt;2%</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>D.7 참고</h3>
+        <ul>
+          <li>Anthropic Engineering — Building effective agents (<a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">research/building-effective-agents</a>)</li>
+          <li>Cursor Agent 문서 — <a href="https://docs.cursor.com/agent" target="_blank" rel="noopener">docs.cursor.com/agent</a></li>
+          <li>관련: <a href="resource_mcp-server-dev.html">부록 A. MCP 서버 개발</a>, <a href="module10-2.html#s10-6">10.6 하네스 엔지니어링</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.04.17
+    </div>
+  </main>
+</body>
+</html>
