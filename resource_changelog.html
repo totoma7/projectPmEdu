@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변경 이력 (CHANGELOG) - AI 실무 활용 가이드</title>
+  <meta name="description" content="AI 실무 활용 가이드의 콘텐츠·모델·가격 정보 변경 이력. 최신 갱신과 예정된 콘텐츠를 확인하세요.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .changelog-entry { margin-bottom:2rem; padding:1.25rem 1.5rem; border-left:4px solid var(--link); background:var(--bg-secondary); border-radius:6px; }
+    .changelog-entry h3 { margin:0 0 0.5rem 0; font-size:1.15rem; }
+    .badge { display:inline-block; padding:0.15rem 0.6rem; border-radius:12px; font-size:0.75rem; font-weight:600; margin-left:0.5rem; }
+    .badge.added   { background:#e8f5e9; color:#2e7d32; }
+    .badge.changed { background:#e8f4fd; color:#1565c0; }
+    .badge.fixed   { background:#fff8e1; color:#ef6c00; }
+    .badge.removed { background:#ffebee; color:#c62828; }
+    .upcoming { border-left-color:#9c27b0; }
+    .upcoming .badge.planned { background:#f3e5f5; color:#7b1fa2; }
+  </style>
+</head>
+<body>
+  <main id="content" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+    <nav style="margin-bottom:1.5rem; font-size:0.9rem;">
+      <a href="index.html">← 메인으로</a> · <a href="resource_roadmap.html">학습 로드맵</a>
+    </nav>
+
+    <article class="module">
+      <h2>변경 이력 (CHANGELOG)</h2>
+      <p class="module-intro">AI 실무 활용 가이드의 주요 변경 내역을 시간순으로 정리합니다. AI 생태계 변화가 빠르므로 <strong>월 1회 이상</strong> 주요 수치(모델·가격)를 갱신합니다.</p>
+
+      <section>
+        <h3>예정 (Upcoming)</h3>
+        <div class="changelog-entry upcoming">
+          <h3>2026-05 (예정) <span class="badge planned">PLANNED</span></h3>
+          <ul>
+            <li>각 모듈 말미에 "학습 체크포인트" 3~5문항 퀴즈 삽입</li>
+            <li>검색 기능에 부록(resource_*) 페이지 통합 인덱싱</li>
+            <li>국내 AI 도입 사례 5건 추가 (금융·유통·교육·공공·제조)</li>
+            <li>Voice of User 섹션 — 독자 피드백 반영 내역 공개</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>릴리스</h3>
+
+        <div class="changelog-entry">
+          <h3>2026-04-17 <span class="badge added">ADDED</span> <span class="badge changed">CHANGED</span></h3>
+          <strong>대규모 콘텐츠 확장 — 부록 8종 신설, 모델·가격 전면 갱신</strong>
+          <ul>
+            <li><strong>ADDED</strong> 부록 A. <a href="resource_mcp-server-dev.html">MCP 서버 직접 개발 실습</a> — TypeScript/Python 최소 서버부터 사내 API 연동까지</li>
+            <li><strong>ADDED</strong> 부록 B. <a href="resource_ai-regulations-kr.html">한국 AI 규제 & 컴플라이언스</a> — 개보법·AI 기본법·금융/의료 규제 + 12단계 체크리스트</li>
+            <li><strong>ADDED</strong> 부록 C. <a href="resource_prompt-patterns.html">프롬프트 패턴 카탈로그 22개</a> — 복붙 가능한 한국어 템플릿</li>
+            <li><strong>ADDED</strong> 부록 D. <a href="resource_agent-patterns.html">Claude Code Agent 패턴 심화</a> — Plan-Execute-Verify 루프 + 실전 마이그레이션 사례</li>
+            <li><strong>ADDED</strong> 부록 E. <a href="resource_llm-eval.html">AI 평가 & LLM-as-Judge</a> — Pairwise·Rubric·Promptfoo</li>
+            <li><strong>ADDED</strong> 부록 F. <a href="resource_opus-1m-context.html">Claude Opus 4.7 1M 컨텍스트</a> — RAG 대체와 프롬프트 캐싱 비용 계산</li>
+            <li><strong>ADDED</strong> 부록 G. <a href="resource_on-device-llm.html">온디바이스·로컬 LLM</a> — Ollama·LM Studio·Llama 4·Qwen 3·EXAONE 4</li>
+            <li><strong>ADDED</strong> 부록 H. <a href="resource_checklist.html">역할별 셀프 체크리스트</a> — 개발자/PM/PL 각 15문항, 진행률 자동 저장</li>
+            <li><strong>ADDED</strong> <a href="resource_roadmap.html">학습 로드맵 페이지</a> · <a href="resource_changelog.html">CHANGELOG 페이지</a> · <a href="resource_glossary.html">용어 사전 확장판</a></li>
+            <li><strong>CHANGED</strong> module1-2.html 모델 가격표 — Opus 4.7 ($5/$25, 기존 $15/$75 대비 3배 인하), Sonnet 4.6, Haiku 4.5 버전 명시, Gemini 3 Pro/Flash 행 추가</li>
+            <li><strong>CHANGED</strong> module10-2.html Gemini 1.5 → Gemini 3 세대 표기</li>
+            <li><strong>CHANGED</strong> 전체 HTML 23개 footer 날짜 2026.04.13 → 2026.04.17</li>
+            <li><strong>FIXED</strong> module5-5.html &lt;title&gt; — 실제 콘텐츠(DevOps·테스팅·API)와 일치하도록 정정</li>
+            <li><strong>CHANGED</strong> README.md — 최종 갱신일 표기, CHANGELOG 링크 추가</li>
+          </ul>
+        </div>
+
+        <div class="changelog-entry">
+          <h3>2026-04-13 <span class="badge added">ADDED</span> <span class="badge changed">CHANGED</span></h3>
+          <strong>README 개편 + index.html 역할별 학습 경로</strong>
+          <ul>
+            <li>README 전면 개편, index.html 실습 환경 안내</li>
+            <li>index.html 역할별 추천 학습 경로 테이블 추가 (개발자/PM/PL)</li>
+            <li>10.6 하네스 엔지니어링 링크 보강, 23개 파일 크로스링크 정비</li>
+          </ul>
+        </div>
+
+        <div class="changelog-entry">
+          <h3>2026-04-10 이전 <span class="badge added">ADDED</span></h3>
+          <strong>초기 구축</strong>
+          <ul>
+            <li>10개 모듈 60+ 섹션 초판 작성</li>
+            <li>Mermaid 다이어그램, Prism 코드 하이라이팅, 검색(Ctrl+K) 기능</li>
+            <li>다크/라이트 테마, 반응형 사이드바</li>
+            <li>ai-engineering-evolution.html 타임라인 비주얼</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>주요 수치 변동 요약</h3>
+        <table class="comparison-table">
+          <thead><tr><th>항목</th><th>2026-01</th><th>2026-04-17 (현재)</th><th>변화</th></tr></thead>
+          <tbody>
+            <tr><td>Claude Opus 입력 가격</td><td>$15 / 1M</td><td><strong>$5 / 1M</strong></td><td>−67%</td></tr>
+            <tr><td>Claude Opus 출력 가격</td><td>$75 / 1M</td><td><strong>$25 / 1M</strong></td><td>−67%</td></tr>
+            <tr><td>Claude Opus 컨텍스트</td><td>200k</td><td><strong>1M</strong></td><td>×5</td></tr>
+            <tr><td>Gemini 주력 세대</td><td>1.5 Pro</td><td><strong>3 Pro</strong></td><td>2세대 상승</td></tr>
+            <tr><td>오픈 모델 최상위</td><td>Llama 3.3 70B</td><td><strong>Llama 4 405B / Qwen 3</strong></td><td>체급 및 품질 상승</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>정책</h3>
+        <ul>
+          <li><strong>버저닝</strong>: 시맨틱 버전 미사용. 날짜 기반(YYYY-MM-DD)으로 식별.</li>
+          <li><strong>갱신 주기</strong>: 월 1회 정기 갱신 + 주요 모델·가격 변동 시 비정기.</li>
+          <li><strong>분류</strong>: ADDED(신규) / CHANGED(변경) / FIXED(수정) / REMOVED(삭제) / PLANNED(예정).</li>
+          <li><strong>자동 반영</strong>: 가격·모델 수치는 원칙적으로 공식 문서 링크를 함께 표기.</li>
+        </ul>
+      </section>
+    </article>
+
+    <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.04.17
+    </div>
+  </main>
+</body>
+</html>
