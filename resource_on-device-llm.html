@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부록 G. 온디바이스·로컬 LLM 실전 가이드 - AI 실무 활용 가이드</title>
+  <meta name="description" content="Ollama, LM Studio, Llama 4, Qwen 3 — 로컬에서 LLM을 돌려 규제·비용·프라이버시 문제를 해결하는 실전 가이드.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <main id="content" style="max-width: 960px; margin: 0 auto; padding: 2rem;">
+    <nav style="margin-bottom:1.5rem; font-size:0.9rem;">
+      <a href="index.html">← 메인으로</a> · <a href="module10-1.html#s10-1">10.1 No-Code 자동화</a> · <a href="resource_ai-regulations-kr.html">부록 B. 한국 규제</a>
+    </nav>
+
+    <article class="module">
+      <h2>부록 G. 온디바이스·로컬 LLM 실전 가이드</h2>
+      <p class="module-intro">클라우드 LLM이 쓰기 어려운 상황(금융·의료 규제, 기밀 정보, 대량 저비용 처리)에서 <strong>로컬에서 LLM을 돌리는 법</strong>. 2026-04 기준 실용 수준에 도달한 오픈 모델과 실행 도구를 정리했습니다.</p>
+
+      <section>
+        <h3>G.1 언제 로컬 LLM을 쓰나</h3>
+        <table class="comparison-table">
+          <thead><tr><th>시나리오</th><th>이유</th></tr></thead>
+          <tbody>
+            <tr><td>기밀 문서 요약</td><td>외부 전송 금지 — 국외 이전 동의 회피</td></tr>
+            <tr><td>대량 분류·태깅</td><td>건당 0.001¢ 이하 가능 — 클라우드 대비 100배 저렴</td></tr>
+            <tr><td>오프라인/엣지</td><td>공장·매장·선박 — 인터넷 부재</td></tr>
+            <tr><td>반복 자동화</td><td>토큰 단가 없음 — 하드웨어 감가만 고려</td></tr>
+            <tr><td>데모·개발</td><td>API 키 없이 팀 전체가 무료 시험</td></tr>
+          </tbody>
+        </table>
+
+        <h4>안 맞는 경우</h4>
+        <ul>
+          <li>최고 수준 추론 필요(수학·고난도 코드) — Claude Opus 4.7·GPT-5가 여전히 유리</li>
+          <li>아주 적은 호출량 — 하드웨어 고정비가 큰</li>
+          <li>긴 컨텍스트(&gt;256k) — 로컬 모델은 대부분 128k 이하</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>G.2 2026-04 주목 오픈 모델</h3>
+        <table class="comparison-table">
+          <thead><tr><th>모델</th><th>파라미터</th><th>한국어</th><th>강점</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Llama 4 Instruct</strong> (Meta)</td><td>8B / 70B / 405B</td><td>양호</td><td>생태계·파인튜닝 도구 최대</td></tr>
+            <tr><td><strong>Qwen 3</strong> (Alibaba)</td><td>1.5B ~ 72B</td><td><strong>우수</strong></td><td>한·중·일 언어, 코딩 강점</td></tr>
+            <tr><td><strong>DeepSeek V3 / R1</strong></td><td>37B (MoE)</td><td>양호</td><td>추론·수학, 무료 상업 사용</td></tr>
+            <tr><td><strong>Gemma 3</strong> (Google)</td><td>2B / 9B / 27B</td><td>보통</td><td>경량, 모바일 가능</td></tr>
+            <tr><td><strong>Mistral Large 3</strong></td><td>123B</td><td>보통</td><td>유럽 데이터 주권</td></tr>
+            <tr><td><strong>EXAONE 4</strong> (LG)</td><td>32B</td><td><strong>최상</strong></td><td>국산, 한국어 벤치 1위권</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>G.3 하드웨어 가이드</h3>
+        <table class="comparison-table">
+          <thead><tr><th>요구</th><th>모델 크기</th><th>권장 하드웨어</th></tr></thead>
+          <tbody>
+            <tr><td>개인 개발자</td><td>~14B (Q4 양자화)</td><td>RTX 4070 12GB / M2 Pro 16GB</td></tr>
+            <tr><td>팀 공용</td><td>70B (Q4)</td><td>RTX 4090 24GB ×2 또는 M3 Max 128GB</td></tr>
+            <tr><td>엔터프라이즈</td><td>405B / 72B MoE</td><td>H100 80GB ×4~8</td></tr>
+            <tr><td>엣지(노트북)</td><td>1.5B~3B</td><td>Apple Silicon, AI PC(Copilot+)</td></tr>
+          </tbody>
+        </table>
+        <p>양자화(Q4/Q5/Q8): 모델 가중치를 4·5·8비트로 압축해 메모리를 1/4로 줄이는 기법. 품질 손실 3~8%로 실용적.</p>
+      </section>
+
+      <section>
+        <h3>G.4 실행 도구 선택</h3>
+        <ul>
+          <li><strong>Ollama</strong> — CLI 한 줄(<code>ollama run llama4</code>). 서버 모드도 내장. 가장 빠른 시작.</li>
+          <li><strong>LM Studio</strong> — GUI. 비개발자도 클릭만으로. 모델 검색·교체 쉬움.</li>
+          <li><strong>llama.cpp</strong> — 저레벨 엔진. Ollama·LM Studio 내부. 임베디드·커스텀 빌드용.</li>
+          <li><strong>vLLM</strong> — 프로덕션 서버. 배치·streaming 최적화, OpenAI 호환 API.</li>
+          <li><strong>Text Generation Inference (TGI)</strong> — Hugging Face의 서버. 엔터프라이즈 기능.</li>
+          <li><strong>MLX</strong> (Apple) — Apple Silicon 네이티브. M시리즈에서 최고 효율.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>G.5 5분 퀵스타트 (Ollama)</h3>
+        <pre><code class="language-bash"># 설치 (mac/linux)
+curl -fsSL https://ollama.com/install.sh | sh
+# Windows는 ollama.com/download 에서 설치 파일
+
+# 모델 당기기 + 실행
+ollama pull qwen3:14b
+ollama run qwen3:14b "한국어로 자기소개해줘"
+
+# OpenAI 호환 API가 자동 기동됨 (localhost:11434/v1)
+curl http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:14b",
+    "messages": [{"role":"user","content":"한국 PM 업계 동향 3가지"}]
+  }'</code></pre>
+        <p>Python/TypeScript SDK는 <code>base_url=http://localhost:11434/v1</code>만 바꾸면 OpenAI 코드를 그대로 사용.</p>
+      </section>
+
+      <section>
+        <h3>G.6 Claude Code·Cursor에 로컬 LLM 연결</h3>
+        <p>최신 Claude Code/Cursor는 OpenAI 호환 엔드포인트를 지원합니다. 시크릿 없이 개인 실험 가능:</p>
+        <pre><code class="language-json">// ~/.cursor/config.json 예
+{
+  "openai": {
+    "baseURL": "http://localhost:11434/v1",
+    "apiKey": "ollama",
+    "model": "qwen3:14b"
+  }
+}</code></pre>
+        <p>주의: 로컬 모델은 툴 호출(Function calling) 품질이 클라우드 대비 낮음. 에이전트형 작업은 70B 이상 권장.</p>
+      </section>
+
+      <section>
+        <h3>G.7 한국어 품질 팁</h3>
+        <ul>
+          <li>한국어 비중 높은 모델: <strong>EXAONE 4, Qwen 3, HyperCLOVA X Seed</strong></li>
+          <li>벤치마크 확인: <a href="https://huggingface.co/spaces/upstage/open-ko-llm-leaderboard" target="_blank" rel="noopener">Open Ko-LLM Leaderboard</a></li>
+          <li>영어 모델을 강제로 한국어로 쓰면 어색함 발생 — 시스템 프롬프트에 "모든 응답은 자연스러운 한국어로. 어색하면 재작성" 명시</li>
+          <li>파인튜닝: QLoRA로 노트북에서도 가능. 사내 문서 1,000건으로 도메인 특화 3~6시간</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>G.8 보안·운영 체크리스트</h3>
+        <table class="comparison-table">
+          <thead><tr><th>항목</th><th>확인</th></tr></thead>
+          <tbody>
+            <tr><td>네트워크</td><td>Ollama 기본 포트 11434가 외부에 노출되지 않도록(사내망 바인딩)</td></tr>
+            <tr><td>모델 출처</td><td>Hugging Face 검증된 계정만. 임의 gguf 파일은 악성 코드 가능성(Pickle 공격)</td></tr>
+            <tr><td>라이선스</td><td>Llama 4는 월 7억 MAU 미만까지 무료. Qwen 3는 Apache 2.0. 상업 사용 전 확인</td></tr>
+            <tr><td>로그</td><td>개인정보·비밀을 모델에 넣었다면 로그/캐시에도 남을 수 있음 — 정기 삭제</td></tr>
+            <tr><td>갱신</td><td>모델은 빠르게 진화. 분기 1회 벤치 재평가</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>G.9 하이브리드 아키텍처 추천</h3>
+        <pre><code class="language-text">[민감/대량 작업]  → 로컬 Qwen 3 14B (Ollama)
+[고난도 추론]     → Claude Opus 4.7 (클라우드)
+[라우터]          → 질문 난이도 분류 후 위 둘 중 선택
+[가드]            → 개인정보 검출 시 무조건 로컬로 강제</code></pre>
+        <p>이 구조만으로 <strong>비용 40~60% 절감</strong>하면서 난이도 높은 질문 품질 유지가 가능합니다.</p>
+      </section>
+
+      <section>
+        <h3>G.10 참고</h3>
+        <ul>
+          <li>Ollama — <a href="https://ollama.com" target="_blank" rel="noopener">ollama.com</a></li>
+          <li>LM Studio — <a href="https://lmstudio.ai" target="_blank" rel="noopener">lmstudio.ai</a></li>
+          <li>Hugging Face — <a href="https://huggingface.co" target="_blank" rel="noopener">huggingface.co</a></li>
+          <li>관련: <a href="resource_ai-regulations-kr.html">부록 B. 한국 규제</a> (민감정보 처리), <a href="module10-1.html#s10-1">10.1 No-Code AI</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.04.17
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+</body>
+</html>
