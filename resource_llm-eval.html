@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부록 E. AI 평가 & LLM-as-Judge - AI 실무 활용 가이드</title>
+  <meta name="description" content="프롬프트·에이전트·RAG 시스템을 재현 가능하게 평가하는 법: 정성/정량 메트릭, LLM-as-Judge, A/B 설계.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <main id="content" style="max-width: 960px; margin: 0 auto; padding: 2rem;">
+    <nav style="margin-bottom:1.5rem; font-size:0.9rem;">
+      <a href="index.html">← 메인으로</a> · <a href="module1-2.html">1장 AI 기초</a> · <a href="resource_prompt-patterns.html">부록 C. 프롬프트 패턴</a>
+    </nav>
+
+    <article class="module">
+      <h2>부록 E. AI 평가 & LLM-as-Judge</h2>
+      <p class="module-intro">"프롬프트를 바꿨더니 나아진 것 같다"에서 벗어나, <strong>수치로 비교 가능한 평가 체계</strong>를 세우는 법. 프롬프트 변경·모델 업그레이드·RAG 튜닝이 실제 개선인지 회귀인지 가려내는 도구입니다.</p>
+
+      <section>
+        <h3>E.1 왜 평가가 필요한가</h3>
+        <p>LLM 시스템은 <strong>비결정적</strong>이기 때문에 "눈으로 몇 개 돌려보기"로는 회귀를 놓칩니다. 실제 사례:</p>
+        <ul>
+          <li>Claude Sonnet 4.5 → 4.6 업그레이드 후 JSON 출력 형식 안정성이 5% 하락한 사례(복구 프롬프트 필요)</li>
+          <li>RAG 인덱스를 "더 많이" 개선하려고 청크 크기를 키웠더니 환각률이 오히려 12% 증가한 사례</li>
+          <li>프롬프트에 "한국어로"를 강조했더니 영어 코드 블록 안의 주석까지 한국어가 돼 빌드 실패한 사례</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>E.2 평가 파이프라인의 기본 구조</h3>
+        <pre><code class="language-text">[테스트셋] 50~500개 입력+기대출력
+    ↓
+[러너] 프롬프트 v1·v2로 각각 실행
+    ↓
+[메트릭] 자동(정량) + LLM Judge(정성)
+    ↓
+[리포트] 점수, diff, 회귀 항목 하이라이트
+    ↓
+[결정] 승인 / 반려 / 수정 후 재평가</code></pre>
+      </section>
+
+      <section>
+        <h3>E.3 메트릭 선택 가이드</h3>
+        <table class="comparison-table">
+          <thead><tr><th>과제 유형</th><th>추천 메트릭</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>분류/태깅</td><td>Accuracy, F1, Confusion Matrix</td><td>기대값이 명확</td></tr>
+            <tr><td>추출(NER, 수치)</td><td>Exact Match, Partial Match</td><td>숫자는 ±오차 허용</td></tr>
+            <tr><td>번역/요약</td><td>BLEU, ROUGE, BERTScore</td><td>+ 사람 검수 샘플</td></tr>
+            <tr><td>코드 생성</td><td>테스트 통과율, 컴파일 성공률, 린터</td><td>단위 테스트가 "정답"</td></tr>
+            <tr><td>RAG 답변</td><td>Faithfulness, Answer Relevancy, Context Precision</td><td>RAGAS 라이브러리</td></tr>
+            <tr><td>자유 응답(톤·스타일)</td><td>LLM-as-Judge + Pairwise</td><td>자동 메트릭 불충분</td></tr>
+            <tr><td>에이전트 과제</td><td>Task Success Rate, Trajectory 점수</td><td>+ 비용·턴 수</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>E.4 LLM-as-Judge — 실전 설계</h3>
+        <p>자유 응답을 "AI에게 채점시키는" 기법. 설계 요령:</p>
+        <ol class="step-list">
+          <li><strong>루브릭 명시</strong><p>"품질이 좋은가?"는 금지. 정확성·구체성·톤·포맷 각각 0~5점 루브릭.</p></li>
+          <li><strong>Pairwise 비교 우선</strong><p>"A가 나은가 B가 나은가"가 "A를 0~10점으로"보다 일관됨. Chatbot Arena 방식.</p></li>
+          <li><strong>심판 모델은 다른 모델</strong><p>평가 대상이 GPT면 판정은 Claude로(또는 그 반대). 자기 편향 회피.</p></li>
+          <li><strong>Judge도 검증</strong><p>사람 50건으로 Judge의 κ(kappa) &gt; 0.6인지 확인. 못 맞추면 루브릭을 더 쪼갤 것.</p></li>
+          <li><strong>위치 편향</strong><p>A/B 순서를 50:50으로 스왑해 위치 편향 제거.</p></li>
+        </ol>
+
+        <h4>판정 프롬프트 템플릿</h4>
+        <pre><code class="language-text">너는 한국 PM 업무 응답을 평가하는 심판이다.
+
+[질문]: {question}
+[응답 A]: {answer_a}
+[응답 B]: {answer_b}
+
+루브릭 (각 0~5):
+- 정확성: 사실 오류 없음
+- 구체성: "일반적으로"류 추상 표현 없음
+- 실행가능성: 내일 실행 가능한가
+- 형식: 요청된 포맷 준수
+
+출력 (JSON만):
+{
+  "scores_a": {...}, "scores_b": {...},
+  "winner": "A" | "B" | "tie",
+  "reason": "한 문장"
+}</code></pre>
+      </section>
+
+      <section>
+        <h3>E.5 테스트셋 만들기</h3>
+        <ul>
+          <li><strong>크기</strong>: 최소 50건(개발용), 200~500건(회귀 CI용). 너무 많으면 비용·속도 부담</li>
+          <li><strong>다양성</strong>: 실제 프로덕션 로그에서 샘플링 + 엣지 케이스 수동 추가(빈 입력, 긴 입력, 외국어, 모순 질문)</li>
+          <li><strong>기대출력</strong>: 사람이 작성·검수한 정답 또는 "이런 특성을 만족해야 함" 같은 rubric 형태</li>
+          <li><strong>Freezing</strong>: 한번 고정한 테스트셋은 함부로 수정 금지. 수정하면 과거 점수와 비교 불가</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>E.6 A/B 테스트 설계</h3>
+        <h4>오프라인(개발 시)</h4>
+        <pre><code class="language-text">- 같은 입력 50건에 프롬프트 v1, v2 적용
+- 각 건 Pairwise LLM Judge
+- 승률 차이 p &lt; 0.05 (binomial) 이면 통계적으로 유의
+- 비용, 지연시간도 함께 측정</code></pre>
+
+        <h4>온라인(프로덕션)</h4>
+        <ul>
+          <li>사용자 트래픽 5~10%에 신규 프롬프트 할당</li>
+          <li>지표: 사용자 만족도(👍/👎), 재질문율, 완료까지 턴 수, 비용</li>
+          <li>최소 표본: 건당 편차가 크므로 <strong>수백~수천 건</strong>이 일반적. 2주 이상 관찰</li>
+          <li>가드레일: 안전·규제 위반률은 0%여야 승격 가능</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>E.7 도구 선택</h3>
+        <table class="comparison-table">
+          <thead><tr><th>도구</th><th>강점</th><th>약점</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Promptfoo</strong></td><td>CLI·YAML, 로컬 CI 통합 쉬움</td><td>대시보드 단순</td></tr>
+            <tr><td><strong>LangSmith</strong></td><td>LangChain 트레이싱+평가 통합</td><td>LC 생태계 친화</td></tr>
+            <tr><td><strong>Braintrust</strong></td><td>UI 우수, 팀 협업</td><td>유료, 학습 곡선</td></tr>
+            <tr><td><strong>RAGAS</strong></td><td>RAG 전용 메트릭</td><td>RAG 외 부적합</td></tr>
+            <tr><td><strong>자체 pytest + OpenAI/Anthropic SDK</strong></td><td>유연, 규제 친화(외부 전송 없음)</td><td>UI 직접 구축 필요</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>E.8 Promptfoo 예시 (한 번에 두 프롬프트 비교)</h3>
+        <pre><code class="language-yaml">prompts:
+  - file://prompts/v1.txt
+  - file://prompts/v2.txt
+
+providers:
+  - anthropic:messages:claude-sonnet-4-6
+  - openai:chat:gpt-4o
+
+tests:
+  - vars:
+      question: "대출 거절 사유를 설명하는 한국어 응답을 작성하라..."
+    assert:
+      - type: contains
+        value: "재검토를 요청"
+      - type: llm-rubric
+        value: "격식체이며 차별 표현이 없어야 함"
+  - vars: { question: "..." }
+    assert:
+      - type: latency
+        threshold: 3000   # ms</code></pre>
+        <p><code>npx promptfoo eval</code>로 한 번에 실행 → 웹 리포트 생성. CI 파이프라인에 넣으면 <strong>프롬프트 PR 자동 리뷰</strong>까지 가능.</p>
+      </section>
+
+      <section>
+        <h3>E.9 주의할 안티패턴</h3>
+        <ul>
+          <li><strong>체리피킹</strong>: 좋은 몇 건만 보고 "개선됐다" 결론 — 반드시 고정 테스트셋</li>
+          <li><strong>테스트셋에 학습 유출</strong>: 프롬프트 튜닝 중 테스트셋을 반복 확인하면 overfitting. 최종 회귀셋은 <strong>개발 중 보지 않는</strong> 별도 보관</li>
+          <li><strong>Judge 한 번으로 결론</strong>: 반드시 사람 샘플 검증 + κ 측정</li>
+          <li><strong>비용 누락</strong>: 품질만 보고 합격시킨 프롬프트가 월 $5,000 추가 과금이 되는 경우</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>E.10 참고</h3>
+        <ul>
+          <li>Promptfoo — <a href="https://www.promptfoo.dev" target="_blank" rel="noopener">promptfoo.dev</a></li>
+          <li>RAGAS — <a href="https://docs.ragas.io" target="_blank" rel="noopener">docs.ragas.io</a></li>
+          <li>LMSYS Chatbot Arena — Pairwise 평가 대표 사례</li>
+          <li>관련: <a href="resource_prompt-patterns.html">부록 C. 프롬프트 패턴</a> (#17 Rubric, #21 Adversarial)</li>
+        </ul>
+      </section>
+    </article>
+
+    <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.04.17
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>
