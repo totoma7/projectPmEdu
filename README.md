@@ -3,6 +3,8 @@
 > 사내 개발자·PM·PL을 위한 AI 실무 교육자료입니다.
 > 시간 날 때 지속적으로 콘텐츠를 갱신하고 있습니다.
 
+**📅 최종 갱신: 2026-04-17** &nbsp;·&nbsp; 변경 이력: [changelog.html](./changelog.html)
+
 **🔗 바로가기: https://totoma7.github.io/projectPmEdu/**
 
 ## 실습 환경 안내
