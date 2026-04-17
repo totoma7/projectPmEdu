@@ -671,15 +671,18 @@ graph TD
           </div>
 
           <table class="comparison-table">
-            <thead><tr><th>모델</th><th>입력 비용 (1M 토큰)</th><th>출력 비용 (1M 토큰)</th><th>특징</th></tr></thead>
+            <thead><tr><th>모델</th><th>입력 ($/1M)</th><th>출력 ($/1M)</th><th>특징</th></tr></thead>
             <tbody>
-              <tr><td><strong>Claude Haiku</strong></td><td>$0.25</td><td>$1.25</td><td>빠르고 저렴. 분류, 요약 등 단순 작업에 최적</td></tr>
-              <tr><td><strong>Claude Sonnet</strong></td><td>$3</td><td>$15</td><td>성능/비용 균형. 대부분의 프로덕션 사용 권장</td></tr>
-              <tr><td><strong>Claude Opus</strong></td><td>$15</td><td>$75</td><td>최고 성능. 복잡한 추론, 코딩, 분석에 사용</td></tr>
+              <tr><td><strong>Claude Haiku 4.5</strong></td><td>$1</td><td>$5</td><td>빠르고 저렴. 분류·요약·대량 자동화에 최적 (Haiku 4.5는 구버전 대비 성능 대폭 향상)</td></tr>
+              <tr><td><strong>Claude Sonnet 4.6</strong></td><td>$3</td><td>$15</td><td>성능·비용 균형. 대부분의 프로덕션 사용 권장</td></tr>
+              <tr><td><strong>Claude Opus 4.7</strong></td><td>$5</td><td>$25</td><td>최고 성능 + <strong>1M 컨텍스트</strong> 지원. 복잡한 추론·코딩·대규모 분석. 2026년 3배 파격 인하</td></tr>
+              <tr><td><strong>Gemini 3 Pro</strong></td><td>$2~4*</td><td>$12~18*</td><td>Google 최신. 멀티모달·장문 이해 강점 (*프롬프트 길이 ≤200k / &gt;200k 기준)</td></tr>
+              <tr><td><strong>Gemini 2.5 Flash</strong></td><td>$0.30~1**</td><td>$2.50</td><td>1M 컨텍스트 Flash 모델. 대량·저비용 (**입력 타입별 차등)</td></tr>
               <tr><td><strong>GPT-4o</strong></td><td>$2.50</td><td>$10</td><td>OpenAI 주력. 멀티모달 강점</td></tr>
               <tr><td><strong>GPT-4o mini</strong></td><td>$0.15</td><td>$0.60</td><td>가장 저렴한 고성능. 대량 처리에 적합</td></tr>
             </tbody>
           </table>
+          <p style="margin-top:0.5rem;font-size:0.9em;color:#666;">※ 가격은 2026-04 기준 공식 공시가. Anthropic은 프롬프트 캐시 활용 시 읽기 10~12% 수준(Opus $0.50, Sonnet $0.30, Haiku $0.10)이며 배치 처리로 50% 추가 절감 가능. 출처: <a href="https://claude.com/pricing" target="_blank" rel="noopener">claude.com/pricing</a>, <a href="https://ai.google.dev/gemini-api/docs/pricing" target="_blank" rel="noopener">ai.google.dev/pricing</a></p>
 
           <h4>Tool Use · MCP · A2A — 어떻게 연결될까?</h4>
           <div class="diagram-container">
