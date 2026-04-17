@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부록 B. 한국 AI 규제 & 컴플라이언스 가이드 - AI 실무 활용 가이드</title>
+  <meta name="description" content="개인정보보호법, AI 기본법, 산업별 규제(금융·의료·교육)를 반영한 국내 AI 도입 체크리스트. PM/PL 필독.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <main id="content" style="max-width: 960px; margin: 0 auto; padding: 2rem;">
+    <nav style="margin-bottom:1.5rem; font-size:0.9rem;">
+      <a href="index.html">← 메인으로</a> · <a href="module9-2.html#s9-3">9.3 AI 거버넌스</a> · <a href="module6-3.html">6장 PM/PL</a>
+    </nav>
+
+    <article class="module">
+      <h2>부록 B. 한국 AI 규제 & 컴플라이언스 가이드 (2026-04 기준)</h2>
+      <p class="module-intro">국내에서 AI 기능을 서비스에 도입할 때 <strong>반드시 확인해야 하는 법·고시·가이드라인</strong>을 한 페이지로 정리했습니다. 법률 자문은 아니며, 실무에서 "이 항목은 법무팀 확인이 필요하다"를 가려내는 <strong>사전 체크리스트</strong>로 쓰세요.</p>
+
+      <div class="info-box" style="border-left-color:#ff9800;">
+        <strong>⚠️ 면책</strong>: 이 문서는 교육용 요약이며 법적 효력을 가지지 않습니다. 실제 도입 시 사내 법무팀·개인정보보호책임자(CPO)·금융/의료 준법 부서의 최종 검토를 받으세요.
+      </div>
+
+      <section>
+        <h3>B.1 국내 AI 규제 지형 한눈에 보기</h3>
+        <table class="comparison-table">
+          <thead><tr><th>법·가이드라인</th><th>소관</th><th>AI 관련 핵심</th><th>2026 적용</th></tr></thead>
+          <tbody>
+            <tr><td><strong>개인정보보호법</strong></td><td>개인정보보호위원회</td><td>학습·추론 데이터의 수집·이용·이전</td><td>전면 적용</td></tr>
+            <tr><td><strong>AI 기본법 (AI 산업 육성·신뢰 기반 조성법)</strong></td><td>과기정통부</td><td>고영향 AI 사전 영향평가, 생성형 AI 표기 의무</td><td>2026 시행(단계적)</td></tr>
+            <tr><td><strong>신용정보법·전자금융거래법</strong></td><td>금융위원회</td><td>금융 AI의 설명가능성·차별금지</td><td>금융업 필수</td></tr>
+            <tr><td><strong>의료기기법 시행령</strong></td><td>식약처</td><td>진단·처방 보조 AI의 인허가</td><td>의료업 필수</td></tr>
+            <tr><td><strong>교육부 AI 활용 가이드라인</strong></td><td>교육부</td><td>초·중·고 생성형 AI 사용 기준</td><td>교육 서비스 필수</td></tr>
+            <tr><td><strong>정보통신망법</strong></td><td>방통위·개보위</td><td>자동화된 결정에 대한 설명·이의제기권</td><td>전면 적용</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>B.2 개인정보보호법 — AI 도입 시 6대 체크포인트</h3>
+        <ol class="step-list">
+          <li><strong>수집 시 동의</strong><p>프롬프트·업로드 파일에 개인정보가 포함되면 이용자에게 <strong>AI 처리 사실을 명시</strong>하고 동의를 받아야 합니다. 동의 없는 수집은 과태료(최대 3천만 원) 또는 전체 매출 3% 과징금 대상.</p></li>
+          <li><strong>가명/익명처리</strong><p>학습용 데이터는 원본 식별자를 제거(가명)하거나 복원 불가능하게(익명) 가공. 가명정보는 통계/과학적 연구 목적에 한해 동의 없이 사용 가능.</p></li>
+          <li><strong>국외 이전 동의</strong><p>OpenAI·Anthropic·Google 등 해외 클라우드 LLM에 데이터를 전송할 때 <strong>국외 이전 동의</strong> 또는 <strong>데이터 처리 위탁 계약(DPA)</strong> 체결 필요. 2024 개정 이후 적정성 결정 국가 여부를 반드시 확인.</p></li>
+          <li><strong>민감정보 처리</strong><p>건강·종교·노조 가입·성적 취향 등 민감정보는 <strong>별도 동의</strong> + 별도 암호화 보관. 프롬프트에 민감정보가 섞이지 않도록 DLP(Data Loss Prevention) 필터 필수.</p></li>
+          <li><strong>자동화된 결정</strong><p>채용·대출·보험 등에서 AI가 단독으로 결정할 경우 <strong>설명 요구권·이의제기권</strong>을 제공. UI에 "이 결정은 AI에 의해 이루어졌으며 재검토를 요청할 수 있습니다" 고지 필요.</p></li>
+          <li><strong>파기</strong><p>목적 달성 후 즉시 파기. LLM 로그·프롬프트 이력도 파기 대상에 포함되는지 확인(대부분 포함).</p></li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>B.3 AI 기본법 2026 — 고영향 AI와 생성형 표기</h3>
+        <h4>고영향(High-risk) AI로 분류되는 예</h4>
+        <ul>
+          <li>채용 전형 자동 스크리닝</li>
+          <li>대출·보험 심사</li>
+          <li>의료 진단 보조</li>
+          <li>공공행정 의사결정 지원</li>
+          <li>교육 평가·입학 사정</li>
+          <li>본인 인증·생체 인식</li>
+        </ul>
+        <div class="info-box">
+          <strong>PM이 할 일</strong>: 위 영역에 해당하면 AI 영향평가(AIA) 보고서 작성, 외부 감사 가능성 대비. 도입 3개월 전부터 문서화 시작 권장.
+        </div>
+
+        <h4>생성형 AI 표기 의무</h4>
+        <ul>
+          <li>AI 생성 이미지·영상·텍스트에 <strong>"AI 생성 콘텐츠"</strong> 워터마크/메타데이터 부착</li>
+          <li>딥페이크 사용 시 별도 고지 + 본인 동의</li>
+          <li>챗봇: 첫 응답 또는 UI 상단에 "AI와 대화 중입니다" 표시</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>B.4 산업별 추가 규제</h3>
+
+        <h4>🏦 금융 (신용정보법·전자금융감독규정)</h4>
+        <ul>
+          <li><strong>설명가능성</strong>: 대출 거절 시 사유를 6하원칙으로 설명 가능해야 함 — 블랙박스 LLM은 내부 감독·보조용으로만 사용하고 최종 판정은 사람이 서명</li>
+          <li><strong>차별금지</strong>: 성별·연령·지역 등 보호 속성에 대한 성능 격차(fairness metric) 분기별 모니터링 · 차이 10% 초과 시 시정</li>
+          <li><strong>외주 LLM 금지 분야</strong>: 내부 고객정보가 프롬프트에 포함되면 원칙적으로 금융망 내부 VPC 배포만 허용(Azure/AWS의 프라이빗 엔드포인트 또는 온프레미스)</li>
+        </ul>
+
+        <h4>🏥 의료 (의료기기법)</h4>
+        <ul>
+          <li>진단·처방 보조 AI는 <strong>식약처 허가</strong> 필요(2등급·3등급 의료기기 분류)</li>
+          <li>임상 검증·지속 성능 모니터링 필수</li>
+          <li>건강 정보는 위에서 설명한 민감정보 규정 + 의료법 별도 보호 중첩 적용</li>
+        </ul>
+
+        <h4>🎓 교육 (교육부 가이드라인)</h4>
+        <ul>
+          <li>초·중등 수업 활용 시 <strong>연령 기준</strong> 준수(ChatGPT 13+, 학부모 동의 필요 연령대)</li>
+          <li>평가·채점 자동화는 교사 최종 확인 필수</li>
+          <li>학생 개인정보가 프롬프트에 들어가지 않도록 템플릿 설계</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>B.5 PM/PL 실전 체크리스트 (도입 기획 → 배포)</h3>
+        <table class="comparison-table">
+          <thead><tr><th>#</th><th>단계</th><th>확인 사항</th><th>담당</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>기획</td><td>영향평가(AIA) 해당 여부 판정</td><td>PM + 준법팀</td></tr>
+            <tr><td>2</td><td>기획</td><td>개인정보 흐름도(PFD) 작성</td><td>PM + CPO</td></tr>
+            <tr><td>3</td><td>데이터</td><td>학습·RAG 데이터의 수집 근거 확인</td><td>데이터팀</td></tr>
+            <tr><td>4</td><td>데이터</td><td>가명/익명 처리 전략 수립</td><td>데이터팀</td></tr>
+            <tr><td>5</td><td>벤더</td><td>LLM 벤더 DPA·국외 이전 문서</td><td>법무팀</td></tr>
+            <tr><td>6</td><td>벤더</td><td>학습 옵트아웃 설정(OpenAI·Anthropic 모두 가능)</td><td>엔지니어링</td></tr>
+            <tr><td>7</td><td>설계</td><td>DLP·프롬프트 스크러빙 레이어</td><td>엔지니어링</td></tr>
+            <tr><td>8</td><td>설계</td><td>사용자 UI에 AI 고지·설명권·이의제기 링크</td><td>디자인 + PM</td></tr>
+            <tr><td>9</td><td>설계</td><td>생성물 워터마킹/라벨링</td><td>엔지니어링</td></tr>
+            <tr><td>10</td><td>운영</td><td>감사 로그(누가·언제·어떤 프롬프트) 보존 정책</td><td>운영팀</td></tr>
+            <tr><td>11</td><td>운영</td><td>사고 대응 플레이북(프롬프트 주입·데이터 유출)</td><td>보안팀</td></tr>
+            <tr><td>12</td><td>운영</td><td>분기별 모델 성능·공정성 모니터링 리포트</td><td>데이터 + PM</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>B.6 흔한 실무 질문 FAQ</h3>
+
+        <h4>Q1. 사내 직원이 ChatGPT에 고객 이메일을 붙여넣는 건 괜찮나요?</h4>
+        <p>원칙적으로 <strong>부적합</strong>. ChatGPT 웹판(개인 계정)은 학습 데이터로 활용될 가능성이 있고, 고객 동의 없는 국외 이전에 해당. 대안: <strong>사내 ChatGPT Enterprise / Claude for Enterprise</strong>(학습 미사용 + DPA) 또는 사내 프록시 경유 + DLP 필터.</p>
+
+        <h4>Q2. RAG용 문서에 고객명이 들어가 있으면 어떻게 하나요?</h4>
+        <p>인덱싱 전 <strong>PII 마스킹 파이프라인</strong> 적용(Microsoft Presidio·AWS Comprehend·사내 정규식). 마스킹 후에도 재식별 위험이 있는 조합(고유 직책+소속)은 추가 제거.</p>
+
+        <h4>Q3. AI가 생성한 코드의 저작권은 누구에게 있나요?</h4>
+        <p>현재(2026-04) 국내 판례·법 해석은 <strong>인간의 창작적 기여가 있어야 저작권이 성립</strong>한다는 입장. 단순 프롬프트만 제공한 경우 저작권 주장 곤란. 오픈소스 라이선스 흡수(GPL 코드를 AI가 복제) 위험도 존재 → 라이선스 스캐너(FOSSA·Black Duck) 필수.</p>
+
+        <h4>Q4. 내부 전용이면 규제를 덜 받나요?</h4>
+        <p>외부 노출이 없어도 <strong>개인정보 처리</strong>와 <strong>자동화된 결정</strong> 규정은 동일 적용. 내부라고 해서 DPA·동의·파기 의무가 면제되지 않습니다.</p>
+      </section>
+
+      <section>
+        <h3>B.7 추가 참고</h3>
+        <ul>
+          <li>개인정보보호위원회 — <a href="https://www.pipc.go.kr" target="_blank" rel="noopener">pipc.go.kr</a> (가이드라인·Q&A)</li>
+          <li>과기정통부 AI 기본법 제·개정 알림 — 공식 배포 채널</li>
+          <li>한국인터넷진흥원(KISA) — AI 보안 가이드</li>
+          <li>금융보안원 — 금융 AI 활용 가이드</li>
+          <li>관련 모듈: <a href="module9-1.html#s9-2">9.2 AI 보안 필수 가이드</a>, <a href="module9-2.html#s9-3">9.3 AI 거버넌스 프레임워크</a></li>
+        </ul>
+      </section>
+    </article>
+
+    <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.04.17
+    </div>
+  </main>
+</body>
+</html>
