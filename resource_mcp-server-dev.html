@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부록 A. MCP 서버 직접 개발 실습 - AI 실무 활용 가이드</title>
+  <meta name="description" content="Model Context Protocol(MCP) 서버를 직접 만들어 Claude Code/Desktop과 연결하는 실습 가이드. TypeScript/Python 최소 서버부터 내부 API 브리지까지.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <main id="content" style="max-width: 960px; margin: 0 auto; padding: 2rem;">
+    <nav style="margin-bottom:1.5rem; font-size:0.9rem;">
+      <a href="index.html">← 메인으로</a> · <a href="module5-3.html#s5-10">5.10 MCP 개념</a> · <a href="module10-2.html#s10-6">10.6 하네스 엔지니어링</a>
+    </nav>
+
+    <article class="module">
+      <h2>부록 A. MCP 서버 직접 개발 실습</h2>
+      <p class="module-intro">Model Context Protocol(MCP) 서버를 TypeScript와 Python으로 직접 만들어 Claude Code/Claude Desktop에 연결하는 전 과정을 다룹니다. 공용 MCP 서버가 없는 <strong>사내 시스템(JIRA, 사내 ERP, 자체 DB)</strong>을 AI에 연결해야 할 때 필요한 핵심 기술입니다.</p>
+
+      <div class="info-box">
+        <strong>선수 지식</strong>: 5.10 MCP 개념 · Node.js 또는 Python 기본 · JSON-RPC 개념. 클라이언트 사용 경험(Playwright MCP 등)이 있으면 이해가 쉽습니다.
+      </div>
+
+      <section>
+        <h3>A.1 언제 MCP 서버를 직접 만들까?</h3>
+        <table class="comparison-table">
+          <thead><tr><th>상황</th><th>해결책</th><th>개발 비용</th></tr></thead>
+          <tbody>
+            <tr><td>공개 서비스(GitHub, Slack, Gmail, Notion 등)</td><td>공식/커뮤니티 MCP 서버 설치</td><td>낮음(설정만)</td></tr>
+            <tr><td>사내 REST API(주문 조회, 사용자 검색 등)</td><td><strong>커스텀 MCP 서버 작성</strong></td><td>중간(1~3일)</td></tr>
+            <tr><td>레거시 DB 직접 쿼리</td><td><strong>커스텀 MCP 서버 + SQL 래퍼</strong></td><td>중간(2~5일)</td></tr>
+            <tr><td>멀티 시스템 오케스트레이션</td><td>에이전트 레벨 하네스 + MCP</td><td>높음(1~4주)</td></tr>
+          </tbody>
+        </table>
+        <p><strong>핵심 판단 기준</strong>: AI가 같은 내부 데이터/작업을 반복적으로 요구받고 있고, 프롬프트나 RAG로 처리하기에는 "실행(write)"이 필요할 때 MCP 서버가 정답입니다.</p>
+      </section>
+
+      <section>
+        <h3>A.2 MCP 서버 아키텍처 요약</h3>
+        <p>MCP 서버는 3가지 기본 기능을 JSON-RPC 2.0 위에서 노출합니다:</p>
+        <ul>
+          <li><strong>Tools</strong> — AI가 호출할 수 있는 함수(예: <code>search_orders(customer_id)</code>). 가장 자주 씁니다.</li>
+          <li><strong>Resources</strong> — AI가 읽을 수 있는 문서/데이터(예: <code>file://runbook.md</code>). RAG 대체로 활용.</li>
+          <li><strong>Prompts</strong> — 재사용 가능한 프롬프트 템플릿. 팀 표준 프롬프트를 배포할 때 유용.</li>
+        </ul>
+        <p>전송 계층은 <strong>stdio</strong>(로컬 프로세스) 또는 <strong>HTTP/SSE</strong>(원격). 사내 배포는 stdio로 시작해 팀 공유 필요 시 HTTP로 승격하는 패턴이 안전합니다.</p>
+      </section>
+
+      <section>
+        <h3>A.3 실습 1 — Hello MCP 서버 (TypeScript, 5분)</h3>
+        <p>가장 작은 MCP 서버를 만들어 Claude Desktop에 연결해 봅니다.</p>
+
+        <h4>Step 1: 프로젝트 초기화</h4>
+        <pre><code class="language-bash">mkdir hello-mcp && cd hello-mcp
+npm init -y
+npm install @modelcontextprotocol/sdk zod
+npm install -D typescript @types/node tsx
+npx tsc --init</code></pre>
+
+        <h4>Step 2: 서버 코드 작성 (<code>src/index.ts</code>)</h4>
+        <pre><code class="language-typescript">import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+
+const server = new McpServer({ name: "hello-mcp", version: "0.1.0" });
+
+// 가장 단순한 Tool: 현재 시간 반환
+server.tool(
+  "get_current_time",
+  "현재 서버 시간을 ISO 8601로 반환합니다.",
+  {},
+  async () => ({
+    content: [{ type: "text", text: new Date().toISOString() }]
+  })
+);
+
+// 인자 받는 Tool: 두 수 덧셈
+server.tool(
+  "add",
+  "두 숫자를 더합니다.",
+  { a: z.number(), b: z.number() },
+  async ({ a, b }) => ({
+    content: [{ type: "text", text: String(a + b) }]
+  })
+);
+
+const transport = new StdioServerTransport();
+await server.connect(transport);</code></pre>
+
+        <h4>Step 3: Claude Desktop에 등록</h4>
+        <p><code>~/.config/claude/claude_desktop_config.json</code>(Windows: <code>%APPDATA%\Claude\claude_desktop_config.json</code>)에 추가:</p>
+        <pre><code class="language-json">{
+  "mcpServers": {
+    "hello": {
+      "command": "npx",
+      "args": ["tsx", "C:/path/to/hello-mcp/src/index.ts"]
+    }
+  }
+}</code></pre>
+        <p>Claude Desktop을 재시작하면 연결된 MCP가 🔌 아이콘으로 표시됩니다. "지금 몇 시야?" 또는 "3 더하기 5"라고 물어보면 Tool이 호출됩니다.</p>
+      </section>
+
+      <section>
+        <h3>A.4 실습 2 — 사내 REST API 연동 MCP (Python, 30분)</h3>
+        <p>사내 주문 관리 API를 MCP로 감싸 AI가 주문을 조회/취소할 수 있게 합니다.</p>
+
+        <h4>Step 1: 의존성</h4>
+        <pre><code class="language-bash">pip install mcp httpx python-dotenv</code></pre>
+
+        <h4>Step 2: 서버 코드 (<code>order_mcp.py</code>)</h4>
+        <pre><code class="language-python">import os
+import httpx
+from mcp.server.fastmcp import FastMCP
+from dotenv import load_dotenv
+
+load_dotenv()
+BASE = os.environ["ORDER_API_BASE"]
+TOKEN = os.environ["ORDER_API_TOKEN"]
+
+mcp = FastMCP("order-mcp")
+
+def _client():
+    return httpx.Client(
+        base_url=BASE,
+        headers={"Authorization": f"Bearer {TOKEN}"},
+        timeout=10.0,
+    )
+
+@mcp.tool()
+def search_orders(customer_id: str, status: str | None = None) -> list[dict]:
+    """고객 ID로 주문 목록을 조회합니다. status로 필터링 가능(pending/paid/shipped/cancelled)."""
+    params = {"customer_id": customer_id}
+    if status: params["status"] = status
+    with _client() as c:
+        r = c.get("/orders", params=params)
+        r.raise_for_status()
+        return r.json()["items"]
+
+@mcp.tool()
+def cancel_order(order_id: str, reason: str) -> dict:
+    """주문을 취소합니다. reason은 취소 사유(감사 로그용, 필수)."""
+    with _client() as c:
+        r = c.post(f"/orders/{order_id}/cancel", json={"reason": reason})
+        r.raise_for_status()
+        return r.json()
+
+if __name__ == "__main__":
+    mcp.run()</code></pre>
+
+        <h4>Step 3: 안전 장치 3가지 (필수)</h4>
+        <ol class="step-list">
+          <li><strong>쓰기 작업(cancel_order)은 화이트리스트</strong><p>Claude Code <code>.claude/settings.json</code>의 <code>permissions.allow</code>에 특정 MCP Tool만 허용하고, 나머지는 프롬프트로 확인.</p></li>
+          <li><strong>토큰은 최소 권한</strong><p>ORDER_API_TOKEN은 주문 조회/취소 스코프만. 계정 삭제 스코프는 절대 포함하지 말 것.</p></li>
+          <li><strong>감사 로그</strong><p>Tool 내부에서 <code>audit.log()</code> 호출. 누가/언제/왜 실행했는지 남겨야 사고 시 추적 가능.</p></li>
+        </ol>
+      </section>
+
+      <section>
+        <h3>A.5 디버깅과 테스트</h3>
+        <h4>MCP Inspector — 공식 디버거</h4>
+        <pre><code class="language-bash">npx @modelcontextprotocol/inspector python order_mcp.py</code></pre>
+        <p>브라우저 UI에서 Tool 목록, 입력/출력 스키마, 실제 호출 결과를 확인할 수 있습니다. Claude에 연결하기 전 반드시 Inspector로 먼저 검증하세요.</p>
+
+        <h4>단위 테스트 패턴</h4>
+        <pre><code class="language-python">import pytest
+from order_mcp import search_orders
+
+def test_search_orders_empty(httpx_mock):
+    httpx_mock.add_response(
+        url="http://api/orders?customer_id=c1",
+        json={"items": []}
+    )
+    assert search_orders("c1") == []</code></pre>
+      </section>
+
+      <section>
+        <h3>A.6 배포 체크리스트</h3>
+        <table class="comparison-table">
+          <thead><tr><th>항목</th><th>질문</th><th>통과 기준</th></tr></thead>
+          <tbody>
+            <tr><td>인증</td><td>토큰이 코드/레포에 하드코딩되어 있지 않은가?</td><td>.env / Secret Manager</td></tr>
+            <tr><td>스코프</td><td>Tool 권한이 실제 업무 범위를 넘지 않는가?</td><td>읽기/쓰기 분리, 최소 권한</td></tr>
+            <tr><td>감사</td><td>쓰기 작업이 모두 로그되는가?</td><td>구조화 로그 + 보존 90일↑</td></tr>
+            <tr><td>에러</td><td>API 장애 시 AI에게 명확한 에러 메시지를 주는가?</td><td>HTTPError → 한국어 설명으로 변환</td></tr>
+            <tr><td>성능</td><td>Tool 응답이 5초 이내인가?</td><td>타임아웃 + 페이지네이션</td></tr>
+            <tr><td>테스트</td><td>Inspector로 정상 동작 확인 + 단위 테스트</td><td>전체 Tool 커버리지</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>A.7 더 읽을거리</h3>
+        <ul>
+          <li>MCP 공식 사양 — <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">modelcontextprotocol.io</a></li>
+          <li>Anthropic MCP 가이드 — <a href="https://docs.claude.com/en/docs/mcp" target="_blank" rel="noopener">docs.claude.com/mcp</a></li>
+          <li>공식 SDK: TypeScript(<code>@modelcontextprotocol/sdk</code>) · Python(<code>mcp</code>) · Go 커뮤니티 포트</li>
+          <li>사내 확장: <a href="module10-2.html#s10-6">10.6 하네스 엔지니어링</a>에서 MCP + 에이전트 조합 패턴 참고</li>
+        </ul>
+      </section>
+    </article>
+
+    <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.04.17
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+</body>
+</html>
