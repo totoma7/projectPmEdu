@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1. AI 기초 개념 (상) - 2026 AI 실무 플레이북</title>
+  <meta name="description" content="2026 AI 실무 플레이북. AI 기초, 문서 작성, 도식화, 자료 조사, 바이브 코딩 실습을 다룹니다.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+  <button id="menu-toggle" aria-label="메뉴 열기">
+    <span class="hamburger"></span>
+  </button>
+
+  <div id="sidebar-overlay"></div>
+
+  <nav id="sidebar" aria-label="교육 목차">
+    <div class="sidebar-header">
+      <h1 class="sidebar-title">2026 AI 실무 플레이북</h1>
+      <p class="sidebar-tagline" style="margin:-0.3rem 0 0.6rem 0; font-size:0.78rem; color:var(--text-secondary); line-height:1.35;">PM·PL·개발자를 위한 한국 기준 실무서</p>
+      <button id="theme-toggle" aria-label="테마 전환">
+        <span class="theme-icon">🌙</span>
+      </button>
+    </div>
+    <ul class="nav-list">
+      <li class="nav-item active" data-module="module1">
+        <a href="module1-1.html" class="nav-title">
+          <span class="nav-number">1</span>
+          <span>AI 기초 개념</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="#s1-1">1.1 AI와 LLM이란?</a></li>
+          <li><a href="#s1-2">1.2 생성형 AI의 동작 원리</a></li>
+          <li><a href="#s1-3">1.3 프롬프트 엔지니어링 기초</a></li>
+          <li><a href="#s1-4">1.4 주요 AI 도구 소개</a></li>
+          <li><a href="#s1-5">1.5 AI 활용의 한계와 주의사항</a></li>
+          <li><a href="module1-2.html#s1-6">1.6 RAG (검색 증강 생성)</a></li>
+          <li><a href="module1-2.html#s1-7">1.7 AI 에이전트와 Agentic AI</a></li>
+          <li><a href="module1-2.html#s1-8">1.8 실무 필수 AI 용어 사전</a></li>
+          <li><a href="module1-2.html#s1-9">1.9 AI 엔지니어링 4년간의 진화</a></li>
+          <li><a href="module1-2.html#s1-10">1.10 멀티모달 AI와 No-code 빌더</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module6">
+        <a href="module6-1.html" class="nav-title">
+          <span class="nav-number">6</span>
+          <span>PM vs PL 역할 이해</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module6-1.html#s6-1">6.1 PM vs PL 역할 비교</a></li>
+          <li><a href="module6-1.html#s6-2">6.2 PL의 핵심 역량</a></li>
+          <li><a href="module6-1.html#s6-3">6.3 프로젝트 일정 관리</a></li>
+          <li><a href="module6-2.html#s6-4">6.4 리스크 & 이슈 관리</a></li>
+          <li><a href="module6-2.html#s6-5">6.5 팀 리딩과 커뮤니케이션</a></li>
+          <li><a href="module6-2.html#s6-6">6.6 AI로 PL 업무 자동화</a></li>
+          <li><a href="module6-3.html#s6-7">6.7 AI 시대 역할 변화</a></li>
+          <li><a href="module6-3.html#s6-8">6.8 AI 거버넌스 및 윤리</a></li>
+          <li><a href="module6-3.html#s6-9">6.9 애자일/스크럼 심화</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module2">
+        <a href="module2-1.html" class="nav-title">
+          <span class="nav-number">2</span>
+          <span>AI 활용 문서 작성</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module2-1.html#s2-1">2.1 PRD 작성</a></li>
+          <li><a href="module2-1.html#s2-2">2.2 기획서/제안서 자동 생성</a></li>
+          <li><a href="module2-1.html#s2-3">2.3 요구사항 정의서 작성</a></li>
+          <li><a href="module2-1.html#s2-4">2.4 회의록/보고서 자동 정리</a></li>
+          <li><a href="module2-2.html#s2-5">2.5 프롬프트 템플릿 활용법</a></li>
+          <li><a href="module2-2.html#s2-6">2.6 PL 프로젝트 관리 문서</a></li>
+          <li><a href="module2-2.html#s2-7">2.7 AI 문서 품질 관리</a></li>
+          <li><a href="module2-2.html#s2-8">2.8 스펙 문서 및 API 명세</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module3">
+        <a href="module3.html" class="nav-title">
+          <span class="nav-number">3</span>
+          <span>AI 도식화 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module3.html#s3-1">3.1 플로우차트 생성</a></li>
+          <li><a href="module3.html#s3-2">3.2 시스템 아키텍처 다이어그램</a></li>
+          <li><a href="module3.html#s3-3">3.3 ER 다이어그램</a></li>
+          <li><a href="module3.html#s3-4">3.4 사용자 여정 맵</a></li>
+          <li><a href="module3.html#s3-5">3.5 AI 도구별 도식화 비교</a></li>
+          <li><a href="module3.html#s3-6">3.6 시퀀스 다이어그램</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module4">
+        <a href="module4-1.html" class="nav-title">
+          <span class="nav-number">4</span>
+          <span>AI 자료 조사 활용</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module4-1.html#s4-1">4.1 시장 조사 및 트렌드 분석</a></li>
+          <li><a href="module4-1.html#s4-2">4.2 경쟁사 분석 프레임워크</a></li>
+          <li><a href="module4-1.html#s4-3">4.3 사용자 페르소나 생성</a></li>
+          <li><a href="module4-1.html#s4-4">4.4 데이터 수집 및 정리</a></li>
+          <li><a href="module4-1.html#s4-5">4.5 리서치 결과 보고서 작성</a></li>
+          <li><a href="module4-2.html#s4-6">4.6 AI 검색 도구 활용</a></li>
+          <li><a href="module4-2.html#s4-7">4.7 팩트 체크 및 검증</a></li>
+          <li><a href="module4-2.html#s4-8">4.8 인터뷰 설계 및 분석</a></li>
+          <li><a href="module4-2.html#s4-9">4.9 A/B 테스트 설계</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module5">
+        <a href="module5-1.html" class="nav-title">
+          <span class="nav-number">5</span>
+          <span>바이브 코딩 실습</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module5-1.html#s5-1">5.1 바이브 코딩이란?</a></li>
+          <li><a href="module5-1.html#s5-2">5.2 Claude Code 시작하기</a></li>
+          <li><a href="module5-1.html#s5-3">5.3 프롬프트로 웹페이지 만들기</a></li>
+          <li><a href="module5-1.html#s5-4">5.4 반복 개선으로 완성도 높이기</a></li>
+          <li><a href="module5-1.html#s5-5">5.5 실전 프로젝트: 랜딩페이지</a></li>
+          <li><a href="module5-2.html#s5-6">5.6 Claude Code 핵심 용어</a></li>
+          <li><a href="module5-2.html#s5-7">5.7 유용한 스킬 & 활용법</a></li>
+          <li><a href="module5-2.html#s5-8">5.8 커뮤니티 스킬 & 확장 생태계</a></li>
+          <li><a href="module5-3.html#s5-9">5.9 PL을 위한 실전 활용 전략</a></li>
+          <li><a href="module5-3.html#s5-10">5.10 웹 게시판 & MCP 테스트</a></li>
+          <li><a href="module5-4.html#s5-11">5.11 Flutter 앱 & APK 빌드</a></li>
+          <li><a href="module5-4.html#s5-12">5.12 기존 소스 대규모 개선</a></li>
+          <li><a href="module5-4.html#s5-13">5.13 업무 능률 극대화 전략</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module7">
+        <a href="module7-1.html" class="nav-title">
+          <span class="nav-number">7</span>
+          <span>AI 실전 케이스 스터디</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module7-1.html#s7-1">7.1 SaaS 기획~MVP 출시</a></li>
+          <li><a href="module7-1.html#s7-2">7.2 레거시 마이그레이션</a></li>
+          <li><a href="module7-2.html#s7-3">7.3 AI 도구 도입 제안</a></li>
+          <li><a href="module7-2.html#s7-4">7.4 AI 툴 조합 업무 활용</a></li>
+          <li><a href="module7-2.html#s7-5">7.5 국내 AI 도입 현황</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module8">
+        <a href="module8-1.html" class="nav-title">
+          <span class="nav-number">8</span>
+          <span>AI 도구 비용/ROI 관리</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module8-1.html#s8-1">8.1 AI 도구 요금제 비교</a></li>
+          <li><a href="module8-1.html#s8-2">8.2 토큰 비용 계산</a></li>
+          <li><a href="module8-1.html#s8-3">8.3 AI 도입 ROI 산출</a></li>
+          <li><a href="module8-2.html#s8-4">8.4 예산 편성 및 설득</a></li>
+          <li><a href="module8-2.html#s8-5">8.5 AI 도구 선정 매트릭스</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module9">
+        <a href="module9-1.html" class="nav-title">
+          <span class="nav-number">9</span>
+          <span>AI 코딩 도구 & 보안</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module9-1.html#s9-1">9.1 AI 코딩 도구 생태계</a></li>
+          <li><a href="module9-1.html#s9-2">9.2 AI 보안 필수 가이드</a></li>
+          <li><a href="module9-2.html#s9-3">9.3 AI 거버넌스 프레임워크</a></li>
+          <li><a href="module9-2.html#s9-4">9.4 AI 도구 도입 로드맵</a></li>
+          <li><a href="module9-2.html#s9-5">9.5 개발자 AI 학습 로드맵</a></li>
+          <li><a href="module5-5.html#s5-14">5.14 AI 활용 DevOps &amp; CI/CD</a></li>
+          <li><a href="module5-5.html#s5-15">5.15 AI 활용 테스팅 전략</a></li>
+          <li><a href="module5-5.html#s5-16">5.16 AI 활용 API 설계</a></li>
+        </ul>
+      </li>
+      <li class="nav-item" data-module="module10">
+        <a href="module10-1.html" class="nav-title">
+          <span class="nav-number">10</span>
+          <span>No-Code & 2026 트렌드</span>
+          <span class="nav-arrow">▸</span>
+        </a>
+        <ul class="nav-sub">
+          <li><a href="module10-1.html#s10-1">10.1 No-Code AI 자동화</a></li>
+          <li><a href="module10-1.html#s10-2">10.2 컨텍스트 엔지니어링</a></li>
+          <li><a href="module10-1.html#s10-3">10.3 추론 모델 & 확장된 사고</a></li>
+          <li><a href="module10-2.html#s10-4">10.4 멀티모달 AI 실무</a></li>
+          <li><a href="module10-2.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
+          <li><a href="module10-2.html#s10-6">10.6 하네스 엔지니어링</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <p>최근 업데이트: 2026.04.17</p>
+      <p>&copy; 2026 2026 AI 실무 플레이북</p>
+    </div>
+  </nav>
+
+  <main id="content">
+    <div id="module-container">
+      <div class="info-box" style="margin-bottom:2rem; border-left-color:#2563eb;">
+        <strong>역할별 추천 학습 경로</strong>
+        <table class="comparison-table" style="margin-top:0.8rem;">
+          <thead><tr><th>역할</th><th>추천 순서</th><th>핵심 모듈</th></tr></thead>
+          <tbody>
+            <tr><td><strong>개발자</strong></td><td>5 → 9 → 10 → 1</td><td>바이브 코딩, AI 코딩 도구 & 보안, 2026 트렌드</td></tr>
+            <tr><td><strong>PM/기획자</strong></td><td>1 → 2 → 4 → 6 → 7</td><td>AI 기초, 문서 작성, 자료 조사, PM vs PL</td></tr>
+            <tr><td><strong>PL/리더</strong></td><td>6 → 8 → 7 → 9</td><td>PM vs PL 역할, 비용/ROI, 케이스 스터디</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:0.8rem; margin-bottom:0; font-size:0.9rem; color:var(--text-secondary);">
+          실습(Module 5)은 주로 <strong>Claude Code</strong>를 사용합니다. 원활한 실습을 위해 <strong>Claude Max 요금제 이상</strong>을 권장합니다.
+        </p>
+      </div>
+
+      <div class="info-box" style="margin-bottom:2rem; border-left-color:#9c27b0;">
+        <strong>📚 부록 · 추가 리소스 (2026-04 신설)</strong>
+        <p style="margin-top:0.5rem; color:var(--text-secondary); font-size:0.92rem;">본 모듈 10장과 별개로 심화 주제와 도구를 독립 페이지로 정리했습니다. 처음이시면 <a href="resource_roadmap.html"><strong>학습 로드맵</strong></a>부터 보세요.</p>
+        <ul style="margin-top:0.8rem; columns:2; column-gap:2rem; list-style-position:inside; padding-left:0;">
+          <li><a href="resource_roadmap.html">🗺 학습 로드맵</a></li>
+          <li><a href="resource_checklist.html">✅ 셀프 체크리스트</a></li>
+          <li><a href="resource_mcp-server-dev.html">🔌 A. MCP 서버 직접 개발</a></li>
+          <li><a href="resource_ai-regulations-kr.html">⚖ B. 한국 AI 규제 & 컴플라이언스</a></li>
+          <li><a href="resource_prompt-patterns.html">✍ C. 프롬프트 패턴 카탈로그 (22개)</a></li>
+          <li><a href="resource_agent-patterns.html">🤖 D. Agent 패턴 심화</a></li>
+          <li><a href="resource_llm-eval.html">📊 E. AI 평가 & LLM-as-Judge</a></li>
+          <li><a href="resource_opus-1m-context.html">📄 F. Opus 4.7 1M 컨텍스트</a></li>
+          <li><a href="resource_on-device-llm.html">💻 G. 온디바이스·로컬 LLM</a></li>
+          <li><a href="resource_kr-case-studies.html">🇰🇷 I. 한국 기업 도입 사례 10건</a></li>
+          <li><a href="resource_glossary.html">📖 용어 사전 (150+)</a></li>
+          <li><a href="resource_changelog.html">📝 변경 이력 (CHANGELOG)</a></li>
+        </ul>
+      </div>
+
+      <article class="module" id="module1">
+        <h2>1. AI 기초 개념</h2>
+        <p class="module-intro">AI(인공지능)의 기본 개념부터 프롬프트 엔지니어링까지, 실무자가 알아야 할 핵심 지식을 학습합니다.</p>
+
+<section id="s1-1">
+          <h3>1.1 AI와 LLM이란?</h3>
+          <div class="info-box">
+            <strong>핵심 개념</strong>: AI(Artificial Intelligence)는 인간의 지능을 모방하는 컴퓨터 시스템이며, LLM(Large Language Model)은 대규모 텍스트 데이터로 학습한 언어 모델입니다.
+          </div>
+          <h4>AI의 분류</h4>
+          <table class="comparison-table">
+            <thead><tr><th>분류</th><th>설명</th><th>예시</th></tr></thead>
+            <tbody>
+              <tr><td><strong>약한 AI (Narrow AI)</strong></td><td>특정 작업에 특화된 AI</td><td>번역기, 추천 알고리즘, 음성 인식</td></tr>
+              <tr><td><strong class="ai-term">생성형 AI (Generative AI)</strong></td><td>새로운 콘텐츠를 생성하는 AI</td><td><a href="https://chatgpt.com" target="_blank" rel="noopener">ChatGPT</a>, <a href="https://claude.ai" target="_blank" rel="noopener">Claude</a>, Midjourney</td></tr>
+              <tr><td><strong>강한 AI (AGI)</strong></td><td>범용 인간 수준의 AI (아직 미달성)</td><td>이론적 개념</td></tr>
+            </tbody>
+          </table>
+          <h4>LLM이란?</h4>
+          <p><strong class="ai-term">LLM(Large Language Model)</strong>은 수십억~수조 개의 텍스트 데이터를 학습하여 인간처럼 자연어를 이해하고 생성할 수 있는 AI 모델입니다.</p>
+          <ul>
+            <li><strong>GPT</strong> (OpenAI) — ChatGPT의 기반 모델</li>
+            <li><strong>Claude</strong> (Anthropic) — 안전성과 정확성에 중점</li>
+            <li><strong><a href="https://gemini.google.com" target="_blank" rel="noopener">Gemini</a></strong> (Google) — 멀티모달(텍스트+이미지) 지원</li>
+            <li><strong>LLaMA</strong> (Meta) — 오픈소스 모델</li>
+          </ul>
+        </section>
+
+<section id="s1-2">
+          <h3>1.2 생성형 AI의 동작 원리</h3>
+          <p>생성형 AI는 다음과 같은 과정으로 동작합니다:</p>
+          <ol class="step-list">
+            <li><strong>입력 (Prompt)</strong><p>사용자가 텍스트로 요청을 입력합니다.</p></li>
+            <li><strong class="ai-term">토큰화 (Tokenization)</strong><p>입력 텍스트를 모델이 이해할 수 있는 작은 단위(토큰)로 분해합니다.</p></li>
+            <li><strong>추론 (Inference)</strong><p>학습된 패턴을 기반으로 다음에 올 가장 적절한 토큰을 예측합니다.</p></li>
+            <li><strong>출력 (Generation)</strong><p>예측된 토큰을 조합하여 응답 텍스트를 생성합니다.</p></li>
+          </ol>
+          <pre><code class="language-text">사용자 입력: "PM이란 무엇인가요?"
+    ↓ 토큰화
+["PM", "이란", " 무엇", "인가요", "?"]
+    ↓ 모델 추론 (확률 기반 다음 단어 예측)
+"PM은 Product Manager의 약자로..."
+    ↓ 출력
+완성된 응답 텍스트</code></pre>
+          <div class="info-box">
+            <strong>알아야 할 점</strong>: AI는 "이해"하는 것이 아니라 패턴을 기반으로 "예측"합니다. 따라서 명확하고 구체적인 지시(프롬프트)를 줄수록 좋은 결과를 얻을 수 있습니다.
+          </div>
+        </section>
+
+<section id="s1-3">
+          <h3>1.3 프롬프트 엔지니어링 기초</h3>
+          <p><strong class="ai-term">프롬프트 엔지니어링</strong>은 AI에게 최적의 결과를 얻기 위해 입력(프롬프트)을 설계하는 기술입니다.</p>
+          <h4>좋은 프롬프트의 5가지 원칙</h4>
+          <table class="comparison-table">
+            <thead><tr><th>원칙</th><th>설명</th><th>예시</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1. 역할 부여</strong></td><td>AI에게 전문가 역할을 지정</td><td>"당신은 10년 경력의 PM입니다"</td></tr>
+              <tr><td><strong>2. 구체적 지시</strong></td><td>원하는 결과를 명확하게 설명</td><td>"3가지 항목으로 정리해주세요"</td></tr>
+              <tr><td><strong>3. 맥락 제공</strong></td><td>배경 정보와 제약 조건 포함</td><td>"B2B SaaS 서비스의 온보딩 기능입니다"</td></tr>
+              <tr><td><strong>4. 출력 형식 지정</strong></td><td>원하는 응답 형태 명시</td><td>"마크다운 테이블 형식으로 작성해주세요"</td></tr>
+              <tr><td><strong>5. 예시 제공</strong></td><td>원하는 결과의 샘플 포함</td><td>"예시: | 기능 | 우선순위 | 이유 |"</td></tr>
+            </tbody>
+          </table>
+          <h4>프롬프트 작성 실습</h4>
+          <div class="prompt-example">
+            <div class="prompt-label">나쁜 프롬프트</div>
+            <pre><code class="language-text">기획서 써줘</code></pre>
+          </div>
+          <div class="prompt-example good">
+            <div class="prompt-label">좋은 프롬프트</div>
+            <pre><code class="language-text">당신은 B2B SaaS 서비스의 시니어 PM입니다.
+
+다음 조건으로 기능 기획서를 작성해주세요:
+
+## 기능 개요
+- 기능명: 사용자 온보딩 튜토리얼
+- 대상: 신규 가입 사용자
+- 목표: 7일 이내 핵심 기능 3개 이상 사용
+
+## 포함할 항목
+1. 기능 목적 및 배경
+2. 사용자 시나리오 (3가지)
+3. 성공 지표 (KPI)
+4. 우선순위가 매겨진 요구사항 목록 (테이블 형식)
+5. 리스크 및 대응 방안
+
+마크다운 형식으로 작성해주세요.</code></pre>
+          </div>
+        </section>
+
+<section id="s1-4">
+          <h3>1.4 주요 AI 도구 소개 (ChatGPT, Claude, Gemini)</h3>
+          <table class="comparison-table">
+            <thead><tr><th>도구</th><th>개발사</th><th>강점</th><th>실무 활용 포인트</th></tr></thead>
+            <tbody>
+              <tr><td><strong>ChatGPT</strong></td><td>OpenAI</td><td>범용성, 플러그인 생태계</td><td>브레인스토밍, 초안 작성, 데이터 분석</td></tr>
+              <tr><td><strong>Claude</strong></td><td>Anthropic</td><td>긴 문맥 처리, 정확성, 안전성</td><td>긴 문서 분석, PRD 작성, 코드 리뷰</td></tr>
+              <tr><td><strong>Gemini</strong></td><td>Google</td><td>멀티모달, Google 서비스 연동</td><td>이미지 분석, 시장조사, 스프레드시트 연동</td></tr>
+              <tr><td><strong>Claude Code</strong></td><td>Anthropic</td><td>CLI 기반 코딩 에이전트</td><td>바이브 코딩, 프로토타입 제작</td></tr>
+              <tr><td><strong><a href="https://cursor.sh" target="_blank" rel="noopener">Cursor</a></strong></td><td>Cursor Inc.</td><td>IDE 통합 AI 코딩</td><td>코드 편집, 디버깅, 리팩토링</td></tr>
+            </tbody>
+          </table>
+          <div class="info-box">
+            <strong>실무 팁</strong>: 하나의 도구에 의존하지 말고, 작업 특성에 맞는 도구를 선택하세요. 문서 작성은 Claude, 리서치는 Gemini, 빠른 아이디어 생성은 ChatGPT가 효과적입니다.
+          </div>
+          <h4>국내 AI 도구</h4>
+          <table class="comparison-table">
+            <thead><tr><th>도구</th><th>특징</th><th>PM 활용</th></tr></thead>
+            <tbody>
+              <tr><td><strong><a href="https://wrtn.ai" target="_blank" rel="noopener">뤼튼(Wrtn)</a></strong></td><td>무료 다중 LLM 접근, 한국어 UI, 낮은 진입장벽</td><td>AI 입문자 팀원에게 추천, 빠른 문서 초안</td></tr>
+              <tr><td><strong>네이버 <a href="https://clova.ai/hyperclova" target="_blank" rel="noopener">HyperCLOVA X</a></strong></td><td>한국어 이해도 최상위, 네이버 생태계 연동</td><td>한국어 문서 작성, 국내 데이터 분석</td></tr>
+              <tr><td><strong><a href="https://clovanote.naver.com" target="_blank" rel="noopener">클로바노트</a></strong></td><td>회의록 자동 생성, 화자 분리, 한국어 특화</td><td>회의록 자동화, 액션아이템 추출</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+<section id="s1-5">
+          <h3>1.5 AI 활용의 한계와 주의사항</h3>
+          <div class="warning-box">
+            <strong>주의</strong>: AI는 만능이 아닙니다. 다음 한계를 반드시 인지하고 사용하세요.
+          </div>
+          <h4>AI의 주요 한계</h4>
+          <table class="comparison-table">
+            <thead><tr><th>한계</th><th>설명</th><th>대응 방법</th></tr></thead>
+            <tbody>
+              <tr><td><strong>환각 (Hallucination)</strong></td><td>사실이 아닌 정보를 자신 있게 생성</td><td>중요한 사실은 반드시 별도 검증</td></tr>
+              <tr><td><strong>최신 정보 부재</strong></td><td>학습 데이터 기준 이후 정보 미반영</td><td>최신 정보는 검색 도구 병행 사용</td></tr>
+              <tr><td><strong>편향 (Bias)</strong></td><td>학습 데이터의 편향이 결과에 반영</td><td>다양한 관점 요청, 비판적 검토</td></tr>
+              <tr><td><strong>기밀 정보 유출</strong></td><td>입력 내용이 학습에 사용될 수 있음</td><td>민감한 정보는 입력하지 않기</td></tr>
+              <tr><td><strong>수학/논리 오류</strong></td><td>복잡한 계산이나 논리에서 실수 가능</td><td>수치 데이터는 별도 검증</td></tr>
+            </tbody>
+          </table>
+          <h4>실무자를 위한 AI 활용 체크리스트</h4>
+          <ul>
+            <li>AI 결과물은 "초안"으로 취급하고 반드시 검토하기</li>
+            <li>회사 기밀 정보나 개인정보는 AI에 입력하지 않기</li>
+            <li>AI 결과물의 출처와 정확성을 별도로 검증하기</li>
+            <li>AI가 생성한 코드는 보안 검토 후 사용하기</li>
+            <li>팀원과 AI 활용 가이드라인을 공유하고 합의하기</li>
+          </ul>
+        </section>
+    </div>
+
+    <div id="module-nav">
+      <span class="module-nav-btn disabled">&larr; 이전</span>
+      <span id="current-module-label">1. AI 기초 개념 (상)</span>
+      <a href="module1-2.html" class="module-nav-btn">다음 &rarr;</a>
+    </div>
+    <nav class="prev-next" aria-label="이전/다음 모듈">
+      <span class="prev-next-link prev disabled"><span class="prev-next-label">처음</span></span>
+      <a class="prev-next-link home" href="index.html"><span class="prev-next-label">홈</span></a>
+      <a class="prev-next-link next" href="module1-2.html">
+        <span class="prev-next-label">다음 →</span>
+        <span class="prev-next-title">1. AI 기초 개념 (하)</span>
+      </a>
+    </nav>
+  </main>
+
+  <button id="scroll-top" aria-label="맨 위로">&uarr;</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+    });
+  </script>
+  <script src="js/search-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
