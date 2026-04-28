@@ -4,7 +4,9 @@
   "description": "PM/PL과 개발자를 위한 AI 실무 교육자료",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:sitemap": "node scripts/build-sitemap.js",
+    "check:links": "linkinator . --recurse --skip \"^https?://(?!localhost|127\\.0\\.0\\.1)\" --skip \"node_modules\" --skip \"\\.claude\" --skip \"\\.omc\" --skip \"docs/\" --skip \"scripts/\""
   },
   "dependencies": {
     "compression": "^1.8.1",
