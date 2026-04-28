@@ -980,6 +980,125 @@ body.side-panel-active #content {
 }
 
 
+/* === Progress tracking (learn check) === */
+.section-check {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.6rem;
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+}
+.section-check input { display: none; }
+.section-check-mark {
+  display: inline-flex;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.15s ease;
+  background: var(--bg);
+}
+.section-check:hover .section-check-mark { border-color: var(--link); }
+.section-check input:checked ~ .section-check-mark {
+  background: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+}
+
+.nav-sub a.done::before {
+  content: '✓ ';
+  color: #4caf50;
+  font-weight: 700;
+}
+
+.progress-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+.progress-bar {
+  display: block;
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  display: block;
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.3s ease;
+}
+.progress-text { font-variant-numeric: tabular-nums; }
+
+/* === Tag filter (sidebar chips) === */
+.tag-filter {
+  padding: 0.5rem 1rem 0.7rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+.tag-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 0.4rem;
+}
+.tag-filter-group:last-of-type { margin-bottom: 0; }
+.tag-filter-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-right: 0.2rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex: 0 0 2.4rem;
+}
+.tag-chip {
+  font-size: 0.74rem;
+  padding: 0.12rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  font-family: inherit;
+}
+.tag-chip:hover { border-color: var(--link); color: var(--link); }
+.tag-chip.active {
+  background: var(--link);
+  color: #fff;
+  border-color: var(--link);
+}
+.tag-filter-clear {
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+}
+.tag-filter-clear:hover { color: var(--link); }
+
+.nav-sub li.filtered-out { display: none; }
+.nav-list > .nav-item.module-filtered-out { display: none; }
+
 /* === Home hub & module navigation (migrate-home-hub.js) === */
 .home-hero {
   margin: 0 0 2rem 0;
