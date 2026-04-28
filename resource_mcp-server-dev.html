@@ -22,6 +22,11 @@
         <strong>선수 지식</strong>: 5.10 MCP 개념 · Node.js 또는 Python 기본 · JSON-RPC 개념. 클라이언트 사용 경험(Playwright MCP 등)이 있으면 이해가 쉽습니다.
       </div>
 
+      <div class="info-box" style="border-left:4px solid #4caf50;">
+        <strong>2026-04 갱신 — MCP 응답 한도 500K 문자</strong><br>
+        Claude Code <strong>v2.1.89</strong>(2026-04 첫째 주 릴리스)부터 MCP 도구의 응답 한도가 <strong>500,000 문자</strong>로 대폭 상향됐습니다. 큰 파일·DB 쿼리 결과·로그를 잘림 없이 그대로 반환할 수 있어, 페이지네이션 래퍼나 서머라이저 미들웨어가 더 이상 필수가 아닙니다. 또한 PreToolUse 훅에 새 옵션 <code>defer</code>가 추가되어 외부 시그널(인간 승인·CI 게이트 등) 대기 패턴을 자연스럽게 구현할 수 있습니다.
+      </div>
+
       <section>
         <h3>A.1 언제 MCP 서버를 직접 만들까?</h3>
         <table class="comparison-table">
