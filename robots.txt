@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://totoma7.github.io/projectPmEdu/sitemap.xml
