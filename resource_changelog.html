@@ -45,6 +45,29 @@
         <h3>릴리스</h3>
 
         <div class="changelog-entry">
+          <h3>2026-05-09 (5월 모델·CLI 동향 갱신) <span class="badge added">ADDED</span> <span class="badge changed">CHANGED</span></h3>
+          <strong>Claude Advisor Tool · Sonnet 4 / Opus 4 Deprecation 예고 · GPT-5.5 Instant · Gemini 3.1 Pro · Claude Code v2.1.132</strong>
+          <ul>
+            <li><strong>ADDED</strong> Anthropic — <strong>Advisor Tool (beta)</strong>: Sonnet/Haiku를 executor로 두고 Opus 4.7이 필요할 때만 자문하는 단일 Messages API 호출 패턴. SWE-bench Multilingual에서 Sonnet 단독 대비 +2.7%p, 에이전트 태스크당 비용 -11.9%. BrowseComp에서 Haiku+Opus advisor 조합은 41.2%로 Haiku 단독(19.7%)의 2배 이상이며 Sonnet 단독 대비 비용 -85%.</li>
+            <li><strong>ADDED</strong> Anthropic — <strong>데이터 잔류 제어(Data Residency Controls)</strong>: <code>inference_geo</code> 파라미터로 추론 지역 지정. 2026-02-01 이후 출시 모델은 US-only 추론이 기본 가격의 <strong>1.1배</strong>.</li>
+            <li><strong>CHANGED</strong> Anthropic — <strong>Sonnet 4 / Opus 4 사용 중단(deprecation) 공지</strong>: API 종료일 <strong>2026-06-15</strong>. Sonnet 4.6 / Opus 4.7로 마이그레이션 권고. <strong>module1-2 가격표</strong>와 <strong>module5-* 운영 가이드</strong>의 모델명 표기 점검 필요.</li>
+            <li><strong>ADDED</strong> Anthropic — <strong>Claude in Amazon Bedrock 전면 셀프서비스</strong>: Opus 4.7 / Haiku 4.5가 27개 AWS 리전에서 Bedrock 콘솔의 Messages API 엔드포인트로 즉시 사용 가능. 부록 A(MCP 서버)·module9-1(엔터프라이즈 도입) 인용 갱신.</li>
+            <li><strong>CHANGED</strong> Anthropic — <strong>Opus 4.7 토크나이저</strong>가 동일 입력에 대해 최대 <strong>+35% 토큰</strong>을 생성할 수 있어 표시 단가는 동결이지만 실제 청구액은 증가 가능. 픽셀 예산 1.25MP → <strong>3.75MP(3배)</strong>로 UI/문서 이해 작업 영향.</li>
+            <li><strong>ADDED</strong> Claude Code — <strong>v2.1.132 (2026-05-06)</strong>: <code>CLAUDE_CODE_SESSION_ID</code> 환경변수, <code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code> 옵션, 외부 SIGINT 시 우아한 종료/모드 복원. v2.1.131은 Windows VS Code 확장 활성화 실패 핫픽스. v2.1.128은 <code>/mcp</code>의 0-tools 서버 플래그, <code>--plugin-dir</code>의 .zip 아카이브 지원, console(API key) 인증의 <code>--channels</code> 활성화. <strong>module10-2(하네스 엔지니어링)</strong> 보강 대상.</li>
+            <li><strong>ADDED</strong> Claude Code — MCP 서버 시동 일시 오류 시 <strong>최대 3회 자동 재시도</strong>, 동일 upstream URL의 claude.ai 커넥터 자동 중복 제거, 재연결 시 도구 목록 폭주 방지(서버 prefix로 요약). 부록 D(에이전트 패턴)에 운영 노트 추가 후보.</li>
+            <li><strong>ADDED</strong> Claude Code — Vertex AI <strong>X.509 Workload Identity Federation(mTLS ADC)</strong> 지원, OpenTelemetry LLM 스팬에 <code>stop_reason</code> · <code>gen_ai.response.finish_reasons</code> · <code>user_system_prompt</code>(Opt-in) 추가. <strong>module5-4(관측·LLMOps)</strong>·부록 E(평가)에서 활용 가능.</li>
+            <li><strong>FIXED</strong> Claude Code — Windows 클립보드 CVE: 클립보드 쓰기 내용이 EDR/SIEM 텔레메트리에 노출되던 문제 패치. 부록 B(규제·보안)의 사내 도입 체크리스트에 반영 필요.</li>
+            <li><strong>CHANGED</strong> OpenAI — <strong>GPT-5.5 Instant (2026-05-05)</strong>가 ChatGPT 기본 모델로 교체. 고위험 프롬프트(의료/법률/금융)에서 환각 -52.5%, 응답 길이 -30%(단어), 사용자 플래그 대화 사실 오류 -37.3%. <strong>memory sources</strong>(어떤 메모리·과거 대화가 답변에 기여했는지 추적·삭제) 도입.</li>
+            <li><strong>ADDED</strong> OpenAI — ChatGPT의 과거 대화·파일·Gmail 검색을 활용한 <strong>개인화 답변</strong>(Plus/Pro 웹 우선, Free/Business/Enterprise 순차 확대). <strong>module1-2 모델 비교</strong>·<strong>module4-1 데이터 거버넌스</strong>에 영향.</li>
+            <li><strong>NOTE</strong> OpenAI — GPT-5.5는 AI Security Institute 사이버 태스크에서 <strong>71.4%</strong>(Claude Mythos Preview 68.6% 대비 우세). GPT-5.6 내부 테스트 중(Polymarket 기준 2026-06-30 이전 출시 확률 69%). <strong>module9-1 모델 동향</strong>에 동향 박스 추가 후보.</li>
+            <li><strong>CHANGED</strong> Google — Gemini 3 Pro Preview를 <strong>Gemini 3.1 Pro</strong>로 일원화(<code>gemini-3-pro-preview</code>가 <code>gemini-3.1-pro-preview</code>로 자동 라우팅). 커스텀 툴 우선용 별도 엔드포인트 <code>gemini-3.1-pro-preview-customtools</code> 신설. AI Studio·Vertex AI·Gemini Enterprise·Gemini CLI·Antigravity·Android Studio 전반에 배포.</li>
+            <li><strong>ADDED</strong> Google — Gemini 3 Pro/Flash에 <strong>Computer Use 도구</strong> 정식 지원, <strong>Deep Research / Deep Research Max</strong>(3.1 Pro 기반) 출시 — <strong>MCP 지원</strong>, 네이티브 시각화, 장기 리서치 워크플로우. <strong>Gemini Embedding 2</strong> GA(2026-04-22). 부록 D(에이전트 패턴)·module6(RAG)에 케이스 추가 후보.</li>
+            <li><strong>NOTE</strong> Google — <strong>Gemini 3.2 Flash</strong>가 LM Arena에서 사일런트 벤치마킹 중이며 iOS Gemini 앱 사이클링·'Liquid Glass' UI·Agents(Beta) 탭 placeholder가 포착. <strong>Google I/O 2026(5월 중순)</strong> 정식 발표 가능성 — 발표 직후 본 changelog 재갱신 예정.</li>
+            <li><strong>CHANGED</strong> Gemini 3 Flash 가격 — <strong>$0.50 / $3 per 1M</strong>(input/output), SWE-bench Verified 78%로 Gemini 3 Pro를 상회하며 3배 빠름. <strong>module1-2 가격표</strong> 및 <strong>module8-1 컨텍스트/비용 비교</strong> 행 갱신 대상.</li>
+          </ul>
+        </div>
+
+        <div class="changelog-entry">
           <h3>2026-04-28 (모델 동향 갱신) <span class="badge added">ADDED</span> <span class="badge changed">CHANGED</span></h3>
           <strong>OpenAI GPT-5.5 출시 + Gemini 3 / Deep Think + Claude Code v2.1.89 반영</strong>
           <ul>
@@ -126,19 +149,32 @@
       <section>
         <h3>주요 수치 변동 요약</h3>
         <table class="comparison-table">
-          <thead><tr><th>항목</th><th>2026-01</th><th>2026-04-28 (현재)</th><th>변화</th></tr></thead>
+          <thead><tr><th>항목</th><th>2026-01</th><th>2026-05-09 (현재)</th><th>변화</th></tr></thead>
           <tbody>
-            <tr><td>Claude Opus 입력 가격</td><td>$15 / 1M</td><td><strong>$5 / 1M</strong></td><td>−67%</td></tr>
-            <tr><td>Claude Opus 출력 가격</td><td>$75 / 1M</td><td><strong>$25 / 1M</strong></td><td>−67%</td></tr>
+            <tr><td>Claude 최상위 모델</td><td>Opus 4.5</td><td><strong>Opus 4.7</strong> (2026-04-16) + Sonnet 4.6 + Haiku 4.5</td><td>2세대 상승</td></tr>
+            <tr><td>Claude Opus 입력 가격</td><td>$15 / 1M</td><td><strong>$5 / 1M</strong> (Opus 4.7, 4.6 동결)</td><td>−67%</td></tr>
+            <tr><td>Claude Opus 출력 가격</td><td>$75 / 1M</td><td><strong>$25 / 1M</strong> (Opus 4.7, 4.6 동결)</td><td>−67%</td></tr>
             <tr><td>Claude Opus 컨텍스트</td><td>200k</td><td><strong>1M</strong></td><td>×5</td></tr>
-            <tr><td>OpenAI 주력 모델</td><td>GPT-5</td><td><strong>GPT-5.5</strong> (2026-04-23)</td><td>1세대 상승</td></tr>
+            <tr><td>Opus 4.7 토크나이저</td><td>—</td><td><strong>+최대 35% 토큰</strong> 생성 가능 (실청구 ↑)</td><td>신설 리스크</td></tr>
+            <tr><td>Opus 4.7 픽셀 예산</td><td>1.25 MP</td><td><strong>3.75 MP</strong></td><td>×3</td></tr>
+            <tr><td>Claude Sonnet 4 / Opus 4 EOL</td><td>—</td><td><strong>2026-06-15 API 종료</strong> (4.6/4.7 마이그레이션 권고)</td><td>신설 마감</td></tr>
+            <tr><td>Claude Advisor Tool</td><td>없음</td><td><strong>beta</strong> — Sonnet/Haiku × Opus advisor (단일 API 호출)</td><td>신설</td></tr>
+            <tr><td>Claude Bedrock</td><td>일부 한정</td><td><strong>Opus 4.7 / Haiku 4.5 셀프서비스, 27 리전</strong></td><td>전면 개방</td></tr>
+            <tr><td>Claude 데이터 잔류</td><td>없음</td><td><strong>inference_geo</strong> — US-only 1.1× 가격</td><td>신설</td></tr>
+            <tr><td>OpenAI 주력 모델</td><td>GPT-5</td><td><strong>GPT-5.5 / 5.5 Pro / 5.5 Instant</strong> (5.5 Instant 2026-05-05 ChatGPT 기본)</td><td>1.5세대 상승</td></tr>
+            <tr><td>GPT-5.5 Instant 환각률</td><td>—</td><td><strong>−52.5%</strong> (vs 5.3 Instant, 고위험 프롬프트)</td><td>대폭 개선</td></tr>
             <tr><td>OpenAI 주력 입력 가격</td><td>$2.50 / 1M (GPT-5)</td><td><strong>$5 / 1M (GPT-5.5)</strong></td><td>+100%</td></tr>
             <tr><td>OpenAI 주력 출력 가격</td><td>$15 / 1M (GPT-5)</td><td><strong>$30 / 1M (GPT-5.5)</strong></td><td>+100%</td></tr>
             <tr><td>OpenAI 주력 컨텍스트</td><td>128K (GPT-4o)</td><td><strong>1M (GPT-5.5)</strong></td><td>×7.8</td></tr>
-            <tr><td>Gemini 주력 세대</td><td>1.5 Pro</td><td><strong>3 Pro / 3 Flash / 3.1 Pro</strong> (2026-04-22)</td><td>2세대 상승</td></tr>
-            <tr><td>Gemini 추론 모드</td><td>없음</td><td><strong>Deep Think</strong> (AI Ultra 전용)</td><td>신설</td></tr>
-            <tr><td>Claude Code MCP 한도</td><td>제한적</td><td><strong>500K 문자</strong> (v2.1.89)</td><td>대폭 상향</td></tr>
-            <tr><td>오픈 모델 최상위</td><td>Llama 3.3 70B</td><td><strong>Llama 4 405B / Qwen 3</strong></td><td>체급 및 품질 상승</td></tr>
+            <tr><td>ChatGPT 개인화</td><td>제한적</td><td><strong>과거 대화 + 파일 + Gmail 검색</strong> (Plus/Pro)</td><td>신설</td></tr>
+            <tr><td>Gemini 주력 세대</td><td>1.5 Pro</td><td><strong>3.1 Pro</strong> (3-pro-preview → 3.1로 자동 라우팅)</td><td>2.1세대 상승</td></tr>
+            <tr><td>Gemini 3 Flash 가격</td><td>—</td><td><strong>$0.50 / $3 per 1M</strong> · SWE-bench Verified 78%</td><td>신설 가격</td></tr>
+            <tr><td>Gemini 추론 모드</td><td>없음</td><td><strong>Deep Think</strong> (AI Ultra) — 5월 메이저 업데이트</td><td>신설+강화</td></tr>
+            <tr><td>Gemini Computer Use</td><td>없음</td><td><strong>Pro / Flash 정식 지원</strong></td><td>신설</td></tr>
+            <tr><td>Gemini Deep Research</td><td>요약 엔진</td><td><strong>Deep Research / Max</strong> — MCP 지원, 시각화, 엔터프라이즈 워크플로</td><td>전면 개편</td></tr>
+            <tr><td>Claude Code 버전</td><td>v2.0.x</td><td><strong>v2.1.132 (2026-05-06)</strong> — SIGINT 우아한 종료, OTEL 격리, 클립보드 CVE 패치</td><td>월 단위 갱신</td></tr>
+            <tr><td>Claude Code MCP 한도</td><td>제한적</td><td><strong>500K 문자</strong> (v2.1.89~)</td><td>대폭 상향</td></tr>
+            <tr><td>오픈 모델 최상위</td><td>Llama 3.3 70B</td><td><strong>Llama 4 405B / Qwen 3 / Gemma 4</strong></td><td>체급 및 품질 상승</td></tr>
           </tbody>
         </table>
       </section>
@@ -155,7 +191,7 @@
     </article>
 
     <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
-      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.04.28
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.05.09
     </div>
   </main>
 </body>
