@@ -214,6 +214,18 @@
       Anthropic은 2026-04-07 <strong>Claude Mythos Preview</strong>를 공개했습니다. <strong>11개 회사·기관에 한정</strong> 배포되며 <strong>일반 공개 계획 없음</strong>. 사이버보안 취약점 탐색·완화 용도로 한정되며, 능력이 너무 강력해 충분한 안전조치 없이 출시할 수 없다는 게 Anthropic의 입장입니다. 일반 개발자가 쓸 수 있는 모델은 여전히 Opus 4.7 / Sonnet 4.6 / Haiku 4.5 라인입니다.
     </div>
 
+    <div class="warning-box">
+      <strong>📌 2026-05 주요 변화 — AI 코딩 도구 동향</strong>
+      <ul>
+        <li><strong>Claude Code v2.1.132 (2026-05-06)</strong>: <code>CLAUDE_CODE_SESSION_ID</code> 환경변수로 Bash 서브프로세스에서 세션 식별 가능, <code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code>로 풀스크린 모드 옵트아웃, 외부 SIGINT 시 우아한 종료/터미널 모드 복원. v2.1.131은 Windows VS Code 확장 활성화 핫픽스. v2.1.128은 <code>/mcp</code>의 0-tools 서버 플래그·<code>--plugin-dir</code>의 .zip 아카이브 지원·console(API key) 인증의 <code>--channels</code> 활성화.</li>
+        <li><strong>Claude Bedrock 셀프서비스</strong>: Opus 4.7 / Haiku 4.5가 <strong>27개 AWS 리전</strong>에서 Bedrock 콘솔의 Messages API로 즉시 사용 가능. AWS 중심 조직의 Claude 도입 장벽 대폭 하락.</li>
+        <li><strong>Sonnet 4 / Opus 4 사용 중단(EOL)</strong>: <strong>2026-06-15 API 종료</strong>. 사내 빌드·CI에 박힌 모델 ID(<code>claude-sonnet-4-*</code>, <code>claude-opus-4-*</code>) 검색·치환 작업 필요.</li>
+        <li><strong>Gemini Computer Use 정식 지원</strong>: <code>gemini-3-pro-preview</code>·<code>gemini-3-flash-preview</code>에서 PC 제어 도구 활성화. <code>gemini-3.1-pro-preview-customtools</code>는 사내 도구·bash 혼합 사용 환경에 최적화된 별도 엔드포인트.</li>
+        <li><strong>Claude Advisor Tool (beta)</strong>: Sonnet/Haiku를 executor, Opus 4.7을 advisor로 두는 단일 API 호출 패턴. 코딩 에이전트 태스크당 비용 −11.9%, Haiku+Opus 조합은 단순 Sonnet 대비 비용 −85%로 동등 수준 품질 달성.</li>
+        <li><strong>Vertex AI mTLS 인증</strong>: Claude Code가 <strong>X.509 Workload Identity Federation</strong>을 지원하여 GCP 사내망 보안 정책에 부합하는 ADC 구성 가능.</li>
+      </ul>
+    </div>
+
     <h4>4대 AI 코딩 도구 상세 비교</h4>
     <table class="comparison-table">
       <thead>

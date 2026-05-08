@@ -209,6 +209,16 @@
             <strong class="ai-term">RAG(Retrieval-Augmented Generation)</strong>: LLM이 답변을 생성하기 전에, 외부 데이터베이스에서 관련 정보를 먼저 검색(Retrieval)한 뒤 이를 참고하여 응답을 만드는 기술입니다.
           </div>
 
+          <div class="warning-box">
+            <strong>📌 2026-05 주요 변화 — RAG와 에이전트 생태계</strong>
+            <ul>
+              <li><strong>Claude Advisor Tool (beta)</strong>: Sonnet/Haiku를 executor로, Opus 4.7을 자문(advisor)으로 두는 단일 Messages API 호출 패턴. 에이전트 태스크당 비용 −11.9%, BrowseComp에서 Haiku+Opus 조합이 Haiku 단독 대비 점수 2배 이상.</li>
+              <li><strong>Gemini Deep Research / Max</strong>: 3.1 Pro 기반 자율 리서치 에이전트가 <strong>MCP를 정식 지원</strong>. 단순 요약 엔진에서 엔터프라이즈 워크플로우(금융·생명과학·시장조사)용 분석 도구로 전환.</li>
+              <li><strong>Computer Use 도구</strong>: Gemini 3 Pro/Flash에서 정식 지원되며, Anthropic의 Claude Computer Use와 함께 PC 제어 기반 에이전트가 메인스트림으로 진입.</li>
+              <li><strong>Sonnet 4 / Opus 4 사용 중단</strong>: 2026-06-15 API 종료. RAG·에이전트 파이프라인에서 사용 중인 모델명을 Sonnet 4.6 / Opus 4.7로 마이그레이션 필요.</li>
+            </ul>
+          </div>
+
           <h4>왜 RAG가 필요한가?</h4>
           <p>LLM은 학습 시점까지의 데이터만 알고 있습니다. 회사 내부 문서, 최신 정보, 특정 도메인 지식은 모릅니다. RAG는 이 한계를 해결합니다.</p>
 
