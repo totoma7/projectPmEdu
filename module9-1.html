@@ -195,7 +195,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.05.09</p>
+      <p>최근 업데이트: 2026.05.24</p>
       <p>&copy; 2026 2026 AI 실무 플레이북</p>
     </div>
   </nav>
@@ -217,12 +217,20 @@
     <div class="warning-box">
       <strong>📌 2026-05 주요 변화 — AI 코딩 도구 동향</strong>
       <ul>
-        <li><strong>Claude Code v2.1.132 (2026-05-06)</strong>: <code>CLAUDE_CODE_SESSION_ID</code> 환경변수로 Bash 서브프로세스에서 세션 식별 가능, <code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code>로 풀스크린 모드 옵트아웃, 외부 SIGINT 시 우아한 종료/터미널 모드 복원. v2.1.131은 Windows VS Code 확장 활성화 핫픽스. v2.1.128은 <code>/mcp</code>의 0-tools 서버 플래그·<code>--plugin-dir</code>의 .zip 아카이브 지원·console(API key) 인증의 <code>--channels</code> 활성화.</li>
+        <li><strong>Claude Code v2.1.132 → v2.1.150 (2026-05-23)</strong>: <code>CLAUDE_CODE_SESSION_ID</code> 환경변수, <code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code>, SIGINT 우아한 종료에 더해 5월 후반 다수 패치. <strong>v2.1.147에서 <code>/simplify</code>가 <code>/code-review</code>로 개명</strong>(지정 effort 레벨로 정확성 버그 보고, <code>--comment</code>로 GitHub PR 인라인 코멘트). 고정(pinned) 백그라운드 세션 유지, <code>claude agents --json</code>(세션 JSON 목록), OTEL 스팬에 <code>agent_id</code>·<code>parent_agent_id</code>, 백그라운드 세션 <code>/resume</code> 지원(v2.1.144 BREAKING).</li>
         <li><strong>Claude Bedrock 셀프서비스</strong>: Opus 4.7 / Haiku 4.5가 <strong>27개 AWS 리전</strong>에서 Bedrock 콘솔의 Messages API로 즉시 사용 가능. AWS 중심 조직의 Claude 도입 장벽 대폭 하락.</li>
         <li><strong>Sonnet 4 / Opus 4 사용 중단(EOL)</strong>: <strong>2026-06-15 API 종료</strong>. 사내 빌드·CI에 박힌 모델 ID(<code>claude-sonnet-4-*</code>, <code>claude-opus-4-*</code>) 검색·치환 작업 필요.</li>
         <li><strong>Gemini Computer Use 정식 지원</strong>: <code>gemini-3-pro-preview</code>·<code>gemini-3-flash-preview</code>에서 PC 제어 도구 활성화. <code>gemini-3.1-pro-preview-customtools</code>는 사내 도구·bash 혼합 사용 환경에 최적화된 별도 엔드포인트.</li>
         <li><strong>Claude Advisor Tool (beta)</strong>: Sonnet/Haiku를 executor, Opus 4.7을 advisor로 두는 단일 API 호출 패턴. 코딩 에이전트 태스크당 비용 −11.9%, Haiku+Opus 조합은 단순 Sonnet 대비 비용 −85%로 동등 수준 품질 달성.</li>
         <li><strong>Vertex AI mTLS 인증</strong>: Claude Code가 <strong>X.509 Workload Identity Federation</strong>을 지원하여 GCP 사내망 보안 정책에 부합하는 ADC 구성 가능.</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <strong>📌 2026-05 추가 동향 — Google I/O 2026 & 차세대 모델</strong>
+      <ul>
+        <li><strong>Gemini 3.5 Flash</strong> (Google I/O 2026, 2026-05-19 GA): Google 최강 에이전트·코딩 모델로 Gemini 3.1 Pro를 상회(Terminal-Bench 2.1 76.2%, MCP Atlas 83.6%, CharXiv 84.2%). 가격 $1.50/$9 per 1M·1M 컨텍스트. <strong>Gemini 3.5 Pro</strong>는 테스트 단계로 익월(2026-06) 출시 예정. <strong>Gemini Omni</strong>(멀티모달 창작)·<strong>Antigravity 2.0</strong>·<strong>Managed Agents in Gemini API</strong>(단일 호출로 원격 샌드박스 에이전트) 동반 공개. Google AI Ultra 구독가 $100/월로 인하.</li>
+        <li><strong>GPT-5.6 — 아직 미출시(루머 단계)</strong>: 공식 발표·callable API·모델카드 없음. Polymarket 기준 2026-06-30 이전 출시 확률 89%(2026-05-13)이나 Codex 라우팅 로그의 일시 노출·내부 코드명(ember-alpha 등) 정황뿐. <strong>공식 출처 전까지 미확정</strong>으로 취급. 현행 주력은 GPT-5.5, ChatGPT 기본은 GPT-5.5 Instant. OpenAI는 2026-04-30 "Where the Goblins Came From"에서 GPT-5.5의 특정 단어 고착 정렬 실패를 공개했고, 차기 모델은 보상 신호·페르소나 격리 개선이 핵심으로 분석됨.</li>
       </ul>
     </div>
 

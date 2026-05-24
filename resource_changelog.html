@@ -31,7 +31,7 @@
       <section>
         <h3>예정 (Upcoming)</h3>
         <div class="changelog-entry upcoming">
-          <h3>2026-05 (예정) <span class="badge planned">PLANNED</span></h3>
+          <h3>2026-06 (예정) <span class="badge planned">PLANNED</span></h3>
           <ul>
             <li>각 모듈 말미에 "학습 체크포인트" 3~5문항 퀴즈 삽입</li>
             <li>검색 기능에 부록(resource_*) 페이지 통합 인덱싱</li>
@@ -43,6 +43,22 @@
 
       <section>
         <h3>릴리스</h3>
+
+        <div class="changelog-entry">
+          <h3>2026-05-24 (Google I/O 2026 + Claude Code v2.1.150 반영) <span class="badge added">ADDED</span> <span class="badge changed">CHANGED</span></h3>
+          <strong>Gemini 3.5 Flash · Gemini Omni · Antigravity 2.0 · Claude Code v2.1.150 · GPT-5.6 루머 정리</strong>
+          <ul>
+            <li><strong>ADDED</strong> Google — <strong>Gemini 3.5 Flash</strong> (Google I/O 2026, 2026-05-19 GA): Google 최강 에이전트·코딩 모델로 Gemini 3.1 Pro를 상회(Terminal-Bench 2.1 <strong>76.2%</strong>, MCP Atlas 83.6%, CharXiv 84.2%, GDPval-AA 1656 Elo). 가격 <strong>$1.50 / $9 per 1M</strong>(input/output), 캐시 입력 $0.15(90% 할인), 비글로벌 리전 $1.65/$9.90. 컨텍스트 <strong>1M</strong>(1,048,576) 입력 / 64K 출력, 플랫 가격. Gemini 3.1 Pro($2/$12) 대비 ~40% 저렴하나 Gemini 3 Flash Preview($0.50/$3)의 3배. <strong>출력이 verbose</strong>(벤치마크 완수에 73M 토큰, 동급 평균 36M의 2배)로 출력당 과금 작업 시 예산 주의. Gemini API·AI Studio·Antigravity·Vertex AI·Gemini 앱·Search AI Mode 당일 GA. <strong>module1-2 가격표</strong>·<strong>module8-1 컨텍스트/비용 비교</strong> 갱신 대상.</li>
+            <li><strong>ADDED</strong> Google — <strong>Gemini 3.5 Pro</strong> 테스트 단계 공개, 익월(2026-06) 정식 출시 예정. <strong>Gemini Omni / Omni Flash</strong> — 추론+창작을 결합한 멀티모달 모델(이미지·오디오·비디오·텍스트 입력 → 실세계 지식에 그라운딩된 편집 가능 비디오 출력).</li>
+            <li><strong>ADDED</strong> Google — <strong>Antigravity 2.0</strong>(독립 데스크톱 앱: 에이전트 조율 워크스페이스), <strong>Managed Agents in Gemini API</strong>(단일 API 호출로 원격 샌드박스 포함 에이전트 프로비저닝 — 인프라 셋업 제거), <strong>Antigravity SDK</strong>(에이전트 하네스 프로그래밍 제어·자체 인프라 배포). <strong>Gemini Spark</strong>(사용자 대신 행동하는 퍼스널 에이전트), Search <strong>AI Mode가 Gemini 3.5 Flash 기반</strong>으로 전환. 부록 D(에이전트 패턴)·module7(국내외 도구) 후보.</li>
+            <li><strong>CHANGED</strong> Google — 구독 가격 개편: <strong>Google AI Ultra $100/월</strong>로 인하(AI Pro 대비 5배 사용량), 기존 $250 플랜은 동일 기능에 <strong>$200</strong>로 인하. Gemini 앱이 <strong>일일 프롬프트 한도 → '컴퓨트 사용량(compute-used)'</strong> 과금 모델로 전환(프롬프트 복잡도·사용 기능·대화 길이 반영).</li>
+            <li><strong>CHANGED</strong> Claude Code — <strong>v2.1.150 (2026-05-23)</strong>까지 진행(기존 표기 v2.1.132에서 18패치). <strong>module10-2(하네스 엔지니어링)</strong> 버전 표기 갱신 대상.</li>
+            <li><strong>CHANGED</strong> Claude Code — <strong>v2.1.147</strong>: <code>/simplify</code> → <strong><code>/code-review</code> 개명</strong>. 지정 effort 레벨(예: <code>/code-review high</code>)로 정확성 버그 보고, <code>--comment</code>로 GitHub PR 인라인 코멘트 게시. 기존 cleanup-and-fix 동작 제거. 고정(pinned) 백그라운드 세션 유휴 시 유지·메모리 압박 시 후순위 종료, 자동 업데이터 재시도·오류 분류·OS 오류코드 표기 개선, 대용량 diff 렌더링 성능 개선.</li>
+            <li><strong>ADDED</strong> Claude Code — <strong>v2.1.145</strong>: <code>claude agents --json</code>(라이브 세션 JSON 목록 → 상태줄·세션 피커 스크립팅), OTEL <code>claude_code.tool</code> 스팬에 <code>agent_id</code>·<code>parent_agent_id</code> 추가·백그라운드 서브에이전트 스팬 트레이스 부모 정정, 상태줄 JSON에 GitHub repo·PR 정보, <code>/plugin</code> Discover/Browse가 설치 전 commands·agents·skills·hooks·MCP/LSP 표시. <strong>v2.1.144 (BREAKING)</strong>: 백그라운드 세션 <code>/resume</code> 지원, <code>/model</code>은 현재 세션만 변경(기본값은 picker에서 <code>d</code>). <strong>v2.1.148</strong>: Bash 도구가 모든 명령에 exit code 127 반환하던 회귀(2.1.147 도입) 수정. 부록 D(에이전트 패턴)·module5-4(관측) 활용 가능.</li>
+            <li><strong>CHANGED</strong> OpenAI — <strong>GPT-5.6 여전히 미출시</strong>: 공식 발표·callable API·모델카드 없음(2026-05-19 기준). Polymarket 기준 <strong>2026-06-30 이전 출시 확률 89%</strong>(2026-05-13, 기존 69%에서 상향). Codex 라우팅 로그에 일시 노출된 <code>gpt-5.6</code> 항목·내부 코드명 'ember-alpha'/'beacon-alpha' 정황뿐. 현행 주력은 <strong>GPT-5.5</strong>, ChatGPT 기본은 <strong>GPT-5.5 Instant</strong> 유지. <strong>module9-1</strong> 동향 박스에 "루머 단계 — 공식 출처 전까지 미확정" 명시 권장.</li>
+            <li><strong>NOTE</strong> OpenAI — <strong>"Where the Goblins Came From"</strong>(2026-04-30) 사후분석 공개: GPT-5.5가 고블린·너구리·트롤 등 특정 단어에 통계적으로 유의한 고착을 보인 정렬(alignment) 실패 사례. 차기 모델은 보상 신호 정제·페르소나 격리·오염되지 않은 SFT 파이프라인이 핵심일 것으로 분석됨.</li>
+          </ul>
+        </div>
 
         <div class="changelog-entry">
           <h3>2026-05-09 (5월 모델·CLI 동향 갱신) <span class="badge added">ADDED</span> <span class="badge changed">CHANGED</span></h3>
@@ -149,7 +165,7 @@
       <section>
         <h3>주요 수치 변동 요약</h3>
         <table class="comparison-table">
-          <thead><tr><th>항목</th><th>2026-01</th><th>2026-05-09 (현재)</th><th>변화</th></tr></thead>
+          <thead><tr><th>항목</th><th>2026-01</th><th>2026-05-24 (현재)</th><th>변화</th></tr></thead>
           <tbody>
             <tr><td>Claude 최상위 모델</td><td>Opus 4.5</td><td><strong>Opus 4.7</strong> (2026-04-16) + Sonnet 4.6 + Haiku 4.5</td><td>2세대 상승</td></tr>
             <tr><td>Claude Opus 입력 가격</td><td>$15 / 1M</td><td><strong>$5 / 1M</strong> (Opus 4.7, 4.6 동결)</td><td>−67%</td></tr>
@@ -167,12 +183,15 @@
             <tr><td>OpenAI 주력 출력 가격</td><td>$15 / 1M (GPT-5)</td><td><strong>$30 / 1M (GPT-5.5)</strong></td><td>+100%</td></tr>
             <tr><td>OpenAI 주력 컨텍스트</td><td>128K (GPT-4o)</td><td><strong>1M (GPT-5.5)</strong></td><td>×7.8</td></tr>
             <tr><td>ChatGPT 개인화</td><td>제한적</td><td><strong>과거 대화 + 파일 + Gmail 검색</strong> (Plus/Pro)</td><td>신설</td></tr>
-            <tr><td>Gemini 주력 세대</td><td>1.5 Pro</td><td><strong>3.1 Pro</strong> (3-pro-preview → 3.1로 자동 라우팅)</td><td>2.1세대 상승</td></tr>
+            <tr><td>Gemini 주력 세대</td><td>1.5 Pro</td><td><strong>3.5 Flash</strong> (I/O 2026, 2026-05-19) + 3.1 Pro + 3.5 Pro(테스트)</td><td>2.5세대 상승</td></tr>
             <tr><td>Gemini 3 Flash 가격</td><td>—</td><td><strong>$0.50 / $3 per 1M</strong> · SWE-bench Verified 78%</td><td>신설 가격</td></tr>
+            <tr><td>Gemini 3.5 Flash 가격</td><td>—</td><td><strong>$1.50 / $9 per 1M</strong> · 1M 컨텍스트 · 3.1 Pro 상회</td><td>신설(I/O 2026)</td></tr>
+            <tr><td>Gemini Omni / Antigravity 2.0</td><td>없음</td><td><strong>Omni(멀티모달 창작)</strong> · <strong>Managed Agents in Gemini API</strong></td><td>신설</td></tr>
+            <tr><td>Google AI Ultra 구독가</td><td>$250/월</td><td><strong>$100/월</strong>(AI Pro 5배 사용량) · 기존 $250→$200</td><td>대폭 인하</td></tr>
             <tr><td>Gemini 추론 모드</td><td>없음</td><td><strong>Deep Think</strong> (AI Ultra) — 5월 메이저 업데이트</td><td>신설+강화</td></tr>
             <tr><td>Gemini Computer Use</td><td>없음</td><td><strong>Pro / Flash 정식 지원</strong></td><td>신설</td></tr>
             <tr><td>Gemini Deep Research</td><td>요약 엔진</td><td><strong>Deep Research / Max</strong> — MCP 지원, 시각화, 엔터프라이즈 워크플로</td><td>전면 개편</td></tr>
-            <tr><td>Claude Code 버전</td><td>v2.0.x</td><td><strong>v2.1.132 (2026-05-06)</strong> — SIGINT 우아한 종료, OTEL 격리, 클립보드 CVE 패치</td><td>월 단위 갱신</td></tr>
+            <tr><td>Claude Code 버전</td><td>v2.0.x</td><td><strong>v2.1.150 (2026-05-23)</strong> — /simplify→/code-review 개명, 백그라운드 세션 /resume, agents --json, OTEL agent_id</td><td>월 단위 갱신</td></tr>
             <tr><td>Claude Code MCP 한도</td><td>제한적</td><td><strong>500K 문자</strong> (v2.1.89~)</td><td>대폭 상향</td></tr>
             <tr><td>오픈 모델 최상위</td><td>Llama 3.3 70B</td><td><strong>Llama 4 405B / Qwen 3 / Gemma 4</strong></td><td>체급 및 품질 상승</td></tr>
           </tbody>
@@ -191,7 +210,7 @@
     </article>
 
     <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
-      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.05.09
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.05.24
     </div>
   </main>
 </body>

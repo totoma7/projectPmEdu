@@ -195,7 +195,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.05.09</p>
+      <p>최근 업데이트: 2026.05.24</p>
       <p>&copy; 2026 2026 AI 실무 플레이북</p>
     </div>
   </nav>
@@ -506,9 +506,9 @@ graph LR
     <table class="comparison-table">
       <thead><tr><th>작업 유형</th><th>추천 모델</th><th>예상 비용/건</th><th>이유</th></tr></thead>
       <tbody>
-        <tr><td>간단한 분류/요약</td><td>Haiku / GPT-4o-mini</td><td>~$0.001</td><td>빠르고 저렴, 단순 작업에 충분</td></tr>
-        <tr><td>문서 작성/분석</td><td>Sonnet / GPT-4o</td><td>~$0.01</td><td>품질과 비용의 균형</td></tr>
-        <tr><td>복잡한 추론/전략</td><td>Opus / o1</td><td>~$0.10</td><td>최고 품질, 중요한 의사결정에만</td></tr>
+        <tr><td>간단한 분류/요약</td><td>Haiku 4.5 / Gemini 3 Flash</td><td>~$0.001</td><td>빠르고 저렴, 단순 작업에 충분</td></tr>
+        <tr><td>문서 작성/분석</td><td>Sonnet 4.6 / GPT-5.5</td><td>~$0.01</td><td>품질과 비용의 균형</td></tr>
+        <tr><td>복잡한 추론/전략</td><td>Opus 4.7 / GPT-5.5-pro</td><td>~$0.10</td><td>최고 품질, 중요한 의사결정에만</td></tr>
       </tbody>
     </table>
 
@@ -516,9 +516,9 @@ graph LR
       <div class="mermaid">
 graph TD
     A["작업 요청"] --> B{"복잡도\n판단"}
-    B -->|"단순\n(분류, 추출)"| C["Haiku/Mini\n💰 $0.001"]
-    B -->|"보통\n(작성, 분석)"| D["Sonnet/4o\n💰 $0.01"]
-    B -->|"복잡\n(전략, 추론)"| E["Opus/o1\n💰 $0.10"]
+    B -->|"단순\n(분류, 추출)"| C["Haiku 4.5/Flash\n💰 $0.001"]
+    B -->|"보통\n(작성, 분석)"| D["Sonnet 4.6/GPT-5.5\n💰 $0.01"]
+    B -->|"복잡\n(전략, 추론)"| E["Opus 4.7/5.5-pro\n💰 $0.10"]
     C --> F["월 비용 50~70%↓"]
     D --> F
     E --> F

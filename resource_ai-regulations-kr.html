@@ -270,10 +270,10 @@
       </section>
 
       <section id="b11">
-        <h3>B.11 확장 체크리스트 — 엔지니어링 / 벤더 / 감사 관점 (추가 18항)</h3>
+        <h3>B.11 확장 체크리스트 — 엔지니어링 / 벤더 / 감사 관점 (추가 19항)</h3>
         <p>B.5의 PM/PL 12항에 더해, <strong>실제 구현</strong> 단계에서 자주 누락되는 체크포인트:</p>
 
-        <h4>🛠 엔지니어링 (6항)</h4>
+        <h4>🛠 엔지니어링 (7항)</h4>
         <ul>
           <li>프롬프트·응답 로그의 보존 기간 정책을 코드 레벨에 명시(예: <code>retention_days=30</code>)</li>
           <li>DLP 필터를 <strong>전송 전·수신 후</strong> 양쪽 배치(프롬프트 인젝션 대비)</li>
@@ -281,6 +281,7 @@
           <li>외부 LLM 호출은 API 게이트웨이 경유 — 직접 호출 금지</li>
           <li>개발·스테이징·프로덕션 환경 간 <strong>실데이터 유출 차단</strong>(dev는 합성 데이터만)</li>
           <li>모델 업그레이드 시 회귀 테스트셋으로 <strong>공정성 지표 재측정</strong></li>
+          <li><strong>코딩 에이전트(개발 도구) 보안 패치 추적</strong>: Claude Code의 Windows 클립보드 CVE처럼 도구가 클립보드·민감정보를 EDR·SIEM 텔레메트리에 노출할 수 있음 — 사내 표준 버전을 패치 반영 버전(예: v2.1.132+)으로 고정하고 자동 업데이트 정책을 검증</li>
         </ul>
 
         <h4>🤝 벤더 관리 (6항)</h4>
@@ -329,7 +330,7 @@
     </article>
 
     <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
-      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.05.09
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.05.24
     </div>
   </main>
 </body>
