@@ -5,35 +5,43 @@
 
   // --- Dark Mode ---
   var themeToggle = document.getElementById('theme-toggle');
-  var themeIcon = themeToggle.querySelector('.theme-icon');
+  var themeIcon = themeToggle ? themeToggle.querySelector('.theme-icon') : null;
 
   function initTheme() {
     var saved = localStorage.getItem('theme');
-    if (saved) {
+    var current = document.documentElement.getAttribute('data-theme');
+    if (saved === 'light' || saved === 'dark') {
       document.documentElement.setAttribute('data-theme', saved);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (current === 'light' || current === 'dark') {
+      localStorage.setItem('theme', current);
+    } else {
+      var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', preferred);
+      localStorage.setItem('theme', preferred);
     }
     updateThemeIcon();
   }
 
   function updateThemeIcon() {
+    if (!themeIcon) return;
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     themeIcon.textContent = isDark ? '☀️' : '🌙';
   }
 
-  themeToggle.addEventListener('click', function () {
-    var current = document.documentElement.getAttribute('data-theme');
-    var next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-    updateThemeIcon();
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeIcon();
 
-    if (typeof mermaid !== 'undefined') {
-      mermaid.initialize({ theme: next === 'dark' ? 'dark' : 'default' });
-      mermaid.run();
-    }
-  });
+      if (typeof mermaid !== 'undefined') {
+        mermaid.initialize({ theme: next === 'dark' ? 'dark' : 'default' });
+        mermaid.run();
+      }
+    });
+  }
 
   // --- Mobile Sidebar ---
   var sidebar = document.getElementById('sidebar');
