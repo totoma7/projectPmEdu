@@ -7,6 +7,22 @@
   var themeToggle = document.getElementById('theme-toggle');
   var themeIcon = themeToggle ? themeToggle.querySelector('.theme-icon') : null;
 
+  // Mermaid 원본 소스 캡처: 이 스크립트는 mermaid의 startOnLoad(DOMContentLoaded) 렌더 전에
+  // 동기 실행되므로 .mermaid 요소가 아직 원본 텍스트를 보유. 테마 토글 시 재렌더에 사용.
+  var mermaidEls = document.querySelectorAll('.mermaid');
+  var mermaidSrc = [];
+  mermaidEls.forEach(function (el) { mermaidSrc.push(el.textContent); });
+
+  function rerenderMermaid(theme) {
+    if (typeof mermaid === 'undefined' || !mermaidEls.length) return;
+    mermaidEls.forEach(function (el, i) {
+      el.removeAttribute('data-processed');
+      el.innerHTML = mermaidSrc[i];
+    });
+    mermaid.initialize({ startOnLoad: false, theme: theme === 'dark' ? 'dark' : 'default' });
+    try { mermaid.run({ nodes: mermaidEls }); } catch (e) { mermaid.run(); }
+  }
+
   function initTheme() {
     var saved = localStorage.getItem('theme');
     var current = document.documentElement.getAttribute('data-theme');
@@ -35,11 +51,7 @@
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
       updateThemeIcon();
-
-      if (typeof mermaid !== 'undefined') {
-        mermaid.initialize({ theme: next === 'dark' ? 'dark' : 'default' });
-        mermaid.run();
-      }
+      rerenderMermaid(next);
     });
   }
 
