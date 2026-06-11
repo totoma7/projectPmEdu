@@ -315,8 +315,20 @@
     }
   }
 
+  // --- Table Scroll Wrapper ---
+  function wrapTables() {
+    document.querySelectorAll('.module .comparison-table').forEach(function (t) {
+      if (t.parentElement.classList.contains('table-scroll')) return;
+      var w = document.createElement('div');
+      w.className = 'table-scroll';
+      t.parentNode.insertBefore(w, t);
+      w.appendChild(t);
+    });
+  }
+
   // --- Init ---
   initTheme();
   initProgress();
   initTagFilter();
+  wrapTables();
 })();

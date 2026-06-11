@@ -529,6 +529,24 @@ a:hover {
   background: var(--table-stripe);
 }
 
+/* 가로 스크롤 래퍼 (main.js wrapTables()가 주입) */
+.table-scroll {
+  overflow-x: auto;
+  margin: 1rem 0; /* .comparison-table 기존 margin과 동일 */
+}
+
+.table-scroll .comparison-table {
+  margin: 0;
+  min-width: 640px;
+}
+
+.comparison-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: var(--table-header-bg); /* thead에만 배경이 있어 sticky 시 본문 비침 방지 */
+}
+
 /* === Step List === */
 .step-list {
   counter-reset: step;
