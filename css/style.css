@@ -943,6 +943,7 @@ a.nav-title:hover {
   #menu-toggle,
   #scroll-top,
   #module-nav,
+  #read-progress,
   #sidebar-overlay {
     display: none !important;
   }
@@ -1518,4 +1519,16 @@ body.side-panel-active #content {
 @media (max-width: 640px) {
   .prev-next { grid-template-columns: 1fr; }
   .prev-next-link.next { text-align: left; align-items: flex-start; }
+}
+
+/* === Reading Progress Bar (main.js initReadProgress) === */
+#read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--link);
+  z-index: 1200;
+  transition: width 0.08s linear;
 }

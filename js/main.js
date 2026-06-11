@@ -326,9 +326,23 @@
     });
   }
 
+  // --- Reading Progress Bar (홈 제외) ---
+  function initReadProgress() {
+    if (document.querySelector('.home-hero')) return;
+    var bar = document.createElement('div');
+    bar.id = 'read-progress';
+    document.body.appendChild(bar);
+    window.addEventListener('scroll', function () {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    }, { passive: true });
+  }
+
   // --- Init ---
   initTheme();
   initProgress();
   initTagFilter();
   wrapTables();
+  initReadProgress();
 })();
