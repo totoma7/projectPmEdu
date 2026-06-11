@@ -37,6 +37,8 @@
   --info-border: #2f80ed;
   --warning-bg: #fff7e6;
   --warning-border: #d97706;
+  --trend-bg: #eef1fd;
+  --trend-border: #5b6ee1;
   --card-bg: #ffffff;
   --card-shadow: 0 16px 40px rgba(16, 24, 40, 0.08);
   --card-shadow-hover: 0 22px 48px rgba(16, 24, 40, 0.14);
@@ -84,6 +86,8 @@
   --info-border: #66a3ff;
   --warning-bg: rgba(217, 119, 6, 0.14);
   --warning-border: #f0a43a;
+  --trend-bg: rgba(91, 110, 225, 0.16);
+  --trend-border: #93a4ff;
   --card-bg: #111827;
   --card-shadow: 0 18px 44px rgba(0, 0, 0, 0.36);
   --card-shadow-hover: 0 24px 54px rgba(0, 0, 0, 0.44);
@@ -437,6 +441,33 @@ a:hover {
   border-radius: var(--radius-md);
   margin: 1.15rem 0;
   line-height: 1.7;
+}
+
+/* === Trend Box (동향/뉴스성 콜아웃) === */
+.trend-box {
+  background: var(--trend-bg);
+  border: 1px solid color-mix(in srgb, var(--trend-border) 40%, var(--border));
+  border-left: 4px solid var(--trend-border);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  margin: 1.15rem 0;
+  line-height: 1.7;
+}
+
+.info-box > strong:first-child,
+.warning-box > strong:first-child,
+.trend-box > strong:first-child {
+  display: block;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+  opacity: 0.92;
+}
+
+.info-box + .info-box, .info-box + .warning-box, .info-box + .trend-box,
+.warning-box + .info-box, .warning-box + .warning-box, .warning-box + .trend-box,
+.trend-box + .info-box, .trend-box + .warning-box, .trend-box + .trend-box {
+  margin-top: 1.5rem;
 }
 
 /* === Comparison Table === */
