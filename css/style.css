@@ -432,6 +432,11 @@ a:hover {
   box-shadow: 0 10px 28px rgba(47, 128, 237, 0.08);
 }
 
+/* info-box 색상 변형 (인라인 border-left 흡수) */
+.info-box.success { border-left-color: var(--accent-2); }
+.info-box.accent  { border-left-color: var(--accent-3); }
+.info-box.notice  { border-left-color: var(--warning-border); }
+
 /* === Warning Box === */
 .warning-box {
   background: var(--warning-bg);
