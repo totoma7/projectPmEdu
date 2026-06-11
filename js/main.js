@@ -60,13 +60,23 @@
   var overlay = document.getElementById('sidebar-overlay');
   var menuToggle = document.getElementById('menu-toggle');
 
-  menuToggle.addEventListener('click', function () {
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('open');
-    menuToggle.classList.toggle('active');
-  });
+  // resource 페이지에는 사이드바·메뉴 토글이 없으므로 가드
+  if (sidebar && overlay && menuToggle) {
+    menuToggle.addEventListener('click', function () {
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+      menuToggle.classList.toggle('active');
+    });
 
-  overlay.addEventListener('click', closeSidebar);
+    overlay.addEventListener('click', closeSidebar);
+
+    // 모바일에서 사이드바 링크 클릭 시 닫기
+    sidebar.querySelectorAll('.nav-sub a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.innerWidth <= 768) closeSidebar();
+      });
+    });
+  }
 
   function closeSidebar() {
     sidebar.classList.remove('open');
@@ -74,23 +84,18 @@
     menuToggle.classList.remove('active');
   }
 
-  // 모바일에서 사이드바 링크 클릭 시 닫기
-  sidebar.querySelectorAll('.nav-sub a').forEach(function (link) {
-    link.addEventListener('click', function () {
-      if (window.innerWidth <= 768) closeSidebar();
-    });
-  });
-
   // --- Scroll to Top ---
   var scrollTopBtn = document.getElementById('scroll-top');
 
-  window.addEventListener('scroll', function () {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
-  });
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function () {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
 
-  scrollTopBtn.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+    scrollTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   // --- Scroll-based Section Highlight ---
   var sections = document.querySelectorAll('section[id]');
