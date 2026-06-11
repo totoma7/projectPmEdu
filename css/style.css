@@ -511,6 +511,11 @@ a:hover {
   border-right: none;
 }
 
+/* 표 셀 내부 리스트는 본문 측정폭(72ch) 제한에서 제외 */
+.comparison-table li {
+  max-width: none;
+}
+
 .comparison-table tbody tr:last-child td {
   border-bottom: none;
 }
