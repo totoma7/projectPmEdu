@@ -4,3 +4,4 @@ node_modules/
 .bkit/
 .claude/
 .omc/
+.playwright-mcp/
