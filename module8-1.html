@@ -196,7 +196,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.05.24</p>
+      <p>최근 업데이트: 2026.06.11</p>
       <p>&copy; 2026 2026 AI 실무 플레이북</p>
     </div>
   </nav>
@@ -220,6 +220,16 @@
         <li><strong>Claude 데이터 잔류 제어</strong>: <code>inference_geo</code> 파라미터로 추론 지역 지정. 2026-02-01 이후 출시 모델은 US-only 추론이 기본 가격의 <strong>1.1배</strong>. 규제 산업 도입 시 가격 산정에 반영.</li>
         <li><strong>Claude Bedrock 셀프서비스</strong>: Opus 4.7 / Haiku 4.5가 27개 AWS 리전에서 Bedrock 콘솔로 즉시 사용 가능 — 엔터프라이즈 도입 장벽 하락.</li>
         <li><strong>Sonnet 4 / Opus 4 사용 중단</strong>: 2026-06-15 API 종료. 운영 중인 워크로드의 모델명·SDK 확인 필수.</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <strong>📌 2026-06 주요 변화 — 과금 구조의 대전환</strong>
+      <ul>
+        <li><strong>Claude Fable 5 출시 (2026-06-09)</strong>: Opus 상위 "Mythos급" 티어, <strong>$10/$50 per 1M</strong>·기본 1M 컨텍스트(롱 컨텍스트 추가 과금 없음). Pro·Max·Team 플랜에 <strong>06-22까지 무료 포함, 06-23부터 사용 크레딧 필요</strong> — 구독만으로 최상위 모델을 쓸 수 있는 기간이 한시적이므로 예산 계획에 반영. Mythos급 트래픽은 <strong>30일 데이터 보존 의무</strong>(zero-retention 예외 없음)가 있어 규제 산업은 데이터 거버넌스 검토 필수.</li>
+        <li><strong>Anthropic 구독 분리 개편 (2026-06-15 발효)</strong>: Agent SDK·<code>claude -p</code>·GitHub Actions 등 <strong>프로그래매틱 사용이 구독 쿼터에서 분리</strong>되어 별도 월간 크레딧 풀로 전환(Pro $20 / Max 5x $100 / Max 20x $200 상당, 1회 옵트인·팀 풀링 불가·이월 불가, 소진 시 API 요율 추가 과금 또는 중단). 대화형 채팅·터미널 Claude Code 세션은 기존 플랜 유지. <strong>CI/CD 자동화 비용을 구독료에 묻어가던 팀은 비용 모델 재산정 필요.</strong> 한편 SpaceX 컴퓨트 확보로 Pro/Max의 Claude Code <strong>5시간 윈도 한도는 2배</strong> 상향.</li>
+        <li><strong>GitHub Copilot 토큰 과금 전환 (2026-06-01)</strong>: 'Premium requests' 정액제 폐지 → <strong>GitHub AI Credits</strong>(토큰 합산·모델별 요율). 플랜 가격 유지(Pro 1,500 / Pro+ 7,000 크레딧)이나 실질 한도 축소, 최상위 <strong>Max $100/월</strong>(20,000 크레딧) 신설. 자동완성은 무제한 유지. <strong>정액제 기준으로 산정한 팀 단위 Copilot 예산은 재검토 필수.</strong></li>
+        <li><strong>흐름 요약</strong>: Cursor(2025) → Anthropic·Copilot(2026-06)으로 이어지는 <strong>"정액제 → 사용량 기반 크레딧" 전환</strong>이 업계 표준이 되는 중. ROI 산출 시 "1인당 월정액"이 아니라 <strong>"팀 전체 토큰 소비량"</strong> 기준의 비용 모델로 전환해야 함.</li>
       </ul>
     </div>
 
@@ -344,7 +354,7 @@
         <tr><td><strong>ChatGPT Plus</strong></td><td>$20/월</td><td>약 27,000원</td><td>가능</td><td>불가 (해외 결제)</td></tr>
         <tr><td><strong>Claude Pro</strong></td><td>$20/월</td><td>약 27,000원</td><td>가능</td><td>불가 (해외 결제)</td></tr>
         <tr><td><strong>Cursor Pro</strong></td><td>$20/월</td><td>약 27,000원</td><td>가능</td><td>불가 (해외 결제)</td></tr>
-        <tr><td><strong>GitHub Copilot</strong></td><td>$10/월</td><td>약 13,500원</td><td>가능</td><td>GitHub 엔터프라이즈 가능</td></tr>
+        <tr><td><strong>GitHub Copilot</strong></td><td>$10/월 (2026-06부터 토큰 기반 AI Credits, Max $100/월 신설)</td><td>약 13,500원</td><td>가능</td><td>GitHub 엔터프라이즈 가능</td></tr>
         <tr><td><strong>뤼튼 프로</strong></td><td>9,900원/월</td><td>9,900원</td><td>가능</td><td>가능 (국내 법인)</td></tr>
       </tbody>
     </table>
@@ -410,7 +420,7 @@ graph TD
         <tr>
           <td><strong class="ai-term">컨텍스트 윈도우</strong></td>
           <td>한 번에 처리할 수 있는 최대 토큰 수</td>
-          <td>GPT-5.5: 1M, Claude Opus 4.7: 1M, Gemini 3 Pro: 2M (GPT-4o 128K는 레거시)</td>
+          <td>Claude Fable 5: <strong>1M 기본</strong>(추가 과금 없음), GPT-5.5: 1M, Claude Opus 4.7/4.8: 1M, Gemini 3 Pro: 2M (GPT-4o 128K는 레거시)</td>
         </tr>
       </tbody>
     </table>

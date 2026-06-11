@@ -1,11 +1,11 @@
 # 2026 AI 실무 플레이북
 
-> **PM·PL·개발자를 위한 한국 기준 실무서** &nbsp;·&nbsp; 2026-05 갱신
+> **PM·PL·개발자를 위한 한국 기준 실무서** &nbsp;·&nbsp; 2026-06 갱신
 >
 > 사내 개발자·PM·PL을 위한 AI 실무 교육자료입니다.
 > 시간 날 때 지속적으로 콘텐츠를 갱신하고 있습니다.
 
-**📅 최종 갱신: 2026-05-24** &nbsp;·&nbsp; 변경 이력: [resource_changelog.html](./resource_changelog.html)
+**📅 최종 갱신: 2026-06-11** &nbsp;·&nbsp; 변경 이력: [resource_changelog.html](./resource_changelog.html)
 
 **🔗 바로가기: https://totoma7.github.io/projectPmEdu/**
 

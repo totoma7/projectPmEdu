@@ -32,18 +32,38 @@
       <section>
         <h3>예정 (Upcoming)</h3>
         <div class="changelog-entry upcoming">
-          <h3>2026-06 (예정) <span class="badge planned">PLANNED</span></h3>
+          <h3>2026-07 (예정) <span class="badge planned">PLANNED</span></h3>
           <ul>
             <li>각 모듈 말미에 "학습 체크포인트" 3~5문항 퀴즈 삽입</li>
             <li>검색 기능에 부록(resource_*) 페이지 통합 인덱싱</li>
             <li>국내 AI 도입 사례 5건 추가 (금융·유통·교육·공공·제조)</li>
             <li>Voice of User 섹션 — 독자 피드백 반영 내역 공개</li>
+            <li>MCP 2026-07-28 정식 스펙 발행 시 부록 A(MCP 서버 개발) 전면 갱신</li>
           </ul>
         </div>
       </section>
 
       <section>
         <h3>릴리스</h3>
+
+        <div class="changelog-entry">
+          <h3>2026-06-11 (Claude 5 시대 개막 + 6월 생태계 격변 반영) <span class="badge added">ADDED</span> <span class="badge changed">CHANGED</span></h3>
+          <strong>Claude Fable 5 / Mythos 5 · Opus 4.8 · Claude Code v2.1.173 · Sonnet 4/Opus 4 은퇴 · Copilot 과금 전환 · MCP 차기 스펙 RC</strong>
+          <ul>
+            <li><strong>ADDED</strong> Anthropic — <strong>Claude Opus 4.8</strong> (2026-05-28): SWE-Bench Pro <strong>69.2%</strong>(GPT-5.5·Gemini 3.1 Pro 상회, 단 터미널 코딩 벤치마크는 GPT-5.5 우위). <strong>dynamic workflows</strong> 리서치 프리뷰(한 세션에서 수백 개 병렬 서브에이전트 오케스트레이션 — Enterprise/Team/Max), effort 제어(기본 high, <code>xhigh</code>/<code>max</code>), 최소 캐시 가능 프롬프트 1,024토큰으로 인하. 코드 결함을 지적 없이 통과시킬 확률이 전작 대비 약 1/4로 감소(정직성 개선).</li>
+            <li><strong>ADDED</strong> Anthropic — <strong>Claude Fable 5 / Mythos 5</strong> (2026-06-09): Opus 상위의 새 <strong>"Mythos급" 티어</strong> 신설. <strong>Fable 5</strong>(<code>claude-fable-5</code>)는 Mythos급을 안전화한 <strong>일반 공개 모델</strong> — <strong>$10 / $50 per 1M</strong>, <strong>기본 1M 컨텍스트</strong>(롱 컨텍스트 추가 과금 없음) / 출력 128K, "거의 모든 벤치마크 SOTA"(일부 벤치마크에서 Opus 4.8 대비 +10%p 이상). <strong>Mythos 5</strong>는 세이프가드 해제판으로 Project Glasswing 파트너(사이버 방어·생물학 연구 기관) 한정. 고위험 요청 감지 시 Opus 4.8 폴백 분류기(세션의 5% 미만 발동). Pro·Max·Team 플랜에 <strong>2026-06-22까지 무료 포함, 06-23부터 사용 크레딧 필요</strong>. Mythos급 트래픽 전체 <strong>30일 데이터 보존 의무화</strong>(기존 zero-retention 계약도 예외 없음 → Microsoft가 법무 검토 동안 직원 사용 제한). <strong>module9-1 Mythos 박스</strong>·<strong>module1-2 가격표</strong>·<strong>module8-1 비용 비교</strong> 갱신 완료.</li>
+            <li><strong>CHANGED</strong> Anthropic — <strong>Sonnet 4 / Opus 4 은퇴 예정대로 확정</strong>: <code>claude-sonnet-4-20250514</code>·<code>claude-opus-4-20250514</code>는 <strong>2026-06-15 9AM PT</strong> API 종료. 이후 호출은 자동 폴백 없이 <strong>에러 반환</strong> — 운영 워크로드의 모델명 마이그레이션 최종 확인 필요.</li>
+            <li><strong>CHANGED</strong> Anthropic — <strong>구독 분리 개편 2026-06-15 발효</strong>(05-13 공지): Agent SDK·<code>claude -p</code>·Claude Code GitHub Actions·서드파티 앱 등 <strong>프로그래매틱 사용이 구독 쿼터에서 분리</strong>되어 별도 월간 크레딧으로 전환(Pro $20 / Max 5x $100 / Max 20x $200 상당). 1회 옵트인 필요, 사용자별(팀 풀링 불가), 미사용분 이월 불가. 대화형 Claude.ai·터미널 Claude Code 세션은 기존 플랜 유지. 별도로 SpaceX 멤피스 데이터센터(300MW+) 컴퓨트 확보로 <strong>Pro/Max의 Claude Code 5시간 윈도 한도 2배</strong>·피크 시간 제한 철폐. <strong>module8-1 요금제</strong> 반영.</li>
+            <li><strong>CHANGED</strong> Claude Code — <strong>v2.1.150 → v2.1.173</strong>: <strong>v2.1.152</strong> <code>/code-review --fix</code>(리뷰 결과 자동 적용)·MessageDisplay 훅. <strong>v2.1.154</strong> Opus 4.8 지원 + <strong>dynamic workflows</strong>(<code>/workflows</code>로 실행 조회)·패스트 모드 가격 인하. <strong>v2.1.160</strong> 워크플로 트리거 키워드 <code>ultracode</code>로 변경, 셸 시작 파일(<code>.zshenv</code> 등)·<code>~/.config/git/</code> 쓰기 전 확인 프롬프트 등 보안 강화. <strong>v2.1.169</strong> <code>--safe-mode</code>(설정 전체 비활성 진단 모드)·<code>/cd</code>(캐시 유지 디렉터리 이동). <strong>v2.1.173</strong> Fable 5 지원(1M 컨텍스트 기본). <strong>module9-1·module10-2</strong> 버전 표기 갱신.</li>
+            <li><strong>CHANGED</strong> OpenAI — <strong>GPT-5.6 여전히 미출시</strong>(2026-06-10 기준 발표문·모델카드·API 없음). Polymarket 06-30 이전 출시 확률 <strong>90%</strong>, The Information "이르면 6월 중" 보도·수석과학자의 "meaningful improvement" 언급 등 임박 정황만 존재 — 계속 <strong>미확정</strong> 취급.</li>
+            <li><strong>ADDED</strong> OpenAI — <strong>Codex 직무 확장</strong>(06-02 "Intelligence at Work"): 분석가·마케터·영업 등 직무별 플러그인 6종(비즈니스 앱 62개·자동화 스킬 110개), 프롬프트로 사내 앱을 만들어 배포하는 <strong>Codex Sites</strong> 프리뷰, 주간 사용자 <strong>500만 돌파</strong>(지식근로자 ~20%). <strong>멀티클라우드 확장</strong>: Amazon Bedrock GA(06-01~03), Oracle 클라우드 제공 발표(06-10). IPO용 <strong>S-1 비공개 제출</strong>(06-08, 목표 밸류 최대 $1T 보도).</li>
+            <li><strong>CHANGED</strong> Google — <strong>Gemini 3.5 Pro 여전히 GA 미출시</strong>(06-11 기준): "6월 GA 임박" 보도와 2M 컨텍스트·Deep Think 탑재 전망은 <strong>미확정</strong>. <strong>Gemini Omni Flash</strong>는 05-26 전후 Gemini 앱·Flow에서 AI 구독자 글로벌 롤아웃 시작(API 미제공). 개발자 영향 큰 변경: <strong>Gemini 2.0 Flash/Flash-Lite 종료</strong>(06-01), Interactions API 레거시 스키마 제거(06-08), <strong>Gemini CLI·Code Assist 무료/Pro/Ultra 요청 처리 중단 예고(06-18)</strong> → Antigravity CLI 전환, non-global 엔드포인트 별도 과금 2026-07-01 발효 예고. 06-10 사상 최대급 Gemini 장애 발생 후 복구.</li>
+            <li><strong>CHANGED</strong> 코딩 도구 시장 — <strong>GitHub Copilot 토큰 과금 전면 전환</strong>(06-01): Premium requests 폐지 → GitHub AI Credits(토큰 합산·모델별 요율), 플랜 가격 유지(Pro 1,500/Pro+ 7,000 크레딧)이나 실질 한도 축소로 반발, 최상위 <strong>Max $100/월</strong>(20,000 크레딧) 신설, Pro 계열 신규 가입 일시 중단. <strong>Windsurf → Devin Desktop 리브랜딩</strong>(06-02, Cognition): Agent Command Center 기본 UI·오픈 ACP로 외부 에이전트 구동, Free/Pro $20/Max $200. Cursor Teams 이원화(Standard $32 / Premium $96 per 시트). <strong>module9-1 도구 생태계</strong> 반영.</li>
+            <li><strong>ADDED</strong> MCP — <strong>2026-07-28 스펙 릴리스 후보(RC) 확정</strong>(05-21): 출시 이후 최대 개정. 프로토콜 코어 <strong>무상태(stateless)화</strong>(일반 HTTP LB 뒤 동작), <code>Mcp-Method</code>/<code>Mcp-Name</code> 라우팅 헤더 필수화, 캐싱 메타(ttlMs), W3C Trace Context 관측성, MCP Apps·Tasks 확장, OAuth/OIDC 정합성 — <strong>파괴적 변경 포함</strong>, 정식 발행 2026-07-28. <strong>부록 A(MCP 서버 개발)</strong> 동향 반영.</li>
+            <li><strong>ADDED</strong> 국내 — <strong>AI기본법 시행령 개정안 입법예고</strong>(05-21~06-19, 개정법 2026-07-21 시행 예정): AI 제품·서비스 공공조달 확인 제도, AI 취약계층 범위 구체화, 모태펀드 AI 창업 지원 등. <strong>부록 B(규제)</strong> 반영. 네이버 — 6월부터 AI 검색에 차세대 하이퍼클로바X 적용·대화형 'AI탭' 정식 출시(05-28 발표). 삼성전자 — DX부문 외부 생성형 AI 공식 도입(보안 교육 이수자 한정, 05-26 보도).</li>
+            <li><strong>NOTE</strong> 기타 — DeepSeek V4-Pro <strong>75% 가격 인하 영구화</strong>(가격 전쟁 본격화), 알리바바 <strong>Qwen3.7-Max</strong>(05-20, $2.50/$7.50, 1M 컨텍스트, API 전용), xAI 1.5T 파라미터 신규 Grok 6월 중순 출시 예고. Anthropic Series H <strong>$65B</strong> 조달($965B 밸류, 05-28) 및 S-1 비공개 제출(06-01) — OpenAI와 나란히 IPO 절차 개시.</li>
+          </ul>
+        </div>
 
         <div class="changelog-entry">
           <h3>2026-05-24 (Google I/O 2026 + Claude Code v2.1.150 반영) <span class="badge added">ADDED</span> <span class="badge changed">CHANGED</span></h3>
@@ -166,15 +186,17 @@
       <section>
         <h3>주요 수치 변동 요약</h3>
         <table class="comparison-table">
-          <thead><tr><th>항목</th><th>2026-01</th><th>2026-05-24 (현재)</th><th>변화</th></tr></thead>
+          <thead><tr><th>항목</th><th>2026-01</th><th>2026-06-11 (현재)</th><th>변화</th></tr></thead>
           <tbody>
-            <tr><td>Claude 최상위 모델</td><td>Opus 4.5</td><td><strong>Opus 4.7</strong> (2026-04-16) + Sonnet 4.6 + Haiku 4.5</td><td>2세대 상승</td></tr>
-            <tr><td>Claude Opus 입력 가격</td><td>$15 / 1M</td><td><strong>$5 / 1M</strong> (Opus 4.7, 4.6 동결)</td><td>−67%</td></tr>
-            <tr><td>Claude Opus 출력 가격</td><td>$75 / 1M</td><td><strong>$25 / 1M</strong> (Opus 4.7, 4.6 동결)</td><td>−67%</td></tr>
-            <tr><td>Claude Opus 컨텍스트</td><td>200k</td><td><strong>1M</strong></td><td>×5</td></tr>
+            <tr><td>Claude 최상위 모델</td><td>Opus 4.5</td><td><strong>Fable 5 (Mythos급, 2026-06-09)</strong> + Opus 4.8 + Sonnet 4.6 + Haiku 4.5</td><td>신규 티어 신설</td></tr>
+            <tr><td>Claude 최상위 가격</td><td>$15 / $75 per 1M</td><td><strong>$10 / $50 per 1M (Fable 5)</strong> · Opus 4.8 $5/$25</td><td>티어 추가</td></tr>
+            <tr><td>Claude Opus 입력 가격</td><td>$15 / 1M</td><td><strong>$5 / 1M</strong> (Opus 4.7/4.8, 4.6 동결)</td><td>−67%</td></tr>
+            <tr><td>Claude Opus 출력 가격</td><td>$75 / 1M</td><td><strong>$25 / 1M</strong> (Opus 4.7/4.8, 4.6 동결)</td><td>−67%</td></tr>
+            <tr><td>Claude 최대 컨텍스트</td><td>200k</td><td><strong>1M 기본 (Fable 5 — 롱 컨텍스트 추가 과금 없음)</strong></td><td>×5</td></tr>
             <tr><td>Opus 4.7 토크나이저</td><td>—</td><td><strong>+최대 35% 토큰</strong> 생성 가능 (실청구 ↑)</td><td>신설 리스크</td></tr>
             <tr><td>Opus 4.7 픽셀 예산</td><td>1.25 MP</td><td><strong>3.75 MP</strong></td><td>×3</td></tr>
-            <tr><td>Claude Sonnet 4 / Opus 4 EOL</td><td>—</td><td><strong>2026-06-15 API 종료</strong> (4.6/4.7 마이그레이션 권고)</td><td>신설 마감</td></tr>
+            <tr><td>Claude Sonnet 4 / Opus 4 EOL</td><td>—</td><td><strong>2026-06-15 9AM PT API 종료 확정</strong> (이후 호출은 에러 반환)</td><td>마감 임박</td></tr>
+            <tr><td>Claude 구독 체계</td><td>단일 쿼터</td><td><strong>06-15부터 프로그래매틱 사용(Agent SDK 등) 별도 크레딧 분리</strong> · Claude Code 5시간 한도 2배</td><td>구조 개편</td></tr>
             <tr><td>Claude Advisor Tool</td><td>없음</td><td><strong>beta</strong> — Sonnet/Haiku × Opus advisor (단일 API 호출)</td><td>신설</td></tr>
             <tr><td>Claude Bedrock</td><td>일부 한정</td><td><strong>Opus 4.7 / Haiku 4.5 셀프서비스, 27 리전</strong></td><td>전면 개방</td></tr>
             <tr><td>Claude 데이터 잔류</td><td>없음</td><td><strong>inference_geo</strong> — US-only 1.1× 가격</td><td>신설</td></tr>
@@ -184,7 +206,8 @@
             <tr><td>OpenAI 주력 출력 가격</td><td>$15 / 1M (GPT-5)</td><td><strong>$30 / 1M (GPT-5.5)</strong></td><td>+100%</td></tr>
             <tr><td>OpenAI 주력 컨텍스트</td><td>128K (GPT-4o)</td><td><strong>1M (GPT-5.5)</strong></td><td>×7.8</td></tr>
             <tr><td>ChatGPT 개인화</td><td>제한적</td><td><strong>과거 대화 + 파일 + Gmail 검색</strong> (Plus/Pro)</td><td>신설</td></tr>
-            <tr><td>Gemini 주력 세대</td><td>1.5 Pro</td><td><strong>3.5 Flash</strong> (I/O 2026, 2026-05-19) + 3.1 Pro + 3.5 Pro(테스트)</td><td>2.5세대 상승</td></tr>
+            <tr><td>Gemini 주력 세대</td><td>1.5 Pro</td><td><strong>3.5 Flash</strong> (I/O 2026, 2026-05-19) + 3.1 Pro + 3.5 Pro(GA 미출시, 6월 임박설)</td><td>2.5세대 상승</td></tr>
+            <tr><td>Gemini CLI</td><td>제공 중</td><td><strong>2026-06-18 무료/Pro/Ultra 요청 처리 중단 예고</strong> → Antigravity CLI 전환</td><td>서비스 종료</td></tr>
             <tr><td>Gemini 3 Flash 가격</td><td>—</td><td><strong>$0.50 / $3 per 1M</strong> · SWE-bench Verified 78%</td><td>신설 가격</td></tr>
             <tr><td>Gemini 3.5 Flash 가격</td><td>—</td><td><strong>$1.50 / $9 per 1M</strong> · 1M 컨텍스트 · 3.1 Pro 상회</td><td>신설(I/O 2026)</td></tr>
             <tr><td>Gemini Omni / Antigravity 2.0</td><td>없음</td><td><strong>Omni(멀티모달 창작)</strong> · <strong>Managed Agents in Gemini API</strong></td><td>신설</td></tr>
@@ -192,7 +215,8 @@
             <tr><td>Gemini 추론 모드</td><td>없음</td><td><strong>Deep Think</strong> (AI Ultra) — 5월 메이저 업데이트</td><td>신설+강화</td></tr>
             <tr><td>Gemini Computer Use</td><td>없음</td><td><strong>Pro / Flash 정식 지원</strong></td><td>신설</td></tr>
             <tr><td>Gemini Deep Research</td><td>요약 엔진</td><td><strong>Deep Research / Max</strong> — MCP 지원, 시각화, 엔터프라이즈 워크플로</td><td>전면 개편</td></tr>
-            <tr><td>Claude Code 버전</td><td>v2.0.x</td><td><strong>v2.1.150 (2026-05-23)</strong> — /simplify→/code-review 개명, 백그라운드 세션 /resume, agents --json, OTEL agent_id</td><td>월 단위 갱신</td></tr>
+            <tr><td>Claude Code 버전</td><td>v2.0.x</td><td><strong>v2.1.173 (2026-06)</strong> — Fable 5(1M 기본)·Opus 4.8 지원, dynamic workflows(<code>ultracode</code>), /code-review --fix, --safe-mode, /cd</td><td>월 단위 갱신</td></tr>
+            <tr><td>GitHub Copilot 과금</td><td>정액 Premium requests</td><td><strong>토큰 기반 AI Credits (2026-06-01)</strong> · Max $100/월 신설</td><td>과금 구조 전환</td></tr>
             <tr><td>Claude Code MCP 한도</td><td>제한적</td><td><strong>500K 문자</strong> (v2.1.89~)</td><td>대폭 상향</td></tr>
             <tr><td>오픈 모델 최상위</td><td>Llama 3.3 70B</td><td><strong>Llama 4 405B / Qwen 3 / Gemma 4</strong></td><td>체급 및 품질 상승</td></tr>
           </tbody>
@@ -211,7 +235,7 @@
     </article>
 
     <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
-      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.05.24
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.06.11
     </div>
   </main>
 </body>

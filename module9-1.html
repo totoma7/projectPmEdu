@@ -196,7 +196,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.05.24</p>
+      <p>최근 업데이트: 2026.06.11</p>
       <p>&copy; 2026 2026 AI 실무 플레이북</p>
     </div>
   </nav>
@@ -211,16 +211,17 @@
     </div>
 
     <div class="warning-box">
-      <strong>📌 2026-04 동향 — Claude Mythos Preview (제한 공개)</strong><br>
-      Anthropic은 2026-04-07 <strong>Claude Mythos Preview</strong>를 공개했습니다. <strong>11개 회사·기관에 한정</strong> 배포되며 <strong>일반 공개 계획 없음</strong>. 사이버보안 취약점 탐색·완화 용도로 한정되며, 능력이 너무 강력해 충분한 안전조치 없이 출시할 수 없다는 게 Anthropic의 입장입니다. 일반 개발자가 쓸 수 있는 모델은 여전히 Opus 4.7 / Sonnet 4.6 / Haiku 4.5 라인입니다.
+      <strong>📌 2026-06 동향 — Claude Fable 5 출시: Mythos급의 일반 공개 (2026-06-09)</strong><br>
+      4월에 "11개 기관 한정·일반 공개 계획 없음"이던 Mythos급 모델이 두 달 만에 일반 공개로 전환됐습니다. Anthropic은 2026-06-09 Opus 상위의 새 <strong>"Mythos급" 티어</strong>를 신설하고, 이를 안전화한 <strong>Claude Fable 5</strong>(<code>claude-fable-5</code>)를 즉시 일반 제공하기 시작했습니다 — <strong>$10/$50 per 1M, 기본 1M 컨텍스트</strong>(롱 컨텍스트 추가 과금 없음), "거의 모든 벤치마크 SOTA". 세이프가드를 해제한 <strong>Claude Mythos 5</strong>는 여전히 Project Glasswing 파트너(사이버 방어·생물학 연구 기관) 한정입니다. Fable 5는 고위험 요청(사이버보안·생물·화학 등) 감지 시 <strong>Opus 4.8로 폴백</strong>하는 분류기를 탑재했고, Mythos급 트래픽 전체에 <strong>30일 데이터 보존이 의무화</strong>되어(기존 zero-retention 계약도 예외 없음) 일부 기업이 도입을 보류하는 등 거버넌스 쟁점도 함께 부상했습니다. Pro·Max 플랜에는 <strong>2026-06-22까지 무료 포함, 06-23부터 사용 크레딧 필요</strong>. 직전인 2026-05-28에는 <strong>Claude Opus 4.8</strong>(SWE-Bench Pro 69.2%, dynamic workflows 리서치 프리뷰)도 출시됐습니다.
     </div>
 
     <div class="warning-box">
       <strong>📌 2026-05 주요 변화 — AI 코딩 도구 동향</strong>
       <ul>
-        <li><strong>Claude Code v2.1.132 → v2.1.150 (2026-05-23)</strong>: <code>CLAUDE_CODE_SESSION_ID</code> 환경변수, <code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code>, SIGINT 우아한 종료에 더해 5월 후반 다수 패치. <strong>v2.1.147에서 <code>/simplify</code>가 <code>/code-review</code>로 개명</strong>(지정 effort 레벨로 정확성 버그 보고, <code>--comment</code>로 GitHub PR 인라인 코멘트). 고정(pinned) 백그라운드 세션 유지, <code>claude agents --json</code>(세션 JSON 목록), OTEL 스팬에 <code>agent_id</code>·<code>parent_agent_id</code>, 백그라운드 세션 <code>/resume</code> 지원(v2.1.144 BREAKING).</li>
+        <li><strong>Claude Code v2.1.150 → v2.1.173 (2026-06)</strong>: <strong>v2.1.154</strong>에서 Opus 4.8 지원 + <strong>dynamic workflows</strong> 도입(수십~수백 에이전트 백그라운드 오케스트레이션, <code>/workflows</code>로 조회), <strong>v2.1.160</strong>에서 워크플로 트리거 키워드가 <code>ultracode</code>로 변경되고 셸 시작 파일(<code>.zshenv</code> 등) 쓰기 전 확인 프롬프트 등 보안 강화, <strong>v2.1.169</strong>에서 <code>--safe-mode</code>(CLAUDE.md·플러그인·훅·MCP 전부 비활성화한 진단 모드)·<code>/cd</code>(프롬프트 캐시를 깨지 않는 디렉터리 이동), <strong>v2.1.173</strong>에서 Fable 5 지원(1M 컨텍스트 기본). v2.1.152의 <code>/code-review --fix</code>(리뷰 결과를 워킹 트리에 자동 적용)도 코드 리뷰 워크플로에 유용. (5월: v2.1.147 <code>/simplify</code>→<code>/code-review</code> 개명, 백그라운드 세션 <code>/resume</code>, <code>claude agents --json</code>, OTEL <code>agent_id</code>)</li>
         <li><strong>Claude Bedrock 셀프서비스</strong>: Opus 4.7 / Haiku 4.5가 <strong>27개 AWS 리전</strong>에서 Bedrock 콘솔의 Messages API로 즉시 사용 가능. AWS 중심 조직의 Claude 도입 장벽 대폭 하락.</li>
-        <li><strong>Sonnet 4 / Opus 4 사용 중단(EOL)</strong>: <strong>2026-06-15 API 종료</strong>. 사내 빌드·CI에 박힌 모델 ID(<code>claude-sonnet-4-*</code>, <code>claude-opus-4-*</code>) 검색·치환 작업 필요.</li>
+        <li><strong>Sonnet 4 / Opus 4 사용 중단(EOL) — 마감 임박</strong>: <strong>2026-06-15 9AM PT API 종료 확정</strong>. 이후 호출은 자동 폴백 없이 <strong>에러 반환</strong>되므로 사내 빌드·CI에 박힌 모델 ID(<code>claude-sonnet-4-*</code>, <code>claude-opus-4-*</code>) 검색·치환을 즉시 완료해야 합니다.</li>
+        <li><strong>Anthropic 구독 분리 개편 (2026-06-15 발효)</strong>: Agent SDK·<code>claude -p</code>·Claude Code GitHub Actions 등 <strong>프로그래매틱 사용이 구독 쿼터에서 분리</strong>되어 별도 월간 크레딧으로 전환(1회 옵트인 필요, 팀 풀링·이월 불가). 대화형 Claude.ai·터미널 Claude Code 세션은 기존 플랜 유지. CI/CD 자동화에 구독 계정을 쓰던 팀은 크레딧 소진·과금 정책을 재점검해야 합니다.</li>
         <li><strong>Gemini Computer Use 정식 지원</strong>: <code>gemini-3-pro-preview</code>·<code>gemini-3-flash-preview</code>에서 PC 제어 도구 활성화. <code>gemini-3.1-pro-preview-customtools</code>는 사내 도구·bash 혼합 사용 환경에 최적화된 별도 엔드포인트.</li>
         <li><strong>Claude Advisor Tool (beta)</strong>: Sonnet/Haiku를 executor, Opus 4.7을 advisor로 두는 단일 API 호출 패턴. 코딩 에이전트 태스크당 비용 −11.9%, Haiku+Opus 조합은 단순 Sonnet 대비 비용 −85%로 동등 수준 품질 달성.</li>
         <li><strong>Vertex AI mTLS 인증</strong>: Claude Code가 <strong>X.509 Workload Identity Federation</strong>을 지원하여 GCP 사내망 보안 정책에 부합하는 ADC 구성 가능.</li>
@@ -230,8 +231,18 @@
     <div class="warning-box">
       <strong>📌 2026-05 추가 동향 — Google I/O 2026 & 차세대 모델</strong>
       <ul>
-        <li><strong>Gemini 3.5 Flash</strong> (Google I/O 2026, 2026-05-19 GA): Google 최강 에이전트·코딩 모델로 Gemini 3.1 Pro를 상회(Terminal-Bench 2.1 76.2%, MCP Atlas 83.6%, CharXiv 84.2%). 가격 $1.50/$9 per 1M·1M 컨텍스트. <strong>Gemini 3.5 Pro</strong>는 테스트 단계로 익월(2026-06) 출시 예정. <strong>Gemini Omni</strong>(멀티모달 창작)·<strong>Antigravity 2.0</strong>·<strong>Managed Agents in Gemini API</strong>(단일 호출로 원격 샌드박스 에이전트) 동반 공개. Google AI Ultra 구독가 $100/월로 인하.</li>
-        <li><strong>GPT-5.6 — 아직 미출시(루머 단계)</strong>: 공식 발표·callable API·모델카드 없음. Polymarket 기준 2026-06-30 이전 출시 확률 89%(2026-05-13)이나 Codex 라우팅 로그의 일시 노출·내부 코드명(ember-alpha 등) 정황뿐. <strong>공식 출처 전까지 미확정</strong>으로 취급. 현행 주력은 GPT-5.5, ChatGPT 기본은 GPT-5.5 Instant. OpenAI는 2026-04-30 "Where the Goblins Came From"에서 GPT-5.5의 특정 단어 고착 정렬 실패를 공개했고, 차기 모델은 보상 신호·페르소나 격리 개선이 핵심으로 분석됨.</li>
+        <li><strong>Gemini 3.5 Flash</strong> (Google I/O 2026, 2026-05-19 GA): Google 최강 에이전트·코딩 모델로 Gemini 3.1 Pro를 상회(Terminal-Bench 2.1 76.2%, MCP Atlas 83.6%, CharXiv 84.2%). 가격 $1.50/$9 per 1M·1M 컨텍스트. <strong>Gemini 3.5 Pro</strong>는 2026-06-11 현재 <strong>여전히 GA 미출시</strong>(6월 출시 임박설과 2M 컨텍스트·Deep Think 탑재 전망은 미확정). <strong>Gemini Omni Flash</strong>는 5월 말부터 AI 구독자 대상 Gemini 앱 롤아웃 시작(API 미제공). Google AI Ultra 구독가 $100/월로 인하.</li>
+        <li><strong>GPT-5.6 — 여전히 미출시(루머 단계, 2026-06-10 기준)</strong>: 공식 발표·callable API·모델카드 없음. Polymarket 기준 2026-06-30 이전 출시 확률 <strong>90%</strong>, The Information "이르면 6월 중 출시" 보도와 수석과학자의 "GPT-5.5 대비 meaningful improvement" 언급 등 임박 정황은 있으나 <strong>공식 출처 전까지 미확정</strong>으로 취급. 현행 주력은 GPT-5.5, ChatGPT 기본은 GPT-5.5 Instant. 한편 <strong>Codex는 06-02 직무별 확장 발표</strong>(직무 플러그인 6종·Codex Sites 프리뷰)로 주간 사용자 <strong>500만</strong>을 돌파했고, OpenAI 모델·Codex가 Amazon Bedrock(06-01)·Oracle 클라우드(06-10)로 멀티클라우드 확장.</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <strong>📌 2026-06 동향 — 코딩 도구 시장 지각변동</strong>
+      <ul>
+        <li><strong>GitHub Copilot 토큰 과금 전면 전환 (2026-06-01)</strong>: 'Premium requests' 정액 모델을 폐지하고 <strong>GitHub AI Credits</strong>(입력·출력·캐시 토큰 합산, 모델별 요율) 기반 과금으로 전환. 플랜 가격은 유지(Pro 1,500 / Pro+ 7,000 크레딧)되나 실질 사용량 한도 축소로 개발자 반발. 최상위 <strong>Max 플랜($100/월, 20,000 크레딧)</strong> 신설, 용량 관리를 위해 Pro 계열 신규 가입 일시 중단. 코드 자동완성은 무제한 유지.</li>
+        <li><strong>Windsurf → Devin Desktop 리브랜딩 (2026-06-02)</strong>: Cognition이 Windsurf 브랜드를 폐지하고 IDE를 <strong>Devin Desktop</strong>으로 재출시. Agent Command Center가 기본 인터페이스이며, 오픈 <strong>Agent Client Protocol(ACP)</strong>로 Codex·Claude Agent 등 외부 에이전트 구동 가능. 가격 Free / Pro $20 / Max $200. 기존 Cascade는 레거시 전환.</li>
+        <li><strong>Gemini CLI 서비스 중단 예고 (2026-06-18)</strong>: Gemini CLI·Gemini Code Assist IDE 확장이 무료/AI Pro/Ultra 사용자 요청 처리를 중단(Code Assist Standard/Enterprise 라이선스는 유지). 동일 명령 구조의 <strong>Antigravity CLI</strong>로 전환 안내. Gemini CLI 기반 사내 자동화가 있다면 마이그레이션 필요.</li>
+        <li><strong>Cursor Teams 요금제 이원화</strong>: Standard($32/시트/월)와 Premium($96/시트/월, 5배 사용량)으로 분리. 개인 플랜(Pro $20 / Ultra $200)은 유지.</li>
       </ul>
     </div>
 
@@ -273,16 +284,16 @@
           <td>64K 토큰</td>
           <td>Copilot Workspace</td>
           <td>Extensions로 제한 지원</td>
-          <td>Individual $10/월, Business $19/월/인</td>
+          <td>Individual $10/월, Business $19/월/인 (2026-06부터 토큰 기반 AI Credits 과금, Max $100/월 신설)</td>
           <td>GitHub 중심 팀, 코드 자동완성 위주</td>
         </tr>
         <tr>
-          <td><strong><a href="https://codeium.com/windsurf" target="_blank" rel="noopener">Windsurf</a></strong></td>
-          <td>Cascade 에이전트, 다중 파일 동시 편집, 풀스택 인식</td>
+          <td><strong><a href="https://devin.ai" target="_blank" rel="noopener">Devin Desktop</a> (구 Windsurf)</strong></td>
+          <td>Agent Command Center 기본 UI, 오픈 ACP로 외부 에이전트(Codex·Claude Agent) 구동, 다중 파일 동시 편집 (2026-06-02 Windsurf에서 리브랜딩)</td>
           <td>1M 토큰</td>
-          <td>Cascade (강력)</td>
+          <td>Agent Command Center (구 Cascade는 레거시)</td>
           <td>일부 지원</td>
-          <td>Free, Pro $15/월, Teams $30/월/인</td>
+          <td>Free, Pro $20/월, Max $200/월, Teams $80+$40/시트</td>
           <td>풀스택 신규 개발, 빠른 MVP 구축</td>
         </tr>
         <tr>
@@ -311,7 +322,7 @@
       <div class="mermaid">
 graph LR
     subgraph 신규_개발
-        W[Windsurf\nCascade 에이전트]
+        W[Devin Desktop(구 Windsurf)\n에이전트 IDE]
         CC[Claude Code\n바이브 코딩]
     end
     subgraph 기존_코드_수정
@@ -346,12 +357,12 @@ graph LR
         <tr>
           <td>1인 PM/PL (비개발자)</td>
           <td>Claude Code</td>
-          <td>Windsurf</td>
+          <td>Devin Desktop (구 Windsurf)</td>
           <td>자연어 대화 중심, 에이전트가 전체 작업 처리</td>
         </tr>
         <tr>
           <td>스타트업 5인 이하</td>
-          <td>Windsurf Pro</td>
+          <td>Devin Desktop Pro</td>
           <td>Claude Code</td>
           <td>빠른 MVP, 저렴한 팀 요금제</td>
         </tr>
@@ -375,7 +386,7 @@ graph LR
         </tr>
         <tr>
           <td>신규 SaaS 개발</td>
-          <td>Windsurf</td>
+          <td>Devin Desktop (구 Windsurf)</td>
           <td>Claude Code</td>
           <td>풀스택 인식, 에이전트 연속 작업</td>
         </tr>
@@ -416,7 +427,7 @@ graph LR
           <td>자동완성으로 연 $20K+</td>
         </tr>
         <tr>
-          <td>Windsurf</td>
+          <td>Devin Desktop (구 Windsurf)</td>
           <td>있음 (제한적)</td>
           <td>$15/월</td>
           <td>$75~$150</td>
@@ -435,7 +446,7 @@ graph TD
     D -->|신규 개발 중심| E{팀 규모?}
     D -->|기존 코드 수정| F[Cursor 추천\n코드베이스 인덱싱]
     D -->|자동완성 보조| G[GitHub Copilot 추천\n저렴하고 안정적]
-    E -->|5인 이하| H[Windsurf Pro\n빠른 MVP]
+    E -->|5인 이하| H[Devin Desktop Pro\n빠른 MVP]
     E -->|10인 이상| I{GitHub 사용 중?}
     I -->|예| J[GitHub Copilot Business\n통합 관리]
     I -->|아니오| K[Cursor Business\n멀티 IDE]

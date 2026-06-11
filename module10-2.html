@@ -196,7 +196,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.05.24</p>
+      <p>최근 업데이트: 2026.06.11</p>
       <p>&copy; 2026 2026 AI 실무 플레이북</p>
     </div>
   </nav>
@@ -215,7 +215,7 @@
       <ul>
         <li><strong>Opus 4.7 픽셀 예산 3배</strong>: 한 번에 처리 가능한 이미지 픽셀 한도가 1.25 MP → <strong>3.75 MP</strong>로 확대. UI 캡처·문서 스캔·디자인 QA 등 고해상도 멀티모달 작업의 분할 부담이 크게 감소. 다만 <strong>새 토크나이저</strong>가 동일 입력에 대해 최대 +35% 토큰을 생성할 수 있어 실청구액은 단가 동결에도 증가 가능.</li>
         <li><strong>Computer Use 도구 메인스트림</strong>: Claude(기존)와 Gemini 3 Pro/Flash(신규 정식)에서 PC 제어 에이전트가 동시 가용 — 멀티모달 + 자동화가 결합된 워크플로(스크린샷 → 분석 → 클릭/입력)가 본격화.</li>
-        <li><strong>Claude Code v2.1.132 → v2.1.150 (2026-05-23)</strong>: 외부 <code>SIGINT</code> 시 우아한 종료·풀스크린 옵트아웃(<code>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN=1</code>)에 더해 5월 후반 다수 패치. <strong>v2.1.147에서 <code>/simplify</code> → <code>/code-review</code> 개명</strong>(지정 effort 레벨로 정확성 버그 보고, <code>--comment</code>로 GitHub PR 인라인 코멘트 게시). 고정(pinned) 백그라운드 세션 유지, <code>claude agents --json</code>(세션 JSON 목록), OTEL 스팬에 <code>agent_id</code>·<code>parent_agent_id</code>, 백그라운드 세션 <code>/resume</code> 지원(v2.1.144 BREAKING) — 하네스 자동화·관측 스크립팅 기반 강화.</li>
+        <li><strong>Claude Code v2.1.150 → v2.1.173 (2026-06)</strong>: <strong>v2.1.154 dynamic workflows</strong>(수십~수백 에이전트 백그라운드 오케스트레이션, <code>/workflows</code> 조회 — 트리거 키워드는 v2.1.160부터 <code>ultracode</code>) 도입으로 하네스가 "단일 에이전트 CLI"에서 <strong>"에이전트 플릿 오케스트레이터"</strong>로 진화. <strong>v2.1.152</strong> <code>/code-review --fix</code>(리뷰 결과 자동 적용)·MessageDisplay 훅, <strong>v2.1.169</strong> <code>--safe-mode</code> 진단 모드·<code>/cd</code>(프롬프트 캐시 유지 디렉터리 이동), <strong>v2.1.173</strong> Fable 5 지원(1M 컨텍스트 기본). 셸 시작 파일·git 설정 쓰기 전 확인 프롬프트 등 하네스 보안 가드도 강화(v2.1.160). (5월: v2.1.147 <code>/simplify</code>→<code>/code-review</code> 개명, 백그라운드 세션 <code>/resume</code>, <code>claude agents --json</code>, OTEL <code>agent_id</code>)</li>
         <li><strong>MCP 운영 안정화</strong>: 시동 일시 오류 시 최대 3회 자동 재시도, 동일 upstream URL의 claude.ai 커넥터 자동 중복 제거, 재연결 시 도구 목록 폭주 방지(서버 prefix 요약). 결과 한도는 <code>_meta["anthropic/maxResultSizeChars"]</code>로 <strong>500K 문자</strong>까지 케이스별 상향 가능.</li>
         <li><strong>OpenTelemetry 확장</strong>: LLM 요청 스팬에 <code>stop_reason</code>·<code>gen_ai.response.finish_reasons</code>·<code>user_system_prompt</code>(opt-in) 추가. 하네스 관측·LLMOps 대시보드 강화.</li>
         <li><strong>Vertex AI X.509 mTLS 인증</strong>: Workload Identity Federation으로 GCP 사내망 보안 정책 정합. <code>--dangerously-skip-permissions</code>는 <code>.claude/skills/</code>·<code>.claude/agents/</code>·<code>.claude/commands/</code> 쓰기 시 더 이상 프롬프트하지 않음.</li>
