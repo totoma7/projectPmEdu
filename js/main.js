@@ -339,10 +339,55 @@
     }, { passive: true });
   }
 
+  // --- Page TOC + Scroll Spy (홈 제외, h3 3개 이상일 때만) ---
+  function initPageToc() {
+    if (document.querySelector('.home-hero')) return;
+    var heads = Array.prototype.slice.call(document.querySelectorAll('#content .module h3'));
+    if (heads.length < 3) return;
+    heads.forEach(function (h, i) { if (!h.id) h.id = 'toc-h' + i; });
+
+    // initProgress()가 주입한 ✓ 체크 라벨을 제외한 제목 텍스트
+    function headingText(h) {
+      var clone = h.cloneNode(true);
+      var check = clone.querySelector('.section-check');
+      if (check) check.parentNode.removeChild(check);
+      return clone.textContent.replace(/\s+/g, ' ').trim();
+    }
+
+    var nav = document.createElement('nav');
+    nav.id = 'page-toc';
+    nav.setAttribute('aria-label', '페이지 목차');
+    var title = document.createElement('p');
+    title.className = 'toc-title';
+    title.textContent = '이 페이지';
+    nav.appendChild(title);
+    heads.forEach(function (h) {
+      var a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = headingText(h);
+      a.title = headingText(h);
+      nav.appendChild(a);
+    });
+    document.body.appendChild(nav);
+
+    var links = nav.querySelectorAll('a');
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.id;
+        links.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      });
+    }, { rootMargin: '-10% 0px -75% 0px' });
+    heads.forEach(function (h) { spy.observe(h); });
+  }
+
   // --- Init ---
   initTheme();
   initProgress();
   initTagFilter();
   wrapTables();
   initReadProgress();
+  initPageToc();
 })();
