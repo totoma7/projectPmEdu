@@ -29,23 +29,24 @@
 dark 블록 `--warning-border` 아래:
 ```css
   --trend-bg: rgba(91, 110, 225, 0.16);
-  --trend-border: #93a4ff;
+  --trend-border: #a89bff; /* info 보더 #66a3ff와 구분되도록 보라 톤 */
 ```
 
-**Step 2: 스타일 추가** — `.warning-box` 정의 다음에:
+**Step 2: 스타일 추가** — `.warning-box` 정의 다음에 (기존 info/warning 박스와 동일한 radius/margin/외곽선 구조로 통일):
 ```css
 .trend-box {
   background: var(--trend-bg);
+  border: 1px solid color-mix(in srgb, var(--trend-border) 40%, var(--border));
   border-left: 4px solid var(--trend-border);
-  border-radius: var(--radius-sm);
   padding: 1rem 1.25rem;
-  margin: 1.25rem 0;
+  border-radius: var(--radius-md);
+  margin: 1.15rem 0;
   line-height: 1.7;
 }
 
-/* 콜아웃 공통: 첫 strong 제목 줄을 캡션화 */
-.info-box > strong:first-child,
-.warning-box > strong:first-child,
+/* trend-box 한정: 첫 strong 제목 줄을 캡션화
+   (info/warning은 <strong>제목</strong>: 본문 인라인 리드형 ~129곳이 있어
+   display:block 적용 시 고아 콜론·용어 축소 회귀 발생 → 스코프 제외) */
 .trend-box > strong:first-child {
   display: block;
   font-size: 0.85em;
@@ -54,10 +55,13 @@ dark 블록 `--warning-border` 아래:
   opacity: 0.92;
 }
 
+/* trend-box 내 </strong><br> 패턴의 이중 간격 제거 */
+.trend-box > strong:first-child + br {
+  display: none;
+}
+
 /* 연속 콜아웃 간격 */
-.info-box + .info-box, .info-box + .warning-box, .info-box + .trend-box,
-.warning-box + .info-box, .warning-box + .warning-box, .warning-box + .trend-box,
-.trend-box + .info-box, .trend-box + .warning-box, .trend-box + .trend-box {
+:is(.info-box, .warning-box, .trend-box) + :is(.info-box, .warning-box, .trend-box) {
   margin-top: 1.5rem;
 }
 ```
