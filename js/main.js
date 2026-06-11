@@ -344,10 +344,11 @@
     }, { passive: true });
   }
 
-  // --- Page TOC + Scroll Spy (홈 제외, h3 3개 이상일 때만) ---
+  // --- Page TOC + Scroll Spy (홈 제외, h3+h4 합계 3개 이상일 때만) ---
   function initPageToc() {
     if (document.querySelector('.home-hero')) return;
-    var heads = Array.prototype.slice.call(document.querySelectorAll('#content .module h3'));
+    // 모듈 페이지는 h3가 2개뿐인 경우가 많아 h4까지 포함 (querySelectorAll은 문서 순서 보장)
+    var heads = Array.prototype.slice.call(document.querySelectorAll('#content .module h3, #content .module h4'));
     if (heads.length < 3) return;
     heads.forEach(function (h, i) { if (!h.id) h.id = 'toc-h' + i; });
 
@@ -369,8 +370,10 @@
     heads.forEach(function (h) {
       var a = document.createElement('a');
       a.href = '#' + h.id;
-      a.textContent = headingText(h);
-      a.title = headingText(h);
+      if (h.tagName === 'H4') a.className = 'toc-sub'; // 하위 항목 들여쓰기
+      var text = headingText(h);
+      a.textContent = text;
+      a.title = text;
       nav.appendChild(a);
     });
     document.body.appendChild(nav);

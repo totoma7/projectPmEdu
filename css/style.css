@@ -488,7 +488,10 @@ a:hover {
   border-spacing: 0;
   margin: 1rem 0;
   font-size: 0.9rem;
+  /* radius 클리핑용. hidden은 표 자체를 스크롤 컨테이너로 만들어
+     thead th sticky를 무효화하므로 clip 사용(미지원 브라우저는 hidden 폴백) */
   overflow: hidden;
+  overflow: clip;
   border: 1px solid var(--table-border);
   border-radius: var(--radius-md);
 }
@@ -529,10 +532,19 @@ a:hover {
   background: var(--table-stripe);
 }
 
-/* 가로 스크롤 래퍼 (main.js wrapTables()가 주입) */
+/* 가로 스크롤 래퍼 (main.js wrapTables()가 주입)
+   데스크톱은 overflow visible — 래퍼가 스크롤 컨테이너가 되면
+   thead th sticky가 뷰포트 기준으로 동작하지 못하므로,
+   1024px 이하에서만 가로 스크롤(스티키 희생) */
 .table-scroll {
-  overflow-x: auto;
+  overflow-x: visible;
   margin: 1rem 0; /* .comparison-table 기존 margin과 동일 */
+}
+
+@media (max-width: 1024px) {
+  .table-scroll {
+    overflow-x: auto;
+  }
 }
 
 .table-scroll .comparison-table {
@@ -1565,6 +1577,11 @@ body.side-panel-active #content {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+#page-toc a.toc-sub {
+  padding-left: 0.9rem;
+  font-size: 0.78rem;
 }
 
 #page-toc a.active {
