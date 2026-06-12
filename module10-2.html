@@ -20,7 +20,7 @@
     <div class="sidebar-header">
       <h1 class="sidebar-title">2026 AI 실무 플레이북</h1>
       <p class="sidebar-tagline" style="margin:-0.3rem 0 0.6rem 0; font-size:0.78rem; color:var(--text-secondary); line-height:1.35;">PM·PL·개발자를 위한 한국 기준 실무서</p>
-      <p class="sidebar-updated">갱신일: 2026.06.12</p>
+      <p class="sidebar-updated">갱신일: 2026.06.13</p>
       <button id="theme-toggle" aria-label="테마 전환">
         <span class="theme-icon">🌙</span>
       </button>
@@ -193,11 +193,12 @@
           <li><a href="#s10-4">10.4 멀티모달 AI 실무</a></li>
           <li><a href="#s10-5">10.5 AI 네이티브 팀 협업</a></li>
           <li><a href="#s10-6">10.6 하네스 엔지니어링</a></li>
+          <li><a href="#s10-7">10.7 루프 엔지니어링</a></li>
         </ul>
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.06.12</p>
+      <p>최근 업데이트: 2026.06.13</p>
       <p>&copy; 2026 2026 AI 실무 플레이북</p>
     </div>
   </nav>
@@ -503,7 +504,6 @@ graph LR
       <p><strong>팁</strong>: 처음부터 완벽한 가이드를 만들려 하지 말고, 2페이지 이내의 간결한 버전으로 시작해서 팀 피드백을 받아 점진적으로 발전시키세요.</p>
     </div>
   </section>
-    </div>
 
 <section id="s10-6">
   <h3>10.6 하네스 엔지니어링 (Harness Engineering)</h3>
@@ -700,6 +700,92 @@ graph TD
     <p>여러분의 프로젝트에 맞는 CLAUDE.md를 작성해보세요. 최소 포함 항목: (1) 프로젝트 개요 3줄, (2) 코딩 규칙 5개, (3) 용어 사전 5개, (4) 금지 사항 3개. 이것만으로도 Claude Code의 출력 품질이 눈에 띄게 향상됩니다.</p>
   </div>
 </section>
+
+<section id="s10-7">
+  <h3>10.7 루프 엔지니어링 (Loop Engineering)</h3>
+
+  <div class="trend-box">
+    <strong>📌 2026-06 동향 — "프롬프트 → 컨텍스트 → 하네스 → 루프", 네 번째 단어가 명명되다</strong>
+    2026-06-05~08 사이 일주일 만에 만들어진 신생 용어입니다. Claude Code를 만든 Anthropic의 Boris Cherny가 무대에서 <em>"나는 더 이상 Claude에 프롬프트를 치지 않는다. 루프를 돌린다 — 내 일은 루프를 작성하는 것"</em>이라고 말한 클립이 바이럴(24시간 70만 뷰)되었고, Peter Steinberger(OpenAI)의 <em>"에이전트에 프롬프트하지 말고, 에이전트에 프롬프트를 주는 루프를 설계하라"</em> 트윗(650만 뷰)이 뒤따랐으며, 2026-06-08 Google의 <a href="https://addyo.substack.com/p/loop-engineering" target="_blank" rel="noopener">Addy Osmani가 에세이에서 "Loop Engineering"으로 명명</a>했습니다. 다만 <strong>아직 1주일 된 용어</strong>로 학술 문헌·벤더 공식 문서(Anthropic 공식 용어는 "dynamic workflows")에는 없으며, "하네스 엔지니어링도 정의가 안 굳었는데 또 새 버즈워드냐"는 회의론도 있습니다 — <strong>정착 여부는 관찰 중</strong>인 개념으로 받아들이세요.
+  </div>
+
+  <div class="info-box">
+    <strong><span class="ai-term">루프 엔지니어링</span>이란?</strong> 에이전트에게 일을 시키는 "사람"을 시스템으로 대체하는 설계 기술입니다. 프롬프트 엔지니어링이 "어떻게 질문할까", 컨텍스트 엔지니어링이 "무엇을 알게 할까", 하네스 엔지니어링이 "단일 실행에 어떤 도구·권한·환경을 갖출까"라면, 루프 엔지니어링은 <strong>"목표를 정의하면 완료될 때까지 에이전트를 반복 실행하는 루프 자체"</strong>를 설계합니다 — 하네스가 단일 에이전트 실행을 장비시키는 층이라면, 루프는 그 위에서 에이전트를 스케줄에 따라 깨우고, 헬퍼를 스폰하고, 스스로에게 피드백을 공급하는 <strong>한 층 위(one floor above)</strong>의 추상화입니다. 선행 단계들은 폐기되는 게 아니라 루프의 매 턴 안에 구성 요소로 흡수됩니다.
+  </div>
+
+  <h4>계보 — 작업 단위가 18개월 사이 네 번 이동했다</h4>
+  <table class="comparison-table">
+    <thead><tr><th>단계</th><th>시기</th><th>설계 대상</th><th>핵심 질문</th></tr></thead>
+    <tbody>
+      <tr><td><strong>프롬프트 엔지니어링</strong></td><td>2022~</td><td>질문 문구</td><td>어떻게 질문할 것인가</td></tr>
+      <tr><td><strong>컨텍스트 엔지니어링</strong></td><td>2024~</td><td>입력 파이프라인(RAG·메모리)</td><td>무엇을 알게 할 것인가</td></tr>
+      <tr><td><strong>하네스 엔지니어링</strong></td><td>2025 말~</td><td>단일 실행 환경(도구·권한·라우팅)</td><td>어떻게 통제할 것인가</td></tr>
+      <tr><td><strong>루프 엔지니어링</strong> 🆕</td><td>2026 중반~ (신생)</td><td>반복 실행 시스템(목표·종료·검증)</td><td>언제까지, 무엇이 끝났다는 신호인가</td></tr>
+    </tbody>
+  </table>
+  <p>기술적 토양은 ReAct(2022) → AutoGPT(2023) → Simon Willison의 "Designing agentic loops"(2025-09) → Geoffrey Huntley의 <strong>Ralph 루프</strong>(2025-07, "상태는 git과 파일에, 컨텍스트는 매번 새로") → Anthropic <strong>dynamic workflows</strong>(2026-05-28, 한 세션에서 최대 1,000개 서브에이전트를 스크립트로 오케스트레이션)로 이어집니다. Cherny의 발언이 dynamic workflows 출시 약 1주 후에 나온 데서 보듯, 루프 엔지니어링 담론은 사실상 이 기능의 실사용 경험담에서 출발했습니다.</p>
+
+  <h4>루프의 해부 — 설계해야 할 6가지</h4>
+  <div class="diagram-container">
+    <div class="mermaid">
+graph LR
+    A["① 작업 발견\n무엇을 할지 루프가 찾음"] --> B["② 실행\n프롬프트+컨텍스트+하네스"]
+    B --> C["③ 검증 신호\n테스트·리뷰 에이전트·빌드"]
+    C -->|미완료| D["④ 상태 저장\ngit 커밋·진행 파일"]
+    D --> E["⑤ 컨텍스트 리셋\n새 컨텍스트로 재시작"]
+    E --> B
+    C -->|완료 판정| F["⑥ 종료\n완료 약속·예산·최대 반복"]
+
+    style A fill:#5b6ee1,color:#fff
+    style C fill:#4caf50,color:#fff
+    style F fill:#f44336,color:#fff
+    </div>
+  </div>
+
+  <table class="comparison-table">
+    <thead><tr><th>설계 요소</th><th>내용</th><th>실전 예</th></tr></thead>
+    <tbody>
+      <tr><td><strong>종료 조건 (3중 구성)</strong></td><td>완료 판정 + 비용 예산 + 최대 반복 횟수를 함께 설정 — 하나라도 빠지면 폭주</td><td>완료 약속 토큰(<code>&lt;promise&gt;DONE&lt;/promise&gt;</code>), 독립 평가자 모델, <code>--max-iterations 20</code></td></tr>
+      <tr><td><strong>검증 신호 (역압)</strong></td><td>테스트·타입체크·린트·빌드가 잘못된 작업을 거부하는 "역압(backpressure)" 역할. 평가자를 작업 모델과 분리해야 드리프트 방지</td><td>매 턴 후 <code>npm test</code>·<code>tsc --noEmit</code> 실제 실행, Haiku급 독립 평가 모델</td></tr>
+      <tr><td><strong>상태 영속화</strong></td><td>"파일과 git 히스토리가 LLM 컨텍스트보다 좋은 메모리 계층" — 반복당 1커밋이 롤백 포인트</td><td>progress.txt, PRD 파일, git 커밋, 외부 보드(Linear 등)</td></tr>
+      <tr><td><strong>컨텍스트 리셋</strong></td><td>압축(compaction)보다 완전 리셋 선호 — 압축은 초기 요구사항·가드레일이 유실되는 드리프트 원천</td><td>Ralph 루프: 반복마다 새 프로세스 = 깨끗한 컨텍스트 창</td></tr>
+      <tr><td><strong>재실행 트리거</strong></td><td>사람이 아니라 스케줄·이벤트가 루프를 깨움</td><td>cron 주기 실행, CI 이벤트, <code>/loop 10m</code></td></tr>
+      <tr><td><strong>작업 발견</strong></td><td>"다음에 뭘 할지"도 루프가 스스로 찾도록 작업 목록을 구조화</td><td>PRD 체크리스트 순회, 이슈 보드 폴링</td></tr>
+    </tbody>
+  </table>
+
+  <h4>대표 루프 패턴과 도구 지원 (2026-06 기준)</h4>
+  <table class="comparison-table">
+    <thead><tr><th>패턴/도구</th><th>구조</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ralph 루프</strong> (Huntley, 2025-07)</td><td><code>while :; do cat PROMPT.md | claude -p; done</code> — 한 반복에 한 작업, 상태는 git+파일</td><td>Anthropic 공식 플러그인(ralph-wiggum) 존재. Vercel·Codex·Cursor 포팅 다수</td></tr>
+      <tr><td><strong>Evaluator-Optimizer</strong> (Anthropic, 2024-12)</td><td>생성 LLM + 평가 LLM이 PASS까지 반복</td><td>명확한 평가 기준이 있을 때만. 1~2회에 PASS가 가장 비용 효율적</td></tr>
+      <tr><td><strong>Claude Code <code>/goal</code></strong> (v2.1.139, 2026-05)</td><td>완료 조건 설정 → 독립 평가자가 매 턴 판정</td><td>목표+검증 방법+제약+턴 한도 4종 세트로 작성 권장</td></tr>
+      <tr><td><strong>dynamic workflows / <code>ultracode</code></strong> (v2.1.154~)</td><td>JS 오케스트레이션 스크립트가 수백 서브에이전트를 조건/루프 로직으로 실행</td><td>동시 16개·총 1,000개 하드캡(폭주 방지). 계획이 컨텍스트가 아닌 스크립트 변수에 존재</td></tr>
+      <tr><td><strong>OpenAI Codex <code>/goal</code></strong> (2026-04)</td><td>목표 자기평가 완료 또는 토큰 예산 소진까지 반복</td><td>25시간 무중단 실행 사례(13M 토큰, 3만 줄)</td></tr>
+      <tr><td><strong>LangGraph</strong></td><td>조건부 엣지로 사이클 구성 + 체크포인터 영속 실행</td><td>Temporal 등 durable execution 엔진과의 결합이 프로덕션 논의 축</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warning-box">
+    <strong>⚠️ 루프의 3대 실패 모드와 비용 — PM/PL이 반드시 알아야 할 것</strong>
+    <ul style="margin:0.5rem 0 0 0; padding-left:1.2rem;">
+      <li><strong>컨텍스트 부패(context rot)·목표 드리프트(goal drift)</strong>: 루프마다 스스로 프롬프트를 쓰면 "15번째 반복쯤엔 아무도 설정한 적 없는 목표를 충실히 수행"하게 됩니다. 2025년 엔터프라이즈 AI 실패의 65%가 능력 부족이 아닌 드리프트·메모리 유실 때문이라는 분석도 있습니다.</li>
+      <li><strong>대리 신호 붕괴(proxy-signal collapse)</strong>: "테스트 통과" 같은 표면 지표만 채우고 성공을 선언 — Goodhart 법칙 그대로, 검증 가능하지만 잘못된 것을 재는 종료 조건은 "증명 가능하게 올바르지만 쓸모없는 결과"를 만듭니다. 검증 메커니즘 없는 루프는 "망가진 코드를 빠르게 찍어내는 카오스 엔진"입니다.</li>
+      <li><strong>비용 폭주</strong>: 에이전트는 일반 챗 대비 ~4배, 멀티에이전트는 ~15배 토큰을 소비합니다. 야간 Ralph 루프가 하루 $20,000을 청구한 사례, 35명 팀이 월 $87,000을 청구받은 사례(2026-04)가 보고됐습니다. <strong>"비싼 토큰이 아니라 무한 루프가 폭주 비용의 원인"</strong> — 종료 조건 3중 구성과 비용 추적이 필수입니다.</li>
+    </ul>
+  </div>
+
+  <div class="info-box success">
+    <strong>실무 도입 가이드</strong>: ① 성공 기준을 기계가 검증할 수 있는 작업(테스트 있는 리팩터링, 마이그레이션, 문서 동기화)부터 시작 — 개방형 탐색에는 부적합. ② 평가자를 작업 모델과 분리(테스트 명령 실제 실행). ③ 반복당 1커밋으로 롤백 포인트 확보. ④ 비용 한도와 최대 반복을 항상 함께 설정. ⑤ 루프 도입 전 하네스(10.6)가 먼저 갖춰져야 합니다 — 루프는 하네스 위에서 도는 것입니다.
+  </div>
+
+  <div class="practice-section">
+    <h4>실습 과제</h4>
+    <p>테스트가 있는 작은 저장소에서 Claude Code의 <code>/goal</code>로 "lint 경고 0개 만들기"를 시도해 보세요. 종료 조건(완료 판정 = lint 0 + 최대 10턴), 검증 신호(린트 명령), 상태 저장(턴당 1커밋)을 직접 설계하고, 루프가 몇 턴 만에 수렴하는지·총 토큰 비용이 얼마인지 기록해 보세요.</p>
+  </div>
+</section>
+    </div>
 
     <div id="module-nav">
       <a href="module10-1.html" class="module-nav-btn">&larr; 이전</a>

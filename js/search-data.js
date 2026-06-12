@@ -77,5 +77,6 @@ var SEARCH_DATA = [
   {title:"10.3 추론 모델 & 확장된 사고",desc:"o1, Claude 추론 모드, 사고 과정",url:"module10-1.html#s10-3",kw:"추론 모델 사고 reasoning o1",tags:["topic:모델","topic:트렌드"]},
   {title:"10.4 멀티모달 AI 실무",desc:"이미지/영상/음성 AI 활용",url:"module10-2.html#s10-4",kw:"멀티모달 이미지 영상 음성",tags:["topic:모델","topic:트렌드"]},
   {title:"10.5 AI 네이티브 팀 협업",desc:"AI 중심 팀 워크플로우 구축",url:"module10-2.html#s10-5",kw:"AI 네이티브 팀 협업 워크플로우",tags:["topic:협업"]},
-  {title:"10.6 하네스 엔지니어링",desc:"AI 실행 환경 전체 설계, 멀티 에이전트 오케스트레이션",url:"module10-2.html#s10-6",kw:"하네스 엔지니어링 Harness 에이전트 오케스트레이션 MCP CLAUDE.md",tags:["role:개발자","topic:모델","topic:에이전트","topic:트렌드"]}
+  {title:"10.6 하네스 엔지니어링",desc:"AI 실행 환경 전체 설계, 멀티 에이전트 오케스트레이션",url:"module10-2.html#s10-6",kw:"하네스 엔지니어링 Harness 에이전트 오케스트레이션 MCP CLAUDE.md",tags:["role:개발자","topic:모델","topic:에이전트","topic:트렌드"]},
+  {title:"10.7 루프 엔지니어링",desc:"종료 조건·검증 신호·상태 영속화 — 에이전트 반복 실행 루프 설계",url:"module10-2.html#s10-7",kw:"루프 엔지니어링 Loop Engineering 랄프 Ralph goal 종료 조건 드리프트 dynamic workflows",tags:["role:개발자","topic:에이전트","topic:트렌드"]}
 ];

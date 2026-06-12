@@ -262,6 +262,10 @@
 
       <div class="letter-section" id="new-2026-06"><h3>🆕 2026-06 신규 용어</h3>
         <dl>
+          <div class="term"><dt>루프 엔지니어링 <span class="en">Loop Engineering</span></dt><dd>에이전트에 프롬프트하는 사람을 시스템으로 대체하는 설계 기술 — "목표를 정의하면 완료될 때까지 반복 실행하는 루프"를 설계. Boris Cherny(Anthropic)·Peter Steinberger 발언에서 촉발돼 2026-06-08 Addy Osmani(Google)가 명명. 설계 대상은 종료 조건·검증 신호·상태 영속화·컨텍스트 리셋·재실행 트리거. "프롬프트→컨텍스트→하네스→루프" 4단 계보의 최신(신생) 단계로 정착 여부 관찰 중.</dd></div>
+          <div class="term"><dt>랄프 루프 <span class="en">Ralph Loop</span></dt><dd>Geoffrey Huntley가 2025-07 제안한 단순 무한 루프 패턴(<code>while :; do cat PROMPT.md | claude -p; done</code>). 한 반복에 한 작업, 상태는 LLM 메모리가 아닌 git·진행 파일에 저장, 매 반복 깨끗한 컨텍스트로 시작. 루프 엔지니어링의 개념적 선구. Anthropic 공식 플러그인(ralph-wiggum)으로도 제공.</dd></div>
+          <div class="term"><dt>완료 약속 <span class="en">Completion Promise</span></dt><dd>루프 종료를 알리는 약속된 출력 토큰(예: <code>&lt;promise&gt;DONE&lt;/promise&gt;</code>). 문자열 매칭이라 취약해 "성공 신호이지 안전장치가 아님" — 최대 반복 횟수·비용 예산과 3중으로 구성하는 것이 표준.</dd></div>
+          <div class="term"><dt>목표 드리프트 <span class="en">Goal Drift</span></dt><dd>루프마다 에이전트가 스스로 프롬프트를 갱신하며 원래 의도에서 점점 멀어지는 현상("15번째 반복쯤엔 아무도 설정한 적 없는 목표를 수행"). 컨텍스트 부패(context rot)·대리 신호 붕괴(proxy-signal collapse)와 함께 루프의 3대 실패 모드. 작업 모델과 분리된 독립 평가자가 주요 방어책.</dd></div>
           <div class="term"><dt>미토스급 <span class="en">Mythos-class</span></dt><dd>Anthropic이 2026-06-09 신설한 Opus 상위 모델 티어. 4월 제한 공개됐던 Mythos Preview 계열이 정식 티어로 승격. 일반 공개용으로 안전화한 Fable 5와 세이프가드 해제판 Mythos 5(Project Glasswing 파트너 한정)로 구성.</dd></div>
           <div class="term"><dt>클로드 페이블 5 <span class="en">Claude Fable 5</span></dt><dd>Anthropic의 첫 Mythos급 일반 공개 모델(2026-06-09, <code>claude-fable-5</code>). $10/$50 per 1M, 기본 1M 컨텍스트(롱 컨텍스트 추가 과금 없음)·출력 128K. "거의 모든 벤치마크 SOTA". 고위험 요청(사이버보안·생물·화학 등) 감지 시 Opus 4.8로 폴백하는 분류기 탑재.</dd></div>
           <div class="term"><dt>다이내믹 워크플로 <span class="en">Dynamic Workflows</span></dt><dd>Claude Opus 4.8(2026-05-28)과 함께 도입된 리서치 프리뷰 기능. 한 세션에서 수십~수백 개 병렬 서브에이전트를 스크립트로 오케스트레이션(코드베이스 단위 마이그레이션 등). Claude Code에서는 트리거 키워드 <code>ultracode</code>(v2.1.160~)와 <code>/workflows</code> 조회 명령으로 사용.</dd></div>
@@ -298,7 +302,7 @@
     </article>
 
     <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
-      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.06.12
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.06.13
     </div>
   </main>
 

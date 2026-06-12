@@ -20,7 +20,7 @@
     <div class="sidebar-header">
       <h1 class="sidebar-title">2026 AI 실무 플레이북</h1>
       <p class="sidebar-tagline" style="margin:-0.3rem 0 0.6rem 0; font-size:0.78rem; color:var(--text-secondary); line-height:1.35;">PM·PL·개발자를 위한 한국 기준 실무서</p>
-      <p class="sidebar-updated">갱신일: 2026.06.12</p>
+      <p class="sidebar-updated">갱신일: 2026.06.13</p>
       <button id="theme-toggle" aria-label="테마 전환">
         <span class="theme-icon">🌙</span>
       </button>
@@ -193,11 +193,12 @@
           <li><a href="module10-2.html#s10-4">10.4 멀티모달 AI 실무</a></li>
           <li><a href="module10-2.html#s10-5">10.5 AI 네이티브 팀 협업</a></li>
           <li><a href="module10-2.html#s10-6">10.6 하네스 엔지니어링</a></li>
+          <li><a href="module10-2.html#s10-7">10.7 루프 엔지니어링</a></li>
         </ul>
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.06.12</p>
+      <p>최근 업데이트: 2026.06.13</p>
       <p>&copy; 2026 2026 AI 실무 플레이북</p>
     </div>
   </nav>
@@ -755,10 +756,10 @@ graph TD
 
 <section id="s1-9">
           <h3>1.9 AI 엔지니어링 4년간의 진화</h3>
-          <p>프롬프트에서 하네스까지 — 개발자 역할의 패러다임 전환을 살펴봅니다.</p>
+          <p>프롬프트에서 루프까지 — 개발자 역할의 패러다임 전환을 살펴봅니다.</p>
 
           <div class="info-box">
-            <strong>진화 흐름</strong>: <strong class="ai-term">프롬프트 엔지니어링</strong> ("어떻게 질문할 것인가") → <strong class="ai-term">컨텍스트 엔지니어링</strong> ("무엇을 알게 할 것인가") → <strong class="ai-term">하네스 엔지니어링</strong> ("어떻게 통제할 것인가")
+            <strong>진화 흐름</strong>: <strong class="ai-term">프롬프트 엔지니어링</strong> ("어떻게 질문할 것인가") → <strong class="ai-term">컨텍스트 엔지니어링</strong> ("무엇을 알게 할 것인가") → <strong class="ai-term">하네스 엔지니어링</strong> ("어떻게 통제할 것인가") → <strong class="ai-term">루프 엔지니어링</strong> ("언제까지, 무엇이 끝났다는 신호인가" — 2026-06 신생 용어)
           </div>
 
           <h4>Phase 1 · 2022~ 프롬프트 엔지니어링</h4>
@@ -858,8 +859,20 @@ graph TD
             </tbody>
           </table>
 
+          <h4>Phase 4 · 2026 중반~ 루프 엔지니어링 🆕</h4>
+          <p>프롬프트를 치는 사람 자체를 시스템으로 대체 — <strong>"목표를 정의하면 완료될 때까지 반복 실행하는 루프"</strong>를 설계하는 단계</p>
+          <table class="comparison-table">
+            <thead><tr><th>요소</th><th>설명</th></tr></thead>
+            <tbody>
+              <tr><td><strong>기원</strong></td><td>Boris Cherny(Anthropic) "나는 더 이상 프롬프트하지 않는다, 루프를 작성한다" 발언(2026-06-06 바이럴) → Addy Osmani(Google)가 <a href="https://addyo.substack.com/p/loop-engineering" target="_blank" rel="noopener">"Loop Engineering"으로 명명</a>(2026-06-08)</td></tr>
+              <tr><td><strong>설계 대상</strong></td><td>작업 발견 · 재실행 트리거 · 종료 조건(완료 판정+예산+최대 반복) · 검증 신호 · 대화 밖 상태 저장 · 컨텍스트 리셋</td></tr>
+              <tr><td><strong>대표 패턴</strong></td><td>Ralph 루프(상태는 git+파일, 매번 새 컨텍스트), Evaluator-Optimizer, Claude Code <code>/goal</code>·dynamic workflows, Codex <code>/goal</code></td></tr>
+              <tr><td><strong>주의</strong></td><td>등장 1주 미만의 신생 용어(벤더 공식 문서 부재, 회의론 존재) — 정착 여부 관찰 중. 비용 폭주·목표 드리프트 리스크는 실재</td></tr>
+            </tbody>
+          </table>
+
           <div class="info-box">
-            <strong>💡 핵심 통찰</strong>: <em>"엄밀함은 사라지지 않았고, 더 높은 추상화 수준으로 이동했을 뿐이다. 프롬프트 엔지니어링은 '죽은 것'이 아니라 '승진한 것'이다."</em> — Chad Fowler. 처음부터 완벽한 시스템을 설계하지 말 것. <strong>작은 커맨드 → 룰 → 스킬 → 훅</strong> 순서로 점진적으로 접근하라.
+            <strong>💡 핵심 통찰</strong>: <em>"엄밀함은 사라지지 않았고, 더 높은 추상화 수준으로 이동했을 뿐이다. 프롬프트 엔지니어링은 '죽은 것'이 아니라 '승진한 것'이다."</em> — Chad Fowler. 18개월 사이 작업 단위가 <strong>프롬프트 → 컨텍스트 → 하네스 → 루프</strong>로 네 번 이동했다. 처음부터 완벽한 시스템을 설계하지 말 것. <strong>작은 커맨드 → 룰 → 스킬 → 훅 → 루프</strong> 순서로 점진적으로 접근하라.
           </div>
 
           <h4>📎 참고 자료</h4>
@@ -877,11 +890,14 @@ graph TD
             <li><a href="https://simonwillison.net/2025/Jun/14/lethal-trifecta/" target="_blank">Simon Willison — Lethal Trifecta</a> (에이전트 보안)</li>
             <li><a href="https://modelcontextprotocol.io/" target="_blank">MCP (Model Context Protocol)</a> — LLM-도구 연결 표준</li>
             <li><a href="https://cc101.axwith.com/ko" target="_blank">Claude Code 한국어 가이드</a> — Claude Code 설치부터 실전 활용까지 한글 안내</li>
+            <li><a href="https://addyo.substack.com/p/loop-engineering" target="_blank">Addy Osmani — Loop Engineering</a> (2026.06, 용어 명명 에세이)</li>
+            <li><a href="https://ghuntley.com/ralph/" target="_blank">Geoffrey Huntley — Ralph 루프</a> (2025.07, 루프 패턴의 선구)</li>
           </ul>
 
           <p style="margin-top:16px">
             <a href="ai-engineering-evolution.html" target="_blank">📊 타임라인 비주얼 버전으로 보기 →</a><br>
-            <a href="module10-2.html#s10-6">🔧 10.6 하네스 엔지니어링 실전 가이드 보기 →</a>
+            <a href="module10-2.html#s10-6">🔧 10.6 하네스 엔지니어링 실전 가이드 보기 →</a><br>
+            <a href="module10-2.html#s10-7">🔁 10.7 루프 엔지니어링 실전 가이드 보기 →</a>
           </p>
         </section>
 
