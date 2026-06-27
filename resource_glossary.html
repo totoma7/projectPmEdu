@@ -266,8 +266,8 @@
           <div class="term"><dt>랄프 루프 <span class="en">Ralph Loop</span></dt><dd>Geoffrey Huntley가 2025-07 제안한 단순 무한 루프 패턴(<code>while :; do cat PROMPT.md | claude -p; done</code>). 한 반복에 한 작업, 상태는 LLM 메모리가 아닌 git·진행 파일에 저장, 매 반복 깨끗한 컨텍스트로 시작. 루프 엔지니어링의 개념적 선구. Anthropic 공식 플러그인(ralph-wiggum)으로도 제공.</dd></div>
           <div class="term"><dt>완료 약속 <span class="en">Completion Promise</span></dt><dd>루프 종료를 알리는 약속된 출력 토큰(예: <code>&lt;promise&gt;DONE&lt;/promise&gt;</code>). 문자열 매칭이라 취약해 "성공 신호이지 안전장치가 아님" — 최대 반복 횟수·비용 예산과 3중으로 구성하는 것이 표준.</dd></div>
           <div class="term"><dt>목표 드리프트 <span class="en">Goal Drift</span></dt><dd>루프마다 에이전트가 스스로 프롬프트를 갱신하며 원래 의도에서 점점 멀어지는 현상("15번째 반복쯤엔 아무도 설정한 적 없는 목표를 수행"). 컨텍스트 부패(context rot)·대리 신호 붕괴(proxy-signal collapse)와 함께 루프의 3대 실패 모드. 작업 모델과 분리된 독립 평가자가 주요 방어책.</dd></div>
-          <div class="term"><dt>미토스급 <span class="en">Mythos-class</span></dt><dd>Anthropic이 2026-06-09 신설한 Opus 상위 모델 티어. 4월 제한 공개됐던 Mythos Preview 계열이 정식 티어로 승격. 일반 공개용으로 안전화한 Fable 5와 세이프가드 해제판 Mythos 5(Project Glasswing 파트너 한정)로 구성.</dd></div>
-          <div class="term"><dt>클로드 페이블 5 <span class="en">Claude Fable 5</span></dt><dd>Anthropic의 첫 Mythos급 일반 공개 모델(2026-06-09, <code>claude-fable-5</code>). $10/$50 per 1M, 기본 1M 컨텍스트(롱 컨텍스트 추가 과금 없음)·출력 128K. "거의 모든 벤치마크 SOTA". 고위험 요청(사이버보안·생물·화학 등) 감지 시 Opus 4.8로 폴백하는 분류기 탑재.</dd></div>
+          <div class="term"><dt>미토스급 <span class="en">Mythos-class</span></dt><dd>Anthropic이 2026-06-09 신설한 Opus 상위 모델 티어. 4월 제한 공개됐던 Mythos Preview 계열이 정식 티어로 승격. 일반 공개용으로 안전화한 Fable 5와 세이프가드 해제판 Mythos 5(Project Glasswing 파트너 한정)로 구성. <strong>⚠ 2026-06-12 미국 수출통제 지령으로 Fable 5·Mythos 5 모두 전 사용자 비활성화 — 06-27 기준 Mythos 5만 미국 핵심 인프라 기관 한정 부분 복구, 일반용 Fable 5는 미복구.</strong></dd></div>
+          <div class="term"><dt>클로드 페이블 5 <span class="en">Claude Fable 5</span></dt><dd>Anthropic의 첫 Mythos급 일반 공개 모델(2026-06-09, <code>claude-fable-5</code>). $10/$50 per 1M, 기본 1M 컨텍스트(롱 컨텍스트 추가 과금 없음)·출력 128K. "거의 모든 벤치마크 SOTA". 고위험 요청(사이버보안·생물·화학 등) 감지 시 Opus 4.8로 폴백하는 분류기 탑재. <strong>⚠ 출시 사흘 만(06-12) 미국 수출통제로 전면 중단, 06-27 기준 일반 이용 불가 — 현 실사용 최상위 모델은 Opus 4.8.</strong></dd></div>
           <div class="term"><dt>다이내믹 워크플로 <span class="en">Dynamic Workflows</span></dt><dd>Claude Opus 4.8(2026-05-28)과 함께 도입된 리서치 프리뷰 기능. 한 세션에서 수십~수백 개 병렬 서브에이전트를 스크립트로 오케스트레이션(코드베이스 단위 마이그레이션 등). Claude Code에서는 트리거 키워드 <code>ultracode</code>(v2.1.160~)와 <code>/workflows</code> 조회 명령으로 사용.</dd></div>
           <div class="term"><dt>폴백 분류기 <span class="en">Safety Fallback Classifier</span></dt><dd>최상위 모델이 고위험 요청을 감지하면 자동으로 하위 안전 모델로 전환해 응답하는 안전장치. Fable 5는 세션의 5% 미만에서 Opus 4.8로 폴백. "능력은 공개하되 위험 영역은 차단"하는 새 출시 전략의 핵심.</dd></div>
           <div class="term"><dt>의무 데이터 보존 <span class="en">Mandatory Data Retention</span></dt><dd>안전 모니터링을 위해 벤더가 트래픽 로그 보존을 계약상 강제하는 정책. Mythos급은 30일 보존이 의무(기존 zero-retention 계약도 예외 없음, 학습 미사용)로, 규제 산업 도입 시 데이터 거버넌스 쟁점이 됨.</dd></div>
@@ -302,7 +302,7 @@
     </article>
 
     <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
-      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.06.13
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.06.27
     </div>
   </main>
 

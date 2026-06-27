@@ -20,7 +20,7 @@
     <div class="sidebar-header">
       <h1 class="sidebar-title">2026 AI 실무 플레이북</h1>
       <p class="sidebar-tagline" style="margin:-0.3rem 0 0.6rem 0; font-size:0.78rem; color:var(--text-secondary); line-height:1.35;">PM·PL·개발자를 위한 한국 기준 실무서</p>
-      <p class="sidebar-updated">갱신일: 2026.06.13</p>
+      <p class="sidebar-updated">갱신일: 2026.06.27</p>
       <button id="theme-toggle" aria-label="테마 전환">
         <span class="theme-icon">🌙</span>
       </button>
@@ -198,7 +198,7 @@
       </li>
     </ul>
     <div class="sidebar-footer">
-      <p>최근 업데이트: 2026.06.13</p>
+      <p>최근 업데이트: 2026.06.27</p>
       <p>&copy; 2026 2026 AI 실무 플레이북</p>
     </div>
   </nav>
@@ -228,7 +228,7 @@
     <div class="trend-box">
       <strong>📌 2026-06 주요 변화 — 과금 구조의 대전환</strong>
       <ul>
-        <li><strong>Claude Fable 5 출시 (2026-06-09)</strong>: Opus 상위 "Mythos급" 티어, <strong>$10/$50 per 1M</strong>·기본 1M 컨텍스트(롱 컨텍스트 추가 과금 없음). Pro·Max·Team 플랜에 <strong>06-22까지 무료 포함, 06-23부터 사용 크레딧 필요</strong> — 구독만으로 최상위 모델을 쓸 수 있는 기간이 한시적이므로 예산 계획에 반영. Mythos급 트래픽은 <strong>30일 데이터 보존 의무</strong>(zero-retention 예외 없음)가 있어 규제 산업은 데이터 거버넌스 검토 필수.</li>
+        <li><strong>Claude Fable 5 출시(2026-06-09) → ⚠ 06-12 중단</strong>: Opus 상위 "Mythos급" 티어, <strong>$10/$50 per 1M</strong>·기본 1M 컨텍스트(롱 컨텍스트 추가 과금 없음)로 출시됐으나, <strong>2026-06-12 미국 수출통제 지령으로 Fable 5·Mythos 5가 전 사용자 대상 비활성화</strong>되어 06-27 기준 일반 이용이 불가합니다(다른 Claude 모델은 영향 없음). 따라서 위 "06-22까지 무료 포함" 등 한시 과금 안내는 현재 무의미하며, <strong>비용 계획은 Opus 4.8($5/$25)을 최상위 기준으로 수립</strong>하세요. Mythos급 트래픽의 <strong>30일 데이터 보존 의무</strong>(zero-retention 예외 없음)는 복구 시 규제 산업의 데이터 거버넌스 쟁점으로 남습니다.</li>
         <li><strong>Anthropic 구독 분리 개편 (2026-06-15 발효)</strong>: Agent SDK·<code>claude -p</code>·GitHub Actions 등 <strong>프로그래매틱 사용이 구독 쿼터에서 분리</strong>되어 별도 월간 크레딧 풀로 전환(Pro $20 / Max 5x $100 / Max 20x $200 상당, 1회 옵트인·팀 풀링 불가·이월 불가, 소진 시 API 요율 추가 과금 또는 중단). 대화형 채팅·터미널 Claude Code 세션은 기존 플랜 유지. <strong>CI/CD 자동화 비용을 구독료에 묻어가던 팀은 비용 모델 재산정 필요.</strong> 한편 SpaceX 컴퓨트 확보로 Pro/Max의 Claude Code <strong>5시간 윈도 한도는 2배</strong> 상향.</li>
         <li><strong>GitHub Copilot 토큰 과금 전환 (2026-06-01)</strong>: 'Premium requests' 정액제 폐지 → <strong>GitHub AI Credits</strong>(토큰 합산·모델별 요율). 플랜 가격 유지(Pro 1,500 / Pro+ 7,000 크레딧)이나 실질 한도 축소, 최상위 <strong>Max $100/월</strong>(20,000 크레딧) 신설. 자동완성은 무제한 유지. <strong>정액제 기준으로 산정한 팀 단위 Copilot 예산은 재검토 필수.</strong></li>
         <li><strong>흐름 요약</strong>: Cursor(2025) → Anthropic·Copilot(2026-06)으로 이어지는 <strong>"정액제 → 사용량 기반 크레딧" 전환</strong>이 업계 표준이 되는 중. ROI 산출 시 "1인당 월정액"이 아니라 <strong>"팀 전체 토큰 소비량"</strong> 기준의 비용 모델로 전환해야 함.</li>
@@ -422,7 +422,7 @@ graph TD
         <tr>
           <td><strong class="ai-term">컨텍스트 윈도우</strong></td>
           <td>한 번에 처리할 수 있는 최대 토큰 수</td>
-          <td>Claude Fable 5: <strong>1M 기본</strong>(추가 과금 없음), GPT-5.5: 1M, Claude Opus 4.7/4.8: 1M, Gemini 3 Pro: 2M (GPT-4o 128K는 레거시)</td>
+          <td>Claude Opus 4.7/4.8: <strong>1M</strong>, GPT-5.5: 1M, Gemini 3 Pro: 2M (GPT-4o 128K는 레거시). <em>Claude Fable 5도 1M 기본이나 06-12 수출통제로 중단 중 — 06-27 기준 이용 불가</em></td>
         </tr>
       </tbody>
     </table>

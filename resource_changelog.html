@@ -47,6 +47,19 @@
         <h3>릴리스</h3>
 
         <div class="changelog-entry">
+          <h3>2026-06-27 (6월 하순 동향 — Fable 5 중단 사태 반영) <span class="badge changed">CHANGED</span> <span class="badge fixed">FIXED</span></h3>
+          <strong>Fable 5 / Mythos 5 전면 중단 · GPT-5.2 은퇴 · GPT-5.6 임박 정황 · Gemini 3.5 Pro 프리뷰 한정 · 코딩 도구·오픈모델 동향</strong>
+          <ul>
+            <li><strong>FIXED</strong> Anthropic — <strong>Claude Fable 5 / Mythos 5 전면 중단(2026-06-12)</strong>: 출시 사흘 만에 미국 정부가 국가안보를 근거로 <strong>외국인(미국 내외 불문·Anthropic 외국인 직원 포함) 전원의 접근을 금지</strong>하는 수출통제 지령을 내렸고, 실시간 내·외국인 구분이 불가했던 Anthropic은 두 모델을 <strong>전 사용자 대상 비활성화</strong>(다른 Claude 모델은 영향 없음). 명분은 Fable 5 '탈옥' 시연이었으나 Anthropic은 "GPT-5.5 등 타 모델에도 적용되는 좁은 사례"라고 반박. <strong>06-26 상무부 서한으로 Mythos 5는 미국 핵심 인프라 100여 개 기관 한정 부분 재개</strong>, 일반용 Fable 5는 06-27 기준 미복구(트래픽 0, 7월 1일 전 복구 확률 ~58~67%). <strong>→ 직전(06-11) 동향의 "즉시 일반 제공" 서술을 정정: module9-1 중단 경고 박스 신설, module1-2 가격표·동향, module8-1 비용/컨텍스트, 용어 사전(Mythos급·Fable 5), 부록(Opus 1M 컨텍스트), index.html에 일괄 반영. 현 실사용 최상위 모델은 Claude Opus 4.8.</strong></li>
+            <li><strong>CHANGED</strong> OpenAI — <strong>GPT-5.2 패밀리 은퇴(2026-06-12)</strong>: ChatGPT에서 GPT-5.2 Instant·Thinking·Pro 제거, 기존 대화는 대응 GPT-5.5 모델로 자동 이관. <strong>GPT-5.6은 여전히 미출시</strong>이나(06-21 기준) 1.5M 컨텍스트·롱호라이즌 코딩·Codex 응답 속도 개선과 <strong>Anthropic Fable 5 중단을 겨냥한 공격적 가격</strong> 전망이 부상 — 계속 미확정(루머) 취급. module9-1·module1-2 동향 박스 정합성 유지.</li>
+            <li><strong>CHANGED</strong> Google — <strong>Gemini 3.5 Pro, 06-27 기준 한정 프리뷰 지속</strong>: Vertex AI 일부 엔터프라이즈 고객 한정으로, Gemini 앱·AI Studio·일반 API에는 미출시. 2M 컨텍스트·'Deep Think' 모드 탑재 전망은 유지되나 I/O(05-19)에서 예고한 6월 GA는 미달성. "GA 임박 보도=미확정" 기조 유지.</li>
+            <li><strong>CHANGED</strong> 코딩 도구 — <strong>Cursor Bugbot 3배 가속·22% 인하·버그 탐지 +10%(06-10)</strong>, 멀티스텝 계획·테스트·PR 자동화 <strong>Composer 2.5</strong> 에이전트 모드, 클라우드 에이전트 VM 빌드/데모. <strong>Claude Code v2.1.175(06-12)</strong>는 <code>enforceAvailableModels</code> 관리형 설정 추가(availableModels 허용목록이 기본 모델까지 제약), v2.1.163의 <code>requiredMinimum/MaximumVersion</code>(버전 범위 밖이면 기동 거부)·<code>/plugin list</code> 동반. 배경 에이전트 안정성·Linux/macOS 음성 모드 다수 수정. module9-1 도구 생태계 반영.</li>
+            <li><strong>NOTE</strong> 오픈모델 — <strong>Z.ai GLM-5.2</strong>(744B, MIT 라이선스, 1M 컨텍스트, 풀웨이트 1.51TB)를 Unsloth가 <strong>84% 경량화해 256GB Mac 로컬 구동</strong> 시연. 온디바이스·오픈웨이트 진영의 대형 MoE 로컬화 흐름. 부록(온디바이스 LLM) 케이스 후보.</li>
+            <li><strong>NOTE</strong> 국내 — <strong>AI 기본법 계도기간</strong>: 법 시행(2026-07-21) 초기 혼란 최소화를 위해 정부가 <strong>1년 이상 과태료 미부과·계도</strong> 운영 방침, 실제 과태료 부과는 빨라도 2027년 이후 전망. (시행령 본문은 06-11 항목에 기반영.) 부록 B(규제) 단서 갱신 후보.</li>
+          </ul>
+        </div>
+
+        <div class="changelog-entry">
           <h3>2026-06-13 (루프 엔지니어링 신설) <span class="badge added">ADDED</span></h3>
           <strong>10.7 루프 엔지니어링 — "프롬프트 → 컨텍스트 → 하네스 → 루프" 4단 계보 반영</strong>
           <ul>
@@ -258,7 +271,7 @@
     </article>
 
     <div style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--border); font-size:0.9rem; color:var(--text-secondary);">
-      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.06.13
+      <a href="index.html">← 메인으로 돌아가기</a> · 최근 업데이트: 2026.06.27
     </div>
   </main>
   <script src="js/main.js"></script>
